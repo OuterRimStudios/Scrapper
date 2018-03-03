@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject firstPersonCharacter;
     public GameObject thirdPersonCharacter;
+    public Transform firstPersonSpawnpoint;
+    public Transform thirdPersonSpawnpoint;
 
     Animator anim;
 
@@ -25,14 +27,22 @@ public class PlayerManager : MonoBehaviour
         if (!firstPerson)
         {
             anim.enabled = false;
-            firstPersonCharacter.SetActive(true);
             thirdPersonCharacter.SetActive(false);
+            firstPersonCharacter.SetActive(true);
         }
         else
         {
             anim.enabled = true;
-            firstPersonCharacter.SetActive(false);
             thirdPersonCharacter.SetActive(true);
+            firstPersonCharacter.SetActive(false);
         }
+    }
+
+    public Transform SpawnPosition()
+    {
+        if(!firstPerson)
+            return thirdPersonSpawnpoint;
+        else
+            return firstPersonSpawnpoint;
     }
 }

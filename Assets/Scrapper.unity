@@ -368,6 +368,34 @@ Transform:
   m_Father: {fileID: 190226300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &68095142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 68095143}
+  m_Layer: 0
+  m_Name: Third Person Spawn Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &68095143
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 68095142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.463, y: 1.88, z: -0.202}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 602300535}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &71913600
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +918,35 @@ Transform:
   - {fileID: 77051177}
   m_Father: {fileID: 1430053475}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &239411982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 239411983}
+  m_Layer: 0
+  m_Name: Abilities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &239411983
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 239411982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 984920657}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &268081629
 GameObject:
@@ -1830,6 +1887,7 @@ Transform:
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
   - {fileID: 26083422}
+  - {fileID: 68095143}
   m_Father: {fileID: 1815962116}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2747,6 +2805,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 969691300}
   m_Mesh: {fileID: 4300006, guid: 2aa9c5cb3ec30fb4b895fb5d6e1e54fd, type: 3}
+--- !u!1 &984920656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 984920657}
+  - component: {fileID: 984920658}
+  m_Layer: 0
+  m_Name: Energized Plasma Cannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &984920657
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984920656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984920658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984920656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Energized Plasma Cannon
+  abilityIcon: {fileID: 0}
+  abilityDescription: Fires a ball of plasma that deals high damage.
+  abilityCharges: 1
+  abilityCooldown: 1
+  requiresTarget: 0
+  projectile: {fileID: 114390984574502554, guid: fe4c50904c03a1c46bc08622976a7884,
+    type: 2}
+  initialDamage: 0
 --- !u!1 &1008301442
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3520,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 832540015}
+  - {fileID: 1656667374}
   m_Father: {fileID: 298546261}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3843,6 +3951,11 @@ MonoBehaviour:
   abilityThreeKey: 113
   abilityFourKey: 101
   abilityFiveKey: 304
+  abilityOne: {fileID: 984920658}
+  abilityTwo: {fileID: 0}
+  abilityThree: {fileID: 0}
+  abilityFour: {fileID: 0}
+  abilityFive: {fileID: 0}
 --- !u!143 &1430053479
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3890,6 +4003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPersonCharacter: {fileID: 506784601}
   thirdPersonCharacter: {fileID: 234779019}
+  firstPersonSpawnpoint: {fileID: 1656667374}
+  thirdPersonSpawnpoint: {fileID: 68095143}
 --- !u!1 &1430629924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4267,6 +4382,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 285026982}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1656667373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1656667374}
+  m_Layer: 0
+  m_Name: First Person Spawn Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1656667374
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1656667373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1355876353}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708819270
 GameObject:

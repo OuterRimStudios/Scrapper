@@ -67,19 +67,19 @@ public class InputManager : MonoBehaviour
 
     void AbilityInput()
     {
-        if (abilityOne && !abilityOne.OnCooldown() && abilityOneActive)
+        if (abilityOne && abilityOne.CanShoot() && abilityOneActive)
             abilityOne.ActivateAbility();
 
-        if (abilityTwo && !abilityTwo.OnCooldown() && abilityTwoActive)
+        if (abilityTwo && abilityTwo.CanShoot() && abilityTwoActive)
             abilityTwo.ActivateAbility();
 
-        if (abilityThree && !abilityThree.OnCooldown() && abilityThreeActive)
+        if (abilityThree && abilityThree.CanShoot() && abilityThreeActive)
             abilityThree.ActivateAbility();
 
-        if (abilityFour && !abilityFour.OnCooldown() && abilityFourActive)
+        if (abilityFour && abilityFour.CanShoot() && abilityFourActive)
             abilityFour.ActivateAbility();
 
-        if (abilityFive && !abilityFive.OnCooldown() && abilityFiveActive)
+        if (abilityFive && abilityFive.CanShoot() && abilityFiveActive)
             abilityFive.ActivateAbility();
     }
 
@@ -89,11 +89,11 @@ public class InputManager : MonoBehaviour
         interact = Input.GetKey(interactKey);
         toggleView = Input.GetKeyDown(toggleViewKey);
 
-        abilityOneActive = Input.GetKey(abilityOneKey);
-        abilityTwoActive = Input.GetKey(abilityTwoKey);
-        abilityThreeActive = Input.GetKey(abilityThreeKey);
-        abilityFourActive = Input.GetKey(abilityFourKey);
-        abilityFiveActive = Input.GetKey(abilityFiveKey);
+        abilityOneActive = Input.GetKeyDown(abilityOneKey);
+        abilityTwoActive = Input.GetKeyDown(abilityTwoKey);
+        abilityThreeActive = Input.GetKeyDown(abilityThreeKey);
+        abilityFourActive = Input.GetKeyDown(abilityFourKey);
+        abilityFiveActive = Input.GetKeyDown(abilityFiveKey);
 
         moveX = Input.GetAxis("Horizontal");
         moveY = Input.GetAxis("Vertical");
