@@ -30,11 +30,13 @@ public class InputManager : MonoBehaviour
     float lookX;
     float lookY;
 
+    PlayerManager playerManager;
     PlayerMovement playerMovement;
     CameraController cameraController;
 
     private void Awake()
     {
+        playerManager = GetComponent<PlayerManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
     }
@@ -46,7 +48,10 @@ public class InputManager : MonoBehaviour
         cameraController.RecieveInput(lookY);
 
         if (toggleView)
+        {
+            playerManager.SwitchView();
             cameraController.SwitchView();
+        }
 
         if (jump)
             playerMovement.Jump();

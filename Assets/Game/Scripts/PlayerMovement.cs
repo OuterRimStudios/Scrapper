@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Variables")]
     public float movementSpeed;
     public float rotationSpeed;
+    public float animationSmoothing = 10f;
 
     [Space, Header("Jump Variables")]
     public float jumpForce = 8f;
@@ -32,9 +33,11 @@ public class PlayerMovement : MonoBehaviour
     Vector3 movement;
     Quaternion rotation;
     CharacterController cc;
+    Animator anim;
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         speed = movementSpeed;
         myCamera = Camera.main;
 
@@ -49,11 +52,28 @@ public class PlayerMovement : MonoBehaviour
         lookY = _lookY;
     }
 
+    void Animate()
+    {
+        anim.SetFloat("MoveX", moveX, 1f, animationSmoothing * Time.deltaTime);
+        anim.SetFloat("MoveY", moveY, 1f, animationSmoothing * Time.deltaTime);
+        anim.SetFloat("LookX", lookX, 1f, animationSmoothing * Time.deltaTime);
+        anim.SetFloat("LookY", lookY, 1f, animationSmoothing * Time.deltaTime);
+
+        if (movement == Vector3.zero)
+            anim.SetBool("IsMoving", false);
+        else
+            anim.SetBool("IsMoving", true);
+
+        if(Grounded())
+            anim.SetBool("IsJumping", false);
+    }
+
     private void Update()
     {
         Move();
         Look();
         Jumping();
+        Animate();
     }
 
     void Move()
@@ -87,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!Grounded()) return;
 
+        anim.SetBool("IsJumping", true);
         jump = jumpForce;
         isJumping = true;
     }

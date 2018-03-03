@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public Camera myCamera;
 
     public float rotationSpeed = 200f;
-    public float clampValue = 90f;
+    public float firstPersonClampValue = 90f;
     public float thirdPersonClampValue = 30f;
 
     public Vector3 firstPersonOffset;
@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
 
     public bool hideCursor = true;
 
+    float clampValue;
     float lookY;
     
     float yRotationValue;
@@ -60,10 +61,11 @@ public class CameraController : MonoBehaviour
         yRotationValue += -lookY * rotationSpeed * Time.deltaTime;
 
         if(firstPerson)
-            yRotationValue = ClampAngle(yRotationValue, -clampValue, clampValue);
+            clampValue = thirdPersonClampValue;
         else
-            yRotationValue = ClampAngle(yRotationValue, -thirdPersonClampValue, thirdPersonClampValue);
+            clampValue = firstPersonClampValue;
 
+        yRotationValue = ClampAngle(yRotationValue, -clampValue, clampValue);
         cameraYRotation = Quaternion.Euler(yRotationValue, 0, 0);
         myCamera.transform.localRotation = Quaternion.Slerp(myCamera.transform.localRotation, cameraYRotation, 1);
     }
