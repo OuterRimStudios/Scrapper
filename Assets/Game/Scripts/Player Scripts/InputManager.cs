@@ -8,22 +8,29 @@ public class InputManager : MonoBehaviour
     public KeyCode interactKey;
     public KeyCode toggleViewKey;
 
-    [Space, Header("Abilities")]
+    [Space, Header("Ability Keys")]
     public KeyCode abilityOneKey;
     public KeyCode abilityTwoKey;
     public KeyCode abilityThreeKey;
     public KeyCode abilityFourKey;
     public KeyCode abilityFiveKey;
 
+    [Space, Header("Ability Loadout")]
+    public Ability abilityOne;
+    public Ability abilityTwo;
+    public Ability abilityThree;
+    public Ability abilityFour;
+    public Ability abilityFive;
+
     bool jump;
     bool interact;
     bool toggleView;
 
-    bool abilityOne;
-    bool abilityTwo;
-    bool abilityThree;
-    bool abilityFour;
-    bool abilityFive;
+    bool abilityOneActive;
+    bool abilityTwoActive;
+    bool abilityThreeActive;
+    bool abilityFourActive;
+    bool abilityFiveActive;
 
     float moveX;
     float moveY;
@@ -44,6 +51,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         RecieveInput();
+        AbilityInput();
         playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
         cameraController.RecieveInput(lookY);
 
@@ -57,17 +65,35 @@ public class InputManager : MonoBehaviour
             playerMovement.Jump();
     }
 
+    void AbilityInput()
+    {
+        if (abilityOne && !abilityOne.OnCooldown() && abilityOneActive)
+            abilityOne.ActivateAbility();
+
+        if (abilityTwo && !abilityTwo.OnCooldown() && abilityTwoActive)
+            abilityTwo.ActivateAbility();
+
+        if (abilityThree && !abilityThree.OnCooldown() && abilityThreeActive)
+            abilityThree.ActivateAbility();
+
+        if (abilityFour && !abilityFour.OnCooldown() && abilityFourActive)
+            abilityFour.ActivateAbility();
+
+        if (abilityFive && !abilityFive.OnCooldown() && abilityFiveActive)
+            abilityFive.ActivateAbility();
+    }
+
     private void RecieveInput()
     {
         jump = Input.GetKeyDown(jumpKey);
         interact = Input.GetKey(interactKey);
         toggleView = Input.GetKeyDown(toggleViewKey);
 
-        abilityOne = Input.GetKey(abilityOneKey);
-        abilityTwo = Input.GetKey(abilityTwoKey);
-        abilityThree = Input.GetKey(abilityThreeKey);
-        abilityFour = Input.GetKey(abilityFourKey);
-        abilityFive = Input.GetKey(abilityFiveKey);
+        abilityOneActive = Input.GetKey(abilityOneKey);
+        abilityTwoActive = Input.GetKey(abilityTwoKey);
+        abilityThreeActive = Input.GetKey(abilityThreeKey);
+        abilityFourActive = Input.GetKey(abilityFourKey);
+        abilityFiveActive = Input.GetKey(abilityFiveKey);
 
         moveX = Input.GetAxis("Horizontal");
         moveY = Input.GetAxis("Vertical");
