@@ -18,6 +18,8 @@ public class Ability : MonoBehaviour
         Sustained
     };
 
+    List<ModuleAbility> activeModules = new List<ModuleAbility>();
+
     [Range(1, 5)]
     public int abilityCharges = 1;
     public float abilityCooldown;
@@ -25,6 +27,7 @@ public class Ability : MonoBehaviour
 
     int charges;
     bool onCooldown;
+    protected bool moduleActive;
 
     protected PlayerManager playerManager;
 
@@ -37,6 +40,23 @@ public class Ability : MonoBehaviour
     public virtual void ActivateAbility()
     {
         charges--;
+    }
+
+    public void ModuleActivated(ModuleAbility module)
+    {
+        activeModules.Add(module);
+    }
+
+    public List<ModuleAbility> GetActiveModules()
+    {
+        return activeModules;
+    }
+
+    //This should be called in the custom ability script
+    public void RemoveModules()
+    {
+        activeModules.Clear();
+        moduleActive = false;
     }
 
     //This should be called in the custom ability script

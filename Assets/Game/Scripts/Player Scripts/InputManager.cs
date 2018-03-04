@@ -67,6 +67,7 @@ public class InputManager : MonoBehaviour
 
     void AbilityInput()
     {
+        print(" Ability Input");
         if (abilityOne && abilityOne.CanShoot() && abilityOneActive)
             abilityOne.ActivateAbility();
 

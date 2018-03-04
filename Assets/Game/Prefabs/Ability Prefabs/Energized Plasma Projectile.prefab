@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4349934092775696}
   - component: {fileID: 114390984574502554}
+  - component: {fileID: 135654613651986966}
   m_Layer: 0
   m_Name: Energized Plasma Projectile
   m_TagString: Untagged
@@ -36,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4334038750320826}
   - component: {fileID: 33001071231867794}
-  - component: {fileID: 135138689433833960}
   - component: {fileID: 23611789208697212}
   m_Layer: 0
   m_Name: Projectile Model
@@ -124,15 +124,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b591dbcdd8ee514f8292cde8b7a9d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 100
   speed: 10
---- !u!135 &135138689433833960
+--- !u!135 &135654613651986966
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1153843188717030}
+  m_GameObject: {fileID: 1095242119570222}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

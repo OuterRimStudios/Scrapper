@@ -10,8 +10,13 @@ public class ProjectileAbility : Ability
     public override void ActivateAbility()
     {
         base.ActivateAbility();
-
-        Instantiate(projectile, playerManager.SpawnPosition().position, playerManager.SpawnPosition().localRotation);
+        Projectile _projectile = Instantiate(projectile, playerManager.SpawnPosition().position, playerManager.SpawnPosition().localRotation);
+   
+        for(int i = 0; i < GetActiveModules().Count; i++)
+            _projectile.SetModule(GetActiveModules()[i]);
+        RemoveModules();
         TriggerCooldown();
     }
+
+    //Modules are not resetting correctly
 }
