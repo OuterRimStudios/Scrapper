@@ -945,6 +945,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 984920657}
+  - {fileID: 1552281810}
+  - {fileID: 1559569138}
+  - {fileID: 1673045191}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1459,8 +1462,8 @@ Camera:
   m_GameObject: {fileID: 425442438}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.30882353, g: 0.30882353, b: 0.30882353, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3952,9 +3955,9 @@ MonoBehaviour:
   abilityFourKey: 101
   abilityFiveKey: 304
   abilityOne: {fileID: 984920658}
-  abilityTwo: {fileID: 0}
-  abilityThree: {fileID: 0}
-  abilityFour: {fileID: 0}
+  abilityTwo: {fileID: 1552281811}
+  abilityThree: {fileID: 1559569139}
+  abilityFour: {fileID: 1673045192}
   abilityFive: {fileID: 0}
 --- !u!143 &1430053479
 CharacterController:
@@ -4205,6 +4208,55 @@ Transform:
   m_Father: {fileID: 1791700171}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1552281809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1552281810}
+  - component: {fileID: 1552281811}
+  m_Layer: 0
+  m_Name: Destructo-disc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552281810
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552281809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1552281811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552281809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Destructo-disc
+  abilityIcon: {fileID: 0}
+  abilityDescription: Shoots a plasma saw blade that penetrates enemies.
+  abilityCharges: 3
+  abilityCooldown: 3
+  requiresTarget: 0
+  projectile: {fileID: 114732284836353408, guid: 5db03dc1b7fa6dd459922559a3121878,
+    type: 2}
+  initialDamage: 0
 --- !u!1 &1556969399
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,6 +4285,56 @@ Transform:
   m_Father: {fileID: 1221485442}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1559569137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1559569138}
+  - component: {fileID: 1559569139}
+  m_Layer: 0
+  m_Name: Volt Bolt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1559569138
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559569137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1559569139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559569137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Volt Bolt
+  abilityIcon: {fileID: 0}
+  abilityDescription: Launch a ball of energy that stuns enemies in a small radius
+    upon impact.
+  abilityCharges: 1
+  abilityCooldown: 5
+  requiresTarget: 0
+  projectile: {fileID: 114054173036659116, guid: 1aceb080dc6e8354f9471ff00040c384,
+    type: 2}
+  initialDamage: 0
 --- !u!1 &1582050640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4411,6 +4513,56 @@ Transform:
   m_Father: {fileID: 1355876353}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1673045190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1673045191}
+  - component: {fileID: 1673045192}
+  m_Layer: 0
+  m_Name: Orb of Annihilation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1673045191
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1673045190}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673045192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1673045190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Volt Bolt
+  abilityIcon: {fileID: 0}
+  abilityDescription: Launch an orbl of energy that deals high damage to the target.
+    Surrounding enemies will be stunned for 4 seconds.
+  abilityCharges: 1
+  abilityCooldown: 20
+  requiresTarget: 0
+  projectile: {fileID: 114054173036659116, guid: a54a5b8512aa8194bb88658fcac73feb,
+    type: 2}
+  initialDamage: 0
 --- !u!1 &1708819270
 GameObject:
   m_ObjectHideFlags: 0

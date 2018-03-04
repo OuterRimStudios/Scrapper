@@ -11,7 +11,7 @@ public class ProjectileAbility : Ability
     {
         base.ActivateAbility();
 
-        Instantiate(projectile, playerManager.SpawnPosition().position, playerManager.SpawnPosition().localRotation);
+        Instantiate(projectile, playerManager.SpawnPosition().position, playerManager.SpawnPosition().rotation);
         TriggerCooldown();
     }
 }
