@@ -32,19 +32,7 @@ public class Modules : MonoBehaviour
 
     public void Concussion(float concussionLength)
     {
-        if(!concussionActive)
-        {
-            concussionActive = true;
-            StartCoroutine(Concussed(concussionLength));
-        }
-    }
-
-    IEnumerator Concussed(float concussionLength)
-    {
-        ai.ApplyStun();
-        yield return new WaitForSeconds(concussionLength);
-        ai.RemoveStun();
-        concussionActive = false;
+        ai.ApplyStun(concussionLength);
     }
 
     public void Incinerating(int incineratingDamage, float incineratingLength)
@@ -69,25 +57,18 @@ public class Modules : MonoBehaviour
 
     public void Crippling(float cripplingLength, int slowAmount, int stackAmount)
     {
-        if(crippled == null)
+        if(crippled != null)
+            StopCoroutine(crippled);
+
+        if (currentCrippledStacks < stackAmount)
         {
             currentCrippledStacks++;
-            
-            crippled = StartCoroutine(Crippled(slowAmount, cripplingLength));
         }
         else
         {
-            StopCoroutine(crippled);
-            if(currentCrippledStacks < stackAmount)
-            {
-                currentCrippledStacks++;
-            }
-            else
-            {
-                currentCrippledStacks = stackAmount;
-            }
-            crippled = StartCoroutine(Crippled(slowAmount, cripplingLength));
+            currentCrippledStacks = stackAmount;
         }
+        crippled = StartCoroutine(Crippled(slowAmount, cripplingLength));
     }
 
     IEnumerator Crippled(int slowAmount, float cripplingLength)
@@ -95,7 +76,6 @@ public class Modules : MonoBehaviour
         ai.ApplySlow(slowAmount);
         yield return new WaitForSeconds(cripplingLength);
         currentCrippledStacks = 0;
-        ai.RemoveSlow();
     }
 
     public void Weighted(float weightedForce)

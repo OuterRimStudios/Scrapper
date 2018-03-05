@@ -17,6 +17,4 @@ public class ProjectileAbility : Ability
         RemoveModules();
         TriggerCooldown();
     }
-
-    //Modules are not resetting correctly
 }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Trap : MonoBehaviour
 {
     public int damage;
-    public float speed;
+    public bool destroyedOnTrigger;
 
     List<ModuleAbility> activeModules = new List<ModuleAbility>();
 
@@ -14,25 +14,23 @@ public class Projectile : MonoBehaviour
         activeModules.Add(module);
     }
 
+    public virtual void EffectOnTrigger(GameObject objectHit)
+    {
+
+    }
+
     Transform target;
-
-    private void Update()
-    {
-        ProjectileMovement();
-    }
-
-    public virtual void ProjectileMovement()
-    {
-        transform.position += transform.forward * speed * Time.deltaTime;
-    }
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals("Enemy"))
+        if (other.tag.Equals("Enemy"))
         {
             print("Hit Enemy " + activeModules.Count);
             ApplyModules(other.gameObject);
             //other.GetComponent<Health>().TookDamage(damage);
+            EffectOnTrigger(other.gameObject);
+            if (destroyedOnTrigger)
+                Destroy(gameObject);
         }
     }
 

@@ -770,6 +770,57 @@ Transform:
   m_Father: {fileID: 1782600627}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &184704009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 184704010}
+  - component: {fileID: 184704011}
+  m_Layer: 0
+  m_Name: Containment Zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184704010
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 184704009}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &184704011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 184704009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255561fa045996644bd503002f063313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Containment Zone
+  abilityIcon: {fileID: 0}
+  abilityDescription: Fires a trap that when triggered, roots all enemies in place
+    for 6 seconds.
+  abilityCharges: 1
+  abilityCooldown: 12
+  requiresTarget: 0
+  trap: {fileID: 114213166655632836, guid: 7e36fc9045ee1d94490a5b8864cc1382, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &186161634
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +1002,8 @@ Transform:
   - {fileID: 380723385}
   - {fileID: 614448432}
   - {fileID: 1885263814}
+  - {fileID: 1026614934}
+  - {fileID: 184704010}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3130,6 +3183,57 @@ Transform:
   m_Father: {fileID: 164035162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1026614933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1026614934}
+  - component: {fileID: 1026614935}
+  m_Layer: 0
+  m_Name: System Failure
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1026614934
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026614933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1026614935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026614933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255561fa045996644bd503002f063313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: System Failure
+  abilityIcon: {fileID: 0}
+  abilityDescription: Spawns a trap that shuts down the enemy causing them to sleep
+    for 15 seconds. Sleeping effect is broken if the target is damaged.
+  abilityCharges: 1
+  abilityCooldown: 15
+  requiresTarget: 0
+  trap: {fileID: 114581960184033084, guid: 11fa12c50b7591545b3bbe3cb383641a, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1047325259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4311,7 +4415,7 @@ MonoBehaviour:
   abilityFourKey: 101
   abilityFiveKey: 304
   abilityOne: {fileID: 984920658}
-  abilityTwo: {fileID: 614448433}
+  abilityTwo: {fileID: 184704011}
   abilityThree: {fileID: 1885263815}
   abilityFour: {fileID: 813594486}
   abilityFive: {fileID: 380723386}
