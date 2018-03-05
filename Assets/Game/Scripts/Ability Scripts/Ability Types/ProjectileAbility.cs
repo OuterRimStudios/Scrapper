@@ -11,6 +11,7 @@ public class ProjectileAbility : Ability
     {
         base.ActivateAbility();
         Projectile _projectile = Instantiate(projectile, playerManager.SpawnPosition().position, playerManager.SpawnPosition().rotation);
+        _projectile.Initialize(initialDamage);
    
         for(int i = 0; i < GetActiveModules().Count; i++)
             _projectile.SetModule(GetActiveModules()[i]);

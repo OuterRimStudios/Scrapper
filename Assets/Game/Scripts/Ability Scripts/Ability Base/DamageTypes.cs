@@ -12,6 +12,11 @@ public class DamageTypes : MonoBehaviour
         activeModules.Add(module);
     }
 
+    public void Initialize(int _damage)
+    {
+        damage = _damage;
+    }
+
     public void ApplyModules(GameObject other)
     {
         if (activeModules.Count > 0)

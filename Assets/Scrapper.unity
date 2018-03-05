@@ -1004,6 +1004,9 @@ Transform:
   - {fileID: 1885263814}
   - {fileID: 1026614934}
   - {fileID: 184704010}
+  - {fileID: 1323133298}
+  - {fileID: 1807999879}
+  - {fileID: 1352706815}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5387,6 +5390,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317627302}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1323133297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1323133298}
+  - component: {fileID: 1323133299}
+  m_Layer: 0
+  m_Name: Destructo-disc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1323133298
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1323133297}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323133299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1323133297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Destructo-disc
+  abilityIcon: {fileID: 0}
+  abilityDescription: Shoots a plasma blade that penetrates enemies.
+  abilityCharges: 3
+  abilityCooldown: 3
+  requiresTarget: 0
+  projectile: {fileID: 114732284836353408, guid: 5db03dc1b7fa6dd459922559a3121878,
+    type: 2}
+  initialDamage: 10
 --- !u!1 &1330493300
 GameObject:
   m_ObjectHideFlags: 0
@@ -5416,6 +5468,56 @@ Transform:
   m_Father: {fileID: 1047325260}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1352706814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1352706815}
+  - component: {fileID: 1352706816}
+  m_Layer: 0
+  m_Name: Orb of Annihilation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1352706815
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1352706814}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1352706816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1352706814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Orb of Annihilation
+  abilityIcon: {fileID: 0}
+  abilityDescription: Launch an orb of energy to deal hig damage to the target and
+    stun surrounding enemies for 4 seconds.
+  abilityCharges: 1
+  abilityCooldown: 20
+  requiresTarget: 0
+  projectile: {fileID: 114054173036659116, guid: a54a5b8512aa8194bb88658fcac73feb,
+    type: 2}
+  initialDamage: 100
 --- !u!1 &1355876352
 GameObject:
   m_ObjectHideFlags: 0
@@ -6200,11 +6302,11 @@ MonoBehaviour:
   abilityThreeKey: 113
   abilityFourKey: 101
   abilityFiveKey: 304
-  abilityOne: {fileID: 984920658}
-  abilityTwo: {fileID: 813594486}
+  abilityOne: {fileID: 1323133299}
+  abilityTwo: {fileID: 1885263815}
   abilityThree: {fileID: 1865927530}
   abilityFour: {fileID: 614448433}
-  abilityFive: {fileID: 184704011}
+  abilityFive: {fileID: 1807999880}
 --- !u!143 &1430053479
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7096,6 +7198,55 @@ Transform:
   m_Father: {fileID: 1782600627}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1807999878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1807999879}
+  - component: {fileID: 1807999880}
+  m_Layer: 0
+  m_Name: Volt Bolt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1807999879
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807999878}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1807999880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807999878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Volt Bolt
+  abilityIcon: {fileID: 0}
+  abilityDescription: Launch an energy grenade to stun enemies for 2 seconds.
+  abilityCharges: 1
+  abilityCooldown: 5
+  requiresTarget: 0
+  projectile: {fileID: 114054173036659116, guid: 1aceb080dc6e8354f9471ff00040c384,
+    type: 2}
+  initialDamage: 0
 --- !u!1 &1814421191
 GameObject:
   m_ObjectHideFlags: 0
