@@ -24,7 +24,7 @@ public class Projectile : DamageTypes
         {
             print("Hit Enemy " + activeModules.Count);
             ApplyModules(other.gameObject);
-            //other.GetComponent<Health>().TookDamage(damage);
+            other.GetComponent<Health>().TookDamage(damage);
         }
     }
 }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4994778585126004}
   - component: {fileID: 114054173036659116}
   - component: {fileID: 54898684711359716}
+  - component: {fileID: 135204079289253700}
   m_Layer: 0
   m_Name: Volt Bolt Projectile
   m_TagString: Untagged
@@ -37,7 +38,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4449536092998126}
   - component: {fileID: 33862100484729898}
-  - component: {fileID: 135931834456546010}
   - component: {fileID: 23887616138138342}
   m_Layer: 0
   m_Name: Volt Bolt Model
@@ -140,16 +140,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b591dbcdd8ee514f8292cde8b7a9d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   speed: 15
---- !u!135 &135931834456546010
+--- !u!135 &135204079289253700
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852847059619764}
+  m_GameObject: {fileID: 1382993847383812}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}

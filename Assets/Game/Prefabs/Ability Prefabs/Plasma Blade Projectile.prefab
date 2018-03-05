@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4798351800997146}
   - component: {fileID: 33058536707223652}
-  - component: {fileID: 136655933159657152}
   - component: {fileID: 23158929642066496}
   - component: {fileID: 114536614637803842}
   m_Layer: 0
@@ -56,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4852045383213062}
   - component: {fileID: 114732284836353408}
+  - component: {fileID: 135267492827602742}
   m_Layer: 0
   m_Name: Plasma Blade Projectile
   m_TagString: Untagged
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1829455541875524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.784, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4798351800997146}
@@ -168,19 +168,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b591dbcdd8ee514f8292cde8b7a9d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   speed: 30
---- !u!136 &136655933159657152
-CapsuleCollider:
+--- !u!135 &135267492827602742
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1340925265437394}
+  m_GameObject: {fileID: 1829455541875524}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198500505249174586
 ParticleSystem:
