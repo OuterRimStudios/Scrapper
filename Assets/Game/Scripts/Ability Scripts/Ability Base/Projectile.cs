@@ -5,8 +5,24 @@ using UnityEngine;
 public class Projectile : DamageTypes
 {
     public float speed;
+    public bool destroyedOnTrigger;
 
-    Transform target;
+    Transform target;    
+
+    public virtual void EffectOnTrigger(GameObject objectHit)
+    {
+        print("Hit Enemy " + activeModules.Count);
+        ApplyModules(objectHit);
+        objectHit.GetComponent<Health>().TookDamage(damage);
+        VisualOnTrigger();
+        SpawnAfterEffects();
+    }
+
+    //Call this whenever you want visual effects to play
+    public virtual void VisualOnTrigger()
+    {
+
+    }
 
     private void Update()
     {
@@ -22,9 +38,14 @@ public class Projectile : DamageTypes
     {
         if(other.tag.Equals("Enemy"))
         {
-            print("Hit Enemy " + activeModules.Count);
-            ApplyModules(other.gameObject);
-            other.GetComponent<Health>().TookDamage(damage);
-        }
+            //print("Hit Enemy " + activeModules.Count);
+            //ApplyModules(other.gameObject);
+            //other.GetComponent<Health>().TookDamage(damage);
+
+            EffectOnTrigger(other.gameObject);
+
+            if (destroyedOnTrigger)
+                Destroy(gameObject);
+        }        
     }
 }

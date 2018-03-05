@@ -6,6 +6,7 @@ public class PlacementAbility : Ability
 {
     public Trap trap;
     public LayerMask placementLayer;
+    public int initialDamage;
 
     Camera myCamera;
 
@@ -23,9 +24,10 @@ public class PlacementAbility : Ability
         if (Physics.Raycast(ray, out hit, 100, placementLayer))
         {
             Vector3 position = hit.point + (hit.normal * .1f);
-            Quaternion rotation = Quaternion.LookRotation(hit.normal);
+            Quaternion rotation = Quaternion.LookRotation(hit.normal + (Vector3.forward * 90));
 
             Trap newTrap = Instantiate(trap, position, rotation);
+            newTrap.Initialize(initialDamage, afterEffects);
 
             for (int i = 0; i < GetActiveModules().Count; i++)
                 newTrap.SetModule(GetActiveModules()[i]);

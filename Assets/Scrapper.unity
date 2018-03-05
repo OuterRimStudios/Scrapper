@@ -170,6 +170,58 @@ Transform:
   m_Father: {fileID: 1245345980}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &18681851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 18681852}
+  - component: {fileID: 18681853}
+  m_Layer: 0
+  m_Name: Energized Plasma Shredder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &18681852
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 18681851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &18681853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 18681851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255561fa045996644bd503002f063313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Energized Plasma Shredder
+  abilityIcon: {fileID: 0}
+  abilityDescription: Place a plasma shredder on the ground that damages enemies.
+  abilityCharges: 3
+  abilityCooldown: 5
+  requiresTarget: 0
+  afterEffects: []
+  trap: {fileID: 114616455731588536, guid: 5872ed9d6c3539b4fb5db5d1748935f2, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  initialDamage: 10
 --- !u!1 &20934573
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +435,7 @@ GameObject:
   - component: {fileID: 33937144}
   - component: {fileID: 33937143}
   - component: {fileID: 33937142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (13)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -550,7 +602,7 @@ GameObject:
   - component: {fileID: 68512499}
   - component: {fileID: 68512498}
   - component: {fileID: 68512497}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +695,7 @@ GameObject:
   - component: {fileID: 69649960}
   - component: {fileID: 69649959}
   - component: {fileID: 69649958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +956,7 @@ GameObject:
   - component: {fileID: 112561006}
   - component: {fileID: 112561005}
   - component: {fileID: 112561004}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (14)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1195,7 +1247,7 @@ GameObject:
   - component: {fileID: 155843504}
   - component: {fileID: 155843503}
   - component: {fileID: 155843502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1382,10 +1434,12 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 12
   requiresTarget: 0
+  afterEffects: []
   trap: {fileID: 114213166655632836, guid: 7e36fc9045ee1d94490a5b8864cc1382, type: 2}
   placementLayer:
     serializedVersion: 2
     m_Bits: 256
+  initialDamage: 0
 --- !u!1 &186161634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1512,7 @@ GameObject:
   - component: {fileID: 218248573}
   - component: {fileID: 218248572}
   - component: {fileID: 218248571}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1665,6 +1719,9 @@ Transform:
   - {fileID: 1323133298}
   - {fileID: 1807999879}
   - {fileID: 1352706815}
+  - {fileID: 18681852}
+  - {fileID: 1873949447}
+  - {fileID: 526834951}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1683,7 +1740,7 @@ GameObject:
   - component: {fileID: 245131551}
   - component: {fileID: 245131550}
   - component: {fileID: 245131549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2167,7 +2224,7 @@ GameObject:
   - component: {fileID: 337491166}
   - component: {fileID: 337491165}
   - component: {fileID: 337491164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (15)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2341,6 +2398,7 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 10
   requiresTarget: 0
+  afterEffects: []
   module: 3
   damage: 0
   effectLength: 0
@@ -2677,7 +2735,7 @@ GameObject:
   - component: {fileID: 491620317}
   - component: {fileID: 491620316}
   - component: {fileID: 491620315}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (7)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2863,6 +2921,58 @@ Transform:
   m_Father: {fileID: 1782600627}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &526834950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 526834951}
+  - component: {fileID: 526834952}
+  m_Layer: 0
+  m_Name: Energized Caltrops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &526834951
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526834950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &526834952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526834950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255561fa045996644bd503002f063313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Energized Caltrops
+  abilityIcon: {fileID: 0}
+  abilityDescription: 
+  abilityCharges: 1
+  abilityCooldown: 10
+  requiresTarget: 0
+  afterEffects: []
+  trap: {fileID: 114475675668172926, guid: aa92aa65aa298bc4ead764b2b97bca93, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  initialDamage: 0
 --- !u!1 &532160609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,7 +3126,7 @@ GameObject:
   - component: {fileID: 579341035}
   - component: {fileID: 579341034}
   - component: {fileID: 579341033}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3109,7 +3219,7 @@ GameObject:
   - component: {fileID: 580641440}
   - component: {fileID: 580641439}
   - component: {fileID: 580641438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3290,7 +3400,7 @@ GameObject:
   - component: {fileID: 602733723}
   - component: {fileID: 602733722}
   - component: {fileID: 602733721}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3447,6 +3557,7 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 15
   requiresTarget: 0
+  afterEffects: []
   module: 4
   damage: 0
   effectLength: 0
@@ -3497,7 +3608,7 @@ GameObject:
   - component: {fileID: 634859019}
   - component: {fileID: 634859018}
   - component: {fileID: 634859017}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (11)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3730,7 +3841,7 @@ GameObject:
   - component: {fileID: 660975220}
   - component: {fileID: 660975219}
   - component: {fileID: 660975218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4036,7 +4147,7 @@ GameObject:
   - component: {fileID: 728373992}
   - component: {fileID: 728373991}
   - component: {fileID: 728373990}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4265,7 +4376,7 @@ GameObject:
   - component: {fileID: 744704619}
   - component: {fileID: 744704618}
   - component: {fileID: 744704617}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (17)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4297,7 +4408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints:
   - {fileID: 914066366}
   - {fileID: 1141153408}
@@ -4484,7 +4595,7 @@ GameObject:
   - component: {fileID: 785726100}
   - component: {fileID: 785726099}
   - component: {fileID: 785726098}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (10)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4627,7 +4738,7 @@ GameObject:
   - component: {fileID: 796633375}
   - component: {fileID: 796633374}
   - component: {fileID: 796633373}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (6)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4801,6 +4912,7 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 1
   requiresTarget: 0
+  afterEffects: []
   module: 2
   damage: 0
   effectLength: 4
@@ -5032,7 +5144,7 @@ GameObject:
   - component: {fileID: 860813428}
   - component: {fileID: 860813427}
   - component: {fileID: 860813426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5157,7 +5269,7 @@ GameObject:
   - component: {fileID: 896365134}
   - component: {fileID: 896365133}
   - component: {fileID: 896365132}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (4)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5359,6 +5471,7 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 10
   requiresTarget: 0
+  afterEffects: []
   module: 1
   damage: 3
   effectLength: 5
@@ -5617,6 +5730,7 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 1
   requiresTarget: 0
+  afterEffects: []
   projectile: {fileID: 114390984574502554, guid: fe4c50904c03a1c46bc08622976a7884,
     type: 2}
   initialDamage: 100
@@ -5724,10 +5838,12 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 15
   requiresTarget: 0
+  afterEffects: []
   trap: {fileID: 114581960184033084, guid: 11fa12c50b7591545b3bbe3cb383641a, type: 2}
   placementLayer:
     serializedVersion: 2
     m_Bits: 256
+  initialDamage: 0
 --- !u!1 &1047325259
 GameObject:
   m_ObjectHideFlags: 0
@@ -5877,7 +5993,7 @@ GameObject:
   - component: {fileID: 1112330899}
   - component: {fileID: 1112330898}
   - component: {fileID: 1112330897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (5)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6101,7 +6217,7 @@ GameObject:
   - component: {fileID: 1176377253}
   - component: {fileID: 1176377252}
   - component: {fileID: 1176377251}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6282,7 +6398,7 @@ GameObject:
   - component: {fileID: 1202469081}
   - component: {fileID: 1202469080}
   - component: {fileID: 1202469079}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6477,7 +6593,7 @@ GameObject:
   - component: {fileID: 1222227848}
   - component: {fileID: 1222227847}
   - component: {fileID: 1222227846}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6656,7 +6772,7 @@ GameObject:
   - component: {fileID: 1247593109}
   - component: {fileID: 1247593108}
   - component: {fileID: 1247593107}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6753,7 +6869,7 @@ GameObject:
   - component: {fileID: 1249641163}
   - component: {fileID: 1249641162}
   - component: {fileID: 1249641161}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (12)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7014,6 +7130,7 @@ MonoBehaviour:
   abilityCharges: 3
   abilityCooldown: 3
   requiresTarget: 0
+  afterEffects: []
   projectile: {fileID: 114732284836353408, guid: 5db03dc1b7fa6dd459922559a3121878,
     type: 2}
   initialDamage: 10
@@ -7093,6 +7210,10 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 20
   requiresTarget: 0
+  afterEffects:
+  - effect: {fileID: 114472217504142028, guid: e4ad5a8f1364d1341a52ab2c841210cd, type: 2}
+    effectAmount: 1
+    effectDamage: 0
   projectile: {fileID: 114054173036659116, guid: a54a5b8512aa8194bb88658fcac73feb,
     type: 2}
   initialDamage: 100
@@ -7244,7 +7365,7 @@ GameObject:
   - component: {fileID: 1386466278}
   - component: {fileID: 1386466280}
   - component: {fileID: 1386466279}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7743,10 +7864,10 @@ MonoBehaviour:
   abilityThreeKey: 113
   abilityFourKey: 101
   abilityFiveKey: 304
-  abilityOne: {fileID: 1323133299}
+  abilityOne: {fileID: 526834952}
   abilityTwo: {fileID: 1885263815}
   abilityThree: {fileID: 1865927530}
-  abilityFour: {fileID: 614448433}
+  abilityFour: {fileID: 18681853}
   abilityFive: {fileID: 1807999880}
 --- !u!143 &1430053479
 CharacterController:
@@ -7992,7 +8113,7 @@ GameObject:
   - component: {fileID: 1502022150}
   - component: {fileID: 1502022149}
   - component: {fileID: 1502022148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8113,7 +8234,7 @@ GameObject:
   - component: {fileID: 1540473354}
   - component: {fileID: 1540473353}
   - component: {fileID: 1540473352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8210,7 +8331,7 @@ GameObject:
   - component: {fileID: 1551834308}
   - component: {fileID: 1551834307}
   - component: {fileID: 1551834306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (16)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -8381,7 +8502,7 @@ GameObject:
   - component: {fileID: 1557619290}
   - component: {fileID: 1557619289}
   - component: {fileID: 1557619288}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (8)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -8395,7 +8516,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1557619286}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -5.33, y: 6.0919876, z: 28.7}
+  m_LocalPosition: {x: -2.97, y: 6.0919876, z: 28.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1540473351}
@@ -8642,7 +8763,7 @@ GameObject:
   - component: {fileID: 1622686565}
   - component: {fileID: 1622686564}
   - component: {fileID: 1622686563}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8820,7 +8941,7 @@ GameObject:
   - component: {fileID: 1717768000}
   - component: {fileID: 1717767999}
   - component: {fileID: 1717767998}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9014,7 +9135,7 @@ GameObject:
   - component: {fileID: 1753686145}
   - component: {fileID: 1753686144}
   - component: {fileID: 1753686143}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9296,7 +9417,8 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 5
   requiresTarget: 0
-  projectile: {fileID: 114054173036659116, guid: 1aceb080dc6e8354f9471ff00040c384,
+  afterEffects: []
+  projectile: {fileID: 114281929788928302, guid: 1aceb080dc6e8354f9471ff00040c384,
     type: 2}
   initialDamage: 0
 --- !u!1 &1815594492
@@ -9577,6 +9699,7 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 10
   requiresTarget: 0
+  afterEffects: []
   module: 0
   damage: 0
   effectLength: 4
@@ -9584,6 +9707,59 @@ MonoBehaviour:
   slowAmount: 0
   leechPercentage: 0
   stackAmount: 0
+--- !u!1 &1873949446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1873949447}
+  - component: {fileID: 1873949448}
+  m_Layer: 0
+  m_Name: Plasma Cluster Launcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1873949447
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873949446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1873949448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873949446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Plasma Cluster Launcher
+  abilityIcon: {fileID: 0}
+  abilityDescription: 
+  abilityCharges: 1
+  abilityCooldown: 1.5
+  requiresTarget: 0
+  afterEffects:
+  - effect: {fileID: 114716221110852346, guid: 1c9312d5ecbe20e4cb787bda6af1ec41, type: 2}
+    effectAmount: 1
+    effectDamage: 4
+  projectile: {fileID: 114286296576221518, guid: e25bccc031e462241ba121f1659c5259,
+    type: 2}
+  initialDamage: 8
 --- !u!1 &1885263813
 GameObject:
   m_ObjectHideFlags: 0
@@ -9631,6 +9807,7 @@ MonoBehaviour:
   abilityCharges: 1
   abilityCooldown: 2.5
   requiresTarget: 0
+  afterEffects: []
   module: 5
   damage: 1
   effectLength: 5
@@ -9804,7 +9981,7 @@ GameObject:
   - component: {fileID: 1950129280}
   - component: {fileID: 1950129279}
   - component: {fileID: 1950129278}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (9)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -10229,7 +10406,7 @@ GameObject:
   - component: {fileID: 2068256294}
   - component: {fileID: 2068256293}
   - component: {fileID: 2068256292}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

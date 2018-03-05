@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ProjectileAbility : Ability
+﻿public class ProjectileAbility : Ability
 {
     public Projectile projectile;
     public int initialDamage;
@@ -11,7 +7,7 @@ public class ProjectileAbility : Ability
     {
         base.ActivateAbility();
         Projectile _projectile = Instantiate(projectile, playerManager.SpawnPosition().position, playerManager.SpawnPosition().rotation);
-        _projectile.Initialize(initialDamage);
+        _projectile.Initialize(initialDamage, afterEffects);
    
         for(int i = 0; i < GetActiveModules().Count; i++)
             _projectile.SetModule(GetActiveModules()[i]);

@@ -25,6 +25,8 @@ public class Ability : MonoBehaviour
     public float abilityCooldown;
     public bool requiresTarget;
 
+    public List<AfterEffect> afterEffects;
+
     int charges;
     bool onCooldown;
     protected bool moduleActive;
@@ -82,4 +84,13 @@ public class Ability : MonoBehaviour
 
         onCooldown = false;
     }
+}
+
+[System.Serializable]
+public class AfterEffect
+{
+    public Behaviour effect;
+    [Tooltip("The amount of this type of effect that spawns")]
+    public int effectAmount;
+    public int effectDamage;
 }

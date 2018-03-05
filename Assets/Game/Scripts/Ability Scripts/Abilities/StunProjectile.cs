@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RootTrap : Trap
-{
-    public float rootLength;
+public class StunProjectile : Projectile {
+
+    public float stunDuration;
 
     public override void EffectOnTrigger(GameObject objectHit)
     {
         base.EffectOnTrigger(objectHit);
-        objectHit.GetComponent<AI>().ApplyRoot(rootLength);
+        objectHit.GetComponent<AI>().ApplyStun(stunDuration);
     }
 }
