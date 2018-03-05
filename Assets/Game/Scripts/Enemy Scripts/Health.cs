@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     public int baseHealth;
+
+    public GameObject combatText;
+    public GameObject enemyCanvas;
 
     int health;
     AI ai;
@@ -20,7 +24,10 @@ public class Health : MonoBehaviour
         ai.RemoveCC();
         health -= damage;
 
-        if(health <= 0)
+        GameObject cbt = Instantiate(combatText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
+        cbt.GetComponent<Text>().text = damage.ToString();
+
+        if (health <= 0)
         {
             Died();
         }
