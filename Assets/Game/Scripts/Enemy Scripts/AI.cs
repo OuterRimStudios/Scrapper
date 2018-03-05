@@ -5,6 +5,9 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
     public float baseSpeed;
+    public List<Transform> waypoints;
+    Vector3 targetPos;
+    int currentWaypoint;
 
     float speed;
     Rigidbody rb;
@@ -20,6 +23,31 @@ public class AI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         speed = baseSpeed;
         canAct = true;
+    }
+
+    private void Update()
+    {
+        if(canAct)
+        {
+            if (waypoints.Count > 0)
+            {
+                if (targetPos != waypoints[currentWaypoint].position)
+                {
+                    targetPos = waypoints[currentWaypoint].position;
+                }
+                else
+                {
+                    float dist = Vector3.Distance(transform.position, targetPos);
+
+                    if (dist > .6f)
+                        transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+                    else
+                    {
+                        currentWaypoint = (currentWaypoint + 1) % waypoints.Count;
+                    }
+                }
+            }
+        }
     }
 
     #region Stun
