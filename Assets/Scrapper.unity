@@ -213,15 +213,15 @@ MonoBehaviour:
   abilityName: Energized Plasma Shredder
   abilityIcon: {fileID: 0}
   abilityDescription: Place a plasma shredder on the ground that damages enemies.
-  abilityCharges: 3
-  abilityCooldown: 5
+  abilityCharges: 2
+  abilityCooldown: 10
   requiresTarget: 0
   afterEffects: []
   trap: {fileID: 114616455731588536, guid: 5872ed9d6c3539b4fb5db5d1748935f2, type: 2}
   placementLayer:
     serializedVersion: 2
     m_Bits: 256
-  initialDamage: 10
+  initialDamage: 2
 --- !u!1 &20934573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,6 +1358,58 @@ Transform:
   m_Father: {fileID: 1620995010}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &173845499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 173845500}
+  - component: {fileID: 173845501}
+  m_Layer: 0
+  m_Name: Spike Trap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &173845500
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 173845499}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173845501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 173845499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255561fa045996644bd503002f063313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Spike Trap
+  abilityIcon: {fileID: 0}
+  abilityDescription: 
+  abilityCharges: 1
+  abilityCooldown: 5
+  requiresTarget: 0
+  afterEffects: []
+  trap: {fileID: 114769023018281830, guid: 96603fef9845455408e53ca0ff266285, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  initialDamage: 8
 --- !u!1 &181455261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,6 +1774,7 @@ Transform:
   - {fileID: 18681852}
   - {fileID: 1873949447}
   - {fileID: 526834951}
+  - {fileID: 173845500}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7864,11 +7917,11 @@ MonoBehaviour:
   abilityThreeKey: 113
   abilityFourKey: 101
   abilityFiveKey: 304
-  abilityOne: {fileID: 526834952}
-  abilityTwo: {fileID: 1885263815}
-  abilityThree: {fileID: 1865927530}
-  abilityFour: {fileID: 18681853}
-  abilityFive: {fileID: 1807999880}
+  abilityOne: {fileID: 1323133299}
+  abilityTwo: {fileID: 813594486}
+  abilityThree: {fileID: 907570755}
+  abilityFour: {fileID: 1807999880}
+  abilityFive: {fileID: 18681853}
 --- !u!143 &1430053479
 CharacterController:
   m_ObjectHideFlags: 0

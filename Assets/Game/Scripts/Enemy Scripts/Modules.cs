@@ -37,22 +37,7 @@ public class Modules : MonoBehaviour
 
     public void Incinerating(int incineratingDamage, float incineratingLength)
     {
-        if(!incineratingActive)
-        {
-            incineratingActive = true;
-            StartCoroutine(Incinerated(incineratingDamage, incineratingLength));
-        }
-    }
-
-    IEnumerator Incinerated(int incineratingDamage, float incineratingLength)
-    {
-        for(int i = 0; i <incineratingLength; i++)
-        {
-            health.TookDamage(incineratingDamage);
-            print("Dealing " + incineratingDamage + " damage to enemy");
-            yield return new WaitForSeconds(1);
-        }
-        incineratingActive = false;
+        health.ApplyDOT(incineratingDamage, incineratingLength);
     }
 
     public void Crippling(float cripplingLength, int slowAmount, int stackAmount)
