@@ -43,6 +43,8 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+
         playerManager = GetComponent<PlayerManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
@@ -67,7 +69,6 @@ public class InputManager : MonoBehaviour
 
     void AbilityInput()
     {
-        print(" Ability Input");
         if (abilityOne && abilityOne.CanShoot() && abilityOneActive)
             abilityOne.ActivateAbility();
 
