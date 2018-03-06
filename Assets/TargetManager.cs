@@ -28,14 +28,14 @@ public class TargetManager : MonoBehaviour
         return activeEnemies;
     }
 
-    public Transform GetClosestEnemy()
+    public Transform GetClosestEnemy(Vector3 searchPos)
     {
         Transform bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
+
         foreach (GameObject potentialTarget in activeEnemies)
         {
-            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            Vector3 directionToTarget = potentialTarget.transform.position - searchPos;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
             {
