@@ -18,6 +18,8 @@ public class Ability : MonoBehaviour
         Sustained
     };
 
+    public AbilityType abilityType;
+
     List<ModuleAbility> activeModules = new List<ModuleAbility>();
 
     [Range(1, 5)]
@@ -44,7 +46,7 @@ public class Ability : MonoBehaviour
         charges--;
     }
 
-    public void ModuleActivated(ModuleAbility module)
+    public virtual void ModuleActivated(ModuleAbility module)
     {
         activeModules.Add(module);
     }

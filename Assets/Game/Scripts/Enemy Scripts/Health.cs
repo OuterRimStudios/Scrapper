@@ -14,10 +14,13 @@ public class Health : MonoBehaviour
     AI ai;
     Coroutine dot;
 
+    TargetManager targetManager;
+
     private void Start()
     {
         health = baseHealth;
         ai = GetComponent<AI>();
+        targetManager = GameObject.Find("GameManager").GetComponent<TargetManager>();
     }
 
     public void TookDamage(int damage)
@@ -36,6 +39,7 @@ public class Health : MonoBehaviour
 
     void Died()
     {
+        targetManager.RemoveEnemy(gameObject);
         Destroy(gameObject);
     }
 

@@ -40,7 +40,12 @@ public class AI : MonoBehaviour
                     float dist = Vector3.Distance(transform.position, targetPos);
 
                     if (dist > .6f)
-                        transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+                    {
+                        Vector3 targetPosition = new Vector3(targetPos.x, transform.position.y, targetPos.z);
+                        transform.LookAt(targetPosition);
+                        transform.position += transform.forward * speed * Time.deltaTime;
+                    }
+                        //transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
                     else
                     {
                         currentWaypoint = (currentWaypoint + 1) % waypoints.Count;
@@ -77,28 +82,31 @@ public class AI : MonoBehaviour
     }
 #endregion
     #region Slow
-    public void ApplySlow(float slowAmount)
+    public void ApplySlow(float slowAmount, float slowLength)
     {
-        if (stun != null)
-            StopCoroutine(stun);
+        if (slow != null)
+            StopCoroutine(slow);
 
         print("Slow Amt " + slowAmount);
         float slowPercentage = slowAmount / 100;
         float newSpeed = (baseSpeed * slowPercentage);
 
-        if (speed - newSpeed >= 0)
-            speed -= newSpeed;
-        else
-            speed = 0;
+        if(speed != 0)
+        {
+            if (speed - newSpeed >= 0)
+                speed -= newSpeed;
+            else
+                speed = 0;
+        }
 
-        print("AI Slowed -- " + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " +  speed);
+        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " +  speed);
 
-        slow = StartCoroutine(Slowed(slowAmount));
+        slow = StartCoroutine(Slowed(slowLength));
     }
 
-    IEnumerator Slowed(float slowAmount)
+    IEnumerator Slowed(float slowLength)
     {
-        yield return new WaitForSeconds(slowAmount);
+        yield return new WaitForSeconds(slowLength);
         RemoveSlow();
     }
 
@@ -139,8 +147,11 @@ public class AI : MonoBehaviour
         if (cc != null)
             StopCoroutine(cc);
 
-        speed = baseSpeed;
-        canAct = true;
+        if(slow == null && root == null && stun == null)
+        {
+            speed = baseSpeed;
+            canAct = true;
+        }
 
         print("CC Removed");
     }

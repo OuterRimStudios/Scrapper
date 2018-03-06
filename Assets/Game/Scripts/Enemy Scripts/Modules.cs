@@ -53,12 +53,13 @@ public class Modules : MonoBehaviour
         {
             currentCrippledStacks = stackAmount;
         }
+
         crippled = StartCoroutine(Crippled(slowAmount, cripplingLength));
     }
 
     IEnumerator Crippled(int slowAmount, float cripplingLength)
     {
-        ai.ApplySlow(slowAmount);
+        ai.ApplySlow(slowAmount, cripplingLength);
         yield return new WaitForSeconds(cripplingLength);
         currentCrippledStacks = 0;
     }

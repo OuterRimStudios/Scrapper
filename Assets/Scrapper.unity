@@ -213,6 +213,7 @@ MonoBehaviour:
   abilityName: Energized Plasma Shredder
   abilityIcon: {fileID: 0}
   abilityDescription: Place a plasma shredder on the ground that damages enemies.
+  abilityType: 1
   abilityCharges: 2
   abilityCooldown: 10
   requiresTarget: 0
@@ -467,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &33937143
 MonoBehaviour:
@@ -910,6 +911,47 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.21777344, y: -7.471056, z: 1.989223}
     m_Extent: {x: 60.01171, y: 55.0298, z: 13.616249}
   m_DirtyAABB: 0
+--- !u!1 &93307250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 93307252}
+  - component: {fileID: 93307251}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &93307251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93307250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59594039a5f5ef4c8fdfb7317219d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeEnemies: []
+--- !u!4 &93307252
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93307250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &93466791
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &112561005
 MonoBehaviour:
@@ -1236,6 +1278,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 142381242}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &153909832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 153909833}
+  - component: {fileID: 153909834}
+  m_Layer: 0
+  m_Name: Destructo-Disc Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &153909833
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153909832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &153909834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153909832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea1f5545e5eb4c4998065796ef0d49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Destructo-Disc Turret
+  abilityIcon: {fileID: 0}
+  abilityDescription: Places a turret that fires destructo-discs.
+  abilityType: 3
+  abilityCharges: 3
+  abilityCooldown: 15
+  requiresTarget: 0
+  afterEffects: []
+  turret: {fileID: 114362041212978640, guid: 11fae247916c0f344b9557c20edb5fcf, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  initialDamage: 2
+  activeTurrets: []
 --- !u!1 &155843500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1497,7 @@ MonoBehaviour:
   abilityName: Spike Trap
   abilityIcon: {fileID: 0}
   abilityDescription: 
+  abilityType: 1
   abilityCharges: 1
   abilityCooldown: 5
   requiresTarget: 0
@@ -1483,6 +1580,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   abilityDescription: Fires a trap that when triggered, roots all enemies in place
     for 6 seconds.
+  abilityType: 1
   abilityCharges: 1
   abilityCooldown: 12
   requiresTarget: 0
@@ -1775,6 +1873,7 @@ Transform:
   - {fileID: 1873949447}
   - {fileID: 526834951}
   - {fileID: 173845500}
+  - {fileID: 153909833}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1825,7 +1924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &245131550
 MonoBehaviour:
@@ -2309,7 +2408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &337491165
 MonoBehaviour:
@@ -2448,6 +2547,7 @@ MonoBehaviour:
   abilityName: Weighted Module
   abilityIcon: {fileID: 0}
   abilityDescription: The next ability pushes targets back on impact.
+  abilityType: 2
   abilityCharges: 1
   abilityCooldown: 10
   requiresTarget: 0
@@ -2820,7 +2920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &491620316
 MonoBehaviour:
@@ -3017,6 +3117,7 @@ MonoBehaviour:
   abilityName: Energized Caltrops
   abilityIcon: {fileID: 0}
   abilityDescription: 
+  abilityType: 1
   abilityCharges: 1
   abilityCooldown: 10
   requiresTarget: 0
@@ -3607,6 +3708,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   abilityDescription: The next ability heals you for 10% of the damage it did. (Per
     enemy hit).
+  abilityType: 2
   abilityCharges: 1
   abilityCooldown: 15
   requiresTarget: 0
@@ -3693,7 +3795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &634859018
 MonoBehaviour:
@@ -3926,7 +4028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &660975219
 MonoBehaviour:
@@ -4232,7 +4334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &728373991
 MonoBehaviour:
@@ -4680,7 +4782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &785726099
 MonoBehaviour:
@@ -4823,7 +4925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &796633374
 MonoBehaviour:
@@ -4962,6 +5064,7 @@ MonoBehaviour:
   abilityName: Crippling Module
   abilityIcon: {fileID: 0}
   abilityDescription: The next ability slows targets on impact.
+  abilityType: 2
   abilityCharges: 1
   abilityCooldown: 1
   requiresTarget: 0
@@ -5354,7 +5457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &896365133
 MonoBehaviour:
@@ -5521,6 +5624,7 @@ MonoBehaviour:
   abilityName: Incinerating Module
   abilityIcon: {fileID: 0}
   abilityDescription: The next ability lights targets on fire for 5 seconds.
+  abilityType: 2
   abilityCharges: 1
   abilityCooldown: 10
   requiresTarget: 0
@@ -5780,6 +5884,7 @@ MonoBehaviour:
   abilityName: Energized Plasma Cannon
   abilityIcon: {fileID: 0}
   abilityDescription: Fires a ball of plasma that deals high damage.
+  abilityType: 0
   abilityCharges: 1
   abilityCooldown: 1
   requiresTarget: 0
@@ -5888,6 +5993,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   abilityDescription: Spawns a trap that shuts down the enemy causing them to sleep
     for 15 seconds. Sleeping effect is broken if the target is damaged.
+  abilityType: 1
   abilityCharges: 1
   abilityCooldown: 15
   requiresTarget: 0
@@ -6078,7 +6184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &1112330898
 MonoBehaviour:
@@ -6954,7 +7060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &1249641162
 MonoBehaviour:
@@ -7180,6 +7286,7 @@ MonoBehaviour:
   abilityName: Destructo-disc
   abilityIcon: {fileID: 0}
   abilityDescription: Shoots a plasma blade that penetrates enemies.
+  abilityType: 0
   abilityCharges: 3
   abilityCooldown: 3
   requiresTarget: 0
@@ -7260,6 +7367,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   abilityDescription: Launch an orb of energy to deal hig damage to the target and
     stun surrounding enemies for 4 seconds.
+  abilityType: 0
   abilityCharges: 1
   abilityCooldown: 20
   requiresTarget: 0
@@ -7530,7 +7638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &1386466280
 MonoBehaviour:
@@ -7920,8 +8028,8 @@ MonoBehaviour:
   abilityOne: {fileID: 1323133299}
   abilityTwo: {fileID: 813594486}
   abilityThree: {fileID: 907570755}
-  abilityFour: {fileID: 1807999880}
-  abilityFive: {fileID: 18681853}
+  abilityFour: {fileID: 1885263815}
+  abilityFive: {fileID: 153909834}
 --- !u!143 &1430053479
 CharacterController:
   m_ObjectHideFlags: 0
@@ -8416,7 +8524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &1551834307
 MonoBehaviour:
@@ -8587,7 +8695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &1557619289
 MonoBehaviour:
@@ -9467,6 +9575,7 @@ MonoBehaviour:
   abilityName: Volt Bolt
   abilityIcon: {fileID: 0}
   abilityDescription: Launch an energy grenade to stun enemies for 2 seconds.
+  abilityType: 0
   abilityCharges: 1
   abilityCooldown: 5
   requiresTarget: 0
@@ -9749,6 +9858,7 @@ MonoBehaviour:
   abilityName: Concussion Module
   abilityIcon: {fileID: 0}
   abilityDescription: The next ability stuns targets on impact.
+  abilityType: 2
   abilityCharges: 1
   abilityCooldown: 10
   requiresTarget: 0
@@ -9803,6 +9913,7 @@ MonoBehaviour:
   abilityName: Plasma Cluster Launcher
   abilityIcon: {fileID: 0}
   abilityDescription: 
+  abilityType: 0
   abilityCharges: 1
   abilityCooldown: 1.5
   requiresTarget: 0
@@ -9857,6 +9968,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   abilityDescription: Fires a trap that when triggered locks all enemies in place
     for 6 seconds.
+  abilityType: 2
   abilityCharges: 1
   abilityCooldown: 2.5
   requiresTarget: 0
@@ -10066,7 +10178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 100
+  baseSpeed: 1
   waypoints: []
 --- !u!114 &1950129279
 MonoBehaviour:
