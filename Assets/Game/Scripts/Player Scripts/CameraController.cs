@@ -74,7 +74,7 @@ public class CameraController : MonoBehaviour
     {
         if (switchView)
         {
-            if (firstPerson)
+            if (!firstPerson)
             {
                 myCamera.transform.localPosition = Vector3.Lerp(myCamera.transform.localPosition, thirdPersonOffset, switchViewSpeed * Time.deltaTime);
 

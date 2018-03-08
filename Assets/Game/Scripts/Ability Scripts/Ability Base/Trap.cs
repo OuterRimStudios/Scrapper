@@ -44,8 +44,6 @@ public class Trap : DamageTypes
         foreach(RaycastHit hit in hitObjects)
         {
             print("Hit Enemy " + activeModules.Count);
-            ApplyModules(hit.transform.gameObject);
-            hit.transform.GetComponent<Health>().TookDamage(damage);
             EffectOnTrigger(hit.transform.gameObject);
         }
 
@@ -60,9 +58,6 @@ public class Trap : DamageTypes
 
         if (other.tag.Equals("Enemy"))
         {
-            //print("Hit Enemy " + activeModules.Count);
-            //ApplyModules(other.gameObject);
-            //other.GetComponent<Health>().TookDamage(damage);
             EffectOnTrigger(other.gameObject);
             
             Destroy(gameObject);

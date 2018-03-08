@@ -35,7 +35,7 @@ public class Ability : MonoBehaviour
 
     protected PlayerManager playerManager;
 
-    private void Start()
+    protected virtual void Start()
     {
         charges = abilityCharges;
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
@@ -44,6 +44,11 @@ public class Ability : MonoBehaviour
     public virtual void ActivateAbility()
     {
         charges--;
+    }
+
+    public virtual void DeactivateAbility()
+    {
+
     }
 
     public virtual void ModuleActivated(ModuleAbility module)

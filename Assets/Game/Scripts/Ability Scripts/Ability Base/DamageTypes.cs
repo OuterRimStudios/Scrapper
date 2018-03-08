@@ -8,6 +8,8 @@ public class DamageTypes : MonoBehaviour
     protected List<AfterEffect> afterEffects = new List<AfterEffect>();
     protected List<ModuleAbility> activeModules = new List<ModuleAbility>();
 
+    protected Transform spawnPos;
+
     public void SetModule(ModuleAbility module)
     {
         activeModules.Add(module);
@@ -22,6 +24,13 @@ public class DamageTypes : MonoBehaviour
     {
         damage = _damage;
         afterEffects = _afterEffects;
+    }
+
+    public void Initialize(int _damage, List<AfterEffect> _afterEffects, Transform _spawnPos)
+    {
+        damage = _damage;
+        afterEffects = _afterEffects;
+        spawnPos = _spawnPos;
     }
 
     protected virtual void SpawnAfterEffects()
