@@ -12,9 +12,11 @@ public class Sustained : DamageTypes {
 
     WaitForSeconds effectDelay;
     Coroutine repeater;
+    GameObject mainCam;
 
-    private void Start()
+    private void Awake()
     {
+        mainCam = Camera.main.gameObject;
         effectDelay = new WaitForSeconds(effectFrequency);
     }
 
@@ -47,14 +49,14 @@ public class Sustained : DamageTypes {
     private void Update()
     {
         beamRenderer.SetPosition(0, spawnPos.position);
-        beamRenderer.SetPosition(1, spawnPos.position + Camera.main.transform.forward * range);
+        beamRenderer.SetPosition(1, spawnPos.position + mainCam.transform.forward * range);
         beamRenderer.startWidth = hitRadius;
         beamRenderer.endWidth = hitRadius;
     }
 
     IEnumerator RepeatEffect()
     {
-        RaycastHit[] hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.forward, hitRadius, spawnPos.forward, range, layerMask);
+        RaycastHit[] hitObjects = Physics.CapsuleCastAll(spawnPos.position, mainCam.transform.forward * range, hitRadius, mainCam.transform.forward, range, layerMask);
 
         foreach (RaycastHit hit in hitObjects)
         {
