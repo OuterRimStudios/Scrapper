@@ -8,6 +8,7 @@ public class Sustained : DamageTypes {
     public float range;
     public float hitRadius;
     public LayerMask layerMask;
+    public LineRenderer beamRenderer;
 
     WaitForSeconds effectDelay;
     Coroutine repeater;
@@ -43,12 +44,21 @@ public class Sustained : DamageTypes {
 
     }
 
+    private void Update()
+    {
+        beamRenderer.SetPosition(0, spawnPos.position);
+        beamRenderer.SetPosition(1, spawnPos.position + Camera.main.transform.forward * range);
+        beamRenderer.startWidth = hitRadius;
+        beamRenderer.endWidth = hitRadius;
+    }
+
     IEnumerator RepeatEffect()
     {
-        RaycastHit[] hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.forward * range, hitRadius, spawnPos.forward, layerMask);
+        RaycastHit[] hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.forward, hitRadius, spawnPos.forward, range, layerMask);
 
         foreach (RaycastHit hit in hitObjects)
         {
+            print("Hit " + hit.transform.name);
             EffectOnTrigger(hit.transform.gameObject);
         }
 

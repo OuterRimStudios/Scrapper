@@ -10,7 +10,7 @@
         base.Start();
         beam = Instantiate(beamPrefab);
         UpdateTransform();
-        beam.Initialize(initialDamage, afterEffects, playerManager.transform);
+        beam.Initialize(initialDamage, afterEffects, playerManager.SpawnPosition());
     }
 
     public override void ActivateAbility()
