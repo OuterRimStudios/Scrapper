@@ -32,8 +32,8 @@ public class ProjectileTurret : Turret
     {
         if (alternatingFire)
         {
-            Projectile newProjectile = Instantiate(turretAbility, spawnpoint[alternateFireCount].transform.position, spawnpoint[alternateFireCount].transform.rotation) as Projectile;
-            AlternatingFire(spawnpoint.Length);
+            Projectile newProjectile = Instantiate(turretAbility, spawnpoints[alternateFireCount].transform.position, spawnpoints[alternateFireCount].transform.rotation) as Projectile;
+            AlternatingFire(spawnpoints.Length);
 
             newProjectile.Initialize(damage, afterEffects);
 
@@ -43,9 +43,9 @@ public class ProjectileTurret : Turret
         }
         else
         {
-            for (int i = 0; i < spawnpoint.Length; i++)
+            for (int i = 0; i < spawnpoints.Length; i++)
             {
-                Projectile newProjectile = Instantiate(turretAbility, spawnpoint[i].transform.position, spawnpoint[i].transform.rotation) as Projectile;
+                Projectile newProjectile = Instantiate(turretAbility, spawnpoints[i].transform.position, spawnpoints[i].transform.rotation) as Projectile;
 
                 newProjectile.Initialize(damage, afterEffects);
 

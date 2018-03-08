@@ -6,7 +6,7 @@ public class Turret : DamageTypes
 {
     public DamageTypes turretAbility;
     public Transform shaft;
-    public Transform[] spawnpoint;
+    public Transform[] spawnpoints;
     public float scanForTargetFrequency;
     public float despawnAfter;
     public bool scanForTarget;
@@ -22,7 +22,7 @@ public class Turret : DamageTypes
 
     bool moduleActive;
 
-    private void Start()
+    protected virtual void Start()
     {
         targetManager = GameObject.Find("GameManager").GetComponent<TargetManager>();
         scan = new WaitForSeconds(scanForTargetFrequency);
@@ -62,11 +62,16 @@ public class Turret : DamageTypes
     IEnumerator Scan()
     {
         target = targetManager.GetClosestEnemy(transform.position);
+        TargetUpdated();
         yield return scan;
         scanningForTarget = false;
     }
 
-    public void ModuleActivated(ModuleAbility module)
+    protected virtual void TargetUpdated()
+    {
+    }
+
+    public virtual void ModuleActivated(ModuleAbility module)
     {
         activeModules.Add(module);
     }

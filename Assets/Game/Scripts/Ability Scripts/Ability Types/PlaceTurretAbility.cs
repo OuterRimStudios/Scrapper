@@ -45,7 +45,7 @@ public class PlaceTurretAbility : Ability
     {
         base.ModuleActivated(module);
         print("Turret Placed Module Activated");
-        if (abilityType == AbilityType.Turrets)
+        if (abilityType == AbilityType.Turret)
             for(int i = 0; i < activeTurrets.Count; i++)
                 for (int j = 0; j < GetActiveModules().Count; j++)
                 {

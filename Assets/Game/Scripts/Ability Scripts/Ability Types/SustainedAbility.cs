@@ -1,16 +1,21 @@
-﻿public class SustainedAbility : Ability {
+﻿using UnityEngine;
+
+public class SustainedAbility : Ability {
 
     public Sustained beamPrefab;
     public int initialDamage;
 
     Sustained beam;
+    GameObject mainCam;
 
     protected override void Start()
     {
         base.Start();
+        mainCam = Camera.main.gameObject;
         beam = Instantiate(beamPrefab);
         UpdateTransform();
         beam.Initialize(initialDamage, afterEffects, playerManager.SpawnPosition());
+        beam.SetTarget(mainCam.transform, false);
     }
 
     public override void ActivateAbility()

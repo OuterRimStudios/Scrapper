@@ -1814,6 +1814,7 @@ Transform:
   - {fileID: 173845500}
   - {fileID: 153909833}
   - {fileID: 199931439}
+  - {fileID: 1513604374}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7937,11 +7938,11 @@ MonoBehaviour:
   abilityFourKey: 101
   abilityFiveKey: 304
   abilities:
-  - {fileID: 199931440}
+  - {fileID: 1513604375}
   - {fileID: 813594486}
   - {fileID: 1885263815}
   - {fileID: 907570755}
-  - {fileID: 153909834}
+  - {fileID: 199931440}
 --- !u!143 &1430053479
 CharacterController:
   m_ObjectHideFlags: 0
@@ -8271,6 +8272,60 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1513604373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1513604374}
+  - component: {fileID: 1513604375}
+  m_Layer: 0
+  m_Name: High-Frequency Electron Beam Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1513604374
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513604373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1513604375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513604373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea1f5545e5eb4c4998065796ef0d49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: High-Frequency Electron Beam Turret
+  abilityIcon: {fileID: 0}
+  abilityDescription: 
+  abilityType: 3
+  abilityCharges: 2
+  abilityCooldown: 15
+  requiresTarget: 0
+  afterEffects: []
+  turret: {fileID: 114941878816463764, guid: 945aff63ec81f154f89f734b47557208, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  initialDamage: 1
+  activeTurrets: []
 --- !u!1 &1524488040
 GameObject:
   m_ObjectHideFlags: 0

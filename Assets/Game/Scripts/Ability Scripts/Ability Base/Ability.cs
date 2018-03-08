@@ -12,9 +12,9 @@ public class Ability : MonoBehaviour
     public enum AbilityType
     {
         Projectile,
-        Traps,
-        Modules,
-        Turrets,
+        Trap,
+        Module,
+        Turret,
         Sustained
     };
 
