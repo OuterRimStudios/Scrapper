@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     public GameObject enemyCanvas;
 
     int health;
-    AI ai;
+    StatusEffects ai;
     Coroutine dot;
 
     TargetManager targetManager;
@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         health = baseHealth;
-        ai = GetComponent<AI>();
+        ai = GetComponent<StatusEffects>();
         targetManager = GameObject.Find("GameManager").GetComponent<TargetManager>();
     }
 

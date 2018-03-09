@@ -16,6 +16,7 @@ public class Sustained : DamageTypes {
     GameObject mainCam;
     bool isTurret;
 
+
     private void Awake()
     {
         mainCam = Camera.main.gameObject;
@@ -51,9 +52,9 @@ public class Sustained : DamageTypes {
     private void Update()
     {
         beamRenderer.SetPosition(0, spawnPos.position);
-        if(isTurret && target != null)
+        if(isTurret && target)
             beamRenderer.SetPosition(1, target.position + spawnPos.forward * range);
-        else if(target != null)
+        else if(target)
             beamRenderer.SetPosition(1, spawnPos.position + target.forward * range);
         beamRenderer.startWidth = hitRadius;
         beamRenderer.endWidth = hitRadius;
@@ -67,19 +68,19 @@ public class Sustained : DamageTypes {
 
     IEnumerator RepeatEffect()
     {
-        RaycastHit[] hitObjects;
-        if (isTurret)
+        RaycastHit[] hitObjects = new RaycastHit[0];
+        if (isTurret && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
         }
-        else
+        else if(target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.forward * range, hitRadius, spawnPos.forward, range, layerMask);
         }
-
+        
+        if(hitObjects.Length > 0)
         foreach (RaycastHit hit in hitObjects)
         {
-            print("Hit " + hit.transform.name);
             EffectOnTrigger(hit.transform.gameObject);
         }
 

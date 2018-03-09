@@ -9,6 +9,6 @@ public class StunProjectile : Projectile {
     public override void EffectOnTrigger(GameObject objectHit)
     {
         base.EffectOnTrigger(objectHit);
-        objectHit.GetComponent<AI>().ApplyStun(stunDuration);
+        objectHit.GetComponent<StatusEffects>().ApplyStun(stunDuration);
     }
 }

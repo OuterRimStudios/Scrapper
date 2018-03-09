@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class AI : MonoBehaviour
+public class StatusEffects : MonoBehaviour
 {
     public float baseSpeed;
     public List<Transform> waypoints;
     Vector3 targetPos;
     int currentWaypoint;
-
-    float speed;
+    
     Rigidbody rb;
 
     bool canAct;
@@ -18,16 +18,19 @@ public class AI : MonoBehaviour
     Coroutine cc;
     Coroutine root;
 
+    NavMeshAgent agent;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        speed = baseSpeed;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = baseSpeed;
         canAct = true;
     }
 
     private void Update()
     {
-        if(canAct)
+        /*if(canAct)
         {
             if (waypoints.Count > 0)
             {
@@ -52,7 +55,7 @@ public class AI : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
 
     #region Stun
@@ -61,9 +64,9 @@ public class AI : MonoBehaviour
         if (stun != null)
             StopCoroutine(stun);
 
-        speed = 0;
+        agent.speed = 0;
         canAct = false;
-        print("Stunned " + speed);
+        print("Stunned " + agent.speed);
 
         stun = StartCoroutine(Stunned(stunLength));
     }
@@ -77,8 +80,8 @@ public class AI : MonoBehaviour
     public void RemoveStun()
     {
         canAct = true;
-        speed = baseSpeed;
-        print("Stun Removed " + speed);
+        agent.speed = baseSpeed;
+        print("Stun Removed " + agent.speed);
     }
 #endregion
     #region Slow
@@ -91,15 +94,15 @@ public class AI : MonoBehaviour
         float slowPercentage = slowAmount / 100;
         float newSpeed = (baseSpeed * slowPercentage);
 
-        if(speed != 0)
+        if(agent.speed != 0)
         {
-            if (speed - newSpeed >= 0)
-                speed -= newSpeed;
+            if (agent.speed - newSpeed >= 0)
+                agent.speed -= newSpeed;
             else
-                speed = 0;
+                agent.speed = 0;
         }
 
-        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " +  speed);
+        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " + agent.speed);
 
         slow = StartCoroutine(Slowed(slowLength));
     }
@@ -112,8 +115,8 @@ public class AI : MonoBehaviour
 
     public void RemoveSlow()
     {
-        speed = baseSpeed;
-        print("Slow Removed " + speed);
+        agent.speed = baseSpeed;
+        print("Slow Removed " + agent.speed);
     }
     #endregion
     #region KnockBack
@@ -129,7 +132,7 @@ public class AI : MonoBehaviour
         if (cc != null)
             StopCoroutine(cc);
 
-        speed = 0;
+        agent.speed = 0;
         canAct = false;
         cc = StartCoroutine(CC(ccLength));
 
@@ -149,7 +152,7 @@ public class AI : MonoBehaviour
 
         if(slow == null && root == null && stun == null)
         {
-            speed = baseSpeed;
+            agent.speed = baseSpeed;
             canAct = true;
         }
 
@@ -162,7 +165,7 @@ public class AI : MonoBehaviour
         if (root != null)
             StopCoroutine(root);
 
-        speed = 0;
+        agent.speed = 0;
         root = StartCoroutine(Rooted(rootLength));
 
         print("Enemy rooted");
@@ -179,7 +182,7 @@ public class AI : MonoBehaviour
         if (root != null)
             StopCoroutine(root);
 
-        speed = baseSpeed;
+        agent.speed = baseSpeed;
 
         print("Root Removed");
     }

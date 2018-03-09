@@ -20,11 +20,11 @@ public class Modules : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     Health health;
-    AI ai;
+    StatusEffects ai;
 
     private void Start()
     {
-        ai = GetComponent<AI>();
+        ai = GetComponent<StatusEffects>();
         health = GetComponent<Health>();
         player = GameObject.Find("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
