@@ -51,9 +51,9 @@ public class Sustained : DamageTypes {
     private void Update()
     {
         beamRenderer.SetPosition(0, spawnPos.position);
-        if(isTurret)
+        if(isTurret && target != null)
             beamRenderer.SetPosition(1, target.position + spawnPos.forward * range);
-        else
+        else if(target != null)
             beamRenderer.SetPosition(1, spawnPos.position + target.forward * range);
         beamRenderer.startWidth = hitRadius;
         beamRenderer.endWidth = hitRadius;
