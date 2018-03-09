@@ -78,7 +78,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        movement = new Vector3(moveX, 0, moveY).normalized;
+        movement = new Vector3(moveX, 0, moveY);
+        Vector3.ClampMagnitude(movement, 1);
         movement *= speed * Time.deltaTime;
         movement = myCamera.transform.TransformDirection(movement);
         cc.Move(movement);
