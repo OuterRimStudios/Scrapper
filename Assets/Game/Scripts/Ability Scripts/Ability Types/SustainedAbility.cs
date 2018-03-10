@@ -26,6 +26,16 @@ public class SustainedAbility : Ability {
 
         for (int i = 0; i < GetActiveModules().Count; i++)
             beam.SetModule(GetActiveModules()[i]);
+
+        RemoveModules();
+    }
+
+    public override void ModuleActivated(ModuleAbility module)
+    {
+        base.ModuleActivated(module);
+        for (int i = 0; i < GetActiveModules().Count; i++)
+            beam.SetModule(GetActiveModules()[i]);
+
         RemoveModules();
     }
 

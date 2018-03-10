@@ -49,6 +49,7 @@ public class PlaceTurretAbility : Ability
             for(int i = 0; i < activeTurrets.Count; i++)
                 for (int j = 0; j < GetActiveModules().Count; j++)
                 {
+                    activeTurrets[i].ModuleActivated(module);
                     activeTurrets[i].SetModule(GetActiveModules()[j]);
                 }
     }
