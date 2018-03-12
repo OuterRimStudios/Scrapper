@@ -2,39 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SustainedAbility : Ability {
+public class SustainedAI : Ability {
 
     public Sustained beamPrefab;
+    public float effectLength;
     public int initialDamage;
 
     List<Sustained> beams = new List<Sustained>();
-    GameObject mainCam;
 
     protected override void Start()
     {
         base.Start();
-        mainCam = Camera.main.gameObject;
         for (int i = 0; i < refManager.SpawnPosition().Length; i++)
         {
             beams.Add(Instantiate(beamPrefab));
             UpdateTransform();
             beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
-            if(refManager.friendlyTag.ToString() == "Friendly")
-                beams[i].SetTarget(mainCam.transform, false);
         }
     }
 
-    public override void ActivateAbility()
+    public override void DeactivateAbility()
     {
-        base.ActivateAbility();
-        //UpdateTransform();
-
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), true);
-
-            beams[i].gameObject.SetActive(true);
+            beams[i].gameObject.SetActive(false);
         }
+        //UpdateTransform();
+        TriggerCooldown();
     }
 
     public override void ModuleActivated(ModuleAbility module)
@@ -49,19 +43,43 @@ public class SustainedAbility : Ability {
         RemoveModules();
     }
 
-    public override void DeactivateAbility()
+    IEnumerator Firing()
     {
+        isFiring = true;
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].gameObject.SetActive(false);
+            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), true);
+            beams[i].gameObject.SetActive(true);
         }
-        //UpdateTransform();
-        TriggerCooldown();
+        yield return new WaitForSeconds(effectLength);
+        DeactivateAbility();
+        isFiring = false;
     }
 
     protected override IEnumerator Charge()
     {
-        return base.Charge();
+        isCharging = true;
+        if (!CheckIfFriendly())
+        {
+            if (refManager.GetType() == typeof(EnemyReferenceManager))
+            {
+                EnemyReferenceManager tempManager = (EnemyReferenceManager)refManager;
+                tempManager.ai.StopAgent();
+            }
+        }
+        yield return new WaitForSeconds(chargeTime);
+        if (!CheckIfFriendly())
+        {
+            if (refManager.GetType() == typeof(EnemyReferenceManager))
+            {
+                EnemyReferenceManager tempManager = (EnemyReferenceManager)refManager;
+                tempManager.ai.StartAgent();
+            }
+        }
+        isCharging = false;
+
+        if (!isFiring)
+            StartCoroutine(Firing());
     }
 
     void UpdateTransform()

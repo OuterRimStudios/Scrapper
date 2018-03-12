@@ -11,6 +11,7 @@ public class ReferenceManager : MonoBehaviour {
     protected StatusEffects statusEffects;
     public Stats stats;
     public TargetManager targetManager;
+    public LayerMask boundLayer;
 
     public enum Tag
     {

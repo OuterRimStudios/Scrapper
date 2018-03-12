@@ -24,6 +24,7 @@ public class Ability : MonoBehaviour
 
     [Range(1, 5)]
     public int abilityCharges = 1;
+    public float chargeTime;
     public float abilityCooldown;
     public bool requiresTarget;
 
@@ -31,6 +32,8 @@ public class Ability : MonoBehaviour
 
     int charges;
     bool onCooldown;
+    [HideInInspector] public bool isCharging;
+    [HideInInspector] public bool isFiring;
     protected bool moduleActive;
 
     public ReferenceManager refManager;
@@ -42,7 +45,11 @@ public class Ability : MonoBehaviour
 
     public virtual void ActivateAbility()
     {
-        charges--;
+        if (!isCharging)
+        {
+            StartCoroutine(Charge());
+            charges--;
+        }
     }
 
     public virtual void DeactivateAbility()
@@ -89,6 +96,21 @@ public class Ability : MonoBehaviour
             charges++;
 
         onCooldown = false;
+    }
+
+    protected virtual IEnumerator Charge()
+    {
+        isCharging = true;
+        yield return new WaitForSeconds(chargeTime);
+        isCharging = false;
+    }
+
+    protected bool CheckIfFriendly()
+    {
+        if (refManager.friendlyTag.ToString() == "Friendly")
+            return true;
+        else
+            return false;
     }
 }
 

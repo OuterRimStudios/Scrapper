@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
 
     public virtual void TookDamage(int damage)
     {
+        print(gameObject.name + " took damage: " + damage);
         health -= damage;
 
         if (health <= 0)

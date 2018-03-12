@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageTypes : MonoBehaviour
 {
     public int damage;
+    public LayerMask layerMask;
     protected List<AfterEffect> afterEffects = new List<AfterEffect>();
     protected List<ModuleAbility> activeModules = new List<ModuleAbility>();
 
@@ -20,20 +21,18 @@ public class DamageTypes : MonoBehaviour
     {
         damage = _damage;
         enemyTag = _enemyTag;
+        layerMask = LayerMask.NameToLayer(enemyTag);
     }
 
     public void Initialize(int _damage, string _enemyTag, List<AfterEffect> _afterEffects)
     {
-        damage = _damage;
-        enemyTag = _enemyTag;
+        Initialize(_damage, _enemyTag);
         afterEffects = _afterEffects;
     }
 
     public void Initialize(int _damage, string _enemyTag, List<AfterEffect> _afterEffects, Transform _spawnPos)
     {
-        damage = _damage;
-        enemyTag = _enemyTag;
-        afterEffects = _afterEffects;
+        Initialize(_damage, _enemyTag, _afterEffects);
         spawnPos = _spawnPos;
     }
 

@@ -13,11 +13,11 @@ public class SustainedTurret : Turret {
     protected override void Start()
     {
         base.Start();
-        print(damage);
         for (int i = 0; i < spawnpoints.Length; i++)
         {
             beams.Add(Instantiate(turretAbility) as Sustained);
             beams[i].Initialize(damage, enemyTag, afterEffects, spawnpoints[i]);
+            beams[i].layerMask = LayerMask.NameToLayer(enemyTag);
             UpdateTransform();
         }
     }

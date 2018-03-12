@@ -53,12 +53,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  effectFrequency: 0.5
-  range: 50
-  hitRadius: 0.5
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
+  effectFrequency: 0.5
+  range: 100
+  hitRadius: 1.5
   beamRenderer: {fileID: 120872424441886292}
 --- !u!120 &120872424441886292
 LineRenderer:

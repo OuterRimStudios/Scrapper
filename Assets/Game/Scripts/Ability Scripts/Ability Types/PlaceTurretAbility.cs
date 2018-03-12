@@ -30,6 +30,8 @@ public class PlaceTurretAbility : Ability
             Turret newTurret = Instantiate(turret, position, rotation);
             newTurret.Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects);
             newTurret.Initialize(this);
+            newTurret.tag = refManager.friendlyTag.ToString();
+            newTurret.gameObject.layer = LayerMask.NameToLayer(refManager.friendlyTag.ToString());
             activeTurrets.Add(newTurret);
 
             for (int i = 0; i < GetActiveModules().Count; i++)

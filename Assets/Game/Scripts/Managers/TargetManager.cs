@@ -8,47 +8,47 @@ public class TargetManager : MonoBehaviour
     public List<GameObject> activeEnemies;
     public List<GameObject> activeFriendlies;
 
-    public void AddTarget(GameObject targetToAdd, string tag)
+    public void AddTarget(GameObject targetToAdd, string friendlyTag)
     {
-        if(tag == "Enemy")
+        if(friendlyTag == "Enemy")
             activeEnemies.Add(targetToAdd);
-        else if(tag == "Friendly")
+        else if(friendlyTag == "Friendly")
             activeFriendlies.Add(targetToAdd);
     }
 
-    public void RemoveTarget(GameObject targetToRemove, string tag)
+    public void RemoveTarget(GameObject targetToRemove, string friendlyTag)
     {
-        if (tag == "Enemy")
+        if (friendlyTag == "Enemy")
         {
             if (activeEnemies.Contains(targetToRemove))
                 activeEnemies.Remove(targetToRemove);
         }
-        else if(tag == "Friendly")
+        else if(friendlyTag == "Friendly")
         {
             if (activeFriendlies.Contains(targetToRemove))
                 activeFriendlies.Remove(targetToRemove);
         }
     }
 
-    public List<GameObject> GetAllTargets(string tag)
+    public List<GameObject> GetAllTargets(string enemyTag)
     {
-        if (tag == "Enemy")
+        if (enemyTag == "Enemy")
             return activeEnemies;
-        else if (tag == "Friendly")
+        else if (enemyTag == "Friendly")
             return activeFriendlies;
         else
             return null;
     }
 
-    public Transform GetClosestTarget(Vector3 searchPos, string tag)
+    public Transform GetClosestTarget(Vector3 searchPos, string enemyTag)
     {
         Transform bestTarget = null;
-        if (tag == "Enemy")
+        if (enemyTag == "Enemy")
             foreach (GameObject potentialTarget in activeEnemies)
             {
                 bestTarget = CheckDistance(potentialTarget, searchPos);
             }
-        else if (tag == "Friendly")
+        else if (enemyTag == "Friendly")
             foreach (GameObject potentialTarget in activeFriendlies)
             {
                 bestTarget = CheckDistance(potentialTarget, searchPos);

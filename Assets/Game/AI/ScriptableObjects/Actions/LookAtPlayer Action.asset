@@ -8,12 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 781e3bff3706d484b9f2ef6fd1a4e6ca, type: 3}
-  m_Name: Electron Beam AI
+  m_Script: {fileID: 11500000, guid: 77d1020be11150842bf7e733061604e4, type: 3}
+  m_Name: LookAtPlayer Action
   m_EditorClassIdentifier: 
-  attackFrequency: 3
-  attackRadius: 50
-  attackRange: 100
-  lookRadius: 100
-  lookRange: 100
-  moveRange: 10
+  damping: 5

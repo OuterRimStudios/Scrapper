@@ -7,7 +7,6 @@ public class Trap : DamageTypes
     public bool destroyedOnTrigger;
     public float effectFrequency;
     public float hitRadius;
-    public LayerMask layerMask;
 
     WaitForSeconds effectDelay;
 

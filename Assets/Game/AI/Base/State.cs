@@ -16,6 +16,7 @@ public class State : ScriptableObject
 
     private void DoActions(StateController controller)
     {
+        if (actions.Length <= 0) return;
         for(int i = 0; i < actions.Length; i++)
         {
             actions[i].Act(controller);

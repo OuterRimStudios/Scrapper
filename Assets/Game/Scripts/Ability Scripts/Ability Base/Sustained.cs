@@ -7,7 +7,7 @@ public class Sustained : DamageTypes {
     public float effectFrequency;
     public float range;
     public float hitRadius;
-    public LayerMask layerMask;
+    
     public LineRenderer beamRenderer;
 
     Transform target;
@@ -16,13 +16,10 @@ public class Sustained : DamageTypes {
     GameObject mainCam;
     bool isTurret;
 
-
     private void Awake()
     {
         mainCam = Camera.main.gameObject;
         effectDelay = new WaitForSeconds(effectFrequency);
-
-        layerMask = LayerMask.NameToLayer(enemyTag);
     }
 
     private void OnEnable()
@@ -76,15 +73,19 @@ public class Sustained : DamageTypes {
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
         }
-        else if(target)
+        else if (target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.forward * range, hitRadius, spawnPos.forward, range, layerMask);
         }
-        
-        if(hitObjects.Length > 0)
-        foreach (RaycastHit hit in hitObjects)
+
+        if (hitObjects.Length > 0)
         {
-            EffectOnTrigger(hit.transform.gameObject);
+            foreach (RaycastHit hit in hitObjects)
+            {
+                print(hit.transform.gameObject.name);
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer(enemyTag))
+                    EffectOnTrigger(hit.transform.gameObject);
+            }
         }
 
         yield return effectDelay;
