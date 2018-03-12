@@ -15,7 +15,6 @@ public class Trap : DamageTypes
 
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
-        print("Hit Enemy " + activeModules.Count);
         ApplyModules(objectHit);
         objectHit.GetComponent<Health>().TookDamage(damage);
         VisualOnTrigger();
@@ -37,13 +36,10 @@ public class Trap : DamageTypes
 
     IEnumerator RepeatEffect()
     {
-        print("Repeating");
-
         RaycastHit[] hitObjects = Physics.SphereCastAll(transform.position, hitRadius, transform.position, 0, layerMask);
 
         foreach(RaycastHit hit in hitObjects)
         {
-            print("Hit Enemy " + activeModules.Count);
             EffectOnTrigger(hit.transform.gameObject);
         }
 

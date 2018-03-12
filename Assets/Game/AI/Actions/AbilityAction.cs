@@ -19,12 +19,8 @@ public class AbilityAction : Action
         if (Physics.SphereCast(controller.transform.position, controller.enemyRefManager.stats.attackRadius, controller.transform.forward, out hit,
             controller.enemyRefManager.stats.attackRange, attackLayer))
         {
-            Debug.Log("Targeted");
             if (controller.enemyRefManager.aiAbility.CanShoot())
             {
-                Debug.Log("Attacked");
-
-                //hit.GetComponent<Health>().TookDamage(controller.ai.stats.damage);
                 controller.enemyRefManager.aiAbility.ActivateAbility();
             }
         }

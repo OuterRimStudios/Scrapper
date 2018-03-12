@@ -11,7 +11,6 @@ public class Projectile : DamageTypes
 
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
-        print("Hit Enemy " + activeModules.Count);
         ApplyModules(objectHit);
         objectHit.GetComponent<Health>().TookDamage(damage);
         VisualOnTrigger();
@@ -38,9 +37,6 @@ public class Projectile : DamageTypes
     {
         if(other.tag.Equals(enemyTag))
         {
-            //print("Hit Enemy " + activeModules.Count);
-            //ApplyModules(other.gameObject);
-            //other.GetComponent<Health>().TookDamage(damage);
 
             EffectOnTrigger(other.gameObject);
 
