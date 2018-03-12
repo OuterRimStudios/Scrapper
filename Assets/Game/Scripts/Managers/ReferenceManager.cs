@@ -29,6 +29,7 @@ public class ReferenceManager : MonoBehaviour {
         health = GetComponent<Health>();
         rigidBody = GetComponent<Rigidbody>();
         targetManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TargetManager>();
+        targetManager.AddTarget(gameObject, friendlyTag.ToString());
     }
 
     public Transform[] SpawnPosition()

@@ -61,7 +61,7 @@ public class Turret : DamageTypes
 
     IEnumerator Scan()
     {
-        target = targetManager.GetClosestEnemy(transform.position);
+        target = targetManager.GetClosestTarget(transform.position, enemyTag);
         TargetUpdated();
         yield return scan;
         scanningForTarget = false;

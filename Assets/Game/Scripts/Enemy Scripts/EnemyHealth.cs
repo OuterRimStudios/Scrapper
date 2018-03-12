@@ -27,7 +27,6 @@ public class EnemyHealth : Health
 
     protected override void Died()
     {
-        refManager.targetManager.RemoveEnemy(gameObject);
         base.Died();
     }
 }

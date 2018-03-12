@@ -38,7 +38,7 @@ public class AI : MonoBehaviour
 
     IEnumerator UpdateTarget()
     {
-        chaseTarget = refManager.targetManager.GetClosestFriendly(transform.position);
+        chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString());
         yield return waitTime;
         updatingState = false;
     }
