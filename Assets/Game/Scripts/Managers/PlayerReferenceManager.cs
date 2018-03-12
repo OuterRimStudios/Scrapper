@@ -2,25 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
-{
+public class PlayerReferenceManager : ReferenceManager {
+
     public GameObject firstPersonCharacter;
     public GameObject thirdPersonCharacter;
-    public Transform firstPersonSpawnpoint;
-    public Transform thirdPersonSpawnpoint;
-
     public GameObject gun;
     public Transform firstPersonGunPosition;
     public Transform thirdPersonGunPosition;
 
-    Animator anim;
-
     bool firstPerson;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         firstPerson = true;
-        anim = GetComponent<Animator>();
         anim.enabled = false;
     }
 
@@ -42,14 +37,6 @@ public class PlayerManager : MonoBehaviour
             UpdateGunPos(thirdPersonGunPosition);
             thirdPersonCharacter.SetActive(true);
         }
-    }
-
-    public Transform SpawnPosition()
-    {
-        if (!firstPerson)
-            return thirdPersonSpawnpoint;
-        else
-            return firstPersonSpawnpoint;
     }
 
     void UpdateGunPos(Transform _parent)

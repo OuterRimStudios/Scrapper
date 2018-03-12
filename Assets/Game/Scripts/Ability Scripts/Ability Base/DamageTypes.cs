@@ -9,26 +9,30 @@ public class DamageTypes : MonoBehaviour
     protected List<ModuleAbility> activeModules = new List<ModuleAbility>();
 
     protected Transform spawnPos;
+    protected string enemyTag;
 
     public void SetModule(ModuleAbility module)
     {
         activeModules.Add(module);
     }
 
-    public void Initialize(int _damage)
+    public void Initialize(int _damage, string _enemyTag)
     {
         damage = _damage;
+        enemyTag = _enemyTag;
     }
 
-    public void Initialize(int _damage, List<AfterEffect> _afterEffects)
+    public void Initialize(int _damage, string _enemyTag, List<AfterEffect> _afterEffects)
     {
         damage = _damage;
+        enemyTag = _enemyTag;
         afterEffects = _afterEffects;
     }
 
-    public void Initialize(int _damage, List<AfterEffect> _afterEffects, Transform _spawnPos)
+    public void Initialize(int _damage, string _enemyTag, List<AfterEffect> _afterEffects, Transform _spawnPos)
     {
         damage = _damage;
+        enemyTag = _enemyTag;
         afterEffects = _afterEffects;
         spawnPos = _spawnPos;
     }
@@ -44,12 +48,12 @@ public class DamageTypes : MonoBehaviour
                     GameObject newEffect = Instantiate(afterEffects[i].effect.gameObject, transform.position, transform.rotation);
                     Projectile tempProjectile = newEffect.GetComponent<Projectile>();
                     if (tempProjectile != null)
-                        tempProjectile.Initialize(afterEffects[i].effectDamage);
+                        tempProjectile.Initialize(afterEffects[i].effectDamage, enemyTag);
                     else
                     {
                         Trap tempTrap = newEffect.GetComponent<Trap>();
                         if (tempTrap != null)
-                            tempTrap.Initialize(afterEffects[i].effectDamage);
+                            tempTrap.Initialize(afterEffects[i].effectDamage, enemyTag);
                     }
                 }
             }

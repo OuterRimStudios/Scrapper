@@ -19,28 +19,17 @@ public class InputManager : MonoBehaviour
     public List<Ability> abilities = new List<Ability>();
     bool[] abilityActive = new bool[5];
     bool[] abilityDeactive = new bool[5];
-    //public Ability abilityOne;
-    //public Ability abilityTwo;
-    //public Ability abilityThree;
-    //public Ability abilityFour;
-    //public Ability abilityFive;
 
     bool jump;
     bool interact;
     bool toggleView;
-
-    //bool abilityOneActive;
-    //bool abilityTwoActive;
-    //bool abilityThreeActive;
-    //bool abilityFourActive;
-    //bool abilityFiveActive;
 
     float moveX;
     float moveY;
     float lookX;
     float lookY;
 
-    PlayerManager playerManager;
+    PlayerReferenceManager playerRefManager;
     PlayerMovement playerMovement;
     CameraController cameraController;
 
@@ -48,7 +37,7 @@ public class InputManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
-        playerManager = GetComponent<PlayerManager>();
+        playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
     }
@@ -62,7 +51,7 @@ public class InputManager : MonoBehaviour
 
         if (toggleView)
         {
-            playerManager.SwitchView();
+            playerRefManager.SwitchView();
             cameraController.SwitchView();
         }
 
@@ -72,27 +61,13 @@ public class InputManager : MonoBehaviour
 
     void AbilityInput()
     {
-        for (int i = 0; i < abilities.Count; i ++)
+        for (int i = 0; i < abilities.Count; i++)
         {
             if (abilities[i] && abilities[i].CanShoot() && abilityActive[i])
                 abilities[i].ActivateAbility();
-            else if(abilities[i] && abilityDeactive[i])
+            else if (abilities[i] && abilityDeactive[i])
                 abilities[i].DeactivateAbility();
         }
-        //if (abilityOne && abilityOne.CanShoot() && abilityOneActive)
-        //    abilityOne.ActivateAbility();
-
-        //if (abilityTwo && abilityTwo.CanShoot() && abilityTwoActive)
-        //    abilityTwo.ActivateAbility();
-
-        //if (abilityThree && abilityThree.CanShoot() && abilityThreeActive)
-        //    abilityThree.ActivateAbility();
-
-        //if (abilityFour && abilityFour.CanShoot() && abilityFourActive)
-        //    abilityFour.ActivateAbility();
-
-        //if (abilityFive && abilityFive.CanShoot() && abilityFiveActive)
-        //    abilityFive.ActivateAbility();
     }
 
     private void RecieveInput()

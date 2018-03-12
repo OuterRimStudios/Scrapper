@@ -2,37 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Health
 {
-    public int baseHealth;
-
-    int health;
-
-    private void Start()
+    protected override void Died()
     {
-        health = baseHealth;
-    }
-
-    public void TookDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Died();
-        }
-    }
-
-    void Died()
-    {
-        Destroy(gameObject);
-    }
-
-    public void Heal(int healAmount)
-    {
-        if (health + healAmount <= baseHealth)
-            health += healAmount;
-        else
-            health = baseHealth;
+        refManager.targetManager.RemoveFriendly(gameObject);
+        base.Died();
     }
 }

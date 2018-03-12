@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/Attack")]
-public class AttackAction : Action
+public class AbilityAction : Action
 {
     public LayerMask attackLayer;
 
@@ -16,17 +16,16 @@ public class AttackAction : Action
     {
         RaycastHit hit;
         //Are we close to the target
-        if (Physics.SphereCast(controller.transform.position, controller.ai.stats.attackRadius, controller.transform.forward, out hit,
-            controller.ai.stats.attackRange, attackLayer))
+        if (Physics.SphereCast(controller.transform.position, controller.enemyRefManager.stats.attackRadius, controller.transform.forward, out hit,
+            controller.enemyRefManager.stats.attackRange, attackLayer))
         {
             Debug.Log("Targeted");
-            if (!controller.ai.attacking)
+            if (controller.enemyRefManager.aiAbility.CanShoot())
             {
-                controller.ai.attacking = true;
                 Debug.Log("Attacked");
 
                 //hit.GetComponent<Health>().TookDamage(controller.ai.stats.damage);
-                controller.StartCoroutine(controller.ai.Attack());
+                controller.enemyRefManager.aiAbility.ActivateAbility();
             }
         }
     }

@@ -1,35 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     public int baseHealth;
 
-    public GameObject combatText;
-    public GameObject enemyCanvas;
-
-    int health;
-    StatusEffects ai;
+    protected int health;
+    protected ReferenceManager refManager;
     Coroutine dot;
 
-    TargetManager targetManager;
-
-    private void Start()
+    protected virtual void Start()
     {
         health = baseHealth;
-        ai = GetComponent<StatusEffects>();
-        targetManager = GameObject.Find("GameManager").GetComponent<TargetManager>();
+        refManager = GetComponent<ReferenceManager>();
     }
 
-    public void TookDamage(int damage)
+    public void Heal(int healAmount)
     {
-        ai.RemoveCC();
-        health -= damage;
+        if (health + healAmount <= baseHealth)
+            health += healAmount;
+        else
+            health = baseHealth;
+    }
 
-        GameObject cbt = Instantiate(combatText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
-        cbt.GetComponent<Text>().text = damage.ToString();
+    public virtual void TookDamage(int damage)
+    {
+        health -= damage;
 
         if (health <= 0)
         {
@@ -37,9 +33,8 @@ public class Health : MonoBehaviour
         }
     }
 
-    void Died()
+    protected virtual void Died()
     {
-        targetManager.RemoveEnemy(gameObject);
         Destroy(gameObject);
     }
 

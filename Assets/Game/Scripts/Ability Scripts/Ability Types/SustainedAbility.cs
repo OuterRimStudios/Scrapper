@@ -1,55 +1,67 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SustainedAbility : Ability {
 
     public Sustained beamPrefab;
     public int initialDamage;
 
-    Sustained beam;
+    List<Sustained> beams = new List<Sustained>();
     GameObject mainCam;
 
     protected override void Start()
     {
         base.Start();
         mainCam = Camera.main.gameObject;
-        beam = Instantiate(beamPrefab);
-        UpdateTransform();
-        beam.Initialize(initialDamage, afterEffects, playerManager.SpawnPosition());
-        beam.SetTarget(mainCam.transform, false);
+        for (int i = 0; i < refManager.SpawnPosition().Length; i++)
+        {
+            beams.Add(Instantiate(beamPrefab));
+            UpdateTransform();
+            beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
+            beams[i].SetTarget(mainCam.transform, false);
+        }
     }
 
     public override void ActivateAbility()
     {
         base.ActivateAbility();
-        UpdateTransform();        
-        beam.gameObject.SetActive(true);
+        //UpdateTransform();
 
-        for (int i = 0; i < GetActiveModules().Count; i++)
-            beam.SetModule(GetActiveModules()[i]);
-
-        RemoveModules();
+        for (int i = 0; i < beams.Count; i++)
+        {
+            beams[i].gameObject.SetActive(true);
+        }
     }
 
     public override void ModuleActivated(ModuleAbility module)
     {
         base.ModuleActivated(module);
-        for (int i = 0; i < GetActiveModules().Count; i++)
-            beam.SetModule(GetActiveModules()[i]);
+        for (int i = 0; i < beams.Count; i++)
+        {
+            for (int j = 0; j < GetActiveModules().Count; j++)
+                beams[i].SetModule(GetActiveModules()[j]);
+        }
 
         RemoveModules();
     }
 
     public override void DeactivateAbility()
     {
-        beam.gameObject.SetActive(false);
-        UpdateTransform();
+        for (int i = 0; i < beams.Count; i++)
+        {
+            beams[i].gameObject.SetActive(false);
+        }
+        //UpdateTransform();
         TriggerCooldown();
     }
 
     void UpdateTransform()
     {
-        beam.transform.SetParent(playerManager.SpawnPosition());
-        beam.transform.position = playerManager.SpawnPosition().position;
-        beam.transform.rotation = playerManager.SpawnPosition().rotation;
+        for (int i = 0; i < beams.Count; i++)
+        {
+            beams[i].transform.SetParent(refManager.SpawnPosition()[i]);
+            beams[i].transform.position = refManager.SpawnPosition()[i].position;
+            beams[i].transform.rotation = refManager.SpawnPosition()[i].rotation;
+        }
     }
 }

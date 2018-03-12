@@ -7,7 +7,8 @@ public class ActiveStateDecision : Decision
 {
     public override bool Decide(StateController controller)
     {
-        bool targetIsActive = controller.ai.chaseTarget.gameObject.activeSelf;
+        if (controller.enemyRefManager.ai.chaseTarget == null) return false;
+        bool targetIsActive = controller.enemyRefManager.ai.chaseTarget.gameObject.activeSelf;
         return targetIsActive;
     }
 }

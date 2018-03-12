@@ -17,7 +17,7 @@ public class SustainedTurret : Turret {
         for (int i = 0; i < spawnpoints.Length; i++)
         {
             beams.Add(Instantiate(turretAbility) as Sustained);
-            beams[i].Initialize(damage, afterEffects, spawnpoints[i]);
+            beams[i].Initialize(damage, enemyTag, afterEffects, spawnpoints[i]);
             UpdateTransform();
         }
     }
@@ -52,6 +52,7 @@ public class SustainedTurret : Turret {
             for (int j = 0; j < beams.Count; j++)
                 beams[j].SetModule(GetActiveModules()[i]);
         }
+
         RemoveModules();
     }
 
@@ -66,14 +67,6 @@ public class SustainedTurret : Turret {
 
     IEnumerator Firing()
     {
-        //Move this
-        for (int i = 0; i < GetActiveModules().Count; i++)
-        {
-            for (int j = 0; j < beams.Count; j++)
-                beams[j].SetModule(GetActiveModules()[i]);
-        }
-        RemoveModules();
-
         for (int i = 0; i < beams.Count; i++)
         {
             beams[i].gameObject.SetActive(true);

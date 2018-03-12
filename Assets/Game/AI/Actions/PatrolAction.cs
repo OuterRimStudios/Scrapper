@@ -12,12 +12,12 @@ public class PatrolAction : Action
 
     private void Patrol(StateController controller)
     {
-        controller.ai.agent.destination = controller.ai.patrolPoints[controller.ai.nextWayPoint].position;                      //Set the agent's next waypoint
-        controller.ai.agent.isStopped = false;
+        controller.enemyRefManager.navMeshAgent.destination = controller.enemyRefManager.ai.patrolPoints[controller.enemyRefManager.ai.nextWayPoint].position;                      //Set the agent's next waypoint
+        controller.enemyRefManager.navMeshAgent.isStopped = false;
         
-        if(controller.ai.agent.remainingDistance <= controller.ai.agent.stoppingDistance && !controller.ai.agent.pathPending)   //Are we at our destination?
+        if(controller.enemyRefManager.navMeshAgent.remainingDistance <= controller.enemyRefManager.navMeshAgent.stoppingDistance && !controller.enemyRefManager.navMeshAgent.pathPending)   //Are we at our destination?
         {
-            controller.ai.nextWayPoint = (controller.ai.nextWayPoint + 1) % controller.ai.patrolPoints.Length;                  //Increament nextWayPoint or reset it to 0
+            controller.enemyRefManager.ai.nextWayPoint = (controller.enemyRefManager.ai.nextWayPoint + 1) % controller.enemyRefManager.ai.patrolPoints.Length;                  //Increament nextWayPoint or reset it to 0
         }
     }
 }

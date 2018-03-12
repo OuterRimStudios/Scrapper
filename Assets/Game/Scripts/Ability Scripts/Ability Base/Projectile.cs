@@ -36,7 +36,7 @@ public class Projectile : DamageTypes
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals("Enemy"))
+        if(other.tag.Equals(enemyTag))
         {
             //print("Hit Enemy " + activeModules.Count);
             //ApplyModules(other.gameObject);

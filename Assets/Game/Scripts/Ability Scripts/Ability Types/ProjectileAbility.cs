@@ -6,11 +6,15 @@
     public override void ActivateAbility()
     {
         base.ActivateAbility();
-        Projectile _projectile = Instantiate(projectile, playerManager.SpawnPosition().position, playerManager.SpawnPosition().rotation);
-        _projectile.Initialize(initialDamage, afterEffects);
-   
-        for(int i = 0; i < GetActiveModules().Count; i++)
-            _projectile.SetModule(GetActiveModules()[i]);
+        for (int i = 0; i < refManager.SpawnPosition().Length; i++)
+        {
+            Projectile _projectile = Instantiate(projectile, refManager.SpawnPosition()[i].position, refManager.SpawnPosition()[i].rotation);
+            _projectile.Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects);
+
+            for (int j = 0; j < GetActiveModules().Count; j++)
+                _projectile.SetModule(GetActiveModules()[j]);
+        }
+
         RemoveModules();
         TriggerCooldown();
     }

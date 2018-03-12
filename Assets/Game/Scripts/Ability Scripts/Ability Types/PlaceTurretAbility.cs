@@ -28,7 +28,7 @@ public class PlaceTurretAbility : Ability
             Quaternion rotation = Quaternion.LookRotation(hit.normal + (Vector3.forward * 90));
 
             Turret newTurret = Instantiate(turret, position, rotation);
-            newTurret.Initialize(initialDamage, afterEffects);
+            newTurret.Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects);
             newTurret.Initialize(this);
             activeTurrets.Add(newTurret);
 

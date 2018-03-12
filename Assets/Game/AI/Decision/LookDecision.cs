@@ -17,10 +17,10 @@ public class LookDecision : Decision
     {
         RaycastHit hit;
         //Do we see a target
-        if (Physics.SphereCast(controller.transform.position, controller.ai.stats.lookRadius, controller.transform.forward, out hit,
-            controller.ai.stats.lookRange, lookLayer))
+        if (Physics.SphereCast(controller.transform.position, controller.enemyRefManager.stats.lookRadius, controller.transform.forward, out hit,
+            controller.enemyRefManager.stats.lookRange, lookLayer))
         {
-            controller.ai.chaseTarget = hit.transform;             //Set the chaseTarget to the hit target
+            controller.enemyRefManager.ai.chaseTarget = hit.transform;             //Set the chaseTarget to the hit target
             return true;
         }
         else return false;

@@ -33,12 +33,11 @@ public class Ability : MonoBehaviour
     bool onCooldown;
     protected bool moduleActive;
 
-    protected PlayerManager playerManager;
+    public ReferenceManager refManager;
 
     protected virtual void Start()
     {
         charges = abilityCharges;
-        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
     }
 
     public virtual void ActivateAbility()

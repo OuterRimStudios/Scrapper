@@ -56,7 +56,7 @@ public class Trap : DamageTypes
     {
         if (!destroyedOnTrigger) return;
 
-        if (other.tag.Equals("Enemy"))
+        if (other.tag.Equals(enemyTag))
         {
             EffectOnTrigger(other.gameObject);
             

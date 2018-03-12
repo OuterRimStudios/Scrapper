@@ -12,7 +12,9 @@ public class ChaseAction : Action
 
     private void Chase(StateController controller)
     {
-        controller.ai.agent.destination = controller.ai.chaseTarget.position;               //Start chasing
-        controller.ai.agent.isStopped = false;
+        if (controller.enemyRefManager.ai.chaseTarget == null) return;
+
+        controller.enemyRefManager.navMeshAgent.destination = controller.enemyRefManager.ai.chaseTarget.position;               //Start chasing
+        controller.enemyRefManager.navMeshAgent.isStopped = false;
     }
 }
