@@ -32,6 +32,11 @@ public class ReferenceManager : MonoBehaviour {
         targetManager.AddTarget(gameObject, friendlyTag.ToString());
     }
 
+    public virtual void Start()
+    {
+
+    }
+
     public Transform[] SpawnPosition()
     {
         return abilitySpawnPoints;

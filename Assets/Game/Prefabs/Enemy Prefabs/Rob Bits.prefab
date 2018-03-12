@@ -1511,16 +1511,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a21b1db55b66a4fbf98c5bc301c519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitySpawnPoints:
-  - {fileID: 4701831848310772}
-  stats: {fileID: 11400000, guid: 4cd08dfbe35dbc142bf1bc11ee98fa8f, type: 2}
+  abilitySpawnPoints: []
+  stats: {fileID: 0}
   targetManager: {fileID: 0}
   friendlyTag: 0
-  enemyTag: 1
+  enemyTag: 0
   ai: {fileID: 0}
   stateController: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  aiAbility: {fileID: 114266022881296422}
+  aiAbility: {fileID: 0}
 --- !u!114 &114089070696179554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1553,9 +1552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
-  combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
-  enemyCanvas: {fileID: 1590513479650822}
+  baseHealth: 0
+  combatText: {fileID: 0}
+  enemyCanvas: {fileID: 0}
 --- !u!114 &114093546932331872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1567,16 +1566,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a21b1db55b66a4fbf98c5bc301c519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitySpawnPoints:
-  - {fileID: 4052114073384912}
-  stats: {fileID: 11400000, guid: 4cd08dfbe35dbc142bf1bc11ee98fa8f, type: 2}
+  abilitySpawnPoints: []
+  stats: {fileID: 0}
   targetManager: {fileID: 0}
   friendlyTag: 0
-  enemyTag: 1
+  enemyTag: 0
   ai: {fileID: 0}
   stateController: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  aiAbility: {fileID: 114427418941987980}
+  aiAbility: {fileID: 0}
 --- !u!114 &114101467187019614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1655,16 +1653,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a21b1db55b66a4fbf98c5bc301c519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitySpawnPoints:
-  - {fileID: 4189117176137586}
-  stats: {fileID: 11400000, guid: 4cd08dfbe35dbc142bf1bc11ee98fa8f, type: 2}
+  abilitySpawnPoints: []
+  stats: {fileID: 0}
   targetManager: {fileID: 0}
   friendlyTag: 0
-  enemyTag: 1
+  enemyTag: 0
   ai: {fileID: 0}
   stateController: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  aiAbility: {fileID: 114971831824110272}
+  aiAbility: {fileID: 0}
 --- !u!114 &114228536330401286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1697,7 +1694,7 @@ MonoBehaviour:
   abilityCooldown: 3
   requiresTarget: 0
   afterEffects: []
-  refManager: {fileID: 114084931355607116}
+  refManager: {fileID: 0}
   projectile: {fileID: 114732284836353408, guid: 5db03dc1b7fa6dd459922559a3121878,
     type: 2}
   initialDamage: 10
@@ -1744,7 +1741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efca3224e7a23f4a894a07120a90030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRefManager: {fileID: 114093546932331872}
+  enemyRefManager: {fileID: 0}
   currentState: {fileID: 11400000, guid: 31f81596d542723429675177da5a62f6, type: 2}
   updateStateFrequency: 0.5
   remainState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
@@ -1780,12 +1777,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978eff60540a08241a56bb5d395146c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refManager: {fileID: 114084931355607116}
+  refManager: {fileID: 0}
   patrolPoints: []
   chaseTarget: {fileID: 0}
   nextWayPoint: 0
   attacking: 0
-  updateTargetFrequency: 1
+  updateTargetFrequency: 0
 --- !u!114 &114427418941987980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1805,7 +1802,7 @@ MonoBehaviour:
   abilityCooldown: 3
   requiresTarget: 0
   afterEffects: []
-  refManager: {fileID: 114093546932331872}
+  refManager: {fileID: 0}
   projectile: {fileID: 114732284836353408, guid: 5db03dc1b7fa6dd459922559a3121878,
     type: 2}
   initialDamage: 10
@@ -1831,7 +1828,7 @@ MonoBehaviour:
   - effect: {fileID: 114716221110852346, guid: 1c9312d5ecbe20e4cb787bda6af1ec41, type: 2}
     effectAmount: 1
     effectDamage: 4
-  refManager: {fileID: 114597796167818814}
+  refManager: {fileID: 0}
   projectile: {fileID: 114286296576221518, guid: e25bccc031e462241ba121f1659c5259,
     type: 2}
   initialDamage: 8
@@ -1862,12 +1859,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978eff60540a08241a56bb5d395146c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refManager: {fileID: 114214996973184192}
+  refManager: {fileID: 0}
   patrolPoints: []
   chaseTarget: {fileID: 0}
   nextWayPoint: 0
   attacking: 0
-  updateTargetFrequency: 1
+  updateTargetFrequency: 0
 --- !u!114 &114517120525598346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1901,9 +1898,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
-  combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
-  enemyCanvas: {fileID: 1087258491228556}
+  baseHealth: 0
+  combatText: {fileID: 0}
+  enemyCanvas: {fileID: 0}
 --- !u!114 &114570491193055964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1915,7 +1912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efca3224e7a23f4a894a07120a90030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRefManager: {fileID: 114214996973184192}
+  enemyRefManager: {fileID: 0}
   currentState: {fileID: 11400000, guid: 31f81596d542723429675177da5a62f6, type: 2}
   updateStateFrequency: 0.5
   remainState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
@@ -1930,12 +1927,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978eff60540a08241a56bb5d395146c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refManager: {fileID: 114093546932331872}
+  refManager: {fileID: 0}
   patrolPoints: []
   chaseTarget: {fileID: 0}
   nextWayPoint: 0
   attacking: 0
-  updateTargetFrequency: 1
+  updateTargetFrequency: 0
 --- !u!114 &114584727562415778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1947,7 +1944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efca3224e7a23f4a894a07120a90030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRefManager: {fileID: 114084931355607116}
+  enemyRefManager: {fileID: 0}
   currentState: {fileID: 11400000, guid: 31f81596d542723429675177da5a62f6, type: 2}
   updateStateFrequency: 0.5
   remainState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
@@ -1962,16 +1959,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a21b1db55b66a4fbf98c5bc301c519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitySpawnPoints:
-  - {fileID: 4885343163574266}
-  stats: {fileID: 11400000, guid: 4cd08dfbe35dbc142bf1bc11ee98fa8f, type: 2}
+  abilitySpawnPoints: []
+  stats: {fileID: 0}
   targetManager: {fileID: 0}
   friendlyTag: 0
-  enemyTag: 1
+  enemyTag: 0
   ai: {fileID: 0}
   stateController: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  aiAbility: {fileID: 114448226151345312}
+  aiAbility: {fileID: 0}
 --- !u!114 &114602188887205042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1999,7 +1995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efca3224e7a23f4a894a07120a90030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRefManager: {fileID: 114597796167818814}
+  enemyRefManager: {fileID: 0}
   currentState: {fileID: 11400000, guid: 31f81596d542723429675177da5a62f6, type: 2}
   updateStateFrequency: 0.5
   remainState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
@@ -2025,7 +2021,7 @@ MonoBehaviour:
   - effect: {fileID: 114716221110852346, guid: 1c9312d5ecbe20e4cb787bda6af1ec41, type: 2}
     effectAmount: 1
     effectDamage: 4
-  refManager: {fileID: 114750007358334108}
+  refManager: {fileID: 0}
   projectile: {fileID: 114286296576221518, guid: e25bccc031e462241ba121f1659c5259,
     type: 2}
   initialDamage: 8
@@ -2040,16 +2036,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a21b1db55b66a4fbf98c5bc301c519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitySpawnPoints:
-  - {fileID: 4090041996697316}
-  stats: {fileID: 11400000, guid: 4cd08dfbe35dbc142bf1bc11ee98fa8f, type: 2}
+  abilitySpawnPoints: []
+  stats: {fileID: 0}
   targetManager: {fileID: 0}
   friendlyTag: 0
-  enemyTag: 1
+  enemyTag: 0
   ai: {fileID: 0}
   stateController: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  aiAbility: {fileID: 114736284973859216}
+  aiAbility: {fileID: 0}
 --- !u!114 &114756271604913212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2098,9 +2093,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
-  combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
-  enemyCanvas: {fileID: 1135979151033456}
+  baseHealth: 0
+  combatText: {fileID: 0}
+  enemyCanvas: {fileID: 0}
 --- !u!114 &114806463392784098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2138,12 +2133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978eff60540a08241a56bb5d395146c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refManager: {fileID: 114750007358334108}
+  refManager: {fileID: 0}
   patrolPoints: []
   chaseTarget: {fileID: 0}
   nextWayPoint: 0
   attacking: 0
-  updateTargetFrequency: 1
+  updateTargetFrequency: 0
 --- !u!114 &114824526863413054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2155,9 +2150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
-  combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
-  enemyCanvas: {fileID: 1819057502066610}
+  baseHealth: 0
+  combatText: {fileID: 0}
+  enemyCanvas: {fileID: 0}
 --- !u!114 &114825475138567720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2169,12 +2164,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978eff60540a08241a56bb5d395146c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refManager: {fileID: 114597796167818814}
+  refManager: {fileID: 0}
   patrolPoints: []
   chaseTarget: {fileID: 0}
   nextWayPoint: 0
   attacking: 0
-  updateTargetFrequency: 1
+  updateTargetFrequency: 0
 --- !u!114 &114837336179380708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2207,7 +2202,7 @@ MonoBehaviour:
   abilityCooldown: 3
   requiresTarget: 0
   afterEffects: []
-  refManager: {fileID: 114214996973184192}
+  refManager: {fileID: 0}
   projectile: {fileID: 114732284836353408, guid: 5db03dc1b7fa6dd459922559a3121878,
     type: 2}
   initialDamage: 10
@@ -2222,9 +2217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
-  combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
-  enemyCanvas: {fileID: 1802537068943022}
+  baseHealth: 0
+  combatText: {fileID: 0}
+  enemyCanvas: {fileID: 0}
 --- !u!114 &114993526447877238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2236,7 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efca3224e7a23f4a894a07120a90030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRefManager: {fileID: 114750007358334108}
+  enemyRefManager: {fileID: 0}
   currentState: {fileID: 11400000, guid: 31f81596d542723429675177da5a62f6, type: 2}
   updateStateFrequency: 0.5
   remainState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}

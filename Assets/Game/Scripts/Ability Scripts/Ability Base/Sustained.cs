@@ -21,6 +21,8 @@ public class Sustained : DamageTypes {
     {
         mainCam = Camera.main.gameObject;
         effectDelay = new WaitForSeconds(effectFrequency);
+
+        layerMask = LayerMask.NameToLayer(enemyTag);
     }
 
     private void OnEnable()
@@ -56,6 +58,7 @@ public class Sustained : DamageTypes {
             beamRenderer.SetPosition(1, target.position + spawnPos.forward * range);
         else if(target)
             beamRenderer.SetPosition(1, spawnPos.position + target.forward * range);
+
         beamRenderer.startWidth = hitRadius;
         beamRenderer.endWidth = hitRadius;
     }

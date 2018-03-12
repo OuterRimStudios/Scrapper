@@ -13,12 +13,14 @@ public class SustainedAbility : Ability {
     {
         base.Start();
         mainCam = Camera.main.gameObject;
+        print(refManager);
         for (int i = 0; i < refManager.SpawnPosition().Length; i++)
         {
             beams.Add(Instantiate(beamPrefab));
             UpdateTransform();
             beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
-            beams[i].SetTarget(mainCam.transform, false);
+            if(refManager.friendlyTag.ToString() == "Friendly")
+                beams[i].SetTarget(mainCam.transform, false);
         }
     }
 
@@ -27,8 +29,12 @@ public class SustainedAbility : Ability {
         base.ActivateAbility();
         //UpdateTransform();
 
+        Debug.Log("Attacking");
         for (int i = 0; i < beams.Count; i++)
         {
+            if (refManager.friendlyTag.ToString() == "Enemy")
+                beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), true);
+
             beams[i].gameObject.SetActive(true);
         }
     }
