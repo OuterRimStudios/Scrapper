@@ -21,7 +21,7 @@ public class DamageTypes : MonoBehaviour
     {
         damage = _damage;
         enemyTag = _enemyTag;
-        layerMask = LayerMask.NameToLayer(enemyTag);
+        layerMask = 1 << LayerMask.NameToLayer(enemyTag);
     }
 
     public void Initialize(int _damage, string _enemyTag, List<AfterEffect> _afterEffects)

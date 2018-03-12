@@ -15,6 +15,7 @@ public class Sustained : DamageTypes {
     Coroutine repeater;
     GameObject mainCam;
     bool isTurret;
+    bool shootForward;
 
     private void Awake()
     {
@@ -35,7 +36,6 @@ public class Sustained : DamageTypes {
 
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
-        print(objectHit.name);
         ApplyModules(objectHit);
         objectHit.GetComponent<Health>().TookDamage(damage);
         VisualOnTrigger();
@@ -53,6 +53,8 @@ public class Sustained : DamageTypes {
         beamRenderer.SetPosition(0, spawnPos.position);
         if(isTurret && target)
             beamRenderer.SetPosition(1, target.position + spawnPos.forward * range);
+        else if(shootForward && target)
+            beamRenderer.SetPosition(1, spawnPos.position + spawnPos.forward * range);
         else if(target)
             beamRenderer.SetPosition(1, spawnPos.position + target.forward * range);
 
@@ -60,10 +62,11 @@ public class Sustained : DamageTypes {
         beamRenderer.endWidth = hitRadius;
     }
 
-    public void SetTarget(Transform _target, bool _isTurret)
+    public void SetTarget(Transform _target, bool _isTurret, bool _shootForward)
     {
         target = _target;
         isTurret = _isTurret;
+        shootForward = _shootForward;
     }
 
     IEnumerator RepeatEffect()
@@ -73,6 +76,10 @@ public class Sustained : DamageTypes {
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
         }
+        else if(shootForward && target)
+        {
+            hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.position, hitRadius, spawnPos.forward, range, layerMask);
+        }
         else if (target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.forward * range, hitRadius, spawnPos.forward, range, layerMask);
@@ -80,11 +87,15 @@ public class Sustained : DamageTypes {
 
         if (hitObjects.Length > 0)
         {
+            List<GameObject> hitObjectsList = new List<GameObject>();
             foreach (RaycastHit hit in hitObjects)
             {
-                print(hit.transform.gameObject.name);
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer(enemyTag))
-                    EffectOnTrigger(hit.transform.gameObject);
+                if (!hitObjectsList.Contains(hit.transform.gameObject))
+                {
+                    hitObjectsList.Add(hit.transform.gameObject);
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer(enemyTag))
+                        EffectOnTrigger(hit.transform.gameObject);
+                }
             }
         }
 

@@ -48,7 +48,7 @@ public class SustainedAI : Ability {
         isFiring = true;
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), true);
+            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false, true);
             beams[i].gameObject.SetActive(true);
         }
         yield return new WaitForSeconds(effectLength);

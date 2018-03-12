@@ -17,7 +17,6 @@ public class SustainedTurret : Turret {
         {
             beams.Add(Instantiate(turretAbility) as Sustained);
             beams[i].Initialize(damage, enemyTag, afterEffects, spawnpoints[i]);
-            beams[i].layerMask = LayerMask.NameToLayer(enemyTag);
             UpdateTransform();
         }
     }
@@ -61,7 +60,7 @@ public class SustainedTurret : Turret {
         base.TargetUpdated();
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].SetTarget(target, true);
+            beams[i].SetTarget(target, true, false);
         }
     }
 
