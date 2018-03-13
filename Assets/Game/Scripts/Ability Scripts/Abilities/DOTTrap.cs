@@ -8,6 +8,6 @@ public class DOTTrap : Trap {
     public override void EffectOnTrigger(GameObject objectHit)
     {
         base.EffectOnTrigger(objectHit);
-        objectHit.GetComponent<Health>().ApplyDOT(dotDamage, dotDuration);
+        objectHit.GetComponent<StatusEffects>().ApplyDOT(dotDamage, dotDuration);
     }
 }

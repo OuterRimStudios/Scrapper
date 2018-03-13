@@ -7,6 +7,7 @@ public class StatusEffects : MonoBehaviour
 {
     public float baseSpeed;
     public List<Transform> waypoints;
+    Health health;
     Vector3 targetPos;
     int currentWaypoint;
     
@@ -17,45 +18,26 @@ public class StatusEffects : MonoBehaviour
     Coroutine slow;
     Coroutine cc;
     Coroutine root;
+    Coroutine dot;
+    Coroutine stackingDot;
+    Coroutine stackingSlow;
+
+    int dotStackAmount;
+    int currentDotStacks;
+
+    bool stackingDotActive;
+
+    int currentSlowStacks;
 
     NavMeshAgent agent;
 
     private void Start()
     {
+        health = GetComponent<Health>();
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = baseSpeed;
         canAct = true;
-    }
-
-    private void Update()
-    {
-        /*if(canAct)
-        {
-            if (waypoints.Count > 0)
-            {
-                if (targetPos != waypoints[currentWaypoint].position)
-                {
-                    targetPos = waypoints[currentWaypoint].position;
-                }
-                else
-                {
-                    float dist = Vector3.Distance(transform.position, targetPos);
-
-                    if (dist > .6f)
-                    {
-                        Vector3 targetPosition = new Vector3(targetPos.x, transform.position.y, targetPos.z);
-                        transform.LookAt(targetPosition);
-                        transform.position += transform.forward * speed * Time.deltaTime;
-                    }
-                        //transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
-                    else
-                    {
-                        currentWaypoint = (currentWaypoint + 1) % waypoints.Count;
-                    }
-                }
-            }
-        }*/
     }
 
     #region Stun
@@ -185,6 +167,97 @@ public class StatusEffects : MonoBehaviour
         agent.speed = baseSpeed;
 
         print("Root Removed");
+    }
+    #endregion
+    #region Stacking Dot
+
+    public void StackDot(int dotDamage, float dotLength, int stackAmount)
+    {
+        if (stackingDot == null)
+        {
+            currentDotStacks++;
+            dotStackAmount += dotDamage;
+            stackingDot = StartCoroutine(StackingDot(dotLength));
+        }
+        else
+        {
+            StopCoroutine(stackingDot);
+            if (currentDotStacks < stackAmount)
+            {
+                currentDotStacks++;
+                dotStackAmount += dotDamage;
+            }
+            else
+            {
+                currentDotStacks = stackAmount;
+                dotStackAmount = dotDamage * stackAmount;
+            }
+            stackingDot = StartCoroutine(StackingDot(dotLength));
+        };
+    }
+
+    IEnumerator StackingDot(float dotLength)
+    {
+        for (int i = 0; i < dotLength; i++)
+        {
+            health.TookDamage(dotStackAmount);
+            print("Dealing " + dotStackAmount + " damage to enemy");
+            yield return new WaitForSeconds(1);
+        }
+        currentDotStacks = 0;
+        dotStackAmount = 0;
+    }
+    #endregion
+    #region Stacking Slow
+
+    public void StackSlow(float slowLength, int slowAmount, int stackAmount)
+    {
+        if (stackingSlow != null)
+            StopCoroutine(stackingSlow);
+
+        if (currentSlowStacks < stackAmount)
+        {
+            currentSlowStacks++;
+        }
+        else
+        {
+            currentSlowStacks = stackAmount;
+        }
+
+        stackingSlow = StartCoroutine(StackingSlow(slowAmount, slowLength));
+    }
+
+    IEnumerator StackingSlow(int slowAmount, float slowLength)
+    {
+        ApplySlow(slowAmount, slowLength);
+        yield return new WaitForSeconds(slowLength);
+        currentSlowStacks = 0;
+    }
+    #endregion
+    #region SiphonHealth
+    public void Siphon(int siphonDamage)
+    {
+        health.Heal(siphonDamage);
+        print("Siphoned " + siphonDamage + " health from enemy");
+    }
+    #endregion
+    #region DOT
+    public void ApplyDOT(int dotDamage, float dotLength)
+    {
+        if (dot != null)
+            StopCoroutine(dot);
+
+        dot = StartCoroutine(DOT(dotDamage, dotLength));
+    }
+
+    IEnumerator DOT(int _dotDamage, float _dotLength)
+    {
+        for (int i = 0; i < _dotLength; i++)
+        {
+            health.TookDamage(_dotDamage);
+            print("Dealing " + _dotDamage + " damage to enemy");
+            yield return new WaitForSeconds(1);
+        }
     }
     #endregion
 }
