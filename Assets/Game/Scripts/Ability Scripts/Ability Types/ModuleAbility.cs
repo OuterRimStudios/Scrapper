@@ -43,16 +43,5 @@ public class ModuleAbility : Ability
             if (inputManager.abilities[i])
                 inputManager.abilities[i].ModuleActivated(this);
         }
-
-        //if(inputManager.abilityOne)
-        //    inputManager.abilityOne.ModuleActivated(this);
-        //if (inputManager.abilityTwo)
-        //    inputManager.abilityTwo.ModuleActivated(this);
-        //if (inputManager.abilityThree)
-        //    inputManager.abilityThree.ModuleActivated(this);
-        //if (inputManager.abilityFour)
-        //    inputManager.abilityFour.ModuleActivated(this);
-        //if (inputManager.abilityFive)
-        //    inputManager.abilityFive.ModuleActivated(this);
     }
 }

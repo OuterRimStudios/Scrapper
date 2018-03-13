@@ -35,6 +35,8 @@ public class SustainedAbility : Ability {
 
             beams[i].gameObject.SetActive(true);
         }
+
+        RemoveModules();
     }
 
     public override void ModuleActivated(ModuleAbility module)

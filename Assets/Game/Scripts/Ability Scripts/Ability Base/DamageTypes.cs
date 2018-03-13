@@ -59,6 +59,11 @@ public class DamageTypes : MonoBehaviour
         }
     }
 
+    public void RemoveModules()
+    {
+        activeModules.Clear();
+    }
+
     public void ApplyModules(GameObject other)
     {
         if (activeModules.Count > 0)
@@ -89,6 +94,7 @@ public class DamageTypes : MonoBehaviour
                         break;
                 }
             }
+            RemoveModules();
         }
     }
 }

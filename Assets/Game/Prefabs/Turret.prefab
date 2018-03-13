@@ -523,10 +523,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   turretAbility: {fileID: 114732284836353408, guid: 5db03dc1b7fa6dd459922559a3121878,
     type: 2}
   shaft: {fileID: 4010387567450020}
-  spawnpoint:
+  spawnpoints:
   - {fileID: 4361201848280172}
   scanForTargetFrequency: 2
   despawnAfter: 15
