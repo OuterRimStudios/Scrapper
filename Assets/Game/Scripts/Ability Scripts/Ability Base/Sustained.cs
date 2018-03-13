@@ -56,7 +56,10 @@ public class Sustained : DamageTypes {
         else if(shootForward && target)
             beamRenderer.SetPosition(1, spawnPos.position + spawnPos.forward * range);
         else if(target)
-            beamRenderer.SetPosition(1, spawnPos.position + target.forward * range);
+        {
+            print("Set Posss");
+            beamRenderer.SetPosition(1, spawnPos.position + transform.forward * range);
+        }
 
         beamRenderer.startWidth = hitRadius;
         beamRenderer.endWidth = hitRadius;
@@ -82,6 +85,7 @@ public class Sustained : DamageTypes {
         }
         else if (target)
         {
+            print("Fireee");
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.forward * range, hitRadius, spawnPos.forward, range, layerMask);
         }
 
