@@ -7,6 +7,6 @@ public class StunTrap : Trap {
     public override void EffectOnTrigger(GameObject objectHit)
     {
         base.EffectOnTrigger(objectHit);
-        objectHit.GetComponent<StatusEffects>().ApplyStun(stunDuration);
+        objectHit.transform.root.GetComponent<StatusEffects>().ApplyStun(stunDuration);
     }
 }

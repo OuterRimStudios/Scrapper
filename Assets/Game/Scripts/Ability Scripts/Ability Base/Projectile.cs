@@ -11,7 +11,7 @@ public class Projectile : DamageTypes
 
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
-        ApplyModules(objectHit);
+        ApplyModules(objectHit.transform.root.gameObject);
 
         if (objectHit.tag.Equals("Limb"))
             objectHit.GetComponent<Limb>().TookDamage(damage);

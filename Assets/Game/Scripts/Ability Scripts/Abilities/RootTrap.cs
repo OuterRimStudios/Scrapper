@@ -9,6 +9,6 @@ public class RootTrap : Trap
     public override void EffectOnTrigger(GameObject objectHit)
     {
         base.EffectOnTrigger(objectHit);
-        objectHit.GetComponent<StatusEffects>().ApplyRoot(rootLength);
+        objectHit.transform.root.GetComponent<StatusEffects>().ApplyRoot(rootLength);
     }
 }

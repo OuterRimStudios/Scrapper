@@ -17,8 +17,8 @@ public class RandomWalkAction : Action
             GetNewPos(controller);
         }
 
-        //walk
-        controller.enemyRefManager.ai.StartAgent();
+        //walk//
+        //controller.enemyRefManager.ai.StartAgent();
         controller.enemyRefManager.ai.Move();
     }
 

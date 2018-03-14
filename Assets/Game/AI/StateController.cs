@@ -12,8 +12,10 @@ public class StateController : MonoBehaviour
     [HideInInspector] public float stateTimeElapsed;
 
     WaitForSeconds waitTime;                                                //Cached WaitForSeconds for optimization purposes
-    bool updatingState;                                                     //Checks if it's time to update the state
+    [HideInInspector] public bool updatingState;                                                     //Checks if it's time to update the state
     [HideInInspector] public bool aiActive;                                                          //Allows us to not update the AI if it's not necessary for optimization purposes
+
+    Coroutine updateState;
 
 	void Start ()
     {
@@ -24,12 +26,19 @@ public class StateController : MonoBehaviour
 
 	void Update ()
     {
-        if (!aiActive) return;
-
+        if (!aiActive)
+        {
+            if(updateState != null)
+            {
+                StopCoroutine(updateState);
+                updatingState = false;
+            }
+            return;
+        }
 		if(!updatingState)
         {
             updatingState = true;
-            StartCoroutine(UpdateState());
+            updateState =  StartCoroutine(UpdateState());
         }
 	}
 
@@ -38,6 +47,7 @@ public class StateController : MonoBehaviour
         currentState.UpdateState(this);                                      //Tell our State to update, pass it a refence to this instance
         yield return waitTime;
         updatingState = false;
+        updateState = null;
     }
 
     public void TransitionToState(State nextState)

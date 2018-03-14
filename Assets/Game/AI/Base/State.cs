@@ -23,7 +23,7 @@ public class State : ScriptableObject
         }
     }
 
-    private void CheckTransitions(StateController controller)
+    public void CheckTransitions(StateController controller)
     {
         for(int i = 0; i < transitions.Length; i++)
         {

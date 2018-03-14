@@ -82,19 +82,20 @@ public class AI : MonoBehaviour
 
     public void InteruptAgent()
     {
-        StopAgent();
         refManager.aiAbility.DeactivateAbility();
+        StopAgent();
     }
 
     public void StopAgent()
     {
-        refManager.stateController.aiActive = false;
+        refManager.stateController.aiActive = false; 
         aiActive = false;
     }
 
     public void StartAgent()
     {
-        refManager.stateController.aiActive = true;
         aiActive = true;
+        refManager.stateController.currentState.CheckTransitions(refManager.stateController);
+        refManager.stateController.aiActive = true;
     }
 }

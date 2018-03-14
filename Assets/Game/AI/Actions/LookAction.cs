@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/Actions/Look")]
 public class LookAction : Action
 {
+    public float damping;
     public override void Act(StateController controller)
     {
         Look(controller);
@@ -14,6 +15,9 @@ public class LookAction : Action
     {
         Vector3 targetPos = controller.enemyRefManager.ai.walkPos;
         Vector3 lookPos = new Vector3(targetPos.x, controller.transform.position.y, targetPos.z);
-        controller.transform.LookAt(lookPos);
+
+        var rotation = Quaternion.LookRotation(lookPos - controller.transform.position);
+        controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, rotation, Time.deltaTime * damping);
+
     }
 }

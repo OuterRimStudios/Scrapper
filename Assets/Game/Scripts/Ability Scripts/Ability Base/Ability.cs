@@ -38,6 +38,8 @@ public class Ability : MonoBehaviour
 
     public ReferenceManager refManager;
 
+    Coroutine charge;
+
     protected virtual void Start()
     {
         charges = abilityCharges;
@@ -47,12 +49,19 @@ public class Ability : MonoBehaviour
     {
         if (!isCharging)
         {
-            StartCoroutine(Charge());
+            charge = StartCoroutine(Charge());
             charges--;
         }
     }
 
-    public virtual void DeactivateAbility(){ }
+    public virtual void DeactivateAbility()
+    {
+        if(charge != null)
+        {
+            StopCoroutine(charge);
+            isCharging = false;
+        }
+    }
     public virtual void VisualOnCharge() { }
     public virtual void VisualOnActivate() { }
     public virtual void VisualOnDeactivate() { }

@@ -37,10 +37,15 @@ public class SustainedAI : Ability {
 
     public override void DeactivateAbility()
     {
+        base.DeactivateAbility();
         for (int i = 0; i < beams.Count; i++)
         {
             beams[i].gameObject.SetActive(false);
         }
+
+        isCharging = false;         //Interupts Attack phase if using attack decision
+        isFiring = false;
+
         VisualOnDeactivate();
         //UpdateTransform();
         TriggerCooldown();

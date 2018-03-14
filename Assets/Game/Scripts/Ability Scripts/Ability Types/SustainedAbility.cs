@@ -53,6 +53,7 @@ public class SustainedAbility : Ability {
 
     public override void DeactivateAbility()
     {
+        base.DeactivateAbility();
         for (int i = 0; i < beams.Count; i++)
         {
             beams[i].gameObject.SetActive(false);

@@ -9,6 +9,6 @@ public class CCTrap : Trap
     public override void EffectOnTrigger(GameObject objectHit)
     {
         base.EffectOnTrigger(objectHit);
-        objectHit.GetComponent<StatusEffects>().ApplyCC(ccLength);
+        objectHit.transform.root.GetComponent<StatusEffects>().ApplyCC(ccLength);
     }
 }
