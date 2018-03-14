@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class StatusEffects : MonoBehaviour
 {
-    public float baseSpeed;
     public List<Transform> waypoints;
     Health health;
     Vector3 targetPos;
@@ -26,17 +25,17 @@ public class StatusEffects : MonoBehaviour
     int currentDotStacks;
 
     bool stackingDotActive;
+    bool knockingBack;
 
     int currentSlowStacks;
 
-    NavMeshAgent agent;
+    AI ai;
 
     private void Start()
     {
         health = GetComponent<Health>();
         rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = baseSpeed;
+        ai = GetComponent<AI>();
         canAct = true;
     }
 
@@ -45,11 +44,11 @@ public class StatusEffects : MonoBehaviour
     {
         if (stun != null)
             StopCoroutine(stun);
-
-        agent.speed = 0;
+        
         canAct = false;
-        print("Stunned " + agent.speed);
+        print("Stunned " + ai.speed);
 
+        ai.InteruptAgent();
         stun = StartCoroutine(Stunned(stunLength));
     }
 
@@ -62,8 +61,8 @@ public class StatusEffects : MonoBehaviour
     public void RemoveStun()
     {
         canAct = true;
-        agent.speed = baseSpeed;
-        print("Stun Removed " + agent.speed);
+        ai.StartAgent();
+        print("Stun Removed " + ai.speed);
     }
 #endregion
     #region Slow
@@ -74,17 +73,17 @@ public class StatusEffects : MonoBehaviour
 
         print("Slow Amt " + slowAmount);
         float slowPercentage = slowAmount / 100;
-        float newSpeed = (baseSpeed * slowPercentage);
+        float newSpeed = (ai.baseSpeed * slowPercentage);
 
-        if(agent.speed != 0)
+        if(ai.speed != 0)
         {
-            if (agent.speed - newSpeed >= 0)
-                agent.speed -= newSpeed;
+            if (ai.speed - newSpeed >= 0)
+                ai.speed -= newSpeed;
             else
-                agent.speed = 0;
+                ai.speed = 0;
         }
 
-        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " + agent.speed);
+        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " + ai.speed);
 
         slow = StartCoroutine(Slowed(slowLength));
     }
@@ -97,15 +96,29 @@ public class StatusEffects : MonoBehaviour
 
     public void RemoveSlow()
     {
-        agent.speed = baseSpeed;
-        print("Slow Removed " + agent.speed);
+        ai.speed = ai.baseSpeed;
+        print("Slow Removed " + ai.speed);
     }
     #endregion
     #region KnockBack
     public void KnockedBack(float force)
     {
         rb.AddForce((-transform.forward + transform.up) * force, ForceMode.Force);
+
+        ai.InteruptAgent();
+        if (!knockingBack)
+        {
+            knockingBack = true;
+            StartCoroutine(KnockedBack());
+         }
         print("Knocked Back");
+    }
+
+    IEnumerator KnockedBack()
+    {
+        yield return new WaitForSeconds(1.5f);
+        ai.StartAgent();
+        knockingBack = false;
     }
 #endregion
     #region CC
@@ -114,7 +127,7 @@ public class StatusEffects : MonoBehaviour
         if (cc != null)
             StopCoroutine(cc);
 
-        agent.speed = 0;
+        ai.InteruptAgent();
         canAct = false;
         cc = StartCoroutine(CC(ccLength));
 
@@ -134,7 +147,7 @@ public class StatusEffects : MonoBehaviour
 
         if(slow == null && root == null && stun == null)
         {
-            agent.speed = baseSpeed;
+            ai.StartAgent();
             canAct = true;
         }
 
@@ -147,7 +160,7 @@ public class StatusEffects : MonoBehaviour
         if (root != null)
             StopCoroutine(root);
 
-        agent.speed = 0;
+        ai.speed = 0;
         root = StartCoroutine(Rooted(rootLength));
 
         print("Enemy rooted");
@@ -164,7 +177,7 @@ public class StatusEffects : MonoBehaviour
         if (root != null)
             StopCoroutine(root);
 
-        agent.speed = baseSpeed;
+        ai.speed = ai.baseSpeed;
 
         print("Root Removed");
     }

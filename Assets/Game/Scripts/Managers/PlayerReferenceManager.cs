@@ -16,7 +16,7 @@ public class PlayerReferenceManager : ReferenceManager {
     {
         base.Awake();
         firstPerson = true;
-        anim.enabled = false;
+        animManager.SetAnimatorActive(false);
     }
 
     public void SwitchView()
@@ -25,14 +25,14 @@ public class PlayerReferenceManager : ReferenceManager {
 
         if (firstPerson)
         {
-            anim.enabled = false;
+            animManager.SetAnimatorActive(false);
             thirdPersonCharacter.SetActive(false);
             UpdateGunPos(firstPersonGunPosition);
             firstPersonCharacter.SetActive(true);
         }
         else
         {
-            anim.enabled = true;
+            animManager.SetAnimatorActive(true);
             firstPersonCharacter.SetActive(false);
             UpdateGunPos(thirdPersonGunPosition);
             thirdPersonCharacter.SetActive(true);

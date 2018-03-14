@@ -21,12 +21,27 @@ public class SustainedAI : Ability {
         }
     }
 
+    public override void VisualOnActivate()
+    {
+        AIHealth health = (AIHealth)refManager.health;
+        health.SetLimbsActive(true);
+        refManager.animManager.Attack();
+    }
+
+    public override void VisualOnDeactivate()
+    {
+        AIHealth health = (AIHealth)refManager.health;
+        health.SetLimbsActive(false);
+        refManager.animManager.StopAttack();
+    }
+
     public override void DeactivateAbility()
     {
         for (int i = 0; i < beams.Count; i++)
         {
             beams[i].gameObject.SetActive(false);
         }
+        VisualOnDeactivate();
         //UpdateTransform();
         TriggerCooldown();
     }
@@ -46,6 +61,7 @@ public class SustainedAI : Ability {
     IEnumerator Firing()
     {
         isFiring = true;
+        VisualOnActivate();
         for (int i = 0; i < beams.Count; i++)
         {
             beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false, true);
@@ -61,18 +77,18 @@ public class SustainedAI : Ability {
         isCharging = true;
         if (!CheckIfFriendly())
         {
-            if (refManager.GetType() == typeof(EnemyReferenceManager))
+            if (refManager.GetType() == typeof(AIReferenceManager))
             {
-                EnemyReferenceManager tempManager = (EnemyReferenceManager)refManager;
+                AIReferenceManager tempManager = (AIReferenceManager)refManager;
                 tempManager.ai.StopAgent();
             }
         }
         yield return new WaitForSeconds(chargeTime);
         if (!CheckIfFriendly())
         {
-            if (refManager.GetType() == typeof(EnemyReferenceManager))
+            if (refManager.GetType() == typeof(AIReferenceManager))
             {
-                EnemyReferenceManager tempManager = (EnemyReferenceManager)refManager;
+                AIReferenceManager tempManager = (AIReferenceManager)refManager;
                 tempManager.ai.StartAgent();
             }
         }

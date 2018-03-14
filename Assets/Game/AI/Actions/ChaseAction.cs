@@ -14,7 +14,6 @@ public class ChaseAction : Action
     {
         if (controller.enemyRefManager.ai.chaseTarget == null) return;
 
-        controller.enemyRefManager.navMeshAgent.destination = controller.enemyRefManager.ai.chaseTarget.position;               //Start chasing
-        controller.enemyRefManager.navMeshAgent.isStopped = false;
+        controller.enemyRefManager.ai.Move();
     }
 }

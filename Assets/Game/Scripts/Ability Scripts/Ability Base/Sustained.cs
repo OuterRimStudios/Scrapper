@@ -36,8 +36,14 @@ public class Sustained : DamageTypes {
 
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
+        print(" >>>>>>>> " + objectHit.name + " <<<<<<<< ");
         ApplyModules(objectHit);
-        objectHit.GetComponent<Health>().TookDamage(damage);
+
+        if (objectHit.tag.Equals("Limb"))
+            objectHit.GetComponent<Limb>().TookDamage(damage);
+        else
+            objectHit.GetComponent<Health>().TookDamage(damage);
+
         VisualOnTrigger();
         SpawnAfterEffects();
     }

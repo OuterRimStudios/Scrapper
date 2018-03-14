@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class EnemyHealth : Health
+public class AIHealth : Health
 {
     public GameObject combatText;
     public GameObject enemyCanvas;
@@ -9,10 +10,24 @@ public class EnemyHealth : Health
     StatusEffects ai;
     Coroutine dot;
 
+    List<Limb> limbs = new List<Limb>();
+
     protected override void Start()
     {
         base.Start();
         ai = GetComponent<StatusEffects>();
+
+        foreach(Limb limb in transform.GetComponentsInChildren<Limb>())
+        {
+            limbs.Add(limb);
+        }
+    }
+
+    public void SetLimbsActive(bool activeState)
+    {
+        if (limbs.Count <= 0) return;
+        for (int i = 0; i < limbs.Count; i++)
+            limbs[i].limbActive = activeState;
     }
 
     public override void TookDamage(int damage)

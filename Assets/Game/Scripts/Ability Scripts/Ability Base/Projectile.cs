@@ -12,7 +12,12 @@ public class Projectile : DamageTypes
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
         ApplyModules(objectHit);
-        objectHit.GetComponent<Health>().TookDamage(damage);
+
+        if (objectHit.tag.Equals("Limb"))
+            objectHit.GetComponent<Limb>().TookDamage(damage);
+        else
+            objectHit.GetComponent<Health>().TookDamage(damage);
+
         VisualOnTrigger();
         SpawnAfterEffects();
     }
@@ -35,9 +40,8 @@ public class Projectile : DamageTypes
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals(enemyTag))
+        if(other.tag.Equals(enemyTag) || other.tag.Equals("Limb"))
         {
-
             EffectOnTrigger(other.gameObject);
 
             if (destroyedOnTrigger)

@@ -52,10 +52,10 @@ public class Ability : MonoBehaviour
         }
     }
 
-    public virtual void DeactivateAbility()
-    {
-
-    }
+    public virtual void DeactivateAbility(){ }
+    public virtual void VisualOnCharge() { }
+    public virtual void VisualOnActivate() { }
+    public virtual void VisualOnDeactivate() { }
 
     public virtual void ModuleActivated(ModuleAbility module)
     {

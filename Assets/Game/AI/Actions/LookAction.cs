@@ -12,7 +12,7 @@ public class LookAction : Action
 
     void Look(StateController controller)
     {
-        Vector3 targetPos = controller.enemyRefManager.targetManager.GetClosestTarget(controller.transform.position, controller.enemyRefManager.enemyTag.ToString()).position;
+        Vector3 targetPos = controller.enemyRefManager.ai.walkPos;
         Vector3 lookPos = new Vector3(targetPos.x, controller.transform.position.y, targetPos.z);
         controller.transform.LookAt(lookPos);
     }

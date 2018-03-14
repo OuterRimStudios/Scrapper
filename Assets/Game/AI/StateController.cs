@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateController : MonoBehaviour
 {
-    public EnemyReferenceManager enemyRefManager;
+    public AIReferenceManager enemyRefManager;
     public State currentState;                                              //The state that is currently active.
     public float updateStateFrequency;                                      //How often the AI will update it's state
     public State remainState;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ReferenceManager : MonoBehaviour {
 
-    protected Animator anim;
+    public AnimationManager animManager;
     [SerializeField] protected Transform[] abilitySpawnPoints;
-    protected Health health;
+    public Health health;
     protected Rigidbody rigidBody;
     protected StatusEffects statusEffects;
     public Stats stats;
@@ -26,7 +26,7 @@ public class ReferenceManager : MonoBehaviour {
 
     protected virtual void Awake()
     {
-        anim = GetComponent<Animator>();
+        animManager = GetComponent<AnimationManager>();
         health = GetComponent<Health>();
         rigidBody = GetComponent<Rigidbody>();
         targetManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TargetManager>();

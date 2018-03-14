@@ -12,14 +12,14 @@ public class RandomWalkAction : Action
 
     void Move(StateController controller)
     {
-        if (controller.enemyRefManager.ai.walkPos == controller.enemyRefManager.ai.previousPos)
+        if (Utility.CheckDistance(controller.enemyRefManager.ai.walkPos, controller.enemyRefManager.ai.previousPos) <= .5f)
         {
             GetNewPos(controller);
         }
 
         //walk
-        controller.enemyRefManager.navMeshAgent.destination = controller.enemyRefManager.ai.walkPos;
-        controller.enemyRefManager.navMeshAgent.isStopped = false;
+        controller.enemyRefManager.ai.StartAgent();
+        controller.enemyRefManager.ai.Move();
     }
 
     void GetNewPos(StateController controller)
@@ -32,7 +32,9 @@ public class RandomWalkAction : Action
         }
         else
         {
-            controller.enemyRefManager.ai.walkPos = ray.GetPoint(Random.Range(4, controller.enemyRefManager.stats.moveRange));
+            Vector3 walkPoint = ray.GetPoint(Random.Range(4, controller.enemyRefManager.stats.moveRange));
+            controller.enemyRefManager.ai.SetDestination(walkPoint);
+            Debug.Log("New Destination : " + walkPoint);
         }
     }
 }
