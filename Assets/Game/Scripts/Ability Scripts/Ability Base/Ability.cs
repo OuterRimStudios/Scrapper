@@ -15,7 +15,8 @@ public class Ability : MonoBehaviour
         Trap,
         Module,
         Turret,
-        Sustained
+        Sustained,
+        FriendlyAI
     };
 
     public AbilityType abilityType;

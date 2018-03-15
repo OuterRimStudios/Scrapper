@@ -18,7 +18,7 @@ public class SustainedAbility : Ability {
         {
             beams.Add(Instantiate(beamPrefab));
             UpdateTransform();
-            beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
+            beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
             if(refManager.friendlyTag.ToString() == "Friendly")
                 beams[i].SetTarget(mainCam.transform, false, false);
         }

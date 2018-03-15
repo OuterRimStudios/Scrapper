@@ -11,28 +11,30 @@ public class DamageTypes : MonoBehaviour
 
     protected Transform spawnPos;
     protected string enemyTag;
+    protected string friendlyTag;
 
     public void SetModule(ModuleAbility module)
     {
         activeModules.Add(module);
     }
 
-    public void Initialize(int _damage, string _enemyTag)
+    public void Initialize(int _damage, string _enemyTag, string _friendlyTag)
     {
         damage = _damage;
         enemyTag = _enemyTag;
+        friendlyTag = _friendlyTag;
         layerMask = 1 << LayerMask.NameToLayer(enemyTag);
     }
 
-    public void Initialize(int _damage, string _enemyTag, List<AfterEffect> _afterEffects)
+    public void Initialize(int _damage, string _enemyTag, string _friendlyTag, List<AfterEffect> _afterEffects)
     {
-        Initialize(_damage, _enemyTag);
+        Initialize(_damage, _enemyTag, _friendlyTag);
         afterEffects = _afterEffects;
     }
 
-    public void Initialize(int _damage, string _enemyTag, List<AfterEffect> _afterEffects, Transform _spawnPos)
+    public void Initialize(int _damage, string _enemyTag, string _friendlyTag, List<AfterEffect> _afterEffects, Transform _spawnPos)
     {
-        Initialize(_damage, _enemyTag, _afterEffects);
+        Initialize(_damage, _enemyTag, _friendlyTag, _afterEffects);
         spawnPos = _spawnPos;
     }
 
@@ -47,12 +49,12 @@ public class DamageTypes : MonoBehaviour
                     GameObject newEffect = Instantiate(afterEffects[i].effect.gameObject, transform.position, transform.rotation);
                     Projectile tempProjectile = newEffect.GetComponent<Projectile>();
                     if (tempProjectile != null)
-                        tempProjectile.Initialize(afterEffects[i].effectDamage, enemyTag);
+                        tempProjectile.Initialize(afterEffects[i].effectDamage, enemyTag, friendlyTag);
                     else
                     {
                         Trap tempTrap = newEffect.GetComponent<Trap>();
                         if (tempTrap != null)
-                            tempTrap.Initialize(afterEffects[i].effectDamage, enemyTag);
+                            tempTrap.Initialize(afterEffects[i].effectDamage, enemyTag, friendlyTag);
                     }
                 }
             }

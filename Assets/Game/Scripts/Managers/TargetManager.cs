@@ -57,6 +57,28 @@ public class TargetManager : MonoBehaviour
         return bestTarget;
     }
 
+    public Transform GetClosestTargetExcludeSelf(Transform searchPos, string enemyTag)
+    {
+        Transform bestTarget = null;
+        if (enemyTag == "Enemy")
+            foreach (GameObject potentialTarget in activeEnemies)
+            {
+                bestTarget = CheckDistance(potentialTarget, searchPos.position);
+
+              
+            }
+        else if (enemyTag == "Friendly")
+            foreach (GameObject potentialTarget in activeFriendlies)
+            {
+                bestTarget = CheckDistance(potentialTarget, searchPos.position);
+            }
+
+        if (bestTarget == searchPos)
+            return null;
+        else
+            return bestTarget;
+    }
+
     Transform CheckDistance(GameObject potentialTarget, Vector3 searchPos)
     {
         float closestDistanceSqr = Mathf.Infinity;

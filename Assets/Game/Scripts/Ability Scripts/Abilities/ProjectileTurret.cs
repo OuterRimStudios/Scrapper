@@ -35,7 +35,7 @@ public class ProjectileTurret : Turret
             Projectile newProjectile = Instantiate(turretAbility, spawnpoints[alternateFireCount].transform.position, spawnpoints[alternateFireCount].transform.rotation) as Projectile;
             AlternatingFire(spawnpoints.Length);
 
-            newProjectile.Initialize(damage, enemyTag, afterEffects);
+            newProjectile.Initialize(damage, enemyTag, friendlyTag, afterEffects);
 
             for (int j = 0; j < GetActiveModules().Count; j++)
                 newProjectile.SetModule(GetActiveModules()[j]);
@@ -47,7 +47,7 @@ public class ProjectileTurret : Turret
             {
                 Projectile newProjectile = Instantiate(turretAbility, spawnpoints[i].transform.position, spawnpoints[i].transform.rotation) as Projectile;
 
-                newProjectile.Initialize(damage, enemyTag, afterEffects);
+                newProjectile.Initialize(damage, enemyTag, friendlyTag, afterEffects);
 
                 for (int j = 0; j < GetActiveModules().Count; j++)
                     newProjectile.SetModule(GetActiveModules()[j]);

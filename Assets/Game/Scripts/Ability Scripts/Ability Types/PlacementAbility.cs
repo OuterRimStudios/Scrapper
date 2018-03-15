@@ -27,7 +27,7 @@ public class PlacementAbility : Ability
             Quaternion rotation = Quaternion.LookRotation(hit.normal + (Vector3.forward * 90));
 
             Trap newTrap = Instantiate(trap, position, rotation);
-            newTrap.Initialize(initialDamage, refManager.enemyTag.ToString(), afterEffects);
+            newTrap.Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects);
 
             for (int i = 0; i < GetActiveModules().Count; i++)
                 newTrap.SetModule(GetActiveModules()[i]);

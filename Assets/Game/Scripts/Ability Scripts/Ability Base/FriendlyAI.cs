@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : DamageTypes
+public class FriendlyAI : DamageTypes
 {
-    public DamageTypes turretAbility;
-    public Transform shaft;
+    public DamageTypes aiAbility;
     public Transform[] spawnpoints;
     public float scanForTargetFrequency;
     public float despawnAfter;
     public bool scanForTarget;
+    public bool targetsFriendlies;
 
     protected Transform target;
 
@@ -18,7 +18,7 @@ public class Turret : DamageTypes
     WaitForSeconds despawnTime;
 
     TargetManager targetManager;
-    PlaceTurretAbility ability;
+    SpawnAIAbility ability;
 
     bool moduleActive;
 
@@ -30,7 +30,7 @@ public class Turret : DamageTypes
         StartCoroutine(DespawnAfter());
     }
 
-    public void Initialize(PlaceTurretAbility _ability)
+    public void Initialize(SpawnAIAbility _ability)
     {
         ability = _ability;
     }
@@ -38,7 +38,7 @@ public class Turret : DamageTypes
     IEnumerator DespawnAfter()
     {
         yield return despawnTime;
-        ability.RemoveTurret(this);
+        ability.RemoveFriendlyAI(this);
         Destroy(gameObject);
     }
 
@@ -46,22 +46,20 @@ public class Turret : DamageTypes
     {
         if (!scanForTarget) return;
 
-        if(!scanningForTarget)
+        if (!scanningForTarget)
         {
             scanningForTarget = true;
             StartCoroutine(Scan());
-        }
-
-        if(target)
-        {
-            Vector3 targetPosition = new Vector3(target.position.x, shaft.transform.position.y, target.position.z);
-            shaft.transform.LookAt(targetPosition);
         }
     }
 
     IEnumerator Scan()
     {
-        target = targetManager.GetClosestTarget(transform.position, enemyTag);
+        if(targetsFriendlies)
+            target = targetManager.GetClosestTarget(transform.position, friendlyTag);
+        else
+            target = targetManager.GetClosestTarget(transform.position, enemyTag);
+
         TargetUpdated();
         yield return scan;
         scanningForTarget = false;

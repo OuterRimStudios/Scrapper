@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
         refManager = GetComponent<ReferenceManager>();
     }
 
-    public void Heal(int healAmount)
+    public virtual void Heal(int healAmount)
     {
         if (health + healAmount <= baseHealth)
             health += healAmount;

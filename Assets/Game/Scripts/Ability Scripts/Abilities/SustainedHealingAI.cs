@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SustainedAI : Ability {
-
-
-    public Sustained beamPrefab;
+public class SustainedHealingAI : Ability
+{
+    public SustainedHealing beamPrefab;
     public float effectLength;
     public int initialDamage;
 
-    List<Sustained> beams = new List<Sustained>();
+    List<SustainedHealing> beams = new List<SustainedHealing>();
 
     protected override void Start()
     {
@@ -54,14 +53,7 @@ public class SustainedAI : Ability {
 
     public override void ModuleActivated(ModuleAbility module)
     {
-        base.ModuleActivated(module);
-        for (int i = 0; i < beams.Count; i++)
-        {
-            for (int j = 0; j < GetActiveModules().Count; j++)
-                beams[i].SetModule(GetActiveModules()[j]);
-        }
-
-        RemoveModules();
+    
     }
 
     IEnumerator Firing()
@@ -70,7 +62,7 @@ public class SustainedAI : Ability {
         VisualOnActivate();
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false, true);
+            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.friendlyTag.ToString()), false, true);
             beams[i].gameObject.SetActive(true);
         }
         yield return new WaitForSeconds(effectLength);

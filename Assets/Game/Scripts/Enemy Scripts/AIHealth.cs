@@ -37,7 +37,19 @@ public class AIHealth : Health
         ai.RemoveCC();
 
         GameObject cbt = Instantiate(combatText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
-        cbt.GetComponent<Text>().text = damage.ToString();
+        Text cbtText = cbt.GetComponent<Text>();
+        cbtText.color = Color.red;
+        cbtText.text = damage.ToString();
+    }
+
+    public override void Heal(int healAmount)
+    {
+        base.Heal(healAmount);
+
+        GameObject cbt = Instantiate(combatText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
+        Text cbtText = cbt.GetComponent<Text>();
+        cbtText.color = Color.green;
+        cbtText.text = healAmount.ToString();
     }
 
     protected override void Died()

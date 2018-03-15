@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SustainedTurret : Turret {
-
+public class HealingAI : FriendlyAI
+{
     public float effectLength;
     public float effectCooldown;
 
-    bool firing;
+    bool healing;
     List<Sustained> beams = new List<Sustained>();
 
     protected override void Start()
@@ -15,7 +15,7 @@ public class SustainedTurret : Turret {
         base.Start();
         for (int i = 0; i < spawnpoints.Length; i++)
         {
-            beams.Add(Instantiate(turretAbility) as Sustained);
+            beams.Add(Instantiate(aiAbility) as Sustained);
             beams[i].Initialize(damage, enemyTag, friendlyTag, afterEffects, spawnpoints[i]);
             UpdateTransform();
         }
@@ -25,10 +25,10 @@ public class SustainedTurret : Turret {
     {
         base.Update();
         if (!target) return;
-        if (!firing)
+        if (!healing)
         {
-            firing = true;
-            StartCoroutine(Firing());
+            healing = true;
+            StartCoroutine(Healing());
         }
     }
 
@@ -44,15 +44,7 @@ public class SustainedTurret : Turret {
 
     public override void ModuleActivated(ModuleAbility module)
     {
-        print("module activated");
-        base.ModuleActivated(module);
-        for (int i = 0; i < GetActiveModules().Count; i++)
-        {
-            for (int j = 0; j < beams.Count; j++)
-                beams[j].SetModule(GetActiveModules()[i]);
-        }
 
-        RemoveModules();
     }
 
     protected override void TargetUpdated()
@@ -64,7 +56,7 @@ public class SustainedTurret : Turret {
         }
     }
 
-    IEnumerator Firing()
+    IEnumerator Healing()
     {
         for (int i = 0; i < beams.Count; i++)
         {
@@ -80,6 +72,6 @@ public class SustainedTurret : Turret {
 
         yield return new WaitForSeconds(effectCooldown);
 
-        firing = false;
+        healing = false;
     }
 }
