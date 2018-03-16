@@ -11,8 +11,6 @@ public class AI : MonoBehaviour
     public float baseSpeed;
     public bool targetFriendlies;
     public bool updateTarget;
-    [TagSelector]
-    public string[] exclusionTags;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public bool attacking;
     [HideInInspector] public Vector3 walkPos;
@@ -74,7 +72,7 @@ public class AI : MonoBehaviour
 
     IEnumerator UpdateTarget()
     {
-        if (exclusionTags.Length <= 0)
+        if (refManager.exclusionTags.Length <= 0)
         {
             if (!targetFriendlies)
                 chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString());
@@ -84,9 +82,9 @@ public class AI : MonoBehaviour
         else
         {
             if (!targetFriendlies)
-                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString(), exclusionTags.ToList());
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString(), refManager.exclusionTags.ToList());
             else
-                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.friendlyTag.ToString(), exclusionTags.ToList());
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.friendlyTag.ToString(), refManager.exclusionTags.ToList());
         }
 
         SetDestination(chaseTarget);

@@ -69,13 +69,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4353259570147222}
   - component: {fileID: 33743393566113704}
-  - component: {fileID: 65716653062394240}
   - component: {fileID: 23403210882239912}
-  - component: {fileID: 114831820232090008}
-  - component: {fileID: 54315025693685364}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Beam Core
-  m_TagString: Limb
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -889,21 +886,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917547259088846}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54315025693685364
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168735064964288}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!54 &54503611573823036
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -963,18 +945,6 @@ BoxCollider:
   m_GameObject: {fileID: 1561829027966694}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65716653062394240
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168735064964288}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1123,6 +1093,9 @@ MonoBehaviour:
   boundLayer:
     serializedVersion: 2
     m_Bits: 2048
+  exclusionTags:
+  - Healing
+  - Limb
   friendlyTag: 0
   enemyTag: 1
   ai: {fileID: 0}
@@ -1144,29 +1117,12 @@ MonoBehaviour:
   baseSpeed: 100
   targetFriendlies: 1
   updateTarget: 1
-  exclusionTags:
-  - Healing
   nextWayPoint: 0
   attacking: 0
   walkPos: {x: 9999, y: 9999, z: 9999}
   previousPos: {x: 0, y: 0, z: 0}
   speed: 0
   updateTargetFrequency: 1
---- !u!114 &114831820232090008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168735064964288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20e6f4fd90a96834f87061313e7eb607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageMultiplier: 2
-  destructableLimbHealth: 0
-  limbActive: 0
-  destructable: 0
 --- !u!114 &114903920259783542
 MonoBehaviour:
   m_ObjectHideFlags: 1

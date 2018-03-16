@@ -13,6 +13,9 @@ public class ReferenceManager : MonoBehaviour {
     public TargetManager targetManager;
     public LayerMask boundLayer;
 
+    [TagSelector]
+    public string[] exclusionTags;
+
     public enum Tag
     {
         Enemy,

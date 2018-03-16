@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SustainedHealing : Sustained
 {
     public int healAmount;
+    ReferenceManager refManager;
 
     protected override void Awake()
     {
         mainCam = Camera.main.gameObject;
+        refManager = transform.root.GetComponent<ReferenceManager>();
         effectDelay = new WaitForSeconds(effectFrequency);
         layerMask = 1 << LayerMask.NameToLayer(friendlyTag);
     }
@@ -51,7 +54,13 @@ public class SustainedHealing : Sustained
                 {
                     hitObjectsList.Add(hit.transform.gameObject);
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer(friendlyTag))
-                        EffectOnTrigger(hit.transform.gameObject);
+                    {
+                        if(!refManager.exclusionTags.ToList().Contains(hit.transform.tag))
+                        {
+                            print("Healing : " + hit.transform.name + " Tag = " + hit.transform.tag);
+                            EffectOnTrigger(hit.transform.gameObject);
+                        }
+                    }
                 }
             }
         }
