@@ -23,11 +23,32 @@ public class TargetManager : MonoBehaviour
             if (activeEnemies.Contains(targetToRemove))
                 activeEnemies.Remove(targetToRemove);
         }
+        else if (friendlyTag == "Friendly")
+        {
+            if (activeFriendlies.Contains(targetToRemove))
+                activeFriendlies.Remove(targetToRemove);
+        }
+    }
+
+    public void RemoveTarget(GameObject targetToRemove, string friendlyTag, Transform followPoint)
+    {
+        StopTargetting(followPoint);
+        if (friendlyTag == "Enemy")
+        {
+            if (activeEnemies.Contains(targetToRemove))
+                activeEnemies.Remove(targetToRemove);
+        }
         else if(friendlyTag == "Friendly")
         {
             if (activeFriendlies.Contains(targetToRemove))
                 activeFriendlies.Remove(targetToRemove);
         }
+    }
+
+    public void StopTargetting(Transform target)
+    {
+        if(target)
+            target.root.GetComponent<ReferenceManager>().RemoveFollowTarget(target);
     }
 
     public List<GameObject> GetAllTargets(string enemyTag)
@@ -54,7 +75,7 @@ public class TargetManager : MonoBehaviour
                 bestTarget = CheckDistance(potentialTarget, searchPos);
             }
 
-        return bestTarget;
+        return GetFollowPoint(bestTarget);
     }
 
     public Transform GetClosestTarget(Vector3 searchPos, string enemyTag, List<string> exclusionTags)
@@ -77,7 +98,14 @@ public class TargetManager : MonoBehaviour
             }
         }
 
-        return bestTarget;
+        return GetFollowPoint(bestTarget);
+    }
+
+    public Transform GetFollowPoint(Transform target)
+    {
+        if (target == null) return null;
+        Transform followPoint = target.GetComponent<ReferenceManager>().GetFollowPoint();
+        return followPoint;
     }
 
     public Transform GetClosestTargetExcludeSelf(Transform searchPos, string enemyTag)
@@ -97,7 +125,7 @@ public class TargetManager : MonoBehaviour
         if (bestTarget == searchPos)
             return null;
         else
-            return bestTarget;
+            return GetFollowPoint(bestTarget);
     }
 
     Transform CheckDistance(GameObject potentialTarget, Vector3 searchPos)
@@ -114,3 +142,14 @@ public class TargetManager : MonoBehaviour
             return null;
     }
 }
+
+
+/*
+ * list of target transforms, parallel array of bools to show if position is filled
+ * function that returns a transform -> return value is an empty position
+ * - cycle through positions or bools to find an empty
+ * - mark that position as filled and return it
+ * if all positions are filled
+ * - instantiate new empty gameobject, take an existing filled position, add multiplier to it to find a further point, add that position to the list, add bool to list
+ * 
+ */

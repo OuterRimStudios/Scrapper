@@ -29,9 +29,10 @@ public class Utility : MonoBehaviour
         List<GameObject> culledList = new List<GameObject>();
         foreach(GameObject go in listToCull)
         {
-            if(!exclusionTags.Contains(go.tag))
+            if (go)
             {
-                culledList.Add(go);
+                if (!exclusionTags.Contains(go.tag))
+                    culledList.Add(go);
             }
         }
 

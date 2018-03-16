@@ -19,6 +19,7 @@ public class SpawnAIAbility : Ability
             int spawnIndex = (i + 1) % spawnpoints.Length;
             FriendlyAI ai = Instantiate(aiToSpawn, spawnpoints[spawnIndex].position, spawnpoints[spawnIndex].rotation);
             activeAIs.Add(ai);
+            ai.Initialize(this);
 
             for (int j = 0; j < GetActiveModules().Count; j++)
                 ai.SetModule(GetActiveModules()[i]);

@@ -53,6 +53,8 @@ public class AIHealth : Health
 
     protected override void Died()
     {
+        AIReferenceManager tempManager = (AIReferenceManager)refManager;
+        tempManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString(), tempManager.ai.chaseTarget);
         base.Died();
     }
 }

@@ -72,6 +72,9 @@ public class AI : MonoBehaviour
 
     IEnumerator UpdateTarget()
     {
+        if(chaseTarget)
+            refManager.targetManager.StopTargetting(chaseTarget);
+
         if (refManager.exclusionTags.Length <= 0)
         {
             if (!targetFriendlies)
