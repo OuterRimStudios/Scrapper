@@ -18,6 +18,5 @@ public class LookAction : Action
 
         var rotation = Quaternion.LookRotation(lookPos - controller.transform.position);
         controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, rotation, Time.deltaTime * damping);
-
     }
 }

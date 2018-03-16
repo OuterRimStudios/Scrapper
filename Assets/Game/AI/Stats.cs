@@ -11,4 +11,5 @@ public class Stats : ScriptableObject
     public float lookRadius;
     public float lookRange;
     public float moveRange;
+    public float personalSpaceRange;
 }

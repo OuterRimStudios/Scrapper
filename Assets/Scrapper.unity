@@ -3796,7 +3796,7 @@ GameObject:
   - component: {fileID: 1157841696}
   m_Layer: 9
   m_Name: Healing Factory
-  m_TagString: Enemy
+  m_TagString: Healing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3846,7 +3846,9 @@ MonoBehaviour:
   refManager: {fileID: 1157841694}
   chaseTarget: {fileID: 0}
   baseSpeed: 100
+  targetFriendlies: 0
   updateTarget: 0
+  exclusionTags: []
   nextWayPoint: 0
   attacking: 0
   walkPos: {x: 9999, y: 9999, z: 9999}
@@ -3898,7 +3900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 300
+  baseHealth: 10
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   enemyCanvas: {fileID: 2131538325}
 --- !u!114 &1157841693
@@ -3976,7 +3978,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1157841686}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -7.32, y: 0.5, z: 9.24}
+  m_LocalPosition: {x: -57.5, y: 0.5, z: 60.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2131538329}
@@ -6502,6 +6504,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114073933639727024, guid: 1af6e96c05905614983d398881ccae02,
+        type: 2}
+      propertyPath: exclusionTags.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6550,17 +6557,17 @@ Prefab:
         type: 2}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 11400000, guid: 31f81596d542723429675177da5a62f6,
+      objectReference: {fileID: 11400000, guid: 208254a557a01d145be6bb11356118fd,
         type: 2}
     - target: {fileID: 114073933639727024, guid: 1af6e96c05905614983d398881ccae02,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114088925230823694, guid: 1af6e96c05905614983d398881ccae02,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1af6e96c05905614983d398881ccae02, type: 2}

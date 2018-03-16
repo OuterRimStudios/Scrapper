@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b75ab1d983f9c034691c04fadd1c8695, type: 3}
-  m_Name: Idle State
+  m_Name: RandomWalkIdle State
   m_EditorClassIdentifier: 
   actions: []
   transitions:
   - decision: {fileID: 11400000, guid: a8febc8f121c9704da981926079a2350, type: 2}
-    trueState: {fileID: 11400000, guid: 69f8083fda842ca4b94ea84472a918b3, type: 2}
-    falseState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
+    trueState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
+    falseState: {fileID: 11400000, guid: 69f8083fda842ca4b94ea84472a918b3, type: 2}

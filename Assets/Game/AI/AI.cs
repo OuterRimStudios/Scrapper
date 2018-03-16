@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
 public class AI : MonoBehaviour
 {
     public AIReferenceManager refManager;
 
     public Transform chaseTarget;
     public float baseSpeed;
+    public bool targetFriendlies;
     public bool updateTarget;
+    [TagSelector]
+    public string[] exclusionTags;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public bool attacking;
     [HideInInspector] public Vector3 walkPos;
@@ -27,6 +32,7 @@ public class AI : MonoBehaviour
     {
         walkPos = transform.position;
         previousPos = transform.position;
+        aiActive = true;
     }
 
     private void Start()
@@ -68,7 +74,21 @@ public class AI : MonoBehaviour
 
     IEnumerator UpdateTarget()
     {
-        chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString());
+        if (exclusionTags.Length <= 0)
+        {
+            if (!targetFriendlies)
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString());
+            else
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.friendlyTag.ToString());
+        }
+        else
+        {
+            if (!targetFriendlies)
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString(), exclusionTags.ToList());
+            else
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.friendlyTag.ToString(), exclusionTags.ToList());
+        }
+
         SetDestination(chaseTarget);
         yield return waitTime;
         updatingTarget = false;

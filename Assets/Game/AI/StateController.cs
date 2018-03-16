@@ -54,7 +54,7 @@ public class StateController : MonoBehaviour
     {
         if(nextState != remainState)
         {
-            print(currentState.name + " -> " + nextState.name);
+            print(gameObject.name + " {" + currentState.name + " -> " + nextState.name + "}");
             currentState = nextState;
             OnExitState();
         }

@@ -57,6 +57,29 @@ public class TargetManager : MonoBehaviour
         return bestTarget;
     }
 
+    public Transform GetClosestTarget(Vector3 searchPos, string enemyTag, List<string> exclusionTags)
+    {
+        Transform bestTarget = null;
+        if (enemyTag == "Enemy")
+        {
+            List<GameObject> culledEnemies = Utility.CullList(activeEnemies, exclusionTags);
+            foreach (GameObject potentialTarget in culledEnemies)
+            {
+                bestTarget = CheckDistance(potentialTarget, searchPos);
+            }
+        }
+        else if (enemyTag == "Friendly")
+        {
+            List<GameObject> culledFriendlies = Utility.CullList(activeFriendlies, exclusionTags);
+            foreach (GameObject potentialTarget in culledFriendlies)
+            {
+                bestTarget = CheckDistance(potentialTarget, searchPos);
+            }
+        }
+
+        return bestTarget;
+    }
+
     public Transform GetClosestTargetExcludeSelf(Transform searchPos, string enemyTag)
     {
         Transform bestTarget = null;
@@ -64,8 +87,6 @@ public class TargetManager : MonoBehaviour
             foreach (GameObject potentialTarget in activeEnemies)
             {
                 bestTarget = CheckDistance(potentialTarget, searchPos.position);
-
-              
             }
         else if (enemyTag == "Friendly")
             foreach (GameObject potentialTarget in activeFriendlies)

@@ -22,6 +22,11 @@ public class Turret : DamageTypes
 
     bool moduleActive;
 
+    private void Awake()
+    {
+        layerMask = 1 << LayerMask.NameToLayer(enemyTag);
+    }
+
     protected virtual void Start()
     {
         targetManager = GameObject.Find("GameManager").GetComponent<TargetManager>();

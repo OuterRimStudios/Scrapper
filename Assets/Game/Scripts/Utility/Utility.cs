@@ -23,4 +23,18 @@ public class Utility : MonoBehaviour
         direction.z = heading.z / distance;
         return distance;
     }
+
+    public static List<GameObject> CullList(List<GameObject> listToCull, List<string> exclusionTags)
+    {
+        List<GameObject> culledList = new List<GameObject>();
+        foreach(GameObject go in listToCull)
+        {
+            if(!exclusionTags.Contains(go.tag))
+            {
+                culledList.Add(go);
+            }
+        }
+
+        return culledList;
+    }
 }

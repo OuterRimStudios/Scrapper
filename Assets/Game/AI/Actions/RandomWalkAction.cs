@@ -34,7 +34,6 @@ public class RandomWalkAction : Action
         {
             Vector3 walkPoint = ray.GetPoint(Random.Range(4, controller.enemyRefManager.stats.moveRange));
             controller.enemyRefManager.ai.SetDestination(walkPoint);
-            Debug.Log("New Destination : " + walkPoint);
         }
     }
 }

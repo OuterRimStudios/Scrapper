@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 114026236060991634}
   m_Layer: 9
   m_Name: Heal Bot
-  m_TagString: Enemy
+  m_TagString: Healing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRefManager: {fileID: 114506123012902358}
-  currentState: {fileID: 11400000, guid: 31f81596d542723429675177da5a62f6, type: 2}
+  currentState: {fileID: 11400000, guid: f5470745f8cdeb347b1934ce8933e01d, type: 2}
   updateStateFrequency: 0.05
   remainState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
   isIdle: 1
@@ -1140,7 +1140,10 @@ MonoBehaviour:
   refManager: {fileID: 114506123012902358}
   chaseTarget: {fileID: 0}
   baseSpeed: 100
-  updateTarget: 0
+  targetFriendlies: 1
+  updateTarget: 1
+  exclusionTags:
+  - Healing
   nextWayPoint: 0
   attacking: 0
   walkPos: {x: 9999, y: 9999, z: 9999}

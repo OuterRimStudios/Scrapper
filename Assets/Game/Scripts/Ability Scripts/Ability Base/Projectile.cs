@@ -7,7 +7,12 @@ public class Projectile : DamageTypes
     public float speed;
     public bool destroyedOnTrigger;
 
-    Transform target;    
+    Transform target;
+
+    private void Awake()
+    {
+        layerMask = 1 << LayerMask.NameToLayer(enemyTag);
+    }
 
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
@@ -40,7 +45,7 @@ public class Projectile : DamageTypes
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals(enemyTag) || other.tag.Equals("Limb"))
+        if(other.gameObject.layer.Equals(enemyTag) || other.tag.Equals("Limb"))
         {
             EffectOnTrigger(other.gameObject);
 

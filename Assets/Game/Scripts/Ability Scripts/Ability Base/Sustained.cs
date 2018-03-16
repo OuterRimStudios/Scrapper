@@ -10,17 +10,18 @@ public class Sustained : DamageTypes {
     
     public LineRenderer beamRenderer;
 
-    Transform target;
-    WaitForSeconds effectDelay;
-    Coroutine repeater;
-    GameObject mainCam;
-    bool isTurret;
-    bool shootForward;
+    protected Transform target;
+    protected WaitForSeconds effectDelay;
+    protected Coroutine repeater;
+    protected GameObject mainCam;
+    protected bool isTurret;
+    protected bool shootForward;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         mainCam = Camera.main.gameObject;
         effectDelay = new WaitForSeconds(effectFrequency);
+        layerMask = 1 << LayerMask.NameToLayer(enemyTag);
     }
 
     private void OnEnable()
@@ -36,7 +37,6 @@ public class Sustained : DamageTypes {
 
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
-        print(" >>>>>>>> " + objectHit.name + " <<<<<<<< ");
         ApplyModules(objectHit.transform.root.gameObject);
 
         if (objectHit.tag.Equals("Limb"))
@@ -63,7 +63,6 @@ public class Sustained : DamageTypes {
             beamRenderer.SetPosition(1, spawnPos.position + spawnPos.forward * range);
         else if(target)
         {
-            print("Set Posss");
             beamRenderer.SetPosition(1, spawnPos.position + transform.forward * range);
         }
 
@@ -78,7 +77,7 @@ public class Sustained : DamageTypes {
         shootForward = _shootForward;
     }
 
-    IEnumerator RepeatEffect()
+    protected virtual IEnumerator RepeatEffect()
     {
         RaycastHit[] hitObjects = new RaycastHit[0];
         if (isTurret && target)
@@ -91,7 +90,6 @@ public class Sustained : DamageTypes {
         }
         else if (target)
         {
-            print("Fireee");
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.forward * range, hitRadius, spawnPos.forward, range, layerMask);
         }
 
