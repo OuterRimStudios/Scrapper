@@ -1009,7 +1009,9 @@ MonoBehaviour:
   refManager: {fileID: 114340124763962392}
   chaseTarget: {fileID: 0}
   baseSpeed: 100
+  targetFriendlies: 0
   updateTarget: 0
+  exclusionTags: []
   nextWayPoint: 0
   attacking: 0
   walkPos: {x: 9999, y: 9999, z: 9999}
@@ -1186,6 +1188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 300
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
+  healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
+    type: 2}
   enemyCanvas: {fileID: 1793192018200106}
 --- !u!135 &135603779572567560
 SphereCollider:

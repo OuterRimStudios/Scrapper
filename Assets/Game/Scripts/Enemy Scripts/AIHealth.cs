@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class AIHealth : Health
 {
     public GameObject combatText;
+    public GameObject healingText;
     public GameObject enemyCanvas;
 
     StatusEffects ai;
@@ -38,7 +39,6 @@ public class AIHealth : Health
 
         GameObject cbt = Instantiate(combatText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
         Text cbtText = cbt.GetComponent<Text>();
-        cbtText.color = Color.red;
         cbtText.text = damage.ToString();
     }
 
@@ -46,9 +46,8 @@ public class AIHealth : Health
     {
         base.Heal(healAmount);
 
-        GameObject cbt = Instantiate(combatText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
+        GameObject cbt = Instantiate(healingText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
         Text cbtText = cbt.GetComponent<Text>();
-        cbtText.color = Color.green;
         cbtText.text = healAmount.ToString();
     }
 
