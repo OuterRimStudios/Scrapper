@@ -16,7 +16,8 @@ public class Ability : MonoBehaviour
         Module,
         Turret,
         Sustained,
-        FriendlyAI
+        FriendlyAI,
+        Melee
     };
 
     public AbilityType abilityType;

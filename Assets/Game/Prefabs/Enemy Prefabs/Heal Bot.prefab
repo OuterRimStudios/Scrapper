@@ -898,7 +898,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 300
+  baseHealth: 50
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}

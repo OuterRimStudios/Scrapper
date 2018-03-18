@@ -288,13 +288,13 @@ MonoBehaviour:
   baseSpeed: 100
   targetFriendlies: 0
   updateTarget: 0
-  exclusionTags: []
   nextWayPoint: 0
   attacking: 0
   walkPos: {x: 9999, y: 9999, z: 9999}
   previousPos: {x: 0, y: 0, z: 0}
   speed: 0
   updateTargetFrequency: 1
+  agent: {fileID: 0}
 --- !u!114 &114142519251056484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -380,6 +380,7 @@ MonoBehaviour:
   boundLayer:
     serializedVersion: 2
     m_Bits: 2048
+  exclusionTags: []
   friendlyTag: 0
   enemyTag: 1
   ai: {fileID: 0}

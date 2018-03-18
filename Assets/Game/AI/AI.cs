@@ -113,7 +113,7 @@ public class AI : MonoBehaviour
     {
         refManager.stateController.aiActive = false; 
         aiActive = false;
-        if(agent)
+        if(agent && agent.isActiveAndEnabled)
         agent.isStopped = true;
     }
 
@@ -123,7 +123,7 @@ public class AI : MonoBehaviour
         refManager.stateController.currentState.CheckTransitions(refManager.stateController);
         refManager.stateController.aiActive = true;
 
-        if(agent)
-        agent.isStopped = false;
+        if(agent && agent.isActiveAndEnabled)
+            agent.isStopped = false;
     }
 }

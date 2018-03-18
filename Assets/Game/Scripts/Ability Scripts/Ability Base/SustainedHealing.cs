@@ -10,7 +10,6 @@ public class SustainedHealing : Sustained
 
     protected override void Awake()
     {
-        mainCam = Camera.main.gameObject;
         refManager = transform.root.GetComponent<ReferenceManager>();
         effectDelay = new WaitForSeconds(effectFrequency);
         layerMask = 1 << LayerMask.NameToLayer(friendlyTag);

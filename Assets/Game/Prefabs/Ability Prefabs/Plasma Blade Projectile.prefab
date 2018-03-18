@@ -169,7 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   speed: 30
+  destroyedOnTrigger: 0
 --- !u!135 &135267492827602742
 SphereCollider:
   m_ObjectHideFlags: 1
