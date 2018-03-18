@@ -103,9 +103,10 @@ public class StatusEffects : MonoBehaviour
     #region KnockBack
     public void KnockedBack(float force)
     {
+        ai.InteruptAgent();
+        rb.isKinematic = false;
         rb.AddForce((-transform.forward + transform.up) * force, ForceMode.Force);
 
-        ai.InteruptAgent();
         if (!knockingBack)
         {
             knockingBack = true;
@@ -117,6 +118,9 @@ public class StatusEffects : MonoBehaviour
     IEnumerator KnockedBack()
     {
         yield return new WaitForSeconds(1.5f);
+
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
         ai.StartAgent();
         knockingBack = false;
     }

@@ -17,9 +17,11 @@ public class RandomWalkAction : Action
             GetNewPos(controller);
         }
 
+        controller.enemyRefManager.ai.agent.destination = controller.enemyRefManager.ai.walkPos;
+
         //walk//
         //controller.enemyRefManager.ai.StartAgent();
-        controller.enemyRefManager.ai.Move();
+        // controller.enemyRefManager.ai.Move();
     }
 
     void GetNewPos(StateController controller)

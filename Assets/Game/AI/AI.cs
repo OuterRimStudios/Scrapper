@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
@@ -25,9 +26,11 @@ public class AI : MonoBehaviour
     bool aiActive;                                                          //Allows us to not update the AI if it's not necessary for optimization purposes
 
     Rigidbody rb;
+    [HideInInspector] public NavMeshAgent agent;
 
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
         walkPos = transform.position;
         previousPos = transform.position;
         aiActive = true;
@@ -100,6 +103,8 @@ public class AI : MonoBehaviour
 
     public void InteruptAgent()
     {
+        if(agent)
+        agent.destination = transform.position;
         refManager.aiAbility.DeactivateAbility();
         StopAgent();
     }
@@ -108,6 +113,8 @@ public class AI : MonoBehaviour
     {
         refManager.stateController.aiActive = false; 
         aiActive = false;
+        if(agent)
+        agent.isStopped = true;
     }
 
     public void StartAgent()
@@ -115,5 +122,8 @@ public class AI : MonoBehaviour
         aiActive = true;
         refManager.stateController.currentState.CheckTransitions(refManager.stateController);
         refManager.stateController.aiActive = true;
+
+        if(agent)
+        agent.isStopped = false;
     }
 }

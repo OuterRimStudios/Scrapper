@@ -14,6 +14,7 @@ public class ChaseAction : Action
     {
         if (controller.enemyRefManager.ai.chaseTarget == null) return;
 
+        controller.enemyRefManager.ai.agent.destination = controller.enemyRefManager.ai.walkPos;
         controller.enemyRefManager.ai.Move();
     }
 }

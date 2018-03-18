@@ -1603,6 +1603,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1152678557323854, guid: ff8449947d792ac40b0aa0cb89c35811, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff8449947d792ac40b0aa0cb89c35811, type: 2}
   m_IsPrefabParent: 0
@@ -1652,7 +1656,7 @@ MonoBehaviour:
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
-  abilityCooldown: 10
+  abilityCooldown: 1
   requiresTarget: 0
   afterEffects: []
   isCharging: 0
@@ -4816,7 +4820,7 @@ MonoBehaviour:
   abilityFiveKey: 304
   abilities:
   - {fileID: 199931440}
-  - {fileID: 173845501}
+  - {fileID: 1865927530}
   - {fileID: 526834952}
   - {fileID: 153909834}
   - {fileID: 1513604375}
@@ -6177,9 +6181,45 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 54630814141268600, guid: 1af6e96c05905614983d398881ccae02,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54630814141268600, guid: 1af6e96c05905614983d398881ccae02,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1af6e96c05905614983d398881ccae02, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1878823710 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1255796476653088, guid: 1af6e96c05905614983d398881ccae02,
+    type: 2}
+  m_PrefabInternal: {fileID: 1878823709}
+--- !u!195 &1878823711
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878823710}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1885263813
 GameObject:
   m_ObjectHideFlags: 0
