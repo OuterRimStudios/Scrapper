@@ -43,6 +43,8 @@ public class StatusEffects : MonoBehaviour
     {
         if (stun != null)
             StopCoroutine(stun);
+
+        if (!ai) return;
         
         canAct = false;
         print("Stunned " + ai.agent.speed);
@@ -69,6 +71,8 @@ public class StatusEffects : MonoBehaviour
     {
         if (slow != null)
             StopCoroutine(slow);
+
+        if (!ai) return;
 
         print("Slow Amt " + slowAmount);
         float slowPercentage = slowAmount / 100;
@@ -102,6 +106,7 @@ public class StatusEffects : MonoBehaviour
     #region KnockBack
     public void KnockedBack(float force)
     {
+        if (!ai) return;
         ai.InteruptAgent();
         rb.isKinematic = false;
         rb.AddForce((-transform.forward + transform.up) * force, ForceMode.Force);
@@ -129,6 +134,7 @@ public class StatusEffects : MonoBehaviour
     {
         if (cc != null)
             StopCoroutine(cc);
+        if (!ai) return;
 
         ai.InteruptAgent();
         canAct = false;
@@ -160,7 +166,7 @@ public class StatusEffects : MonoBehaviour
     {
         if (root != null)
             StopCoroutine(root);
-
+        if (!ai) return;
         ai.agent.speed = 0;
         root = StartCoroutine(Rooted(rootLength));
 
@@ -187,6 +193,7 @@ public class StatusEffects : MonoBehaviour
 
     public void StackDot(int dotDamage, float dotLength, int stackAmount)
     {
+        if (!ai) return;
         if (stackingDot == null)
         {
             currentDotStacks++;
@@ -225,6 +232,7 @@ public class StatusEffects : MonoBehaviour
 
     public void StackSlow(float slowLength, int slowAmount, int stackAmount)
     {
+        if (!ai) return;
         if (stackingSlow != null)
             StopCoroutine(stackingSlow);
 
@@ -250,6 +258,7 @@ public class StatusEffects : MonoBehaviour
     #region SiphonHealth
     public void Siphon(int siphonDamage)
     {
+        if (!ai) return;
         health.Heal(siphonDamage);
         print("Siphoned " + siphonDamage + " health from enemy");
     }
@@ -257,6 +266,7 @@ public class StatusEffects : MonoBehaviour
     #region DOT
     public void ApplyDOT(int dotDamage, float dotLength)
     {
+        if (!ai) return;
         if (dot != null)
             StopCoroutine(dot);
 

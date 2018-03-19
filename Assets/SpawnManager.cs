@@ -11,13 +11,31 @@ public class SpawnManager : MonoBehaviour
 
     int currentWave;
 
-    List<Encounter> activeEncounters = new List<Encounter>();
+    List<Encounter> nextEncounters = new List<Encounter>();
+    List<string> nextEncounterObjects = new List<string>();
     bool waveActive;
     bool countingDown;
 
+    bool setUpTimer;
+
+    Coroutine timeToSetUp;
+
     private void Start()
     {
+        PrepareWave();
         PlayerReady();
+
+     //   if (currentDifficulty == 1 || currentDifficulty == 2)
+            setUpTimer = true;
+    }
+
+    public void PlayerReady()
+    {
+        if (!countingDown)
+        {
+            countingDown = true;
+            StartCoroutine(CountDown());
+        }
     }
 
     IEnumerator CountDown()
@@ -31,39 +49,70 @@ public class SpawnManager : MonoBehaviour
         StartWave();
     }
 
-    public void PlayerReady()
+    void PrepareWave()
     {
-        if (!countingDown)
+        for (int i = 0; i < difficultyRatings[currentDifficulty].currentEncounterMax; i++)
         {
-            countingDown = true;
-            StartCoroutine(CountDown());
+            int encounterIndex = Random.Range(0, encounters.Count - 1);
+            Encounter randomEncounter = encounters[encounterIndex];
+
+            int numberSpawned = 0;
+            numberSpawned = CheckEncounters(nextEncounterObjects, randomEncounter.name, numberSpawned);
+
+            if (numberSpawned < randomEncounter.maxEncounters)
+            {
+                Encounter newEncounter = Instantiate(randomEncounter);
+
+                newEncounter.name = randomEncounter.name;
+
+                nextEncounters.Add(newEncounter);
+                nextEncounterObjects.Add(newEncounter.name);
+
+                newEncounter.OnRemoveEncounter += RemoveEncounter;
+            }
+        }
+
+        foreach (Encounter encounter in nextEncounters)
+        {
+            encounter.gameObject.SetActive(false);
+        }
+    }
+
+    void RemoveEncounter(Encounter _encounter)
+    {
+        if(nextEncounters.Contains(_encounter))
+        {
+            nextEncounters.Remove(_encounter);
+            nextEncounterObjects.Remove(_encounter.name);
+            _encounter.OnRemoveEncounter -= RemoveEncounter;
         }
     }
 
     public void StartWave()
     {
         waveActive = true;
+        currentWave++;
 
-        for (int i = 0; i < difficultyRatings[currentDifficulty].currentEncounterMax; i++)
+        if (timeToSetUp != null)
+            StopCoroutine(timeToSetUp);
+
+        foreach (Encounter encounter in nextEncounters)
         {
-            Encounter randomEncounter = encounters[Random.Range(0, encounters.Count)];
-            int numberSpawned = 0;
-            numberSpawned = CheckEncounters(activeEncounters, randomEncounter, numberSpawned);
-
-            if (numberSpawned < randomEncounter.maxEncounters)
-            {
-                Encounter newEncounter = Instantiate(randomEncounter);
-                activeEncounters.Add(newEncounter);
-            }
+            encounter.gameObject.SetActive(true);
         }
     }
 
-    int CheckEncounters(List<Encounter> _encounters, Encounter encounterToSpawn, int count)
+    int CheckEncounters(List<string> _encounters, string encounterToSpawn, int count)
     {
-        if (_encounters.Count <= 0)
+        if (nextEncounterObjects.Count <= 0)
             return 0;
 
-        List<Encounter> tempEncounters = _encounters;
+        List<string> tempEncounters = new List<string>();
+
+        foreach(string s in _encounters)
+        {
+            tempEncounters.Add(s);
+        }
 
         if (tempEncounters.Contains(encounterToSpawn))
         {
@@ -75,18 +124,34 @@ public class SpawnManager : MonoBehaviour
         {
             return count;
         }
-
         return CheckEncounters(tempEncounters, encounterToSpawn, count);
     }
-
 
     public void WaveEnded()
     {
         waveActive = false;
+        PrepareWave();
 
+        if(currentWave % difficultyRatings[currentDifficulty].increaseFrequency == 0)
+        {
+            if (difficultyRatings[currentDifficulty].currentEncounterMax < difficultyRatings[currentDifficulty].actualEncounterMax)
+                difficultyRatings[currentDifficulty].currentEncounterMax++;
+        }
 
+        if(setUpTimer)
+            timeToSetUp = StartCoroutine(TimeToSetUp());
     }
 
+    IEnumerator TimeToSetUp()
+    {
+        for(int i = difficultyRatings[currentDifficulty].timeBetweenWaves; i > 0 ; i--)
+        {
+            print("Time till next wave is " + i);
+            yield return new WaitForSeconds(1);
+        }
+
+        StartWave();
+    }
 }
 
 [System.Serializable]

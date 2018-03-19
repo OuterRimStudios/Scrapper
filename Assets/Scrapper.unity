@@ -533,10 +533,10 @@ MonoBehaviour:
   encounters:
   - {fileID: 114155261446889416, guid: ff8449947d792ac40b0aa0cb89c35811, type: 2}
   difficultyRatings:
-  - currentEncounterMax: 3
+  - currentEncounterMax: 4
     actualEncounterMax: 6
     increaseFrequency: 5
-    timeBetweenWaves: 0
+    timeBetweenWaves: 10
     carePackageFrequency: 0
 --- !u!1 &93466791
 GameObject:
@@ -1070,56 +1070,6 @@ MonoBehaviour:
   beamPrefab: {fileID: 114499981810937476, guid: 16adff1cb02e0b344af61f48838b14a4,
     type: 2}
   initialDamage: 4
---- !u!1001 &219872046
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031525539580460, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1570751467675090, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_Name
-      value: Rob Bits
-      objectReference: {fileID: 0}
-    - target: {fileID: 1570751467675090, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3685460658da7c147942b2a07dbaa899, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &223850031
 GameObject:
   m_ObjectHideFlags: 0
@@ -6183,52 +6133,6 @@ MonoBehaviour:
   projectile: {fileID: 114286296576221518, guid: e25bccc031e462241ba121f1659c5259,
     type: 2}
   initialDamage: 8
---- !u!1001 &1878823709
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 15.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4082477410518582, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1255796476653088, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1885263813
 GameObject:
   m_ObjectHideFlags: 0

@@ -324,8 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5efa898f85d3d42b59af647beb6ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encounter: {fileID: 1152678557323854}
-  maxEncounters: 3
+  encounters:
+  - {fileID: 1152678557323854}
+  maxEncounters: 1
 --- !u!114 &114256247864729996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -400,7 +401,13 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  easyChallengeTiers: []
+  encounter: {fileID: 114155261446889416}
+  easyChallengeTiers:
+  - {fileID: 11400000, guid: 10fa97f964d518f4188ad96328cd500b, type: 2}
+  - {fileID: 11400000, guid: 23e007cd7ab22bc41857de62c3c6bfd6, type: 2}
+  - {fileID: 11400000, guid: 3b4706f9e3651b946b75bbb1a8ae1f54, type: 2}
+  - {fileID: 11400000, guid: 78a85958132a9ad478f4c5ee11a64382, type: 2}
+  - {fileID: 11400000, guid: 2f9f5de18d86ec44ebf063a9815e32a2, type: 2}
   mediumChallengeTiers: []
   hardChallengeTiers: []
   currentChallengeTier: {fileID: 0}

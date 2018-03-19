@@ -1100,6 +1100,15 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
+  easyChallengeTiers:
+  - {fileID: 11400000, guid: cf7e7a380145ff8408d622360f3b44a6, type: 2}
+  - {fileID: 11400000, guid: 4c3b983fa97929f4ca2965670da419a5, type: 2}
+  - {fileID: 11400000, guid: e97a74e850c6c094599d2b32e0aeeaf6, type: 2}
+  - {fileID: 11400000, guid: 49049a15aa494884399578d2f457d8b5, type: 2}
+  - {fileID: 11400000, guid: 6a11215df652b844fb678245fe5c9028, type: 2}
+  mediumChallengeTiers: []
+  hardChallengeTiers: []
+  currentChallengeTier: {fileID: 0}
   aiAbility: {fileID: 114980887885727370}
 --- !u!114 &114528823144507312
 MonoBehaviour:
@@ -1123,6 +1132,7 @@ MonoBehaviour:
   previousPos: {x: 0, y: 0, z: 0}
   speed: 0
   updateTargetFrequency: 1
+  selfDestructEffect: {fileID: 0}
   agent: {fileID: 0}
 --- !u!114 &114903920259783542
 MonoBehaviour:

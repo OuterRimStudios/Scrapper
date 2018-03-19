@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 114450503333960908}
   - component: {fileID: 95880299193178408}
   - component: {fileID: 195977520617772184}
+  - component: {fileID: 114251815095273062}
   m_Layer: 9
   m_Name: Ironbot
   m_TagString: Enemy
@@ -1038,6 +1039,20 @@ MonoBehaviour:
   stateTimeElapsed: 0
   updatingState: 0
   aiActive: 0
+--- !u!114 &114251815095273062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1255796476653088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5efa898f85d3d42b59af647beb6ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounters:
+  - {fileID: 1255796476653088}
+  maxEncounters: 3
 --- !u!114 &114340124763962392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1063,6 +1078,7 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
+  encounter: {fileID: 114251815095273062}
   easyChallengeTiers: []
   mediumChallengeTiers: []
   hardChallengeTiers: []

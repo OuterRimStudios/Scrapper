@@ -8,6 +8,7 @@ public class AIReferenceManager : ReferenceManager
     [HideInInspector] public AI ai;
     [HideInInspector] public StateController stateController;
 
+    public Encounter encounter;
     public List<ChallengeTier> easyChallengeTiers;
     public List<ChallengeTier> mediumChallengeTiers;
     public List<ChallengeTier> hardChallengeTiers;

@@ -12,13 +12,14 @@ public class AIHealth : Health
     Coroutine dot;
 
     List<Limb> limbs = new List<Limb>();
+    AIReferenceManager aiRefManager;
 
     protected override void Start()
     {
         base.Start();
         ai = GetComponent<StatusEffects>();
 
-        AIReferenceManager aiRefManager = refManager as AIReferenceManager;
+        aiRefManager = refManager as AIReferenceManager;
         health = aiRefManager.currentChallengeTier.health;
 
         foreach(Limb limb in transform.GetComponentsInChildren<Limb>())
@@ -56,6 +57,7 @@ public class AIHealth : Health
 
     protected override void Died()
     {
+        aiRefManager.encounter.RemoveEncounter(gameObject);
         base.Died();
     }
 }
