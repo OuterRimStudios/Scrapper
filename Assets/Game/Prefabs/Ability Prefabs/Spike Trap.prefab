@@ -137,11 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  destroyedOnTrigger: 0
-  effectFrequency: 5
-  hitRadius: 1.5
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  dotDamage: 5
+  destroyedOnTrigger: 0
+  effectFrequency: 0.5
+  hitRadius: 1.5
+  dotDamage: 1
   dotDuration: 5

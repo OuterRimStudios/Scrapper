@@ -227,6 +227,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   initialDamage: 2
+  placeAtRange: 1
 --- !u!1 &20934573
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +845,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   initialDamage: 8
+  placeAtRange: 0
 --- !u!1 &181455261
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +933,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   initialDamage: 0
+  placeAtRange: 0
 --- !u!1 &186161634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2416,6 +2419,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   initialDamage: 0
+  placeAtRange: 0
 --- !u!1 &532160609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,6 +3883,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   initialDamage: 0
+  placeAtRange: 0
 --- !u!1 &1047325259
 GameObject:
   m_ObjectHideFlags: 0
@@ -5137,9 +5142,9 @@ MonoBehaviour:
   abilityFourKey: 101
   abilityFiveKey: 304
   abilities:
-  - {fileID: 199931440}
-  - {fileID: 907570755}
-  - {fileID: 1885263815}
+  - {fileID: 1807999880}
+  - {fileID: 18681853}
+  - {fileID: 1026614935}
   - {fileID: 153909834}
   - {fileID: 1513604375}
 --- !u!143 &1430053479
