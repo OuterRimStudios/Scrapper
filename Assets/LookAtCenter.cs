@@ -14,6 +14,6 @@ public class LookAtCenter : MonoBehaviour
 	void Update ()
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        transform.LookAt(ray.GetPoint(10));
+        transform.LookAt(ray.GetPoint(100));
 	}
 }

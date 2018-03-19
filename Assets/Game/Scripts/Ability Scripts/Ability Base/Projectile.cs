@@ -45,7 +45,7 @@ public class Projectile : DamageTypes
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer.Equals(enemyTag) || other.tag.Equals("Limb"))
+        if(other.gameObject.layer == LayerMask.NameToLayer(enemyTag) || other.tag.Equals("Limb"))
         {
             EffectOnTrigger(other.gameObject);
 

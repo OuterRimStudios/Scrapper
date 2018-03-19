@@ -57,15 +57,17 @@ public class Sustained : DamageTypes {
     private void Update()
     {
         beamRenderer.SetPosition(0, spawnPos.position);
-        if(isTurret && target)
+        if(isTurret && target)                                                              //Turret
             beamRenderer.SetPosition(1, target.position + spawnPos.forward * range);
-        else if(shootForward && target)
+        else if(shootForward && target)                                                     //AI
             beamRenderer.SetPosition(1, spawnPos.position + spawnPos.forward * range);
-        else if(target)
-        {
-            Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
-            print(range);
-            beamRenderer.SetPosition(1, ray.GetPoint(range));
+        else
+        {                                                                                   //Player
+            if(mainCam)
+            {
+                Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+                beamRenderer.SetPosition(1, ray.GetPoint(range));
+            }
         }
 
         beamRenderer.startWidth = hitRadius;
