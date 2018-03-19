@@ -1163,7 +1163,7 @@ MonoBehaviour:
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0
-  abilityCooldown: 0
+  abilityCooldown: 1
   requiresTarget: 0
   afterEffects: []
   isCharging: 0
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   refManager: {fileID: 114506123012902358}
   beamPrefab: {fileID: 114174726323706050, guid: 99f00f893ca9ccd4ea835eced1caab29,
     type: 2}
-  effectLength: 3
+  effectLength: 5
   initialDamage: 0
 --- !u!135 &135138233462354032
 SphereCollider:

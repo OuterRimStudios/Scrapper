@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,13 +16,15 @@ public class AI : MonoBehaviour
     [HideInInspector] public Vector3 walkPos;
     [HideInInspector] public Vector3 previousPos;
     [HideInInspector] public float speed;
-
+    public float updateTargetFrequency;                                      //How often the AI will update it's state
+    public GameObject selfDestructEffect;
+    
     WaitForSeconds attackFrequency;
 
-    public float updateTargetFrequency;                                      //How often the AI will update it's state
     WaitForSeconds waitTime;                                                //Cached WaitForSeconds for optimization purposes
     bool updatingTarget;                                                     //Checks if it's time to update the state
     bool aiActive;                                                          //Allows us to not update the AI if it's not necessary for optimization purposes
+    bool selfDestructing;
 
     Rigidbody rb;
     [HideInInspector] public NavMeshAgent agent;
@@ -75,7 +76,7 @@ public class AI : MonoBehaviour
 
     IEnumerator UpdateTarget()
     {
-        if (refManager.exclusionTags.Length <= 0)
+        if (refManager.exclusionTags.Count <= 0)
         {
             if (!targetFriendlies)
                 chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString());
@@ -85,9 +86,9 @@ public class AI : MonoBehaviour
         else
         {
             if (!targetFriendlies)
-                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString(), refManager.exclusionTags.ToList());
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString(), refManager.exclusionTags);
             else
-                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.friendlyTag.ToString(), refManager.exclusionTags.ToList());
+                chaseTarget = refManager.targetManager.GetClosestTarget(transform.position, refManager.friendlyTag.ToString(), refManager.exclusionTags);
         }
 
         SetDestination(chaseTarget);
@@ -126,5 +127,23 @@ public class AI : MonoBehaviour
 
         if(agent && agent.isActiveAndEnabled)
             agent.isStopped = false;
+    }
+
+    public void StartSelfDestruct(float effectTime)
+    {
+        if(!selfDestructing)
+        {
+            selfDestructing = true;
+            StopAgent();
+            StartCoroutine(SelfDestruct(effectTime));
+        }
+    }
+
+    IEnumerator SelfDestruct(float effectTime)
+    {
+        if (selfDestructEffect)
+            Instantiate(selfDestructEffect, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(effectTime);
+        Destroy(gameObject);
     }
 }

@@ -14,7 +14,7 @@ public class ReferenceManager : MonoBehaviour {
     public LayerMask boundLayer;
 
     [TagSelector]
-    public string[] exclusionTags;
+    public List<string> exclusionTags;
 
     public enum Tag
     {

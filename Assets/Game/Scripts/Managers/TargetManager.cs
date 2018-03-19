@@ -102,6 +102,7 @@ public class TargetManager : MonoBehaviour
 
     Transform CheckDistance(GameObject potentialTarget, Vector3 searchPos)
     {
+        if (!potentialTarget) return null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 directionToTarget = potentialTarget.transform.position - searchPos;
         float dSqrToTarget = directionToTarget.sqrMagnitude;
