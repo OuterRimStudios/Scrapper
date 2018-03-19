@@ -45,7 +45,7 @@ public class StatusEffects : MonoBehaviour
             StopCoroutine(stun);
         
         canAct = false;
-        print("Stunned " + ai.speed);
+        print("Stunned " + ai.agent.speed);
 
         ai.InteruptAgent();
         stun = StartCoroutine(Stunned(stunLength));
@@ -61,7 +61,7 @@ public class StatusEffects : MonoBehaviour
     {
         canAct = true;
         ai.StartAgent();
-        print("Stun Removed " + ai.speed);
+        print("Stun Removed " + ai.agent.speed);
     }
 #endregion
     #region Slow
@@ -74,15 +74,15 @@ public class StatusEffects : MonoBehaviour
         float slowPercentage = slowAmount / 100;
         float newSpeed = (ai.baseSpeed * slowPercentage);
 
-        if(ai.speed != 0)
+        if(ai.agent.speed != 0)
         {
-            if (ai.speed - newSpeed >= 0)
-                ai.speed -= newSpeed;
+            if (ai.agent.speed - newSpeed >= 0)
+                ai.agent.speed -= newSpeed;
             else
-                ai.speed = 0;
+                ai.agent.speed = 0;
         }
 
-        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " + ai.speed);
+        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " + ai.agent.speed);
 
         slow = StartCoroutine(Slowed(slowLength));
     }
@@ -95,8 +95,8 @@ public class StatusEffects : MonoBehaviour
 
     public void RemoveSlow()
     {
-        ai.speed = ai.baseSpeed;
-        print("Slow Removed " + ai.speed);
+        ai.agent.speed = ai.baseSpeed;
+        print("Slow Removed " + ai.agent.speed);
     }
     #endregion
     #region KnockBack
@@ -163,7 +163,7 @@ public class StatusEffects : MonoBehaviour
         if (root != null)
             StopCoroutine(root);
 
-        ai.speed = 0;
+        ai.agent.speed = 0;
         root = StartCoroutine(Rooted(rootLength));
 
         print("Enemy rooted");
@@ -180,7 +180,7 @@ public class StatusEffects : MonoBehaviour
         if (root != null)
             StopCoroutine(root);
 
-        ai.speed = ai.baseSpeed;
+        ai.agent.speed = ai.baseSpeed;
 
         print("Root Removed");
     }

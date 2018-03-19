@@ -17,8 +17,6 @@ public class SustainedHealing : Sustained
 
     public override void EffectOnTrigger(GameObject objectHit)
     {
-        print(" >>>>>>>> Healing: " + objectHit.name + " <<<<<<<< ");
-
         if (objectHit.tag.Equals("Limb"))
             objectHit.transform.root.GetComponent<Health>().Heal(healAmount);
         else
@@ -56,7 +54,6 @@ public class SustainedHealing : Sustained
                     {
                         if(!refManager.exclusionTags.ToList().Contains(hit.transform.tag))
                         {
-                            print("Healing : " + hit.transform.name + " Tag = " + hit.transform.tag);
                             EffectOnTrigger(hit.transform.gameObject);
                         }
                     }

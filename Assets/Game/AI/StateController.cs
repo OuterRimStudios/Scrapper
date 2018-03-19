@@ -44,7 +44,6 @@ public class StateController : MonoBehaviour
 
     IEnumerator UpdateState()
     {
-        print("Current State = " + currentState.name);
         currentState.UpdateState(this);                                      //Tell our State to update, pass it a refence to this instance
         yield return waitTime;
         updatingState = false;
@@ -55,7 +54,6 @@ public class StateController : MonoBehaviour
     {
         if(nextState != remainState)
         {
-            print(gameObject.name + " {" + currentState.name + " -> " + nextState.name + "}");
             currentState = nextState;
             OnExitState();
         }
