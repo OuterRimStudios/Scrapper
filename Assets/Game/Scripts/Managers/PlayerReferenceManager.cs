@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerReferenceManager : ReferenceManager {
-
+public class PlayerReferenceManager : ReferenceManager
+{
     public GameObject firstPersonCharacter;
     public GameObject thirdPersonCharacter;
     public GameObject gun;

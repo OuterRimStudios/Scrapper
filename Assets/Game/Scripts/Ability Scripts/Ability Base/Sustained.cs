@@ -63,7 +63,9 @@ public class Sustained : DamageTypes {
             beamRenderer.SetPosition(1, spawnPos.position + spawnPos.forward * range);
         else if(target)
         {
-            beamRenderer.SetPosition(1, spawnPos.position + transform.forward * range);
+            Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+            print(range);
+            beamRenderer.SetPosition(1, ray.GetPoint(range));
         }
 
         beamRenderer.startWidth = hitRadius;
