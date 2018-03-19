@@ -105,6 +105,7 @@ public class AI : MonoBehaviour
     {
         if(agent)
         agent.destination = transform.position;
+
         refManager.aiAbility.DeactivateAbility();
         StopAgent();
     }

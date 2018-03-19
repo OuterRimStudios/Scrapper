@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class StatusEffects : MonoBehaviour
 {
-    public List<Transform> waypoints;
     Health health;
     Vector3 targetPos;
     int currentWaypoint;
