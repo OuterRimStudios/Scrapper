@@ -19,7 +19,7 @@ public class PlaceTrapAbility : Ability
     {
         base.ActivateAbility();
   
-        Vector3 position = transform.position + transform.forward * 2;
+        Vector3 position = refManager.transform.position + refManager.transform.forward * 2;
 
         Trap newTrap = Instantiate(trap, position, Quaternion.identity);
         newTrap.Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects);

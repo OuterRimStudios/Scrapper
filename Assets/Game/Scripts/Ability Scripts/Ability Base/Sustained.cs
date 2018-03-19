@@ -57,7 +57,8 @@ public class Sustained : DamageTypes {
     private void Update()
     {
         beamRenderer.SetPosition(0, spawnPos.position);
-        if(isTurret && target)                                                              //Turret
+
+        if (isTurret && target)                                                              //Turret
             beamRenderer.SetPosition(1, target.position + spawnPos.forward * range);
         else if(shootForward && target)                                                     //AI
             beamRenderer.SetPosition(1, spawnPos.position + spawnPos.forward * range);

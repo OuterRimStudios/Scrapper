@@ -1001,7 +1001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
 --- !u!114 &114038350841150790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1172,7 +1171,7 @@ MonoBehaviour:
   refManager: {fileID: 114506123012902358}
   beamPrefab: {fileID: 114174726323706050, guid: 99f00f893ca9ccd4ea835eced1caab29,
     type: 2}
-  effectLength: 10
+  effectLength: 3
   initialDamage: 0
 --- !u!135 &135138233462354032
 SphereCollider:
