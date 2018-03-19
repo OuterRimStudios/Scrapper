@@ -153,8 +153,6 @@ public class StatusEffects : MonoBehaviour
             ai.StartAgent();
             canAct = true;
         }
-
-        print("CC Removed");
     }
 #endregion
     #region Root
@@ -217,7 +215,6 @@ public class StatusEffects : MonoBehaviour
         for (int i = 0; i < dotLength; i++)
         {
             health.TookDamage(dotStackAmount);
-            print("Dealing " + dotStackAmount + " damage to enemy");
             yield return new WaitForSeconds(1);
         }
         currentDotStacks = 0;
@@ -271,7 +268,6 @@ public class StatusEffects : MonoBehaviour
         for (int i = 0; i < _dotLength; i++)
         {
             health.TookDamage(_dotDamage);
-            print("Dealing " + _dotDamage + " damage to enemy");
             yield return new WaitForSeconds(1);
         }
     }

@@ -7,7 +7,5 @@ public class PlayerHealth : Health
     public override void TookDamage(int damage)
     {
         base.TookDamage(damage);
-
-        print("Took Damage " + damage);
     }
 }

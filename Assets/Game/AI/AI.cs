@@ -144,6 +144,7 @@ public class AI : MonoBehaviour
         if (selfDestructEffect)
             Instantiate(selfDestructEffect, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(effectTime);
+        refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
         Destroy(gameObject);
     }
 }

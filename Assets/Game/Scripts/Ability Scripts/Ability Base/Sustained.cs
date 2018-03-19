@@ -39,6 +39,8 @@ public class Sustained : DamageTypes {
     {
         ApplyModules(objectHit.transform.root.gameObject);
 
+        print("DEALING DAMAGE");
+
         if (objectHit.tag.Equals("Limb"))
             objectHit.GetComponent<Limb>().TookDamage(damage);
         else
@@ -93,9 +95,10 @@ public class Sustained : DamageTypes {
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.position, hitRadius, spawnPos.forward, range, layerMask);
         }
-        else if (target)
+        else
         {
-            hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.forward * range, hitRadius, spawnPos.forward, range, layerMask);
+            Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+            hitObjects = Physics.CapsuleCastAll(spawnPos.position, ray.GetPoint(range), hitRadius, spawnPos.forward, range, layerMask);
         }
 
         if (hitObjects.Length > 0)
@@ -103,6 +106,7 @@ public class Sustained : DamageTypes {
             List<GameObject> hitObjectsList = new List<GameObject>();
             foreach (RaycastHit hit in hitObjects)
             {
+                print(" I am hitting " + hit.transform.gameObject.name);
                 if (!hitObjectsList.Contains(hit.transform.gameObject))
                 {
                     hitObjectsList.Add(hit.transform.gameObject);
@@ -114,6 +118,12 @@ public class Sustained : DamageTypes {
 
         yield return effectDelay;
 
-        StartCoroutine(RepeatEffect());
+        RestartEffect();
+    }
+
+    void RestartEffect()
+    {
+        StopCoroutine(repeater);
+        repeater = StartCoroutine(RepeatEffect());
     }
 }

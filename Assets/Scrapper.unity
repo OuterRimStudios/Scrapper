@@ -1038,7 +1038,7 @@ MonoBehaviour:
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0
-  abilityCooldown: 0
+  abilityCooldown: 1
   requiresTarget: 0
   afterEffects: []
   isCharging: 0
@@ -6513,7 +6513,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1255796476653088, guid: 1af6e96c05905614983d398881ccae02, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 54630814141268600, guid: 1af6e96c05905614983d398881ccae02,
         type: 2}
@@ -6565,7 +6565,8 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114653600186466356, guid: 1af6e96c05905614983d398881ccae02, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1af6e96c05905614983d398881ccae02, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1885263813
