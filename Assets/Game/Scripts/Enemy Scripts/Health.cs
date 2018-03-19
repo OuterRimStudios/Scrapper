@@ -8,9 +8,10 @@ public class Health : MonoBehaviour
     protected int health;
     protected ReferenceManager refManager;
 
+
+
     protected virtual void Start()
     {
-        health = baseHealth;
         refManager = GetComponent<ReferenceManager>();
     }
 

@@ -18,6 +18,9 @@ public class AIHealth : Health
         base.Start();
         ai = GetComponent<StatusEffects>();
 
+        AIReferenceManager aiRefManager = refManager as AIReferenceManager;
+        health = aiRefManager.currentChallengeTier.health;
+
         foreach(Limb limb in transform.GetComponentsInChildren<Limb>())
         {
             limbs.Add(limb);

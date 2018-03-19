@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33492378202339820}
   - component: {fileID: 135705217491020058}
   - component: {fileID: 23572346366781600}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Left Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 33653266139871878}
   - component: {fileID: 135740847096449680}
   - component: {fileID: 23185707016110332}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Right Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 33474607253517170}
   - component: {fileID: 136997901032027310}
   - component: {fileID: 23672860864519796}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 136090570759289694}
   - component: {fileID: 54630814141268600}
   - component: {fileID: 114340124763962392}
-  - component: {fileID: 114653600186466356}
   - component: {fileID: 114996551288363122}
   - component: {fileID: 114599017610391392}
   - component: {fileID: 114088925230823694}
@@ -138,7 +137,7 @@ GameObject:
   - component: {fileID: 33957156711559160}
   - component: {fileID: 65870992486919132}
   - component: {fileID: 23135084979973114}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Right Brow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +201,7 @@ GameObject:
   - component: {fileID: 33507247869279134}
   - component: {fileID: 65009628579295986}
   - component: {fileID: 23814229080223030}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Left Brow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +219,7 @@ GameObject:
   - component: {fileID: 33939759768533812}
   - component: {fileID: 135812036402328538}
   - component: {fileID: 23426030253267150}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Right Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +237,7 @@ GameObject:
   - component: {fileID: 223648603655522268}
   - component: {fileID: 114753779046833910}
   - component: {fileID: 114556596489531974}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +255,7 @@ GameObject:
   - component: {fileID: 33365886430154392}
   - component: {fileID: 135603779572567560}
   - component: {fileID: 23162457445336444}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Left Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +275,7 @@ GameObject:
   - component: {fileID: 23590128117799690}
   - component: {fileID: 114482800670160940}
   - component: {fileID: 54761824720036374}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Beam Core
   m_TagString: Limb
   m_Icon: {fileID: 0}
@@ -1018,6 +1017,7 @@ MonoBehaviour:
   previousPos: {x: 0, y: 0, z: 0}
   speed: 0
   updateTargetFrequency: 1
+  selfDestructEffect: {fileID: 0}
   agent: {fileID: 0}
 --- !u!114 &114088925230823694
 MonoBehaviour:
@@ -1063,6 +1063,10 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
+  easyChallengeTiers: []
+  mediumChallengeTiers: []
+  hardChallengeTiers: []
+  currentChallengeTier: {fileID: 0}
   aiAbility: {fileID: 114664613141169874}
 --- !u!114 &114450503333960908
 MonoBehaviour:
@@ -1115,18 +1119,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints: []
---- !u!114 &114653600186466356
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255796476653088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024145aed2d1270458e9eed1c5b9970a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114664613141169874
@@ -1188,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 300
+  baseHealth: 200
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}

@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114657936071930802}
   - component: {fileID: 95618581268830430}
   - component: {fileID: 65400633395078184}
+  - component: {fileID: 114155261446889416}
   m_Layer: 9
   m_Name: Healing Factory
   m_TagString: Healing
@@ -44,7 +45,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4604898231505304}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Spawn Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +60,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4069280483655382}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Spawn Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +78,7 @@ GameObject:
   - component: {fileID: 223146151097915994}
   - component: {fileID: 114473999194224210}
   - component: {fileID: 114256247864729996}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1152678557323854}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -57.5, y: 0.5, z: 60.2}
+  m_LocalPosition: {x: -15.5, y: 0.5, z: 22.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224015536553938228}
@@ -239,7 +240,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -294,6 +295,7 @@ MonoBehaviour:
   previousPos: {x: 0, y: 0, z: 0}
   speed: 0
   updateTargetFrequency: 1
+  selfDestructEffect: {fileID: 0}
   agent: {fileID: 0}
 --- !u!114 &114142519251056484
 MonoBehaviour:
@@ -306,11 +308,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7949da3678eff6944b44d4fb0f4a9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10
+  baseHealth: 100
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}
   enemyCanvas: {fileID: 1671217527559002}
+--- !u!114 &114155261446889416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152678557323854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5efa898f85d3d42b59af647beb6ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounter: {fileID: 1152678557323854}
+  maxEncounters: 3
 --- !u!114 &114256247864729996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,6 +400,10 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
+  easyChallengeTiers: []
+  mediumChallengeTiers: []
+  hardChallengeTiers: []
+  currentChallengeTier: {fileID: 0}
   aiAbility: {fileID: 114892161133081350}
 --- !u!114 &114704768194676504
 MonoBehaviour:
@@ -457,7 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fdb92d270191d4d8abdfd9b95a1699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
 --- !u!223 &223146151097915994
 Canvas:
   m_ObjectHideFlags: 1
