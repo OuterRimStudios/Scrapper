@@ -64,8 +64,7 @@ public class Ability : MonoBehaviour
             isCharging = false;
         }
     }
-
-    public virtual void UpdateStats(ChallengeTier currentChallengeTier) { }
+    
     public virtual void VisualOnCharge() { }
     public virtual void VisualOnActivate() { }
     public virtual void VisualOnDeactivate() { }

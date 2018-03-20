@@ -19,6 +19,8 @@ public class AIReferenceManager : ReferenceManager
 
     public Ability aiAbility;
 
+    SpawnManager spawnManager;
+
     protected override void Awake()
     {
         base.Awake();
@@ -45,6 +47,8 @@ public class AIReferenceManager : ReferenceManager
         }
 
         currentChallengeTier = challengeTiers[0];
+        spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
+        UpdateChallengeTier(spawnManager.currentWave);
     }
 
     public void UpdateChallengeTier(int waveCount)
@@ -52,8 +56,6 @@ public class AIReferenceManager : ReferenceManager
         if(currentChallengeTier.updateAtWave == waveCount)
         {
             currentChallengeTier = challengeTiers[challengeTiers.IndexOf(currentChallengeTier) + 1];
-            
-            //aiAbility.UpdateStats(currentChallengeTier);
         }
         currentChallengeTier.InitializeAbilityStats(aiAbility);
     }

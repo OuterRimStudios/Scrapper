@@ -13,6 +13,7 @@ public class RobbitsChallengeTier : ChallengeTier
 
     public override void InitializeAbilityStats(Ability _ability)
     {
+        Debug.Log("Upgrading Robbits");
         MeleeAbility ability = _ability as MeleeAbility;
 
         ability.damage = damage;

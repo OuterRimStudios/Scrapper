@@ -7,8 +7,12 @@ public class Encounter : MonoBehaviour
     public List<GameObject> encounters;
     public int maxEncounters;
 
-    public delegate void EncounterEvents(Encounter encounter);
-    public event EncounterEvents OnRemoveEncounter;
+    SpawnManager spawnManager;
+
+    private void Start()
+    {
+        spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
+    }
 
     public void RemoveEncounter(GameObject encounterToRemove)
     {
@@ -17,8 +21,7 @@ public class Encounter : MonoBehaviour
 
         if (encounters.Count <= 0)
         {
-            OnRemoveEncounter(this); //<-- Null
-            Destroy(gameObject);
+            spawnManager.RemoveEncounter(this);
         }
     }
 

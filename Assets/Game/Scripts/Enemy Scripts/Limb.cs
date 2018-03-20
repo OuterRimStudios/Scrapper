@@ -24,7 +24,6 @@ public class Limb : MonoBehaviour
 
     public void TookDamage(int damage)
     {
-        print("Limb took damage " + Mathf.RoundToInt(damage * damageMultiplier));
         if (!limbActive) return;
 
         health.TookDamage(Mathf.RoundToInt(damage * damageMultiplier));

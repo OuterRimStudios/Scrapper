@@ -44,7 +44,6 @@ public class SustainedTurret : Turret {
 
     public override void ModuleActivated(ModuleAbility module)
     {
-        print("module activated");
         base.ModuleActivated(module);
         for (int i = 0; i < GetActiveModules().Count; i++)
         {

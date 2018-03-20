@@ -14,6 +14,7 @@ public class SpawnEncounter : MonoBehaviour
         encounter = GetComponent<Encounter>();
         Vector3 spawnPosition = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5,5));
         GameObject testSubject =Instantiate(encounterObject, spawnPosition, Quaternion.identity);
+        testSubject.GetComponent<AIReferenceManager>().encounter = encounter;
 
         encounter.encounters.Add(testSubject);
 
@@ -22,12 +23,9 @@ public class SpawnEncounter : MonoBehaviour
         {
             Vector3 newSpawnPosition = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
             GameObject newTestSubject = Instantiate(encounterObject, spawnPosition, Quaternion.identity);
+
+            newTestSubject.GetComponent<AIReferenceManager>().encounter = encounter;
             encounter.encounters.Add(newTestSubject);
         }
-
-        //foreach(GameObject go in encounter.encounters)
-        //{
-        //    go.SetActive(false);
-        //}
 	}
 }

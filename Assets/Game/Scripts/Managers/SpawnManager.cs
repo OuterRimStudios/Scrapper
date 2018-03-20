@@ -6,10 +6,12 @@ public class SpawnManager : MonoBehaviour
 {
     public List<Encounter> encounters;
     public static int currentDifficulty = 0;
+    public List<Transform> spawnPositions;
+    List<bool> spawnPositionTaken = new List<bool>();
 
     public List<DifficultyRating> difficultyRatings;
 
-    int currentWave;
+    public int currentWave;
 
     List<Encounter> nextEncounters = new List<Encounter>();
     List<string> nextEncounterObjects = new List<string>();
@@ -22,6 +24,9 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < spawnPositions.Count; i++)
+            spawnPositionTaken.Add(false);
+
         PrepareWave();
         PlayerReady();
 
@@ -61,14 +66,13 @@ public class SpawnManager : MonoBehaviour
 
             if (numberSpawned < randomEncounter.maxEncounters)
             {
-                Encounter newEncounter = Instantiate(randomEncounter);
+                Transform spawnLocation = GetSpawnPosition();
+                Encounter newEncounter = Instantiate(randomEncounter, spawnLocation.position, spawnLocation.rotation);
 
                 newEncounter.name = randomEncounter.name;
 
                 nextEncounters.Add(newEncounter);
                 nextEncounterObjects.Add(newEncounter.name);
-
-                newEncounter.OnRemoveEncounter += RemoveEncounter;
             }
         }
 
@@ -78,13 +82,28 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void RemoveEncounter(Encounter _encounter)
+    Transform GetSpawnPosition()
+    {
+        int randomLocation = Random.Range(0, spawnPositions.Count - 1);
+
+        if (!spawnPositionTaken[randomLocation])
+        {
+            spawnPositionTaken[randomLocation] = true;
+            return spawnPositions[randomLocation];
+        }
+        else
+        {
+            return GetSpawnPosition();
+        }
+    }
+
+    public void RemoveEncounter(Encounter _encounter)
     {
         if(nextEncounters.Contains(_encounter))
         {
             nextEncounters.Remove(_encounter);
             nextEncounterObjects.Remove(_encounter.name);
-            _encounter.OnRemoveEncounter -= RemoveEncounter;
+            Destroy(_encounter.gameObject);
         }
     }
 
