@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b679a82717ef84180a09ccf659f719, type: 3}
+  m_Name: IB - Easy - Tier 6
+  m_EditorClassIdentifier: 
+  health: 250
+  updateAtWave: 20
+  spawnCount: 0
+  followSpeed: 5
+  damage: 25
+  damageFrequency: 0.75
+  chargeTime: 3
+  beamSize: 2
+  effectDuration: 10

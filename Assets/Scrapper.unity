@@ -532,9 +532,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounters:
   - {fileID: 114155261446889416, guid: ff8449947d792ac40b0aa0cb89c35811, type: 2}
+  - {fileID: 114251815095273062, guid: 1af6e96c05905614983d398881ccae02, type: 2}
+  - {fileID: 114026128517465724, guid: 022af66dab2fe0a4f8c807c57ca19a08, type: 2}
+  - {fileID: 114026128517465724, guid: 022af66dab2fe0a4f8c807c57ca19a08, type: 2}
   difficultyRatings:
-  - currentEncounterMax: 4
-    actualEncounterMax: 6
+  - currentEncounterMax: 3
+    actualEncounterMax: 8
     increaseFrequency: 5
     timeBetweenWaves: 10
     carePackageFrequency: 0
@@ -1070,6 +1073,7 @@ MonoBehaviour:
   beamPrefab: {fileID: 114499981810937476, guid: 16adff1cb02e0b344af61f48838b14a4,
     type: 2}
   initialDamage: 4
+  beams: []
 --- !u!1 &223850031
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,11 +4802,11 @@ MonoBehaviour:
   abilityFourKey: 101
   abilityFiveKey: 304
   abilities:
-  - {fileID: 1807999880}
-  - {fileID: 18681853}
-  - {fileID: 1026614935}
+  - {fileID: 1873949448}
+  - {fileID: 907570755}
   - {fileID: 153909834}
   - {fileID: 1513604375}
+  - {fileID: 1885263815}
 --- !u!143 &1430053479
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6132,7 +6136,7 @@ MonoBehaviour:
   refManager: {fileID: 1430053481}
   projectile: {fileID: 114286296576221518, guid: e25bccc031e462241ba121f1659c5259,
     type: 2}
-  initialDamage: 8
+  initialDamage: 10
 --- !u!1 &1885263813
 GameObject:
   m_ObjectHideFlags: 0

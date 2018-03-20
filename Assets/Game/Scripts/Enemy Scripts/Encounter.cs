@@ -10,15 +10,23 @@ public class Encounter : MonoBehaviour
     public delegate void EncounterEvents(Encounter encounter);
     public event EncounterEvents OnRemoveEncounter;
 
-    public void RemoveEncounter(GameObject encounterToRemove) //Call this
+    public void RemoveEncounter(GameObject encounterToRemove)
     {
         if (encounters.Contains(encounterToRemove))
             encounters.Remove(encounterToRemove);
 
         if (encounters.Count <= 0)
         {
-            OnRemoveEncounter(this);
+            OnRemoveEncounter(this); //<-- Null
             Destroy(gameObject);
+        }
+    }
+
+    private void OnEnable()
+    {
+        foreach(GameObject go in encounters)
+        {
+            go.SetActive(true);
         }
     }
 }

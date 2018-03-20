@@ -8,7 +8,7 @@ public class SustainedHealingAI : Ability
     public float effectLength;
     public int initialDamage;
 
-    List<SustainedHealing> beams = new List<SustainedHealing>();
+    [HideInInspector] public List<SustainedHealing> beams = new List<SustainedHealing>();
 
     protected override void Start()
     {

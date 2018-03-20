@@ -1100,6 +1100,7 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
+  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: cf7e7a380145ff8408d622360f3b44a6, type: 2}
   - {fileID: 11400000, guid: 4c3b983fa97929f4ca2965670da419a5, type: 2}
@@ -1183,6 +1184,7 @@ MonoBehaviour:
     type: 2}
   effectLength: 5
   initialDamage: 0
+  beams: []
 --- !u!135 &135138233462354032
 SphereCollider:
   m_ObjectHideFlags: 1

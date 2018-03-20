@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ChallengeTier/HealingFactory")]
 public class HealingFactoryChallengeTier : ChallengeTier
 {
+    [Space, Header("Required Variables")]
     [Tooltip("Spawn Frequency")]
     public float abilityCooldown;
     public int amountToSpawn;

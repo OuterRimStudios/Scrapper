@@ -57,7 +57,8 @@ public class AIHealth : Health
 
     protected override void Died()
     {
-        aiRefManager.encounter.RemoveEncounter(gameObject);
+        if(aiRefManager.encounter)
+            aiRefManager.encounter.RemoveEncounter(gameObject);
         base.Died();
     }
 }

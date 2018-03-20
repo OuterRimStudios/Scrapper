@@ -7,7 +7,7 @@ public class SustainedAbility : Ability {
     public Sustained beamPrefab;
     public int initialDamage;
 
-    List<Sustained> beams = new List<Sustained>();
+    [HideInInspector]public List<Sustained> beams = new List<Sustained>();
     GameObject mainCam;
 
     protected override void Start()
