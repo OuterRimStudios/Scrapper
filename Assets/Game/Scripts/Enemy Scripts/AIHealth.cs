@@ -28,6 +28,20 @@ public class AIHealth : Health
         }
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        ai = GetComponent<StatusEffects>();
+
+        aiRefManager = refManager as AIReferenceManager;
+        health = aiRefManager.currentChallengeTier.health;
+
+        foreach (Limb limb in transform.GetComponentsInChildren<Limb>())
+        {
+            limbs.Add(limb);
+        }
+    }
+
     public void SetLimbsActive(bool activeState)
     {
         if (limbs.Count <= 0) return;

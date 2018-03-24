@@ -68,6 +68,7 @@ public class SustainedTurret : Turret {
         for (int i = 0; i < beams.Count; i++)
         {
             beams[i].gameObject.SetActive(true);
+            TargetUpdated();
         }
 
         yield return new WaitForSeconds(effectLength);

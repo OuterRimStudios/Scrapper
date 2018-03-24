@@ -15,6 +15,11 @@ public class Health : MonoBehaviour
         refManager = GetComponent<ReferenceManager>();
     }
 
+    protected virtual void OnEnable()
+    {
+        refManager = GetComponent<ReferenceManager>();
+    }
+
     public virtual void Heal(int healAmount)
     {
         if (health + healAmount <= baseHealth)

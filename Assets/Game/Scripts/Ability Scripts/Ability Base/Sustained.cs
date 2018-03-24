@@ -58,6 +58,27 @@ public class Sustained : DamageTypes {
     {
         beamRenderer.SetPosition(0, spawnPos.position);
 
+        if(!target)
+        {
+            if (repeater != null)
+                StopCoroutine(repeater);
+
+            beamRenderer.enabled = false;
+            return;
+        }
+        else if(target)
+        {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                if (repeater != null)
+                    StopCoroutine(repeater);
+
+                beamRenderer.enabled = false;
+                return;
+            }
+            beamRenderer.enabled = true;
+        }
+
         if (isTurret && target)                                                              //Turret
             beamRenderer.SetPosition(1, target.position + spawnPos.forward * range);
         else if(shootForward && target)                                                     //AI

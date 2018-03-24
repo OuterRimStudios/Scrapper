@@ -20,7 +20,11 @@ public class ProjectileTurret : Turret
     public override void Update()
     {
         base.Update();
-        if (!target) return;
+        if (!target)
+            return;
+        else if (!target.gameObject.activeInHierarchy)
+            return;
+
         if(!firing)
         {
             firing = true;
@@ -54,7 +58,6 @@ public class ProjectileTurret : Turret
                 RemoveModules();
             }
         }
-
 
         yield return fireRate;
         firing = false;
