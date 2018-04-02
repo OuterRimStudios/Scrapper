@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class SpawnManager : MonoBehaviour
 	List<Transform> availableSpawnPositions = new List<Transform> ();
 
 	public List<DifficultyRating> difficultyRatings;
+
+    public Text currentWaveText;
+    public Text timeToNextWaveText;
 
 	public int currentWave;
 
@@ -30,6 +34,8 @@ public class SpawnManager : MonoBehaviour
 
 		//   if (currentDifficulty == 1 || currentDifficulty == 2)
 		setUpTimer = true;
+
+        currentWaveText.text = "Wave: " + 1;
 	}
 
 	public void PlayerReady ()
@@ -43,9 +49,11 @@ public class SpawnManager : MonoBehaviour
 	IEnumerator CountDown ()
 	{
 		for (int i = 3; i > 0; i--) {
-			yield return new WaitForSeconds (1);
+            timeToNextWaveText.text = "Wave Starts in: " + i;
+            yield return new WaitForSeconds (1);
 		}
-		countingDown = false;
+        timeToNextWaveText.text = "";
+        countingDown = false;
 		StartWave ();
 	}
 
@@ -95,6 +103,7 @@ public class SpawnManager : MonoBehaviour
 	{
 		waveActive = true;
 		currentWave++;
+        currentWaveText.text = "Wave: " + currentWave;
 
 		if (timeToSetUp != null)
 			StopCoroutine (timeToSetUp);
@@ -151,6 +160,7 @@ public class SpawnManager : MonoBehaviour
 	IEnumerator TimeToSetUp ()
 	{
 		for (int i = difficultyRatings [currentDifficulty].timeBetweenWaves; i > 0; i--) {
+            timeToNextWaveText.text = "Next Wave in: " + i;
 			yield return new WaitForSeconds (1);
 		}
 
