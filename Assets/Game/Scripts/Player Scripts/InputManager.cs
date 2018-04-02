@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class InputManager : MonoBehaviour
 
     [Space, Header("Ability Loadout")]
     public List<Ability> abilities = new List<Ability>();
+    public List<Image> abilitySlots;
+    public List<Text> abilityCharges;
+    public List<Image> abilityCooldownProgress;
+    public List<Queue<float>> cooldownQueues;
+    bool[] abilityOnCooldown = new bool[5];
     bool[] abilityActive = new bool[5];
     bool[] abilityDeactive = new bool[5];
 
@@ -40,12 +46,31 @@ public class InputManager : MonoBehaviour
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
+        UpdateAbilities();
+
+        for (int i = 0; i < 5; i++)
+            cooldownQueues.Add(new Queue<float>());
+    }
+
+    public void UpdateAbilities()
+    {
+        for(int i = 0; i < abilities.Count; i++)
+        {
+            abilitySlots[i].sprite = abilities[i].abilityIcon;
+
+            if(abilities[i].abilityCharges > 1)
+            {
+                abilityCharges[i].text = abilities[i].abilityCharges.ToString();
+                abilityCharges[i].enabled = true;
+            }
+        }
     }
 
     private void Update()
     {
         RecieveInput();
         AbilityInput();
+        CheckCooldowns();
         playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
         cameraController.RecieveInput(lookY);
 
@@ -64,10 +89,54 @@ public class InputManager : MonoBehaviour
         for (int i = 0; i < abilities.Count; i++)
         {
             if (abilities[i] && abilities[i].CanShoot() && abilityActive[i])
+            {
                 abilities[i].ActivateAbility();
+                abilityCharges[i].text = abilities[i].charges.ToString();
+
+                if(abilities[i].charges > 0)
+                {
+                    cooldownQueues[i].Enqueue(Time.time);
+                }
+                
+
+                if(!abilityOnCooldown[i])
+                {
+                    abilityOnCooldown[i] = true;
+                    StartCoroutine(Cooldown(i));
+                }
+            }
             else if (abilities[i] && abilityDeactive[i])
                 abilities[i].DeactivateAbility();
         }
+    }
+
+    void CheckCooldowns()
+    {
+        if (cooldownQueues.Count <= 0) return;
+        for(int i = 0; i < cooldownQueues.Count; i++)
+        {
+            float elapsedTime = Time.time - cooldownQueues[i].Peek();
+
+            if(elapsedTime > abilities[i].abilityCooldown)
+                cooldownQueues[i].Dequeue();
+        }
+    }
+
+    IEnumerator Cooldown(int abilityIndex)
+    {
+        float remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
+
+        for (float i = remainingTime; i >= 0; i -= .1f)
+        {
+            abilityCooldownProgress[abilityIndex].fillAmount = i;
+            yield return new WaitForSeconds(abilities[abilityIndex].abilityCooldown / 10);
+            remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
+        }
+        
+        abilityCooldownProgress[abilityIndex].fillAmount = 0f;
+        abilityCharges[abilityIndex].text = abilities[abilityIndex].charges.ToString();
+        if(abilities[abilityIndex].abilityCharges > 1)
+            abilityOnCooldown[abilityIndex] = false;
     }
 
     private void RecieveInput()

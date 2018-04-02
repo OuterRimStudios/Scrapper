@@ -32,7 +32,8 @@ public class Ability : MonoBehaviour
 
     public List<AfterEffect> afterEffects;
 
-    int charges;
+    [HideInInspector]
+    public int charges;
     bool onCooldown;
     [HideInInspector] public bool isCharging;
     [HideInInspector] public bool isFiring;
