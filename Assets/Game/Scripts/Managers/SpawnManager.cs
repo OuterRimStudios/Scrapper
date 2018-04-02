@@ -4,182 +4,167 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public List<Encounter> encounters;
-    public static int currentDifficulty = 0;
-    public List<Transform> spawnPositions;
-    List<bool> spawnPositionTaken = new List<bool>();
+	public List<Encounter> encounters;
+	public static int currentDifficulty = 0;
+	public List<Transform> spawnPositions;
+	List<Transform> availableSpawnPositions = new List<Transform> ();
 
-    public List<DifficultyRating> difficultyRatings;
+	public List<DifficultyRating> difficultyRatings;
 
-    public int currentWave;
+	public int currentWave;
 
-    List<Encounter> nextEncounters = new List<Encounter>();
-    List<string> nextEncounterObjects = new List<string>();
-    bool waveActive;
-    bool countingDown;
+	List<Encounter> nextEncounters = new List<Encounter> ();
+	List<string> nextEncounterObjects = new List<string> ();
+	bool waveActive;
+	bool countingDown;
 
-    bool setUpTimer;
+	bool setUpTimer;
 
-    Coroutine timeToSetUp;
+	Coroutine timeToSetUp;
 
-    private void Start()
-    {
-        for (int i = 0; i < spawnPositions.Count; i++)
-            spawnPositionTaken.Add(false);
+	private void Start ()
+	{
+		ResetSpawnpoints ();
+		PrepareWave ();
+		PlayerReady ();
 
-        PrepareWave();
-        PlayerReady();
+		//   if (currentDifficulty == 1 || currentDifficulty == 2)
+		setUpTimer = true;
+	}
 
-     //   if (currentDifficulty == 1 || currentDifficulty == 2)
-            setUpTimer = true;
-    }
+	public void PlayerReady ()
+	{
+		if (!countingDown) {
+			countingDown = true;
+			StartCoroutine (CountDown ());
+		}
+	}
 
-    public void PlayerReady()
-    {
-        if (!countingDown)
-        {
-            countingDown = true;
-            StartCoroutine(CountDown());
-        }
-    }
+	IEnumerator CountDown ()
+	{
+		for (int i = 3; i > 0; i--) {
+			yield return new WaitForSeconds (1);
+		}
+		countingDown = false;
+		StartWave ();
+	}
 
-    IEnumerator CountDown()
-    {
-        for (int i = 3; i > 0; i--)
-        {
-            print(i);
-            yield return new WaitForSeconds(1);
-        }
-        countingDown = false;
-        StartWave();
-    }
+	void PrepareWave ()
+	{
+		for (int i = 0; i < difficultyRatings [currentDifficulty].currentEncounterMax; i++) {
+			int encounterIndex = Random.Range (0, encounters.Count - 1);
+			Encounter randomEncounter = encounters [encounterIndex];
 
-    void PrepareWave()
-    {
-        for (int i = 0; i < difficultyRatings[currentDifficulty].currentEncounterMax; i++)
-        {
-            int encounterIndex = Random.Range(0, encounters.Count - 1);
-            Encounter randomEncounter = encounters[encounterIndex];
+			int numberSpawned = 0;
+			numberSpawned = CheckEncounters (nextEncounterObjects, randomEncounter.name, numberSpawned);
 
-            int numberSpawned = 0;
-            numberSpawned = CheckEncounters(nextEncounterObjects, randomEncounter.name, numberSpawned);
+			if (numberSpawned < randomEncounter.maxEncounters) {
+				Transform spawnLocation = GetSpawnPosition ();
+				Encounter newEncounter = Instantiate (randomEncounter, spawnLocation.position, spawnLocation.rotation);
 
-            if (numberSpawned < randomEncounter.maxEncounters)
-            {
-                Transform spawnLocation = GetSpawnPosition();
-                Encounter newEncounter = Instantiate(randomEncounter, spawnLocation.position, spawnLocation.rotation);
+				newEncounter.name = randomEncounter.name;
 
-                newEncounter.name = randomEncounter.name;
+				nextEncounters.Add (newEncounter);
+				nextEncounterObjects.Add (newEncounter.name);
+			}
+		}
 
-                nextEncounters.Add(newEncounter);
-                nextEncounterObjects.Add(newEncounter.name);
-            }
-        }
+		foreach (Encounter encounter in nextEncounters) {
+			encounter.gameObject.SetActive (false);
+		}
+	}
 
-        foreach (Encounter encounter in nextEncounters)
-        {
-            encounter.gameObject.SetActive(false);
-        }
-    }
+	Transform GetSpawnPosition ()
+	{
+		int randomLocation = Random.Range (0, availableSpawnPositions.Count - 1);
+		Transform spawnPoint = availableSpawnPositions [randomLocation];
+		availableSpawnPositions.Remove (spawnPoint);
+		return spawnPoint;
+	}
 
-    Transform GetSpawnPosition()
-    {
-        int randomLocation = Random.Range(0, spawnPositions.Count - 1);
+	public void RemoveEncounter (Encounter _encounter)
+	{
+		if (nextEncounters.Contains (_encounter)) {
+			nextEncounters.Remove (_encounter);
+			nextEncounterObjects.Remove (_encounter.name);
+			Destroy (_encounter.gameObject);
+		}
+	}
 
-        if (!spawnPositionTaken[randomLocation])
-        {
-            spawnPositionTaken[randomLocation] = true;
-            return spawnPositions[randomLocation];
-        }
-        else
-        {
-            return GetSpawnPosition();
-        }
-    }
+	public void StartWave ()
+	{
+		waveActive = true;
+		currentWave++;
 
-    public void RemoveEncounter(Encounter _encounter)
-    {
-        if(nextEncounters.Contains(_encounter))
-        {
-            nextEncounters.Remove(_encounter);
-            nextEncounterObjects.Remove(_encounter.name);
-            Destroy(_encounter.gameObject);
-        }
-    }
+		if (timeToSetUp != null)
+			StopCoroutine (timeToSetUp);
 
-    public void StartWave()
-    {
-        waveActive = true;
-        currentWave++;
+		foreach (Encounter encounter in nextEncounters) {
+			encounter.gameObject.SetActive (true);
+		}
+	}
 
-        if (timeToSetUp != null)
-            StopCoroutine(timeToSetUp);
+	int CheckEncounters (List<string> _encounters, string encounterToSpawn, int count)
+	{
+		if (nextEncounterObjects.Count <= 0)
+			return 0;
 
-        foreach (Encounter encounter in nextEncounters)
-        {
-            encounter.gameObject.SetActive(true);
-        }
-    }
+		List<string> tempEncounters = new List<string> ();
 
-    int CheckEncounters(List<string> _encounters, string encounterToSpawn, int count)
-    {
-        if (nextEncounterObjects.Count <= 0)
-            return 0;
+		foreach (string s in _encounters) {
+			tempEncounters.Add (s);
+		}
 
-        List<string> tempEncounters = new List<string>();
+		if (tempEncounters.Contains (encounterToSpawn)) {
+			count++;
+			int index = tempEncounters.IndexOf (encounterToSpawn);
+			tempEncounters.RemoveAt (index);
+		} else if (!tempEncounters.Contains (encounterToSpawn)) {
+			return count;
+		}
+		return CheckEncounters (tempEncounters, encounterToSpawn, count);
+	}
 
-        foreach(string s in _encounters)
-        {
-            tempEncounters.Add(s);
-        }
+	public void WaveEnded ()
+	{
+		waveActive = false;
+		ResetSpawnpoints ();
+		PrepareWave ();
 
-        if (tempEncounters.Contains(encounterToSpawn))
-        {
-            count++;
-            int index = tempEncounters.IndexOf(encounterToSpawn);
-            tempEncounters.RemoveAt(index);
-        }
-        else if (!tempEncounters.Contains(encounterToSpawn))
-        {
-            return count;
-        }
-        return CheckEncounters(tempEncounters, encounterToSpawn, count);
-    }
+		if (currentWave % difficultyRatings [currentDifficulty].increaseFrequency == 0) {
+			if (difficultyRatings [currentDifficulty].currentEncounterMax < difficultyRatings [currentDifficulty].actualEncounterMax)
+				difficultyRatings [currentDifficulty].currentEncounterMax++;
+		}
 
-    public void WaveEnded()
-    {
-        waveActive = false;
-        PrepareWave();
+		if (setUpTimer)
+			timeToSetUp = StartCoroutine (TimeToSetUp ());
+	}
 
-        if(currentWave % difficultyRatings[currentDifficulty].increaseFrequency == 0)
-        {
-            if (difficultyRatings[currentDifficulty].currentEncounterMax < difficultyRatings[currentDifficulty].actualEncounterMax)
-                difficultyRatings[currentDifficulty].currentEncounterMax++;
-        }
+	void ResetSpawnpoints ()
+	{
+		availableSpawnPositions.Clear ();
+		foreach (Transform point in spawnPositions) {
+			availableSpawnPositions.Add (point);
+		}
+	}
 
-        if(setUpTimer)
-            timeToSetUp = StartCoroutine(TimeToSetUp());
-    }
+	IEnumerator TimeToSetUp ()
+	{
+		for (int i = difficultyRatings [currentDifficulty].timeBetweenWaves; i > 0; i--) {
+			yield return new WaitForSeconds (1);
+		}
 
-    IEnumerator TimeToSetUp()
-    {
-        for(int i = difficultyRatings[currentDifficulty].timeBetweenWaves; i > 0 ; i--)
-        {
-            print("Time till next wave is " + i);
-            yield return new WaitForSeconds(1);
-        }
-
-        StartWave();
-    }
+		StartWave ();
+	}
 }
 
 [System.Serializable]
 public class DifficultyRating
 {
-    public int currentEncounterMax;
-    public int actualEncounterMax;
-    public int increaseFrequency;
+	public int currentEncounterMax;
+	public int actualEncounterMax;
+	public int increaseFrequency;
 
-    public int timeBetweenWaves;
-    public int carePackageFrequency; 
+	public int timeBetweenWaves;
+	public int carePackageFrequency;
 }

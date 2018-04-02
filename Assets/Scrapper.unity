@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 9
@@ -586,6 +586,7 @@ MonoBehaviour:
     increaseFrequency: 5
     timeBetweenWaves: 10
     carePackageFrequency: 0
+  currentWave: 0
 --- !u!1 &93466791
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +826,7 @@ MonoBehaviour:
   placementLayer:
     serializedVersion: 2
     m_Bits: 256
-  initialDamage: 2
+  initialDamage: 100000
   activeTurrets: []
 --- !u!1 &164035161
 GameObject:
@@ -5473,7 +5474,7 @@ MonoBehaviour:
   placementLayer:
     serializedVersion: 2
     m_Bits: 256
-  initialDamage: 1
+  initialDamage: 100000
   activeTurrets: []
 --- !u!1 &1524488040
 GameObject:
@@ -6351,7 +6352,7 @@ Transform:
   m_GameObject: {fileID: 1817312586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -6588,7 +6589,7 @@ MonoBehaviour:
   refManager: {fileID: 1430053481}
   projectile: {fileID: 114286296576221518, guid: e25bccc031e462241ba121f1659c5259,
     type: 2}
-  initialDamage: 10
+  initialDamage: 100000
 --- !u!1 &1885263813
 GameObject:
   m_ObjectHideFlags: 0
