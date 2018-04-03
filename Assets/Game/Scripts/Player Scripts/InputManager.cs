@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     public KeyCode jumpKey;
     public KeyCode interactKey;
     public KeyCode toggleViewKey;
+    public KeyCode loadoutMenuKey;
 
     [Space, Header("Ability Keys")]
     public KeyCode abilityOneKey;
@@ -22,6 +23,13 @@ public class InputManager : MonoBehaviour
     public List<Text> abilityCharges;
     public List<Image> abilityCooldownProgress;
     public List<Queue<float>> cooldownQueues = new List<Queue<float>>();
+
+    [Space, Header("Menus")]
+    public GameObject loadoutMenu;
+    public GameObject hud;
+
+    public bool hideCursor = true;
+
     bool[] abilityOnCooldown = new bool[5];
     bool[] abilityActive = new bool[5];
     bool[] abilityDeactive = new bool[5];
@@ -29,6 +37,8 @@ public class InputManager : MonoBehaviour
     bool jump;
     bool interact;
     bool toggleView;
+    bool toggleLoadoutMenu;
+    public static bool canAct;
 
     float moveX;
     float moveY;
@@ -43,7 +53,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-
+        canAct = true;
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
@@ -51,6 +61,12 @@ public class InputManager : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
             cooldownQueues.Add(new Queue<float>());
+
+        if (hideCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void UpdateAbilities()
@@ -82,13 +98,49 @@ public class InputManager : MonoBehaviour
             playerRefManager.SwitchView();
             cameraController.SwitchView();
         }
+        
+        if (toggleLoadoutMenu)
+        {
+            hud.SetActive(false);
+            PlayerMovement.canAct = false;
+            CameraController.canAct = false;
+            loadoutMenu.SetActive(true);
+            hideCursor = false;
+        }
+        else
+        {
+            hud.SetActive(true);
+            PlayerMovement.canAct = true;
+            CameraController.canAct = true;
+            loadoutMenu.SetActive(false);
+            hideCursor = true;
+        }
 
         if (jump)
             playerMovement.Jump();
+
+
+        if (hideCursor)
+        {
+            if (Cursor.lockState != CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+        else
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
     }
 
     void AbilityInput()
     {
+        if (!canAct) return;
         for (int i = 0; i < abilities.Count; i++)
         {
             if (abilities[i] && abilities[i].CanShoot() && abilityActive[i])
@@ -151,6 +203,9 @@ public class InputManager : MonoBehaviour
         jump = Input.GetKeyDown(jumpKey);
         interact = Input.GetKey(interactKey);
         toggleView = Input.GetKeyDown(toggleViewKey);
+
+        if(Input.GetKeyDown(loadoutMenuKey))
+            toggleLoadoutMenu = !toggleLoadoutMenu;
 
         abilityActive[0] = Input.GetKeyDown(abilityOneKey);
         abilityActive[1] = Input.GetKeyDown(abilityTwoKey);

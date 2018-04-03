@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     public Vector3 thirdPersonOffset;
     public float switchViewSpeed;
 
-    public bool hideCursor = true;
+    public static bool canAct;
 
     float clampValue;
     float lookY;
@@ -29,14 +29,9 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        canAct = true;
         firstPerson = true;
         player = GameObject.Find("Player").transform;
-
-        if (hideCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
     }
 
     public void RecieveInput(float _lookY)
@@ -52,6 +47,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!canAct) return;
         Look();
         SwitchingView();
     }

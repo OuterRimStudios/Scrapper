@@ -327,6 +327,9 @@ MonoBehaviour:
   encounters:
   - {fileID: 1152678557323854}
   maxEncounters: 2
+  encounterImage: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  mechanicImages:
+  - {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
 --- !u!114 &114256247864729996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,6 +465,7 @@ MonoBehaviour:
   abilityCooldown: 10
   requiresTarget: 0
   afterEffects: []
+  charges: 0
   isCharging: 0
   isFiring: 0
   refManager: {fileID: 114659290575130706}

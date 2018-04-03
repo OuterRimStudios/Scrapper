@@ -7,6 +7,9 @@ public class Encounter : MonoBehaviour
     public List<GameObject> encounters;
     public int maxEncounters;
 
+    public Sprite encounterImage;
+    public Sprite[] mechanicImages;
+
     SpawnManager spawnManager;
 
     private void Start()

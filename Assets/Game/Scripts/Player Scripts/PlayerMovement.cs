@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float distToGround = 1.1f;
     public LayerMask groundLayer;
 
+    public static bool canAct;
+
     float speed;
 
     float moveX;
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        canAct = true;
         anim = GetComponent<Animator>();
         speed = movementSpeed;
         myCamera = Camera.main;
@@ -70,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!canAct) return;
         Move();
         Look();
         Jumping();

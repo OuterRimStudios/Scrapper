@@ -10,6 +10,17 @@ public class SpawnManager : MonoBehaviour
 	public List<Transform> spawnPositions;
 	List<Transform> availableSpawnPositions = new List<Transform> ();
 
+    [Space, Header("UI")]
+    public GameObject[] enemyDisplayHud;
+    public Image[] enemyDisplayHudImages;
+
+    public GameObject[] enemyDisplayloadout;
+    public Image[] enemyDisplayLoadoutImages;
+
+    public List<Transform> mechanicDisplayFields;
+    public GameObject mechanicImagePrefab;
+
+
 	public List<DifficultyRating> difficultyRatings;
 
     public Text currentWaveText;
@@ -77,8 +88,21 @@ public class SpawnManager : MonoBehaviour
 			}
 		}
 
-		foreach (Encounter encounter in nextEncounters) {
-			encounter.gameObject.SetActive (false);
+        for (int j = 0; j < nextEncounters.Count; j++)
+        {
+            nextEncounters[j].gameObject.SetActive(false);
+
+            enemyDisplayHud[j].SetActive(true);
+            enemyDisplayHudImages[j].sprite = nextEncounters[j].encounterImage;
+            enemyDisplayloadout[j].SetActive(true);
+            enemyDisplayLoadoutImages[j].sprite = nextEncounters[j].encounterImage;
+
+            for (int k = 0; k < nextEncounters[j].mechanicImages.Length; k++)
+            {
+                GameObject mechanicImage = Instantiate(mechanicImagePrefab, mechanicDisplayFields[j].transform);
+                mechanicImage.GetComponentInChildren<Image>().sprite = nextEncounters[j].mechanicImages[k];
+            }
+
 		}
 	}
 
@@ -138,6 +162,16 @@ public class SpawnManager : MonoBehaviour
 	{
 		waveActive = false;
 		ResetSpawnpoints ();
+
+        foreach(Transform parent  in mechanicDisplayFields)
+        {
+            foreach(Transform child in parent)
+            {
+                Destroy(child);
+            }
+        }
+        mechanicDisplayFields.Clear();
+
 		PrepareWave ();
 
 		if (currentWave % difficultyRatings [currentDifficulty].increaseFrequency == 0) {
@@ -177,4 +211,10 @@ public class DifficultyRating
 
 	public int timeBetweenWaves;
 	public int carePackageFrequency;
+}
+
+[System.Serializable]
+public class MechanicImage
+{
+    public List<Image> mechanicImages;
 }
