@@ -34,7 +34,6 @@ public class InputManager : MonoBehaviour
     float moveY;
     float lookX;
     float lookY;
-    float elapsedTime;
     float remainingTime;
 
     PlayerReferenceManager playerRefManager;
@@ -58,6 +57,8 @@ public class InputManager : MonoBehaviour
     {
         for(int i = 0; i < abilities.Count; i++)
         {
+            abilities[i].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
+            abilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
             abilitySlots[i].sprite = abilities[i].abilityIcon;
 
             if(abilities[i].abilityCharges > 1)
@@ -95,16 +96,9 @@ public class InputManager : MonoBehaviour
                 abilities[i].ActivateAbility();
                 abilityCharges[i].text = abilities[i].charges.ToString();
 
-                if(abilities[i].charges > 0)
+                if(abilities[i].charges >= 0)
                 {
                     cooldownQueues[i].Enqueue(Time.time);
-                }
-                
-
-                if(!abilityOnCooldown[i])
-                {
-                    abilityOnCooldown[i] = true;
-                    StartCoroutine(Cooldown(i));
                 }
             }
             else if (abilities[i] && abilityDeactive[i])
@@ -112,36 +106,44 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    void UpdateAbiltyCharges(Ability ability)
+    {
+        if(abilities.Contains(ability))
+        {
+            int abilityIndex = abilities.IndexOf(ability);
+            abilityCharges[abilityIndex].text = ability.charges.ToString();
+        }
+    }
+
     void CheckCooldowns()
     {
         if (cooldownQueues.Count <= 0) return;
+
+        for(int j = 0; j < abilities.Count; j++)
+        {
+            Cooldown(j);
+        }
+
         for(int i = 0; i < cooldownQueues.Count; i++)
         {
             if(cooldownQueues[i].Count > 0)
-            elapsedTime = Time.time - cooldownQueues[i].Peek();
+            remainingTime = ((cooldownQueues[i].Peek() + abilities[i].abilityCooldown) - Time.time) / abilities[i].abilityCooldown;
 
-            if(elapsedTime > abilities[i].abilityCooldown && cooldownQueues[i].Count > 0)
+            if(remainingTime < .01f && cooldownQueues[i].Count > 0)
                 cooldownQueues[i].Dequeue();
         }
     }
 
-    IEnumerator Cooldown(int abilityIndex)
+    void Cooldown(int abilityIndex)
     {
-        if (cooldownQueues[abilityIndex].Count > 0)
-            remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
-
-        for (float i = remainingTime; i >= 0; i -= .1f)
+        if(cooldownQueues[abilityIndex].Count > 0)
         {
-            abilityCooldownProgress[abilityIndex].fillAmount = i;
-            yield return new WaitForSeconds(abilities[abilityIndex].abilityCooldown / 10);
-            if (cooldownQueues[abilityIndex].Count > 0)
-                remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
+            float _remainingTime = ((cooldownQueues[abilityIndex].Peek() + abilities[abilityIndex].abilityCooldown) - Time.time) / abilities[abilityIndex].abilityCooldown;
+            abilityCooldownProgress[abilityIndex].fillAmount = _remainingTime;
+
+            if(_remainingTime < .01f)
+                abilityCooldownProgress[abilityIndex].fillAmount = 0f;
         }
-        
-        abilityCooldownProgress[abilityIndex].fillAmount = 0f;
-        abilityCharges[abilityIndex].text = abilities[abilityIndex].charges.ToString();
-        if(abilities[abilityIndex].abilityCharges > 1)
-            abilityOnCooldown[abilityIndex] = false;
     }
 
     private void RecieveInput()

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
+    public delegate void AbilityEvents(Ability _thisAbility);
+    public event AbilityEvents OnCooldownFinished;
+
     public string abilityName;
     public Sprite abilityIcon;
     [TextArea]
@@ -100,13 +103,16 @@ public class Ability : MonoBehaviour
             return true;
         else return false;
     }
-
+    
     IEnumerator Cooldown()
     {
         yield return new WaitForSeconds(abilityCooldown);
 
         if (charges < abilityCharges)
             charges++;
+        
+        if(refManager.gameObject.name == "Player")
+            OnCooldownFinished(this);
 
         onCooldown = false;
     }
