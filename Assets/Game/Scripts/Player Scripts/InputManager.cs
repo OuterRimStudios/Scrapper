@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
     public List<Image> abilitySlots;
     public List<Text> abilityCharges;
     public List<Image> abilityCooldownProgress;
-    public List<Queue<float>> cooldownQueues;
+    public List<Queue<float>> cooldownQueues = new List<Queue<float>>();
     bool[] abilityOnCooldown = new bool[5];
     bool[] abilityActive = new bool[5];
     bool[] abilityDeactive = new bool[5];
@@ -34,6 +34,8 @@ public class InputManager : MonoBehaviour
     float moveY;
     float lookX;
     float lookY;
+    float elapsedTime;
+    float remainingTime;
 
     PlayerReferenceManager playerRefManager;
     PlayerMovement playerMovement;
@@ -115,22 +117,25 @@ public class InputManager : MonoBehaviour
         if (cooldownQueues.Count <= 0) return;
         for(int i = 0; i < cooldownQueues.Count; i++)
         {
-            float elapsedTime = Time.time - cooldownQueues[i].Peek();
+            if(cooldownQueues[i].Count > 0)
+            elapsedTime = Time.time - cooldownQueues[i].Peek();
 
-            if(elapsedTime > abilities[i].abilityCooldown)
+            if(elapsedTime > abilities[i].abilityCooldown && cooldownQueues[i].Count > 0)
                 cooldownQueues[i].Dequeue();
         }
     }
 
     IEnumerator Cooldown(int abilityIndex)
     {
-        float remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
+        if (cooldownQueues[abilityIndex].Count > 0)
+            remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
 
         for (float i = remainingTime; i >= 0; i -= .1f)
         {
             abilityCooldownProgress[abilityIndex].fillAmount = i;
             yield return new WaitForSeconds(abilities[abilityIndex].abilityCooldown / 10);
-            remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
+            if (cooldownQueues[abilityIndex].Count > 0)
+                remainingTime = (Time.time - cooldownQueues[abilityIndex].Peek()) / abilities[abilityIndex].abilityCooldown;
         }
         
         abilityCooldownProgress[abilityIndex].fillAmount = 0f;
