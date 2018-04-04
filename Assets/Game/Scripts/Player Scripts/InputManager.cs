@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
     public List<Text> abilityCharges;
     public List<Image> abilityCooldownProgress;
     public List<Queue<float>> cooldownQueues = new List<Queue<float>>();
+    public List<ActiveAbilitySlot> activeAbilitySlots;
 
     [Space, Header("Menus")]
     public GameObject loadoutMenu;
@@ -57,6 +58,13 @@ public class InputManager : MonoBehaviour
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
+
+        for(int i = 0; i < abilities.Count; i++)
+        {
+            activeAbilitySlots[i].SetAbilitySlot(abilities[i]);
+            activeAbilitySlots[i].AbilityActive(true);
+        }
+
         UpdateAbilities();
 
         for (int i = 0; i < 5; i++)

@@ -116,8 +116,11 @@ public class Sustained : DamageTypes {
         }
         else
         {
-            Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
-            hitObjects = Physics.CapsuleCastAll(spawnPos.position, ray.GetPoint(range), hitRadius, spawnPos.forward, range, layerMask);
+            if (mainCam)
+            {
+                Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+                hitObjects = Physics.CapsuleCastAll(spawnPos.position, ray.GetPoint(range), hitRadius, spawnPos.forward, range, layerMask);
+            }
         }
 
         if (hitObjects.Length > 0)
