@@ -15,6 +15,14 @@ public class ActiveAbilitySlot : MonoBehaviour
     [HideInInspector]
     public bool abilityActive;
 
+    public enum SlotType
+    {
+        Active,
+        Option
+    }
+
+    public SlotType slotType;
+
     private void Awake()
     {
         abilityIcon = transform.GetChild(0).GetChild(0).GetComponent<Image>();
@@ -27,9 +35,9 @@ public class ActiveAbilitySlot : MonoBehaviour
             abilityIcon = transform.GetChild(0).GetChild(0).GetComponent<Image>();
 
         abilityInSlot = newAbility;
-        abilityIcon.sprite = abilityInSlot.abilityIcon;
 
-       // print("Ability Icon: " + abilityIcon + "  Ability In Slot Icon: " + abilityInSlot.abilityIcon);
+        if(abilityInSlot == null) return;
+        abilityIcon.sprite = abilityInSlot.abilityIcon;
     }
 
     public void AbilityActive(bool activeState)
@@ -39,14 +47,14 @@ public class ActiveAbilitySlot : MonoBehaviour
 
     public void ViewDescription()
     {
-        if (!abilityDescriptionTextBox)
-            abilityDescriptionTextBox = GameObject.FindGameObjectWithTag("AbilityDescriptionBox").GetComponent<Text>();
-
+        if(abilityInSlot == null) return;
+        
         abilityDescriptionTextBox.text = abilityInSlot.abilityDescription;
     }
 
     public void StopViewingDescription()
     {
+        if(abilityInSlot == null) return;
         abilityDescriptionTextBox.text = "";
     }
 }

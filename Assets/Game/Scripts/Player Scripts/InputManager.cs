@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
     public KeyCode abilityFiveKey;
 
     [Space, Header("Ability Loadout")]
+    public AbilityDisplayArea abilityDisplayArea;
     public List<Ability> abilities = new List<Ability>();
     public List<Image> abilitySlots;
     public List<Text> abilityCharges;
@@ -62,10 +63,16 @@ public class InputManager : MonoBehaviour
         for(int i = 0; i < abilities.Count; i++)
         {
             activeAbilitySlots[i].SetAbilitySlot(abilities[i]);
-            activeAbilitySlots[i].AbilityActive(true);
+            if(abilityDisplayArea.abilityLoadoutOptions.Contains(activeAbilitySlots[i].abilityInSlot))
+            {
+                print("ability exists");
+                int index = abilityDisplayArea.abilityLoadoutOptions.IndexOf(activeAbilitySlots[i].abilityInSlot);
+                ActiveAbilitySlot abilitySlot = abilityDisplayArea.abilitySlots[index];
+                abilitySlot.AbilityActive(true);
+            }
         }
 
-        UpdateAbilities();
+        UpdateAbilities(-1);
 
         for (int i = 0; i < 5; i++)
             cooldownQueues.Add(new Queue<float>());
@@ -77,11 +84,22 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void UpdateAbilities()
+    //pass in -1 if not changing abilities
+    public void UpdateAbilities(int abilitySlotIndex)
     {
+        if(abilitySlotIndex != -1)
+        {
+            abilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
+            if(abilityDisplayArea.abilityLoadoutOptions.Contains(abilities[abilitySlotIndex]))
+            {
+                int slotIndex = abilityDisplayArea.abilityLoadoutOptions.IndexOf(abilities[abilitySlotIndex]);
+                abilityDisplayArea.abilitySlots[slotIndex].AbilityActive(false);
+            }
+            abilities[abilitySlotIndex] = abilityDisplayArea.currentActiveAbilitySlot.abilityInSlot;
+        }
+
         for(int i = 0; i < abilities.Count; i++)
         {
-            abilities[i].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
             abilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
             abilitySlots[i].sprite = abilities[i].abilityIcon;
 
@@ -208,12 +226,17 @@ public class InputManager : MonoBehaviour
 
     private void RecieveInput()
     {
-        jump = Input.GetKeyDown(jumpKey);
-        interact = Input.GetKey(interactKey);
         toggleView = Input.GetKeyDown(toggleViewKey);
 
         if(Input.GetKeyDown(loadoutMenuKey))
+        {
+            canAct = !canAct;
             toggleLoadoutMenu = !toggleLoadoutMenu;
+        }
+
+        if(!canAct) return;
+        jump = Input.GetKeyDown(jumpKey);
+        interact = Input.GetKey(interactKey);
 
         abilityActive[0] = Input.GetKeyDown(abilityOneKey);
         abilityActive[1] = Input.GetKeyDown(abilityTwoKey);

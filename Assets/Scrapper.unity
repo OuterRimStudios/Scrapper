@@ -1035,6 +1035,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &73516987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,6 +1941,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 0
 --- !u!114 &146880488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4096,6 +4098,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 0
 --- !u!114 &344970247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6926,6 +6929,12 @@ MonoBehaviour:
   - {fileID: 153909834}
   - {fileID: 199931440}
   - {fileID: 1513604375}
+  activeAbilitySlots:
+  - {fileID: 146880487}
+  - {fileID: 344970246}
+  - {fileID: 1295434286}
+  - {fileID: 1801530266}
+  - {fileID: 760159363}
   abilitySlots:
   - {fileID: 1399145523}
   - {fileID: 1640885342}
@@ -6947,6 +6956,8 @@ MonoBehaviour:
   - {fileID: 1896623179}
   - {fileID: 2108137020}
   - {fileID: 1384252340}
+  inputManager: {fileID: 1430053478}
+  currentActiveAbilitySlot: {fileID: 0}
 --- !u!1 &598605887
 GameObject:
   m_ObjectHideFlags: 0
@@ -7103,6 +7114,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &598923797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8245,6 +8257,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &709855225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8631,6 +8644,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &720901785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9115,6 +9129,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 0
 --- !u!114 &760159364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11034,6 +11049,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &914370566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14597,6 +14613,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1221363402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15245,6 +15262,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1250183876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15859,6 +15877,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 0
 --- !u!114 &1295434287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17647,6 +17666,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1384252341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18126,6 +18146,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1399145524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18468,6 +18489,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1409903674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18870,6 +18892,7 @@ MonoBehaviour:
   abilityThreeKey: 113
   abilityFourKey: 101
   abilityFiveKey: 304
+  abilityDisplayArea: {fileID: 592766362}
   abilities:
   - {fileID: 1873949448}
   - {fileID: 907570755}
@@ -19850,6 +19873,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1462171186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21051,6 +21075,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1562408276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21484,6 +21509,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1615518558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21866,6 +21892,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1640885343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23723,6 +23750,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 0
 --- !u!114 &1801530267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25289,6 +25317,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1880840231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25576,6 +25605,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1896623180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26595,6 +26625,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &1941115418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27554,6 +27585,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &2053030096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28363,6 +28395,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &2108137021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28815,6 +28848,7 @@ MonoBehaviour:
   abilityDescriptionTextBox: {fileID: 189321635}
   abilityInSlot: {fileID: 0}
   abilityActive: 0
+  slotType: 1
 --- !u!114 &2140987557
 MonoBehaviour:
   m_ObjectHideFlags: 0

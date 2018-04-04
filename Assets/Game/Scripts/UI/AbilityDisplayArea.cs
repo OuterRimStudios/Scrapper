@@ -5,9 +5,12 @@ using UnityEngine;
 public class AbilityDisplayArea : MonoBehaviour
 {
     public List<Ability> abilityLoadoutOptions;
+    public List<ActiveAbilitySlot> activeAbilitySlots;
     public List<ActiveAbilitySlot> abilitySlots;
+    public InputManager inputManager;
 
-    ActiveAbilitySlot currentActiveAbilitySlot;
+    [HideInInspector]
+    public ActiveAbilitySlot currentActiveAbilitySlot;
 
     bool lookingForAbility;
 
@@ -21,16 +24,19 @@ public class AbilityDisplayArea : MonoBehaviour
 
     public void SelectAbility(ActiveAbilitySlot abilitySlot)
     {
-        if(abilitySlot.abilityActive)
+        if(abilitySlot.slotType == ActiveAbilitySlot.SlotType.Active)
         {
             lookingForAbility = true;
             currentActiveAbilitySlot = abilitySlot;
+            
         }
-        else if(!abilitySlot.abilityActive && lookingForAbility)
+        else if(abilitySlot.slotType == ActiveAbilitySlot.SlotType.Option && !abilitySlot.abilityActive && lookingForAbility)
         {
             currentActiveAbilitySlot.SetAbilitySlot(abilitySlot.abilityInSlot);
             currentActiveAbilitySlot.AbilityActive(false);
             abilitySlot.AbilityActive(true);
+            int abilitySlotIndex = activeAbilitySlots.IndexOf(currentActiveAbilitySlot);
+            inputManager.UpdateAbilities(abilitySlotIndex);
             lookingForAbility = false;
         }
     }
