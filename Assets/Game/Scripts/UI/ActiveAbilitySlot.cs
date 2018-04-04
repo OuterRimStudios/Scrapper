@@ -23,8 +23,13 @@ public class ActiveAbilitySlot : MonoBehaviour
 
     public void SetAbilitySlot(Ability newAbility)
     {
+        if (!abilityIcon)
+            abilityIcon = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+
         abilityInSlot = newAbility;
         abilityIcon.sprite = abilityInSlot.abilityIcon;
+
+       // print("Ability Icon: " + abilityIcon + "  Ability In Slot Icon: " + abilityInSlot.abilityIcon);
     }
 
     public void AbilityActive(bool activeState)
@@ -34,6 +39,9 @@ public class ActiveAbilitySlot : MonoBehaviour
 
     public void ViewDescription()
     {
+        if (!abilityDescriptionTextBox)
+            abilityDescriptionTextBox = GameObject.FindGameObjectWithTag("AbilityDescriptionBox").GetComponent<Text>();
+
         abilityDescriptionTextBox.text = abilityInSlot.abilityDescription;
     }
 

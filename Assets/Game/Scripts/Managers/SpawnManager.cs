@@ -37,6 +37,9 @@ public class SpawnManager : MonoBehaviour
 
 	Coroutine timeToSetUp;
 
+    [Space, Header("Developer Variables")]
+    public bool dontSpawn;
+
 	private void Start ()
 	{
 		ResetSpawnpoints ();
@@ -100,7 +103,7 @@ public class SpawnManager : MonoBehaviour
             for (int k = 0; k < nextEncounters[j].mechanicImages.Length; k++)
             {
                 GameObject mechanicImage = Instantiate(mechanicImagePrefab, mechanicDisplayFields[j].transform);
-                mechanicImage.GetComponentInChildren<Image>().sprite = nextEncounters[j].mechanicImages[k];
+                mechanicImage.transform.GetChild(0).GetComponent<Image>().sprite = nextEncounters[j].mechanicImages[k];
             }
 
 		}
@@ -125,6 +128,7 @@ public class SpawnManager : MonoBehaviour
 
 	public void StartWave ()
 	{
+        if (dontSpawn) return;
 		waveActive = true;
 		currentWave++;
         currentWaveText.text = "Wave: " + currentWave;

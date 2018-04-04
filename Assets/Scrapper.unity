@@ -398,7 +398,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &18681853
 MonoBehaviour:
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Energized Plasma Shredder
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 1345b73eee214c24780a0cca4eab8fd8, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Energized Plasma Shredder\r\n<b><i>Damage:</i></b>
     2 / 0.75 seconds\r\n<b><i>Charges:</i></b> 2\r\n<b><i>Cooldown Per Charge:</i></b>
     10 Seconds\r\n<b><i>Description:</i></b> Place a plasma shredder on the ground
@@ -741,6 +741,88 @@ Transform:
   m_Father: {fileID: 190226300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &42298270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 42298271}
+  - component: {fileID: 42298274}
+  - component: {fileID: 42298273}
+  - component: {fileID: 42298272}
+  m_Layer: 5
+  m_Name: Ability Icon Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &42298271
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 42298270}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000116, y: 1.0000116, z: 1.0000116}
+  m_Children:
+  - {fileID: 1179911497}
+  m_Father: {fileID: 153243182}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &42298272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 42298270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &42298273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 42298270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f1a4b1a28b9581f4a9cd421054b88671, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &42298274
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 42298270}
 --- !u!1 &66273417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,6 +1560,7 @@ MonoBehaviour:
   currentWaveText: {fileID: 236670748}
   timeToNextWaveText: {fileID: 420574970}
   currentWave: 0
+  dontSpawn: 1
 --- !u!1 &93466791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,7 +1639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2000,7 +2083,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1179911497}
+  - {fileID: 42298271}
   - {fileID: 941944721}
   - {fileID: 208787628}
   m_Father: {fileID: 2116006174}
@@ -2023,7 +2106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 0.516}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2083,7 +2166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &153909834
 MonoBehaviour:
@@ -2097,7 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Destructo-Disc Turret
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: a22b393e9be014540b79b0fbd360171e, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Destructo-Disc Turret\r\n<b><i>Damage:</i></b>
     100,000 / Turret\r\n<b><i>Charges:</i></b> 3\r\n<b><i>Cooldown Per Charge:</i></b>
     15 Seconds\r\n<b><i>Description:</i></b> Place turrets that fire Destructo-Discs.\r\n"
@@ -2173,7 +2256,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &173845501
 MonoBehaviour:
@@ -2187,7 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Spike Trap
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 49cdc29b873b4b9408eecef5bd49c2cc, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Spike Trap\r\n<b><i>Initial Damage:</i></b>
     8\r\n<b><i>Bleed Damage:</i></b> 1 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 5
     Seconds\r\n<b><i>Description:</i></b> Place a spike trap that deals damage when
@@ -2264,7 +2347,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &184704011
 MonoBehaviour:
@@ -2278,7 +2361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Containment Zone
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 91659e43f5f5c8244a92193b5030f4b6, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Containment Zone\r\n<b><i>Cooldown:</i></b>
     12 Seconds\r\n<b><i>Root Duration:</i></b> 6 Seconds\r\n<b><i>Description:</i></b>
     Fires a trap that when triggered, roots all enemies in place for 6 seconds. This
@@ -2409,7 +2492,7 @@ GameObject:
   - component: {fileID: 189321635}
   m_Layer: 5
   m_Name: Ability Description Text Box
-  m_TagString: Untagged
+  m_TagString: AbilityDescriptionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2569,7 +2652,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &199931440
 MonoBehaviour:
@@ -2583,7 +2666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: High-Frequency Electron Beam
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 17ad7d1d940134d4297748215718c474, type: 3}
   abilityDescription: "<b><i>Name:</i></b> High-Frequency Electron Beam\r\n<b><i>Damage:</i></b>
     4 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 1 Second\r\n<b><i>Description:</i></b>
     Fire a beam of energy that frequently deals damage.\r\n"
@@ -2750,7 +2833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3038,7 +3121,6 @@ Transform:
   - {fileID: 1865927529}
   - {fileID: 907570754}
   - {fileID: 813594485}
-  - {fileID: 380723385}
   - {fileID: 614448432}
   - {fileID: 1885263814}
   - {fileID: 1026614934}
@@ -3557,7 +3639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4135,68 +4217,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 344970244}
---- !u!1 &380723384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 380723385}
-  - component: {fileID: 380723386}
-  m_Layer: 0
-  m_Name: Weighted Module
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &380723385
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 380723384}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 239411983}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &380723386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 380723384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89ee0bc8315648145828be9dc2a629a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Weighted Module
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
-  abilityDescription: "<b><i>Name:</i></b> Weighted Module\r\n<b><i>Cooldown:</i></b>
-    1 Second\r\n<b><i>Description:</i></b> The next ability pushes the target back
-    on impact. This effect is also applied to turrets and traps.\r\n"
-  abilityType: 2
-  abilityCharges: 1
-  chargeTime: 0
-  abilityCooldown: 1
-  requiresTarget: 0
-  afterEffects: []
-  charges: 0
-  isCharging: 0
-  isFiring: 0
-  refManager: {fileID: 1430053481}
-  module: 3
-  damage: 0
-  effectLength: 0
-  pushForce: 250
-  slowAmount: 0
-  leechPercentage: 0
-  stackAmount: 0
 --- !u!1 &382406003
 GameObject:
   m_ObjectHideFlags: 0
@@ -4826,7 +4846,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 913475019}
+  - {fileID: 1068462380}
   - {fileID: 1293341910}
   - {fileID: 1150772537}
   m_Father: {fileID: 2116006174}
@@ -4849,7 +4869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 0.516}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4929,7 +4949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5176,7 +5196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5837,7 +5857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &526834952
 MonoBehaviour:
@@ -5851,7 +5871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Energized Caltrops
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 6009269492536184da8537291d0146ea, type: 3}
   abilityDescription: "Name: Energized Caltrops\r\nDamage: 0\r\nCooldown: 10 Seconds\r\nStun
     Duration: 4 Seconds\r\nDescription: Place some energized caltrops that stun an
     enemy for 4 seconds when walked over.\r\n"
@@ -5918,7 +5938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6892,7 +6912,6 @@ MonoBehaviour:
   - {fileID: 1865927530}
   - {fileID: 907570755}
   - {fileID: 813594486}
-  - {fileID: 380723386}
   - {fileID: 614448433}
   - {fileID: 1885263815}
   - {fileID: 1026614935}
@@ -7186,7 +7205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &614448433
 MonoBehaviour:
@@ -7200,7 +7219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Siphon Module
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 445200db47faa7b4dbfcc911074cb708, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Siphon Module\r\n<b><i>Cooldown:</i></b>
     15 Seconds\r\n<b><i>Leech Percentage:</i></b> 10%\r\n<b><i>Description:</i></b>
     The next ability heals you for 10% of the damage it did. (Per enemy hit). This
@@ -7535,7 +7554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7972,15 +7991,15 @@ RectTransform:
   m_GameObject: {fileID: 667127716}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999883, y: 0.9999883, z: 0.9999883}
   m_Children: []
-  m_Father: {fileID: 2140866426}
+  m_Father: {fileID: 1792680505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667127718
 MonoBehaviour:
@@ -8999,15 +9018,15 @@ RectTransform:
   m_GameObject: {fileID: 753972197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999883, y: 0.9999883, z: 0.9999883}
   m_Children: []
-  m_Father: {fileID: 2098497626}
+  m_Father: {fileID: 838775323}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &753972199
 MonoBehaviour:
@@ -9449,7 +9468,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2102463626}
+  - {fileID: 972378645}
   - {fileID: 1539426953}
   - {fileID: 561323415}
   m_Father: {fileID: 2116006174}
@@ -9472,7 +9491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 0.516}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9673,7 +9692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9804,7 +9823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9929,7 +9948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Crippling Module
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 6cecc4160582369478552ebb1a7ad278, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Crippling Module\r\n<b><i>Cooldown:</i></b>
     1 Second\r\n<b><i>Slow Duration:</i></b> 4 Seconds\r\n<b><i>Stack Max:</i></b>
     5\r\n<b><i>Description:</i></b> The next ability slows the target for 4 seconds
@@ -10131,6 +10150,88 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832540014}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &838775322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 838775323}
+  - component: {fileID: 838775326}
+  - component: {fileID: 838775325}
+  - component: {fileID: 838775324}
+  m_Layer: 5
+  m_Name: Ability Icon Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &838775323
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838775322}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000116, y: 1.0000116, z: 1.0000116}
+  m_Children:
+  - {fileID: 753972198}
+  m_Father: {fileID: 2098497626}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &838775324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838775322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &838775325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838775322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f1a4b1a28b9581f4a9cd421054b88671, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &838775326
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838775322}
 --- !u!1 &839753238
 GameObject:
   m_ObjectHideFlags: 0
@@ -10381,7 +10482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10545,7 +10646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10681,7 +10782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Incinerating Module
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 0e662535ed84c2641b6b239f746e44c3, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Incinerating Module\r\n<b><i>Damage:</i></b>
     3 / 1 second\r\n<b><i>Cooldown:</i></b> 10 Seconds\r\n<b><i>Description:</i></b>
     The next ability lights targets on fire for 5 seconds. This effect is also applied
@@ -10789,15 +10890,15 @@ RectTransform:
   m_GameObject: {fileID: 913475018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999883, y: 0.9999883, z: 0.9999883}
   m_Children: []
-  m_Father: {fileID: 426878070}
+  m_Father: {fileID: 1068462380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913475020
 MonoBehaviour:
@@ -11606,6 +11707,88 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 969691300}
   m_Mesh: {fileID: 4300006, guid: 2aa9c5cb3ec30fb4b895fb5d6e1e54fd, type: 3}
+--- !u!1 &972378644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 972378645}
+  - component: {fileID: 972378648}
+  - component: {fileID: 972378647}
+  - component: {fileID: 972378646}
+  m_Layer: 5
+  m_Name: Ability Icon Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &972378645
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972378644}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000116, y: 1.0000116, z: 1.0000116}
+  m_Children:
+  - {fileID: 2102463626}
+  m_Father: {fileID: 782573760}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &972378646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972378644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &972378647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972378644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f1a4b1a28b9581f4a9cd421054b88671, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &972378648
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972378644}
 --- !u!1 &984920656
 GameObject:
   m_ObjectHideFlags: 0
@@ -11647,7 +11830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Energized Plasma Cannon
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 82d3805c53a1a454e8fa6c25073c8939, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Energized Plasma Cannon\r\n<b><i>Damage:</i></b>
     10\r\n<b><i>Cooldown:</i></b> 1 Second\r\n<b><i>Description:</i></b> Fires a large
     ball of plasma that deals high damage.\r\n"
@@ -11711,7 +11894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -11980,7 +12163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1026614935
 MonoBehaviour:
@@ -11994,7 +12177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: System Failure
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 14411367c72b4c7459eddfa80a9b53b0, type: 3}
   abilityDescription: "<b><i>Name:</i></b> System Failure\r\n<b><i>Cooldown:</i></b>
     15 Seconds\r\n<b><i>Sleep Duration:</i></b> 15 Seconds\r\n<b><i>Description:</i></b>
     Spawns a trap that shuts down the enemy causing them to sleep for 15 seconds.
@@ -12100,7 +12283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12168,7 +12351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12189,6 +12372,88 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1058825280}
+--- !u!1 &1068462379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1068462380}
+  - component: {fileID: 1068462383}
+  - component: {fileID: 1068462382}
+  - component: {fileID: 1068462381}
+  m_Layer: 5
+  m_Name: Ability Icon Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1068462380
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068462379}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000116, y: 1.0000116, z: 1.0000116}
+  m_Children:
+  - {fileID: 913475019}
+  m_Father: {fileID: 426878070}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1068462381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068462379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &1068462382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068462379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f1a4b1a28b9581f4a9cd421054b88671, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1068462383
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068462379}
 --- !u!1 &1073382839
 GameObject:
   m_ObjectHideFlags: 0
@@ -12236,7 +12501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13612,7 +13877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13658,15 +13923,15 @@ RectTransform:
   m_GameObject: {fileID: 1179911496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999883, y: 0.9999883, z: 0.9999883}
   m_Children: []
-  m_Father: {fileID: 153243182}
+  m_Father: {fileID: 42298271}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179911498
 MonoBehaviour:
@@ -14801,7 +15066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -16418,7 +16683,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1323133299
 MonoBehaviour:
@@ -16432,7 +16697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Destructo-disc
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: fafbde92398b7c840a0f2b9addf6c720, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Destructo-Disc\r\n<b><i>Damage:</i></b>
     10\r\n<b><i>Charges:</i></b> 3\r\n<b><i>Cooldown Per Charge:</i></b> 3 Seconds\r\n<b><i>Description:</i></b>
     Shoots a plasma blade that penetrates enemies.\r\n"
@@ -16815,7 +17080,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1352706816
 MonoBehaviour:
@@ -16829,7 +17094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Orb of Annihilation
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: ab84d013438f84c41aef7c0ad9337a37, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Orb of Annihilation\r\n<b><i>Damage:</i></b>
     20\r\n<b><i>Cooldown:</i></b> 20 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
     Launch an orb of energy to deal high damage to the target and stun surrounding
@@ -18353,7 +18618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -18609,8 +18874,8 @@ MonoBehaviour:
   - {fileID: 1873949448}
   - {fileID: 907570755}
   - {fileID: 153909834}
-  - {fileID: 1513604375}
   - {fileID: 1885263815}
+  - {fileID: 1513604375}
   abilitySlots:
   - {fileID: 2102463627}
   - {fileID: 1179911498}
@@ -19269,7 +19534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -19764,7 +20029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -19860,7 +20125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -19908,7 +20173,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1513604375
 MonoBehaviour:
@@ -19922,8 +20187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: High-Frequency Electron Beam Turret
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
-  abilityDescription: 
+  abilityIcon: {fileID: 21300000, guid: 5652bc3b706a43e4fbc85547284921da, type: 3}
+  abilityDescription: "<b><i>Name:</i></b> High-Frequency Electron Beam\r\n<b><i>Damage:</i></b>
+    4 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 1 Second\r\n<b><i>Description:</i></b>
+    Fire a beam of energy that frequently deals damage.\r\n"
   abilityType: 3
   abilityCharges: 2
   chargeTime: 0
@@ -22478,7 +22745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -23320,6 +23587,88 @@ Transform:
   m_Father: {fileID: 1782600627}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1792680504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1792680505}
+  - component: {fileID: 1792680508}
+  - component: {fileID: 1792680507}
+  - component: {fileID: 1792680506}
+  m_Layer: 5
+  m_Name: Ability Icon Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1792680505
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792680504}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000116, y: 1.0000116, z: 1.0000116}
+  m_Children:
+  - {fileID: 667127717}
+  m_Father: {fileID: 2140866426}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 90, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1792680506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792680504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
+--- !u!114 &1792680507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792680504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f1a4b1a28b9581f4a9cd421054b88671, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1792680508
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792680504}
 --- !u!1 &1801530264
 GameObject:
   m_ObjectHideFlags: 0
@@ -23522,7 +23871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1807999880
 MonoBehaviour:
@@ -23536,7 +23885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Volt Bolt
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 28576731b4583ba4d8fb28fe708b5725, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Volt Bolt\r\n<b><i>Damage:</i></b> 0\r\n<b><i>Cooldown:</i></b>
     5 Seconds\r\n<b><i>Stun Duration:</i></b> 2 Seconds\r\n<b><i>Description:</i></b>
     Launch an energy grenade to stun enemies for 2 seconds.\r\n\n<b><i>Cooldown:</i></b>
@@ -24673,7 +25022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Concussion Module
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: ecff599e489885648a69d2d9e31716f5, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Concussion Module\r\n<b><i>Cooldown:</i></b>
     10 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
     The next ability you use stuns the target on impact. This effect is also applied
@@ -24804,7 +25153,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1873949448
 MonoBehaviour:
@@ -24818,7 +25167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Plasma Cluster Launcher
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: c7275bc4f0d30494e892802f3e98069a, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Plasma Cluster Launcher\r\n<b><i>Target
     Damage:</i></b> 100,000\r\n<b><i>Area Damage:</i></b> 4\r\n<b><i>Cooldown:</i></b>
     1.5 Seconds\r\n<b><i>Description:</i></b> Fire a ball of plasma that explodes
@@ -25041,7 +25390,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 239411983}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1885263815
 MonoBehaviour:
@@ -25055,7 +25404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Hemorrhage Module
-  abilityIcon: {fileID: 21300000, guid: a1dd2569be195744c98565e086ef9d49, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 69b73c219103be847a2b138dea810720, type: 3}
   abilityDescription: "<b><i>Name:</i></b> Hemorrhage Module\r\n<b><i>Damage Per Stack:</i></b>
     1 / 1 Second\r\n<b><i>Cooldown:</i></b> 2.5 Seconds\r\n<b><i>Stack Max:</i></b>
     5\r\n<b><i>Description:</i></b> The next ability causes the target to take stacking
@@ -27054,7 +27403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -27326,7 +27675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -27576,7 +27925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -27707,7 +28056,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 753972198}
+  - {fileID: 838775323}
   - {fileID: 893201680}
   - {fileID: 511962638}
   m_Father: {fileID: 2116006174}
@@ -27730,7 +28079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 0.516}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -27788,15 +28137,15 @@ RectTransform:
   m_GameObject: {fileID: 2102463625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9999883, y: 0.9999883, z: 0.9999883}
   m_Children: []
-  m_Father: {fileID: 782573760}
+  m_Father: {fileID: 972378645}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2102463627
 MonoBehaviour:
@@ -28309,7 +28658,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 667127717}
+  - {fileID: 1792680505}
   - {fileID: 2082731177}
   - {fileID: 901979487}
   m_Father: {fileID: 2116006174}
@@ -28332,7 +28681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 0.516}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
