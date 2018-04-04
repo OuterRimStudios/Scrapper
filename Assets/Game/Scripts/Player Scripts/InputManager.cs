@@ -228,10 +228,16 @@ public class InputManager : MonoBehaviour
     {
         toggleView = Input.GetKeyDown(toggleViewKey);
 
-        if(Input.GetKeyDown(loadoutMenuKey))
+        if(!SpawnManager.waveActive && Input.GetKeyDown(loadoutMenuKey))
         {
             canAct = !canAct;
             toggleLoadoutMenu = !toggleLoadoutMenu;
+        }
+
+        if(SpawnManager.waveActive && toggleLoadoutMenu)
+        {
+            canAct = true;
+            toggleLoadoutMenu = false;
         }
 
         if(!canAct) return;

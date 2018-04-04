@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
 
 	List<Encounter> nextEncounters = new List<Encounter> ();
 	List<string> nextEncounterObjects = new List<string> ();
-	bool waveActive;
+	public static bool waveActive;
 	bool countingDown;
 
 	bool setUpTimer;
@@ -171,10 +171,10 @@ public class SpawnManager : MonoBehaviour
         {
             foreach(Transform child in parent)
             {
-                Destroy(child);
+                Destroy(child.gameObject);
             }
         }
-        mechanicDisplayFields.Clear();
+        //mechanicDisplayFields.Clear();
 
 		PrepareWave ();
 
