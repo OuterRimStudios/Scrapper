@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Rewired;
 
 public class InputManager : MonoBehaviour
 {
@@ -56,12 +55,9 @@ public class InputManager : MonoBehaviour
     PlayerMovement playerMovement;
     CameraController cameraController;
 
-    Player player;
-
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        player = ReInput.players.GetPlayer(0);
         canAct = true;
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -241,8 +237,8 @@ public class InputManager : MonoBehaviour
 
     private void RecieveInput()
     {
-        toggleView = player.GetButtonDown("ToggleView");
-        if(player.GetButtonDown("Pause"))
+        toggleView = Input.GetKeyDown(toggleViewKey);
+        if(Input.GetKeyDown(pauseKey))
         {
             if(toggleLoadoutMenu)
                 toggleLoadoutMenu = false;
@@ -250,7 +246,7 @@ public class InputManager : MonoBehaviour
                 pause = !pause;
         }
 
-        if(!pause && !SpawnManager.waveActive && player.GetButtonDown("Loadout"))
+        if(!pause && !SpawnManager.waveActive && Input.GetKeyDown(loadoutMenuKey))
             toggleLoadoutMenu = !toggleLoadoutMenu;
 
         if(SpawnManager.waveActive && toggleLoadoutMenu)
@@ -265,26 +261,26 @@ public class InputManager : MonoBehaviour
             canAct = true;
 
         if(!canAct) return;
-        jump = player.GetButtonDown("Jump");
-        interact = player.GetButtonDown("Interact");
+        jump = Input.GetKeyDown(jumpKey);
+        interact = Input.GetKey(interactKey);
 
-        abilityActive[0] = player.GetButtonDown("AbilityOne");
-        abilityActive[1] = player.GetButtonDown("AbilityTwo");
-        abilityActive[2] = player.GetButtonDown("AbilityThree");
-        abilityActive[3] = player.GetButtonDown("AbilityFour");
-        abilityActive[4] = player.GetButtonDown("AbilityFive");
+        abilityActive[0] = Input.GetKeyDown(abilityOneKey);
+        abilityActive[1] = Input.GetKeyDown(abilityTwoKey);
+        abilityActive[2] = Input.GetKeyDown(abilityThreeKey);
+        abilityActive[3] = Input.GetKeyDown(abilityFourKey);
+        abilityActive[4] = Input.GetKeyDown(abilityFiveKey);
 
-        abilityDeactive[0] = player.GetButtonUp("AbilityOne");
-        abilityDeactive[1] = player.GetButtonUp("AbilityTwo");
-        abilityDeactive[2] = player.GetButtonUp("AbilityThree");
-        abilityDeactive[3] = player.GetButtonUp("AbilityFour");
-        abilityDeactive[4] = player.GetButtonUp("AbilityFive");
+        abilityDeactive[0] = Input.GetKeyUp(abilityOneKey);
+        abilityDeactive[1] = Input.GetKeyUp(abilityTwoKey);
+        abilityDeactive[2] = Input.GetKeyUp(abilityThreeKey);
+        abilityDeactive[3] = Input.GetKeyUp(abilityFourKey);
+        abilityDeactive[4] = Input.GetKeyUp(abilityFiveKey);
 
-        moveX = player.GetAxis("MoveHorizontal");
-        moveY = player.GetAxis("MoveVertical");
+        moveX = Input.GetAxis("Horizontal");
+        moveY = Input.GetAxis("Vertical");
 
-        lookX = player.GetAxis("LookHorizontal");
-        lookY = player.GetAxis("LookVertical");
+        lookX = Input.GetAxis("Mouse X");
+        lookY = Input.GetAxis("Mouse Y");
     }
 
     public void TogglePause(bool _pause)
