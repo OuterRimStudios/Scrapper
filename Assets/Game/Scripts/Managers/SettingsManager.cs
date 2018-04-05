@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.IO;
+using Rewired;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class SettingsManager : MonoBehaviour
             resolutionDropdown.options.Add(new Dropdown.OptionData(resolution.ToString()));
         }
 
+        LoadBindings();
         LoadSettings();
     }
 
@@ -78,6 +80,16 @@ public class SettingsManager : MonoBehaviour
     {
         SaveSettings();
         applyButton.interactable = false;
+    }
+
+    public void SaveBindings()
+    {
+        ReInput.userDataStore.Save();
+    }
+
+    public void LoadBindings()
+    {
+        ReInput.userDataStore.Load();
     }
 
     public void SaveSettings()
