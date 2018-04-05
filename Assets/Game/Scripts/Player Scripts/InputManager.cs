@@ -282,4 +282,14 @@ public class InputManager : MonoBehaviour
         lookX = Input.GetAxis("Mouse X");
         lookY = Input.GetAxis("Mouse Y");
     }
+
+    public void TogglePause(bool _pause)
+    {
+        pause = _pause;
+    }
+
+    public void ToggleLoadoutMenu(bool _toggleLoadoutMenu)
+    {
+        toggleLoadoutMenu = _toggleLoadoutMenu;
+    }
 }
