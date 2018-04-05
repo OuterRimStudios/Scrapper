@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     public KeyCode interactKey;
     public KeyCode toggleViewKey;
     public KeyCode loadoutMenuKey;
+    public KeyCode pauseKey;
 
     [Space, Header("Ability Keys")]
     public KeyCode abilityOneKey;
@@ -29,6 +30,7 @@ public class InputManager : MonoBehaviour
     [Space, Header("Menus")]
     public GameObject loadoutMenu;
     public GameObject hud;
+    public GameObject pauseMenu;
 
     public bool hideCursor = true;
 
@@ -40,6 +42,7 @@ public class InputManager : MonoBehaviour
     bool interact;
     bool toggleView;
     bool toggleLoadoutMenu;
+    bool pause;
     public static bool canAct;
 
     float moveX;
@@ -65,7 +68,6 @@ public class InputManager : MonoBehaviour
             activeAbilitySlots[i].SetAbilitySlot(abilities[i]);
             if(abilityDisplayArea.abilityLoadoutOptions.Contains(activeAbilitySlots[i].abilityInSlot))
             {
-                print("ability exists");
                 int index = abilityDisplayArea.abilityLoadoutOptions.IndexOf(activeAbilitySlots[i].abilityInSlot);
                 ActiveAbilitySlot abilitySlot = abilityDisplayArea.abilitySlots[index];
                 abilitySlot.AbilityActive(true);
@@ -74,10 +76,10 @@ public class InputManager : MonoBehaviour
 
         UpdateAbilities(-1);
 
-        for (int i = 0; i < 5; i++)
+        for(int i = 0; i < 5; i++)
             cooldownQueues.Add(new Queue<float>());
 
-        if (hideCursor)
+        if(hideCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -114,41 +116,50 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         RecieveInput();
-        AbilityInput();
-        CheckCooldowns();
-        playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
-        cameraController.RecieveInput(lookY);
 
-        if (toggleView)
+        if(pause)
         {
-            playerRefManager.SwitchView();
-            cameraController.SwitchView();
-        }
-        
-        if (toggleLoadoutMenu)
-        {
-            hud.SetActive(false);
-            PlayerMovement.canAct = false;
-            CameraController.canAct = false;
-            loadoutMenu.SetActive(true);
-            hideCursor = false;
+            pauseMenu.SetActive(true);
         }
         else
         {
-            hud.SetActive(true);
-            PlayerMovement.canAct = true;
-            CameraController.canAct = true;
-            loadoutMenu.SetActive(false);
-            hideCursor = true;
+            if(pauseMenu.activeSelf)
+                pauseMenu.SetActive(false);
+
+            AbilityInput();
+            CheckCooldowns();
+            playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
+            cameraController.RecieveInput(lookY);
+
+            if(toggleView)
+            {
+                playerRefManager.SwitchView();
+                cameraController.SwitchView();
+            }
+
+            if(toggleLoadoutMenu)
+            {
+                hud.SetActive(false);
+                loadoutMenu.SetActive(true);
+            }
+            else
+            {
+                hud.SetActive(true);
+                loadoutMenu.SetActive(false);
+            }
+
+            if(jump)
+                playerMovement.Jump();
         }
 
-        if (jump)
-            playerMovement.Jump();
+        if(pause || toggleLoadoutMenu)
+            hideCursor = false;
+        else if(!pause && !toggleLoadoutMenu)
+            hideCursor = true;
 
-
-        if (hideCursor)
+        if(hideCursor)
         {
-            if (Cursor.lockState != CursorLockMode.Locked)
+            if(Cursor.visible)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -156,7 +167,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            if (Cursor.lockState == CursorLockMode.Locked)
+            if(!Cursor.visible)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -166,10 +177,10 @@ public class InputManager : MonoBehaviour
 
     void AbilityInput()
     {
-        if (!canAct) return;
-        for (int i = 0; i < abilities.Count; i++)
+        if(!canAct) return;
+        for(int i = 0; i < abilities.Count; i++)
         {
-            if (abilities[i] && abilities[i].CanShoot() && abilityActive[i])
+            if(abilities[i] && abilities[i].CanShoot() && abilityActive[i])
             {
                 abilities[i].ActivateAbility();
                 abilityCharges[i].text = abilities[i].charges.ToString();
@@ -179,7 +190,7 @@ public class InputManager : MonoBehaviour
                     cooldownQueues[i].Enqueue(Time.time);
                 }
             }
-            else if (abilities[i] && abilityDeactive[i])
+            else if(abilities[i] && abilityDeactive[i])
                 abilities[i].DeactivateAbility();
         }
     }
@@ -195,7 +206,7 @@ public class InputManager : MonoBehaviour
 
     void CheckCooldowns()
     {
-        if (cooldownQueues.Count <= 0) return;
+        if(cooldownQueues.Count <= 0) return;
 
         for(int j = 0; j < abilities.Count; j++)
         {
@@ -205,7 +216,7 @@ public class InputManager : MonoBehaviour
         for(int i = 0; i < cooldownQueues.Count; i++)
         {
             if(cooldownQueues[i].Count > 0)
-            remainingTime = ((cooldownQueues[i].Peek() + abilities[i].abilityCooldown) - Time.time) / abilities[i].abilityCooldown;
+                remainingTime = ((cooldownQueues[i].Peek() + abilities[i].abilityCooldown) - Time.time) / abilities[i].abilityCooldown;
 
             if(remainingTime < .01f && cooldownQueues[i].Count > 0)
                 cooldownQueues[i].Dequeue();
@@ -227,18 +238,27 @@ public class InputManager : MonoBehaviour
     private void RecieveInput()
     {
         toggleView = Input.GetKeyDown(toggleViewKey);
-
-        if(!SpawnManager.waveActive && Input.GetKeyDown(loadoutMenuKey))
+        if(Input.GetKeyDown(pauseKey))
         {
-            canAct = !canAct;
-            toggleLoadoutMenu = !toggleLoadoutMenu;
+            if(toggleLoadoutMenu)
+                toggleLoadoutMenu = false;
+            else
+                pause = !pause;
         }
+
+        if(!pause && !SpawnManager.waveActive && Input.GetKeyDown(loadoutMenuKey))
+            toggleLoadoutMenu = !toggleLoadoutMenu;
 
         if(SpawnManager.waveActive && toggleLoadoutMenu)
         {
             canAct = true;
             toggleLoadoutMenu = false;
         }
+
+        if(pause || toggleLoadoutMenu)
+            canAct = false;
+        else
+            canAct = true;
 
         if(!canAct) return;
         jump = Input.GetKeyDown(jumpKey);
