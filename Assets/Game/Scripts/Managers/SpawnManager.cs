@@ -129,7 +129,15 @@ public class SpawnManager : MonoBehaviour
 	public void StartWave ()
 	{
         if (dontSpawn) return;
-		waveActive = true;
+
+
+        for (int j = 0; j < nextEncounters.Count; j++)
+        {
+            enemyDisplayHud[j].SetActive(false);
+            enemyDisplayloadout[j].SetActive(false);
+        }
+
+        waveActive = true;
 		currentWave++;
         currentWaveText.text = "Wave: " + currentWave;
 
@@ -197,13 +205,15 @@ public class SpawnManager : MonoBehaviour
 
 	IEnumerator TimeToSetUp ()
 	{
+        timeToNextWaveText.enabled = true;
 		for (int i = difficultyRatings [currentDifficulty].timeBetweenWaves; i > 0; i--) {
             timeToNextWaveText.text = "Next Wave in: " + i;
 			yield return new WaitForSeconds (1);
 		}
 
 		StartWave ();
-	}
+        timeToNextWaveText.enabled = false;
+    }
 }
 
 [System.Serializable]
