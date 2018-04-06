@@ -102,6 +102,12 @@ public class InputManager : MonoBehaviour
                 abilityDisplayArea.abilitySlots[slotIndex].AbilityActive(false);
             }
             abilities[abilitySlotIndex] = abilityDisplayArea.currentActiveAbilitySlot.abilityInSlot;
+            abilityCharges[abilitySlotIndex].text = abilities[abilitySlotIndex].charges.ToString();
+
+            if (abilities[abilitySlotIndex].abilityCharges <= 1)
+                abilityCharges[abilitySlotIndex].enabled = false;
+            else
+                abilityCharges[abilitySlotIndex].enabled = true;
         }
 
         for(int i = 0; i < abilities.Count; i++)
