@@ -24,13 +24,13 @@ public class CameraController : MonoBehaviour
 
     Transform player;
 
-    bool firstPerson;
+    public static bool firstPerson;
     bool switchView;
 
     private void Start()
     {
         canAct = true;
-        firstPerson = true;
+        switchView = true;
         player = GameObject.Find("Player").transform;
     }
 
@@ -73,7 +73,6 @@ public class CameraController : MonoBehaviour
             if (!firstPerson)
             {
                 myCamera.transform.localPosition = Vector3.Lerp(myCamera.transform.localPosition, thirdPersonOffset, switchViewSpeed * Time.deltaTime);
-
                 if (myCamera.transform.localPosition == thirdPersonOffset)
                     switchView = false;
             }

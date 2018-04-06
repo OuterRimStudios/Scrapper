@@ -19,7 +19,8 @@ public class Sustained : DamageTypes {
 
     protected virtual void Awake()
     {
-        mainCam = Camera.main.gameObject;
+        if(Camera.main.gameObject)
+            mainCam = Camera.main.gameObject;
         effectDelay = new WaitForSeconds(effectFrequency);
         layerMask = 1 << LayerMask.NameToLayer(enemyTag);
     }

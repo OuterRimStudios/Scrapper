@@ -10,20 +10,17 @@ public class PlayerReferenceManager : ReferenceManager
     public Transform firstPersonGunPosition;
     public Transform thirdPersonGunPosition;
 
-    bool firstPerson;
+    public static bool firstPerson;
 
     protected override void Awake()
     {
         base.Awake();
-        firstPerson = true;
-        animManager.SetAnimatorActive(false);
+        SetView(firstPerson);
     }
 
-    public void SwitchView()
+    public void SetView(bool _firstPerson)
     {
-        firstPerson = !firstPerson;
-
-        if (firstPerson)
+        if(_firstPerson)
         {
             animManager.SetAnimatorActive(false);
             thirdPersonCharacter.SetActive(false);
@@ -37,6 +34,13 @@ public class PlayerReferenceManager : ReferenceManager
             UpdateGunPos(thirdPersonGunPosition);
             thirdPersonCharacter.SetActive(true);
         }
+    }
+
+    public void SwitchView()
+    {
+        firstPerson = !firstPerson;
+
+        SetView(firstPerson);
     }
 
     void UpdateGunPos(Transform _parent)

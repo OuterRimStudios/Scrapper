@@ -6,28 +6,54 @@ using Rewired;
 
 public class SettingsManager : MonoBehaviour
 {
+    [Header("Gameplay Settings")]
+    public Slider mouseSensitivitySlider;
+    public Slider controllerSensitivitySlider;
+    public Toggle firstPersonToggle;
+    public Toggle thirdPersonToggle;
+    public Button gameplayApplyButton;
+
+    [Header("Video Settings")]
     public Toggle fullscreenToggle;
     public Dropdown resolutionDropdown;
     public Dropdown textureQualityDropdown;
     public Dropdown antialiasingDropdown;
     public Dropdown vSyncDropdown;
+    public Button videoApplyButton;
+
+    [Header("Audio Settings")]
     public Slider masterVolumeSlider;
-    public Button applyButton;
 
     public Resolution[] resolutions;
     public GameSettings gameSettings;
 
+    InputBehavior inputBehavior;
+
+    private void Awake()
+    {
+        inputBehavior = ReInput.mapping.GetInputBehavior(0, 0);
+    }
+
     void OnEnable()
     {
         gameSettings = new GameSettings();
+
+        mouseSensitivitySlider.onValueChanged.AddListener(delegate { OnMouseSensitivityChanged(); });
+        controllerSensitivitySlider.onValueChanged.AddListener(delegate { OnControllerSensitivityChanged(); });
+        firstPersonToggle.onValueChanged.AddListener(delegate { OnDefaultViewChanged(); });
+
         fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
         resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionChange(); });
         textureQualityDropdown.onValueChanged.AddListener(delegate { OnTextureQualityChange(); });
         antialiasingDropdown.onValueChanged.AddListener(delegate { OnAntialiasingChange(); });
         vSyncDropdown.onValueChanged.AddListener(delegate { OnVSyncChange(); });
+
         masterVolumeSlider.onValueChanged.AddListener(delegate { OnVolumeChanged(masterVolumeSlider); });
-        applyButton.onClick.AddListener(delegate { OnApplyButtonClicked(); });
-        applyButton.interactable = false;
+
+        videoApplyButton.onClick.AddListener(delegate { OnApplyButtonClicked(); });
+        gameplayApplyButton.onClick.AddListener(delegate { OnApplyButtonClicked(); });
+        videoApplyButton.interactable = false;
+        gameplayApplyButton.interactable = false;
         resolutions = Screen.resolutions;
         foreach(Resolution resolution in resolutions)
         {
@@ -41,45 +67,72 @@ public class SettingsManager : MonoBehaviour
     public void OnFullscreenToggle()
     {
         Screen.fullScreen = gameSettings.fullscreen = fullscreenToggle.isOn;
-        applyButton.interactable = true;
+        videoApplyButton.interactable = true;
     }
 
     public void OnResolutionChange()
     {
         Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, Screen.fullScreen);
         gameSettings.resolutionIndex = resolutionDropdown.value;
-        applyButton.interactable = true;
+        videoApplyButton.interactable = true;
     }
 
     public void OnTextureQualityChange()
     {
         QualitySettings.masterTextureLimit = gameSettings.textureQuality = textureQualityDropdown.value;
-        applyButton.interactable = true;
+        videoApplyButton.interactable = true;
     }
 
     public void OnAntialiasingChange()
     {
         QualitySettings.antiAliasing = (int)Mathf.Pow(2, antialiasingDropdown.value);
         gameSettings.antialiasing = antialiasingDropdown.value;
-        applyButton.interactable = true;
+        videoApplyButton.interactable = true;
     }
 
     public void OnVSyncChange()
     {
         QualitySettings.vSyncCount = gameSettings.vSync = vSyncDropdown.value;
-        applyButton.interactable = true;
+        videoApplyButton.interactable = true;
+    }
+
+    public void OnMouseSensitivityChanged()
+    {
+        inputBehavior.mouseXYAxisSensitivity = gameSettings.mouseSensitivity = mouseSensitivitySlider.value;
+        gameplayApplyButton.interactable = true;
+    }
+
+    public void OnControllerSensitivityChanged()
+    {
+        inputBehavior.joystickAxisSensitivity = gameSettings.controllerSensitivity = controllerSensitivitySlider.value;
+        gameplayApplyButton.interactable = true;
+    }
+
+    public void OnDefaultViewChanged()
+    {
+        CameraController.firstPerson = gameSettings.firstPerson = firstPersonToggle.isOn;
+        PlayerReferenceManager.firstPerson = gameSettings.firstPerson;
+        gameplayApplyButton.interactable = true;
+    }
+
+    void SetDefaultViewToggle()
+    {
+        if(gameSettings.firstPerson)
+            firstPersonToggle.isOn = gameSettings.firstPerson;
+        else
+            thirdPersonToggle.isOn = !gameSettings.firstPerson;
     }
 
     public void OnVolumeChanged(Slider slider)
     {
         AudioListener.volume = gameSettings.masterVolume = slider.value;
-        applyButton.interactable = true;
+        videoApplyButton.interactable = true;
     }
 
     public void OnApplyButtonClicked()
     {
         SaveSettings();
-        applyButton.interactable = false;
+        videoApplyButton.interactable = false;
     }
 
     public void SaveBindings()
@@ -101,25 +154,40 @@ public class SettingsManager : MonoBehaviour
     public void LoadSettings()
     {
         gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
+
+        mouseSensitivitySlider.value = gameSettings.mouseSensitivity;
+        controllerSensitivitySlider.value = gameSettings.controllerSensitivity;
+        SetDefaultViewToggle();
+
         fullscreenToggle.isOn = gameSettings.fullscreen;
         resolutionDropdown.value = gameSettings.resolutionIndex;
         textureQualityDropdown.value = gameSettings.textureQuality;
         antialiasingDropdown.value = gameSettings.antialiasing;
         vSyncDropdown.value = gameSettings.vSync;
+
         masterVolumeSlider.value = gameSettings.masterVolume;
 
         Screen.fullScreen = gameSettings.fullscreen;
         resolutionDropdown.RefreshShownValue();
-        applyButton.interactable = false;
+        videoApplyButton.interactable = false;
+        gameplayApplyButton.interactable = false;
     }
 }
 
 public class GameSettings
 {
+    //gameplay settings
+    public float mouseSensitivity;
+    public float controllerSensitivity;
+    public bool firstPerson;
+
+    //video settings
     public bool fullscreen;
     public int textureQuality;
     public int antialiasing;
     public int vSync;
     public int resolutionIndex;
+
+    //audio settings
     public float masterVolume;
 }
