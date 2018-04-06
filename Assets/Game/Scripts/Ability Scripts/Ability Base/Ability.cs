@@ -110,9 +110,12 @@ public class Ability : MonoBehaviour
 
         if (charges < abilityCharges)
             charges++;
-        
+
         if(refManager.gameObject.name == "Player")
-            OnCooldownFinished(this);
+        {
+            if(OnCooldownFinished != null)
+                OnCooldownFinished(this);
+        }
 
         onCooldown = false;
     }
