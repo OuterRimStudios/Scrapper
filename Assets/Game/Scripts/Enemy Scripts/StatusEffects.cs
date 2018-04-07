@@ -11,6 +11,14 @@ public class StatusEffects : MonoBehaviour
     
     Rigidbody rb;
 
+    public GameObject stunEffect;
+    public GameObject slowEffect;
+    public GameObject ccEffect;
+    public GameObject dotEffect;
+    public GameObject stackingDotEffect;
+    public GameObject stackingSlowEffect;
+    public GameObject siphonEffect;
+
     bool canAct;
     Coroutine stun;
     Coroutine slow;
@@ -50,6 +58,7 @@ public class StatusEffects : MonoBehaviour
         print("Stunned " + ai.agent.speed);
 
         ai.InteruptAgent();
+        stunEffect.SetActive(true);
         stun = StartCoroutine(Stunned(stunLength));
     }
 
@@ -61,6 +70,7 @@ public class StatusEffects : MonoBehaviour
 
     public void RemoveStun()
     {
+        stunEffect.SetActive(false);
         canAct = true;
         ai.StartAgent();
         print("Stun Removed " + ai.agent.speed);
@@ -88,6 +98,7 @@ public class StatusEffects : MonoBehaviour
 
         print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " + ai.agent.speed);
 
+        slowEffect.SetActive(true);
         slow = StartCoroutine(Slowed(slowLength));
     }
 
@@ -99,6 +110,7 @@ public class StatusEffects : MonoBehaviour
 
     public void RemoveSlow()
     {
+        slowEffect.SetActive(false);
         ai.agent.speed = ai.baseSpeed;
         print("Slow Removed " + ai.agent.speed);
     }
@@ -138,6 +150,8 @@ public class StatusEffects : MonoBehaviour
 
         ai.InteruptAgent();
         canAct = false;
+
+        ccEffect.SetActive(true);
         cc = StartCoroutine(CC(ccLength));
 
         print("Enemy CC'd");
@@ -156,6 +170,7 @@ public class StatusEffects : MonoBehaviour
 
         if(slow == null && root == null && stun == null)
         {
+            ccEffect.SetActive(false);
             ai.StartAgent();
             canAct = true;
         }
@@ -168,6 +183,7 @@ public class StatusEffects : MonoBehaviour
             StopCoroutine(root);
         if (!ai) return;
         ai.agent.speed = 0;
+        
         root = StartCoroutine(Rooted(rootLength));
 
         print("Enemy rooted");
@@ -221,8 +237,11 @@ public class StatusEffects : MonoBehaviour
     {
         for (int i = 0; i < dotLength; i++)
         {
+            stackingDotEffect.SetActive(true);
             health.TookDamage(dotStackAmount);
             yield return new WaitForSeconds(1);
+
+            stackingDotEffect.SetActive(false);
         }
         currentDotStacks = 0;
         dotStackAmount = 0;
@@ -235,6 +254,8 @@ public class StatusEffects : MonoBehaviour
         if (!ai) return;
         if (stackingSlow != null)
             StopCoroutine(stackingSlow);
+
+        stackingSlowEffect.SetActive(true);
 
         if (currentSlowStacks < stackAmount)
         {
@@ -252,6 +273,8 @@ public class StatusEffects : MonoBehaviour
     {
         ApplySlow(slowAmount, slowLength);
         yield return new WaitForSeconds(slowLength);
+
+        stackingSlowEffect.SetActive(false);
         currentSlowStacks = 0;
     }
     #endregion
@@ -259,6 +282,7 @@ public class StatusEffects : MonoBehaviour
     public void Siphon(int siphonDamage)
     {
         if (!ai) return;
+        siphonEffect.SetActive(true);
         health.Heal(siphonDamage);
         print("Siphoned " + siphonDamage + " health from enemy");
     }
@@ -270,6 +294,7 @@ public class StatusEffects : MonoBehaviour
         if (dot != null)
             StopCoroutine(dot);
 
+        dotEffect.SetActive(true);
         dot = StartCoroutine(DOT(dotDamage, dotLength));
     }
 
@@ -280,6 +305,8 @@ public class StatusEffects : MonoBehaviour
             health.TookDamage(_dotDamage);
             yield return new WaitForSeconds(1);
         }
+
+        dotEffect.SetActive(false);
     }
     #endregion
 }
