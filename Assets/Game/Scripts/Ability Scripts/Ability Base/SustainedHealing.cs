@@ -35,7 +35,7 @@ public class SustainedHealing : Sustained
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
         }
-        else if (pierce && target)
+        else if (!hitTarget && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.position, hitRadius, spawnPos.forward, range, layerMask);
         }

@@ -16,7 +16,6 @@ public class Sustained : DamageTypes {
     protected Coroutine repeater;
     protected GameObject mainCam;
     protected bool hitTarget;
-    protected bool pierce;
 
     [Space, Header("Visual Variables")]
     public GameObject muzzleFlash;
@@ -103,8 +102,9 @@ public class Sustained : DamageTypes {
                     ShootBeamInDir(spawnPos.position, mainCam.transform.forward, ray.GetPoint(range));
             }
         }
-        else if (pierce && target)                                                             //AI  
+        else if (!hitTarget && target)                                                             //AI  
         {
+            print("RUNNING");
             ShootBeamInDir(spawnPos.position, spawnPos.forward, ray.GetPoint(range));
         }
         else if(hitTarget && target) //Turret
