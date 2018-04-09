@@ -11,6 +11,7 @@ public class StatusEffects : MonoBehaviour
     
     Rigidbody rb;
 
+    [Header("Status Effects")]
     public GameObject stunEffect;
     public GameObject slowEffect;
     public GameObject ccEffect;
@@ -18,6 +19,9 @@ public class StatusEffects : MonoBehaviour
     public GameObject stackingDotEffect;
     public GameObject stackingSlowEffect;
     public GameObject siphonEffect;
+
+    [Space, Header("Ability Effects")]
+    public GameObject containmentZone;
 
     bool canAct;
     Coroutine stun;
@@ -55,7 +59,6 @@ public class StatusEffects : MonoBehaviour
         if (!ai) return;
         
         canAct = false;
-        print("Stunned " + ai.agent.speed);
 
         ai.InteruptAgent();
         stunEffect.SetActive(true);
@@ -73,7 +76,6 @@ public class StatusEffects : MonoBehaviour
         stunEffect.SetActive(false);
         canAct = true;
         ai.StartAgent();
-        print("Stun Removed " + ai.agent.speed);
     }
 #endregion
     #region Slow
@@ -84,7 +86,6 @@ public class StatusEffects : MonoBehaviour
 
         if (!ai) return;
 
-        print("Slow Amt " + slowAmount);
         float slowPercentage = slowAmount / 100;
         float newSpeed = (ai.baseSpeed * slowPercentage);
 
@@ -95,9 +96,7 @@ public class StatusEffects : MonoBehaviour
             else
                 ai.agent.speed = 0;
         }
-
-        print("AI Slowed -- " + slowAmount + " Slow Percentage : " + slowPercentage + " New Speed : " + newSpeed + " Current Speed: " + ai.agent.speed);
-
+     
         slowEffect.SetActive(true);
         slow = StartCoroutine(Slowed(slowLength));
     }
@@ -112,7 +111,6 @@ public class StatusEffects : MonoBehaviour
     {
         slowEffect.SetActive(false);
         ai.agent.speed = ai.baseSpeed;
-        print("Slow Removed " + ai.agent.speed);
     }
     #endregion
     #region KnockBack
@@ -128,7 +126,6 @@ public class StatusEffects : MonoBehaviour
             knockingBack = true;
             StartCoroutine(KnockedBack());
          }
-        print("Knocked Back");
     }
 
     IEnumerator KnockedBack()
@@ -153,8 +150,6 @@ public class StatusEffects : MonoBehaviour
 
         ccEffect.SetActive(true);
         cc = StartCoroutine(CC(ccLength));
-
-        print("Enemy CC'd");
     }
 
     IEnumerator CC(float ccLength)
@@ -185,8 +180,6 @@ public class StatusEffects : MonoBehaviour
         ai.agent.speed = 0;
         
         root = StartCoroutine(Rooted(rootLength));
-
-        print("Enemy rooted");
     }
 
     IEnumerator Rooted(float rootLength)
@@ -201,8 +194,6 @@ public class StatusEffects : MonoBehaviour
             StopCoroutine(root);
 
         ai.agent.speed = ai.baseSpeed;
-
-        print("Root Removed");
     }
     #endregion
     #region Stacking Dot
@@ -284,7 +275,6 @@ public class StatusEffects : MonoBehaviour
         if (!ai) return;
         siphonEffect.SetActive(true);
         health.Heal(siphonDamage);
-        print("Siphoned " + siphonDamage + " health from enemy");
     }
     #endregion
     #region DOT
@@ -307,6 +297,22 @@ public class StatusEffects : MonoBehaviour
         }
 
         dotEffect.SetActive(false);
+    }
+    #endregion
+
+    //Ability Effects
+
+    #region Containment Zone
+    public void ActivateContainmentZone(float length)
+    {
+        containmentZone.SetActive(true);
+        StartCoroutine(ContainmentZone(length));
+    }
+
+    IEnumerator ContainmentZone(float length)
+    {
+        yield return new WaitForSeconds(length);
+        containmentZone.SetActive(false);
     }
     #endregion
 }

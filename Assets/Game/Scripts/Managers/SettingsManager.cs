@@ -155,6 +155,8 @@ public class SettingsManager : MonoBehaviour
     {
         gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
 
+        if (gameSettings == null) return;
+
         mouseSensitivitySlider.value = gameSettings.mouseSensitivity;
         controllerSensitivitySlider.value = gameSettings.controllerSensitivity;
         SetDefaultViewToggle();

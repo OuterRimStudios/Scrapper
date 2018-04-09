@@ -21,8 +21,15 @@ public class Sustained : DamageTypes {
     {
         if(Camera.main.gameObject)
             mainCam = Camera.main.gameObject;
+
         effectDelay = new WaitForSeconds(effectFrequency);
         layerMask = 1 << LayerMask.NameToLayer(enemyTag);
+    }
+
+    private void Start()
+    {
+        if (Camera.main.gameObject)
+            mainCam = Camera.main.gameObject;
     }
 
     private void OnEnable()
@@ -120,6 +127,7 @@ public class Sustained : DamageTypes {
             if (mainCam)
             {
                 Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+                if(spawnPos)
                 hitObjects = Physics.CapsuleCastAll(spawnPos.position, ray.GetPoint(range), hitRadius, spawnPos.forward, range, layerMask);
             }
         }

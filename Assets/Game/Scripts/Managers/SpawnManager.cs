@@ -44,10 +44,12 @@ public class SpawnManager : MonoBehaviour
 	{
 		ResetSpawnpoints ();
 		PrepareWave ();
-		PlayerReady ();
 
 		//   if (currentDifficulty == 1 || currentDifficulty == 2)
 		setUpTimer = true;
+
+        if (setUpTimer)
+            timeToSetUp = StartCoroutine(TimeToSetUp());
 
         currentWaveText.text = "Wave: " + 1;
 	}
@@ -56,6 +58,10 @@ public class SpawnManager : MonoBehaviour
 	{
 		if (!countingDown) {
 			countingDown = true;
+
+            if (timeToSetUp != null)
+                StopCoroutine(timeToSetUp);
+
 			StartCoroutine (CountDown ());
 		}
 	}
@@ -105,7 +111,6 @@ public class SpawnManager : MonoBehaviour
                 GameObject mechanicImage = Instantiate(mechanicImagePrefab, mechanicDisplayFields[j].transform);
                 mechanicImage.transform.GetChild(0).GetComponent<Image>().sprite = nextEncounters[j].mechanicImages[k];
             }
-
 		}
 	}
 

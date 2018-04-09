@@ -105,7 +105,7 @@ public class AI : MonoBehaviour
     public void InteruptAgent()
     {
         if(agent)
-        agent.destination = transform.position;
+            agent.destination = transform.position;
 
         refManager.aiAbility.DeactivateAbility();
         StopAgent();
@@ -116,7 +116,7 @@ public class AI : MonoBehaviour
         refManager.stateController.aiActive = false; 
         aiActive = false;
         if(agent && agent.isActiveAndEnabled)
-        agent.isStopped = true;
+            agent.isStopped = true;
     }
 
     public void StartAgent()

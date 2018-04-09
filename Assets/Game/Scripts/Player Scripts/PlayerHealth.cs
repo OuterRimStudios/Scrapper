@@ -19,6 +19,12 @@ public class PlayerHealth : Health
         UpdateHealthBar();
     }
 
+    public override void Heal(int healAmount)
+    {
+        base.Heal(healAmount);
+        UpdateHealthBar();
+    }
+
     void ResetHealth()
     {
         health = baseHealth;

@@ -55,6 +55,7 @@ public class InputManager : MonoBehaviour
     PlayerReferenceManager playerRefManager;
     PlayerMovement playerMovement;
     CameraController cameraController;
+    SpawnManager spawnManager;
 
     Player player;
 
@@ -66,6 +67,7 @@ public class InputManager : MonoBehaviour
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
+        spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
 
         for(int i = 0; i < abilities.Count; i++)
         {
@@ -135,6 +137,9 @@ public class InputManager : MonoBehaviour
         {
             if(pauseMenu.activeSelf)
                 pauseMenu.SetActive(false);
+
+            if (!SpawnManager.waveActive && interact)
+                spawnManager.PlayerReady();
 
             AbilityInput();
             CheckCooldowns();
