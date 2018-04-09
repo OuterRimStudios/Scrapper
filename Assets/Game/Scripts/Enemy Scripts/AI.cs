@@ -66,12 +66,16 @@ public class AI : MonoBehaviour
     public void SetDestination(Vector3 position)
     {
         walkPos = new Vector3(position.x, transform.position.y, position.z);
+        agent.isStopped = false;
     }
 
     public void SetDestination(Transform target)
     {
         if(target)
+        {
             walkPos = new Vector3(target.position.x, transform.position.y, target.position.z);
+            agent.isStopped = false;
+        }
     }
 
     IEnumerator UpdateTarget()

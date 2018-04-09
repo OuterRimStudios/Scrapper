@@ -9,6 +9,7 @@ public class CheckPositionDecision : Decision
     {
         if (Utility.CheckDistance(controller.transform.position, controller.enemyRefManager.ai.walkPos) <= controller.enemyRefManager.stats.personalSpaceRange)   //Are we at our destination?
         {
+            controller.enemyRefManager.ai.agent.isStopped = true;
             controller.enemyRefManager.ai.previousPos = controller.transform.position;
             return true;
         }

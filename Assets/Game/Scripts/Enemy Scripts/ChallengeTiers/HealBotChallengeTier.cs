@@ -20,6 +20,9 @@ public class HealBotChallengeTier : ChallengeTier
         {
             SustainedHealing sustainedHealing = ability.beams[i] as SustainedHealing;
             sustainedHealing.range = range;
+            ability.refManager.stats.personalSpaceRange = range - 2;
+            AIReferenceManager refManager = ability.refManager as AIReferenceManager;
+            refManager.ai.agent.stoppingDistance = range - 2;
             sustainedHealing.healAmount = healAmount;
             sustainedHealing.effectFrequency = healingFrequency;
             sustainedHealing.transform.root.GetComponent<NavMeshAgent>().speed = speed;
