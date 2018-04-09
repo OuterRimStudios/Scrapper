@@ -24,7 +24,7 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision hit)
+    void OnTriggerEnter(Collider hit)
     {
         if (!hasCollided)
         {
