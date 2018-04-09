@@ -19,6 +19,7 @@ public class SustainedAI : Ability {
             beams.Add(Instantiate(beamPrefab));
             UpdateTransform();
             beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
+            beams[i].gameObject.SetActive(false);
         }
     }
 
@@ -70,7 +71,7 @@ public class SustainedAI : Ability {
         VisualOnActivate();
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false, true);
+            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false);
             beams[i].gameObject.SetActive(true);
         }
         yield return new WaitForSeconds(effectLength);

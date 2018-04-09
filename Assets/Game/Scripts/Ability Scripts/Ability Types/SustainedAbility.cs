@@ -17,10 +17,14 @@ public class SustainedAbility : Ability {
         for (int i = 0; i < refManager.SpawnPosition().Length; i++)
         {
             beams.Add(Instantiate(beamPrefab));
-            UpdateTransform();
             beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
-            if(refManager.friendlyTag.ToString() == "Friendly")
-                beams[i].SetTarget(mainCam.transform, false, false);
+
+            if (refManager.friendlyTag.ToString() == "Friendly")
+                beams[i].SetTarget(mainCam.transform, false);
+
+          //  beams[i].gameObject.SetActive(false);
+            UpdateTransform();
+
         }
     }
 
@@ -31,7 +35,7 @@ public class SustainedAbility : Ability {
 
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false, false);
+            beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false);
             beams[i].gameObject.SetActive(true);
         }
 

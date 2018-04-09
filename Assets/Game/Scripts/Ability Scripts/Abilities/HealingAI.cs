@@ -52,7 +52,7 @@ public class HealingAI : FriendlyAI
         base.TargetUpdated();
         for (int i = 0; i < beams.Count; i++)
         {
-            beams[i].SetTarget(target, true, false);
+            beams[i].SetTarget(target, true);
         }
     }
 

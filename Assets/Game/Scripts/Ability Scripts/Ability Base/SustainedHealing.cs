@@ -22,6 +22,8 @@ public class SustainedHealing : Sustained
         else
             objectHit.GetComponent<Health>().Heal(healAmount);
 
+        print("Healing " + objectHit + " for " + healAmount);
+
         VisualOnTrigger();
         SpawnAfterEffects();
     }
@@ -29,11 +31,11 @@ public class SustainedHealing : Sustained
     protected override IEnumerator RepeatEffect()
     {
         RaycastHit[] hitObjects = new RaycastHit[0];
-        if (isTurret && target)
+        if (hitTarget && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
         }
-        else if (shootForward && target)
+        else if (pierce && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.position, hitRadius, spawnPos.forward, range, layerMask);
         }

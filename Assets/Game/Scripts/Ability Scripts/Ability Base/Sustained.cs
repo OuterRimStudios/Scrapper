@@ -7,6 +7,7 @@ public class Sustained : DamageTypes {
     public float effectFrequency;
     public float range;
     public float hitRadius;
+    public LayerMask visualLayer;
     
     public LineRenderer beamRenderer;
 
@@ -14,8 +15,8 @@ public class Sustained : DamageTypes {
     protected WaitForSeconds effectDelay;
     protected Coroutine repeater;
     protected GameObject mainCam;
-    protected bool isTurret;
-    protected bool shootForward;
+    protected bool hitTarget;
+    protected bool pierce;
 
     [Space, Header("Visual Variables")]
     public GameObject muzzleFlash;
@@ -24,8 +25,6 @@ public class Sustained : DamageTypes {
     public float beamEndOffset = 1f; //How far from the raycast hit point the end effect is positioned
     public float textureScrollSpeed = 8f; //How fast the texture scrolls along the beam
     public float textureLengthScale = 3; //Length of the beam texture
-
-    Vector3 endPoint;
 
     protected virtual void Awake()
     {
@@ -79,8 +78,7 @@ public class Sustained : DamageTypes {
         {
             if (repeater != null)
                 StopCoroutine(repeater);
-
-            beamRenderer.enabled = false;
+            
             return;
         }
         else if(target)
@@ -93,47 +91,49 @@ public class Sustained : DamageTypes {
             }
         }
 
-        print("Turret: " + isTurret + " Target: " + target + " Shoot Forawrd: " + shootForward);
-
-        if (isTurret && target)                                                              //Turret
+        Ray ray = new Ray(spawnPos.position, spawnPos.forward);
+        if(transform.root.name == "Player")
         {
-           endPoint = target.position + spawnPos.forward * range;
-           ShootBeamInDir(spawnPos.localPosition, spawnPos.forward, target.position + spawnPos.forward * range);
-        }
-        else if(shootForward && target)                                                     //AI
-        {
-           endPoint = spawnPos.position + spawnPos.forward * range;
-           ShootBeamInDir(spawnPos.localPosition, spawnPos.forward, spawnPos.position + spawnPos.forward * range);
-        }
-        else
-        {                                                                                   //Player
-            if(mainCam)
+            if (mainCam)
             {
-                Ray ray = new Ray(spawnPos.position, spawnPos.forward);
-                endPoint = ray.GetPoint(range);
-                ShootBeamInDir(spawnPos.position, mainCam.transform.forward, ray.GetPoint(range));
+                RaycastHit hit;
+                if (Physics.Raycast(ray.origin, ray.direction, out hit, range, visualLayer))
+                    ShootBeamInDir(spawnPos.position, mainCam.transform.forward, hit.point);
+                else
+                    ShootBeamInDir(spawnPos.position, mainCam.transform.forward, ray.GetPoint(range));
             }
+        }
+        else if (pierce && target)                                                             //AI  
+        {
+            ShootBeamInDir(spawnPos.position, spawnPos.forward, ray.GetPoint(range));
+        }
+        else if(hitTarget && target) //Turret
+        {
+                RaycastHit hit;
+                if (Physics.Raycast(ray.origin, ray.direction, out hit, range, visualLayer))
+                    ShootBeamInDir(spawnPos.position, spawnPos.forward, hit.point);
+                else
+                    ShootBeamInDir(spawnPos.position, spawnPos.forward, ray.GetPoint(range));
         }
 
         beamRenderer.startWidth = hitRadius;
         beamRenderer.endWidth = hitRadius; 
     }
 
-    public void SetTarget(Transform _target, bool _isTurret, bool _shootForward)
+    public void SetTarget(Transform _target, bool _hitTarget)
     {
         target = _target;
-        isTurret = _isTurret;
-        shootForward = _shootForward;
+        hitTarget = _hitTarget;
     }
 
     protected virtual IEnumerator RepeatEffect()
     {
         RaycastHit[] hitObjects = new RaycastHit[0];
-        if (isTurret && target)
+        if (hitTarget && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
         }
-        else if(shootForward && target)
+        else if(!hitTarget && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, spawnPos.position, hitRadius, spawnPos.forward, range, layerMask);
         }
@@ -187,5 +187,10 @@ public class Sustained : DamageTypes {
         float distance = Vector3.Distance(start, end);
         beamRenderer.sharedMaterial.mainTextureScale = new Vector2(distance / textureLengthScale, 1);
         beamRenderer.sharedMaterial.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0);
+    }
+
+    public void UpdateHitRadius(float newHitRadius)
+    {
+        hitRadius = newHitRadius;
     }
 }

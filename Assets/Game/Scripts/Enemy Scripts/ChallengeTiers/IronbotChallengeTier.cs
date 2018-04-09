@@ -15,7 +15,6 @@ public class IronbotChallengeTier : ChallengeTier
     public override void InitializeAbilityStats(Ability _ability)
     {
         SustainedAI ability = _ability as SustainedAI;
-
         for (int i = 0; i < ability.beams.Count; i++)
         {
             Sustained sustained = ability.beams[i];

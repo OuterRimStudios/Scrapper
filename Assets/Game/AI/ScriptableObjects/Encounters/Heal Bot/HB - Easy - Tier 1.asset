@@ -11,9 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cd7943284f76c409cd3365a8b622ee, type: 3}
   m_Name: HB - Easy - Tier 1
   m_EditorClassIdentifier: 
-  updateAtWave: 0
   health: 40
+  updateAtWave: 0
+  spawnCount: 0
+  followSpeed: 25
   speed: 3.5
-  range: 5
+  range: 10
   healAmount: 3
   healingFrequency: 1
