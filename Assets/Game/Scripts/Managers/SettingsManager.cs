@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.IO;
 using Rewired;
+using System;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -153,7 +154,14 @@ public class SettingsManager : MonoBehaviour
 
     public void LoadSettings()
     {
-        gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
+        try
+        {
+            gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
 
         if (gameSettings == null) return;
 
