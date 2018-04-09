@@ -24,6 +24,8 @@ public class Sustained : DamageTypes {
     public float beamEndOffset = 1f; //How far from the raycast hit point the end effect is positioned
     public float textureScrollSpeed = 8f; //How fast the texture scrolls along the beam
     public float textureLengthScale = 3; //Length of the beam texture
+    RaycastHit[] hitObjects = new RaycastHit[0];
+
 
     protected virtual void Awake()
     {
@@ -51,17 +53,34 @@ public class Sustained : DamageTypes {
             StopCoroutine(repeater);
     }
 
+    public virtual void EffectOnTrigger(List<GameObject> objectsHit)
+    {
+        for(int i = 0; i < objectsHit.Count; i++)
+        {
+            ApplyModules(objectsHit[i].transform.root.gameObject, true);
+
+            if (objectsHit[i].tag.Equals("Limb"))
+                objectsHit[i].GetComponent<Limb>().TookDamage(damage);
+            else
+                objectsHit[i].GetComponent<Health>().TookDamage(damage);
+
+            VisualOnTrigger();
+            SpawnAfterEffects();
+        }
+        RemoveModules();
+    }
+
     public virtual void EffectOnTrigger(GameObject objectHit)
     {
-        ApplyModules(objectHit.transform.root.gameObject);
+            ApplyModules(objectHit.transform.root.gameObject, true);
 
-        if (objectHit.tag.Equals("Limb"))
-            objectHit.GetComponent<Limb>().TookDamage(damage);
-        else
-            objectHit.GetComponent<Health>().TookDamage(damage);
+            if (objectHit.tag.Equals("Limb"))
+                objectHit.GetComponent<Limb>().TookDamage(damage);
+            else
+                objectHit.GetComponent<Health>().TookDamage(damage);
 
-        VisualOnTrigger();
-        SpawnAfterEffects();
+            VisualOnTrigger();
+            SpawnAfterEffects();
     }
 
     //Call this whenever you want visual effects to play
@@ -104,7 +123,6 @@ public class Sustained : DamageTypes {
         }
         else if (!hitTarget && target)                                                             //AI  
         {
-            print("RUNNING");
             ShootBeamInDir(spawnPos.position, spawnPos.forward, ray.GetPoint(range));
         }
         else if(hitTarget && target) //Turret
@@ -128,7 +146,6 @@ public class Sustained : DamageTypes {
 
     protected virtual IEnumerator RepeatEffect()
     {
-        RaycastHit[] hitObjects = new RaycastHit[0];
         if (hitTarget && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
@@ -152,13 +169,16 @@ public class Sustained : DamageTypes {
             List<GameObject> hitObjectsList = new List<GameObject>();
             foreach (RaycastHit hit in hitObjects)
             {
+                print("Targets hit");
                 if (!hitObjectsList.Contains(hit.transform.gameObject))
                 {
-                    hitObjectsList.Add(hit.transform.gameObject);
+                   
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer(enemyTag))
-                        EffectOnTrigger(hit.transform.gameObject);
+                        hitObjectsList.Add(hit.transform.gameObject);
                 }
             }
+
+            EffectOnTrigger(hitObjectsList);
         }
 
         yield return effectDelay;

@@ -267,13 +267,23 @@ public class InputManager : MonoBehaviour
         if(SpawnManager.waveActive && toggleLoadoutMenu)
         {
             canAct = true;
+            PlayerMovement.canAct = true;
+            CameraController.canAct = true;
             toggleLoadoutMenu = false;
         }
 
         if(pause || toggleLoadoutMenu)
+        {
             canAct = false;
+            PlayerMovement.canAct = false;
+            CameraController.canAct = false;
+        }
         else
+        {
             canAct = true;
+            PlayerMovement.canAct = true;
+            CameraController.canAct = true;
+        }
 
         if(!canAct) return;
         jump = player.GetButtonDown("Jump");

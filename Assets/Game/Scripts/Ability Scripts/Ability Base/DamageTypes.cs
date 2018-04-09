@@ -95,8 +95,40 @@ public class DamageTypes : MonoBehaviour
                         other.GetComponent<StatusEffects>().StackDot(activeModules[i].damage, activeModules[i].effectLength, activeModules[i].stackAmount);
                         break;
                 }
+                RemoveModules();
             }
-            RemoveModules();
+        }
+    }
+    public void ApplyModules(GameObject other, bool listOfEnemies)
+    {
+        if (activeModules.Count > 0)
+        {
+            for (int i = 0; i < activeModules.Count; i++)
+            {
+                switch (activeModules[i].module)
+                {
+                    case ModuleAbility.Module.Concussion:
+                        other.GetComponent<StatusEffects>().ApplyStun(activeModules[i].effectLength);
+                        break;
+                    case ModuleAbility.Module.Incinerating:
+                        other.GetComponent<StatusEffects>().ApplyDOT(activeModules[i].damage, activeModules[i].effectLength);
+                        break;
+                    case ModuleAbility.Module.Crippling:
+                        other.GetComponent<StatusEffects>().StackSlow(activeModules[i].effectLength, activeModules[i].slowAmount, activeModules[i].stackAmount);
+                        break;
+                    case ModuleAbility.Module.Weighted:
+                        other.GetComponent<StatusEffects>().KnockedBack(activeModules[i].pushForce);
+                        break;
+                    case ModuleAbility.Module.Siphon:
+                        float leechDamage = damage
+                            / activeModules[i].leechPercentage;
+                        other.GetComponent<StatusEffects>().Siphon(Mathf.RoundToInt(leechDamage));
+                        break;
+                    case ModuleAbility.Module.Hemorrhage:
+                        other.GetComponent<StatusEffects>().StackDot(activeModules[i].damage, activeModules[i].effectLength, activeModules[i].stackAmount);
+                        break;
+                }
+            }
         }
     }
 }

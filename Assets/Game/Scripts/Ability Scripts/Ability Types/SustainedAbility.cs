@@ -51,7 +51,7 @@ public class SustainedAbility : Ability {
                 beams[i].SetModule(GetActiveModules()[j]);
         }
 
-        RemoveModules();
+       // RemoveModules();
     }
 
     public override void DeactivateAbility()
