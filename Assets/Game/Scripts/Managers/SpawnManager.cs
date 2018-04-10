@@ -25,6 +25,7 @@ public class SpawnManager : MonoBehaviour
 
     public Text currentWaveText;
     public Text timeToNextWaveText;
+    public Text pressToStartWave;
 
 	public int currentWave;
 
@@ -62,19 +63,21 @@ public class SpawnManager : MonoBehaviour
             if (timeToSetUp != null)
                 StopCoroutine(timeToSetUp);
 
-			StartCoroutine (CountDown ());
+            pressToStartWave.enabled = false;
+            StartCoroutine (CountDown ());
 		}
 	}
 
 	IEnumerator CountDown ()
-	{
-		for (int i = 3; i > 0; i--) {
+    {
+        for (int i = 3; i > 0; i--) {
             timeToNextWaveText.text = "Wave Starts in: " + i;
             yield return new WaitForSeconds (1);
 		}
         timeToNextWaveText.text = "";
         countingDown = false;
-		StartWave ();
+
+        StartWave ();
 	}
 
 	void PrepareWave ()
@@ -135,6 +138,7 @@ public class SpawnManager : MonoBehaviour
 	{
         if (dontSpawn) return;
 
+        pressToStartWave.enabled = false;
 
         for (int j = 0; j < nextEncounters.Count; j++)
         {
@@ -196,7 +200,9 @@ public class SpawnManager : MonoBehaviour
 				difficultyRatings [currentDifficulty].currentEncounterMax++;
 		}
 
-		if (setUpTimer)
+        pressToStartWave.enabled = true;
+
+        if (setUpTimer)
 			timeToSetUp = StartCoroutine (TimeToSetUp ());
 	}
 

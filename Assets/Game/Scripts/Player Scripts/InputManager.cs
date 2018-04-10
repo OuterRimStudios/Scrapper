@@ -132,11 +132,15 @@ public class InputManager : MonoBehaviour
         if(pause)
         {
             pauseMenu.SetActive(true);
+            Time.timeScale = 0;
         }
         else
         {
-            if(pauseMenu.activeSelf)
+            if (pauseMenu.activeSelf)
+            {
+                Time.timeScale = 1;
                 pauseMenu.SetActive(false);
+            }
 
             if (!SpawnManager.waveActive && interact)
                 spawnManager.PlayerReady();

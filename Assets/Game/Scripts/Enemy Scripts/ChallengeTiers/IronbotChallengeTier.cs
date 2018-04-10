@@ -22,6 +22,12 @@ public class IronbotChallengeTier : ChallengeTier
             sustained.effectFrequency = damageFrequency;
             ability.chargeTime = chargeTime;
             sustained.hitRadius = beamSize;
+
+            AnimationCurve curve = new AnimationCurve();
+            curve.AddKey(0, beamSize);
+            curve.AddKey(1, beamSize);
+            Debug.Log("Curve Size  " + curve[1]);
+            sustained.beamRenderer.widthCurve = curve;
             ability.effectLength = effectDuration;
         }
     }

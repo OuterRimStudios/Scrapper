@@ -71,9 +71,22 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsJumping", false);
     }
 
+    void ResetAnimations()
+    {
+        anim.SetFloat("MoveX",0);
+        anim.SetFloat("MoveY", 0);
+        anim.SetFloat("LookX", 0);
+        anim.SetFloat("LookY", 0);
+        anim.SetBool("IsMoving", false);
+    }
+
     private void Update()
     {
-        if (!canAct) return;
+        if (!canAct)
+        {
+            ResetAnimations();
+            return;
+        }
         Move();
         Look();
         Jumping();

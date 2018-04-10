@@ -108,7 +108,7 @@ public class AI : MonoBehaviour
 
     public void InteruptAgent()
     {
-        if(agent)
+        if(agent && agent.isOnNavMesh)
             agent.destination = transform.position;
 
         refManager.aiAbility.DeactivateAbility();

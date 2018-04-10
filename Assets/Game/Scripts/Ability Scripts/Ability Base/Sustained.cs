@@ -44,6 +44,9 @@ public class Sustained : DamageTypes {
 
     private void OnEnable()
     {
+        if (repeater != null)
+            StopCoroutine(repeater);
+
         repeater = StartCoroutine(RepeatEffect());
     }
 
@@ -91,23 +94,29 @@ public class Sustained : DamageTypes {
 
     private void Update()
     {
-
-        if (!target)
-        {
-            if (repeater != null)
-                StopCoroutine(repeater);
+        //if (!target)
+        //{
+        //    if (repeater != null)
+        //        StopCoroutine(repeater);
             
-            return;
-        }
-        else if(target)
-        {
-            if (!target.gameObject.activeInHierarchy)
-            {
-                if (repeater != null)
-                    StopCoroutine(repeater);
-                return;
-            }
-        }
+        //    return;
+        //}
+        //else if(target)
+        //{
+        //    if (!target.gameObject.activeInHierarchy)
+        //    {
+        //        if (repeater != null)
+        //            StopCoroutine(repeater);
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        if(repeater == null)
+        //        {
+        //            repeater = StartCoroutine(RepeatEffect());
+        //        }
+        //    }
+        //}
 
         Ray ray = new Ray(spawnPos.position, spawnPos.forward);
         if(transform.root.name == "Player")
@@ -146,6 +155,7 @@ public class Sustained : DamageTypes {
 
     protected virtual IEnumerator RepeatEffect()
     {
+        Debug.Log("Repeat === Sustain === Effect");
         if (hitTarget && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
@@ -163,6 +173,7 @@ public class Sustained : DamageTypes {
                 hitObjects = Physics.CapsuleCastAll(spawnPos.position, ray.GetPoint(range), hitRadius, spawnPos.forward, range, layerMask);
             }
         }
+        print("Objects being hit" + hitObjects.Length);
 
         if (hitObjects.Length > 0)
         {

@@ -46,16 +46,21 @@ public class AIReferenceManager : ReferenceManager
 		}
 
 		spawnManager = GameObject.Find ("GameManager").GetComponent<SpawnManager> ();
-		UpdateChallengeTier (spawnManager.currentWave);
-	}
+    }
 
-	public void UpdateChallengeTier (int waveCount)
+    private void OnEnable()
+    {
+        UpdateChallengeTier(spawnManager.currentWave);
+    }
+
+    public void UpdateChallengeTier (int waveCount)
 	{
-		for (int i = 0; i < challengeTiers.Count; i++) {
+        for (int i = 0; i < challengeTiers.Count; i++) {
 			if (challengeTiers [i].updateAtWave <= waveCount) {
 				currentChallengeTier = challengeTiers [i];
 			}
 		}
 		currentChallengeTier.InitializeAbilityStats (aiAbility);
+        Debug.Log(currentChallengeTier.name);
 	}
 }
