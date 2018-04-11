@@ -32,6 +32,7 @@ public class InputManager : MonoBehaviour
     public GameObject loadoutMenu;
     public GameObject hud;
     public GameObject pauseMenu;
+    public Text loadoutMenuWaveActiveText;
 
     public bool hideCursor = true;
 
@@ -44,6 +45,7 @@ public class InputManager : MonoBehaviour
     bool toggleView;
     bool toggleLoadoutMenu;
     bool pause;
+    bool turningOffText;
     public static bool canAct;
 
     float moveX;
@@ -69,7 +71,8 @@ public class InputManager : MonoBehaviour
         cameraController = GetComponentInChildren<CameraController>();
         spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
 
-        for(int i = 0; i < abilities.Count; i++)
+
+        for (int i = 0; i < abilities.Count; i++)
         {
             activeAbilitySlots[i].SetAbilitySlot(abilities[i]);
             if(abilityDisplayArea.abilityLoadoutOptions.Contains(activeAbilitySlots[i].abilityInSlot))
@@ -265,8 +268,24 @@ public class InputManager : MonoBehaviour
                 pause = !pause;
         }
 
-        if(!pause && !SpawnManager.waveActive && player.GetButtonDown("Loadout"))
+        if(player.GetButtonDown("Loadout"))
+        {
+            if(SpawnManager.waveActive)
+            {
+                loadoutMenuWaveActiveText.enabled = true;
+                if(!turningOffText)
+                {
+                    turningOffText = true;
+                    StartCoroutine(TurnOffText());
+                }
+                return;
+            }
+
+            if (pause)
+                pause = false;
+
             toggleLoadoutMenu = !toggleLoadoutMenu;
+        }
 
         if(SpawnManager.waveActive && toggleLoadoutMenu)
         {
@@ -314,11 +333,30 @@ public class InputManager : MonoBehaviour
 
     public void TogglePause(bool _pause)
     {
-        pause = _pause;
+        if(!SpawnManager.waveActive)
+            pause = _pause;
     }
 
     public void ToggleLoadoutMenu(bool _toggleLoadoutMenu)
     {
-        toggleLoadoutMenu = _toggleLoadoutMenu;
+        if (SpawnManager.waveActive)
+        {
+            loadoutMenuWaveActiveText.enabled = true;
+            if(!turningOffText)
+            {
+                turningOffText = true;
+                StartCoroutine(TurnOffText());
+            }
+            return;
+        }
+        else
+            toggleLoadoutMenu = _toggleLoadoutMenu;
+    }
+
+    IEnumerator TurnOffText()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        loadoutMenuWaveActiveText.enabled = false;
+        turningOffText = false;
     }
 }

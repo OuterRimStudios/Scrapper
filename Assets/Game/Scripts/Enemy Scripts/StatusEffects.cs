@@ -87,7 +87,7 @@ public class StatusEffects : MonoBehaviour
         if (!ai) return;
 
         float slowPercentage = slowAmount / 100;
-        float newSpeed = (ai.baseSpeed * slowPercentage);
+        float newSpeed = (ai.speed * slowPercentage);
 
         if(ai.agent.speed != 0)
         {
@@ -110,7 +110,8 @@ public class StatusEffects : MonoBehaviour
     public void RemoveSlow()
     {
         slowEffect.SetActive(false);
-        ai.agent.speed = ai.baseSpeed;
+        if(ai.agent)
+        ai.agent.speed = ai.speed;
     }
     #endregion
     #region KnockBack
@@ -192,8 +193,8 @@ public class StatusEffects : MonoBehaviour
     {
         if (root != null)
             StopCoroutine(root);
-
-        ai.agent.speed = ai.baseSpeed;
+        if (ai.agent)
+            ai.agent.speed = ai.speed;
     }
     #endregion
     #region Stacking Dot

@@ -25,6 +25,7 @@ public class SpawnManager : MonoBehaviour
 
     public Text currentWaveText;
     public Text timeToNextWaveText;
+    public Text loadoutTimeToNextWaveText;
     public Text pressToStartWave;
 
 	public int currentWave;
@@ -72,9 +73,11 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 3; i > 0; i--) {
             timeToNextWaveText.text = "Wave Starts in: " + i;
+            loadoutTimeToNextWaveText.text = "Wave Starts in: " + i;
             yield return new WaitForSeconds (1);
 		}
         timeToNextWaveText.text = "";
+        loadoutTimeToNextWaveText.text = "";
         countingDown = false;
 
         StartWave ();
@@ -219,7 +222,8 @@ public class SpawnManager : MonoBehaviour
         timeToNextWaveText.enabled = true;
 		for (int i = difficultyRatings [currentDifficulty].timeBetweenWaves; i > 0; i--) {
             timeToNextWaveText.text = "Next Wave in: " + i;
-			yield return new WaitForSeconds (1);
+            loadoutTimeToNextWaveText.text = "Next Wave in: " + i;
+            yield return new WaitForSeconds (1);
 		}
 
 		StartWave ();

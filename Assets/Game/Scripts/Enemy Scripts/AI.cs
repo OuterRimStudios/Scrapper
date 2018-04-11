@@ -8,7 +8,6 @@ public class AI : MonoBehaviour
     public AIReferenceManager refManager;
 
     public Transform chaseTarget;
-    public float baseSpeed;
     public bool targetFriendlies;
     public bool updateTarget;
     [HideInInspector] public int nextWayPoint;
@@ -43,7 +42,8 @@ public class AI : MonoBehaviour
         attackFrequency = new WaitForSeconds(1);
         waitTime = new WaitForSeconds(updateTargetFrequency);
 
-        speed = baseSpeed;
+        if(agent)
+        speed = agent.speed;
     }
 
     void Update()
@@ -58,10 +58,10 @@ public class AI : MonoBehaviour
         }
     }
 
-    public void Move()
-    {
-        rb.velocity = transform.forward * speed * Time.deltaTime;
-    }
+    //public void Move()
+    //{
+    //    rb.velocity = transform.forward * speed * Time.deltaTime;
+    //}
 
     public void SetDestination(Vector3 position)
     {
