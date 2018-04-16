@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed;
 
     public static bool canAct;
+
+    public Vector3 Direction { get; private set; }
     
     bool isCharging;
     Vector3 chargePosition;
@@ -117,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         movement = new Vector3(moveX, 0, moveY);
+        Direction = movement;
         Vector3.ClampMagnitude(movement, 1);
         movement *= speed * Time.deltaTime;
         movement = myCamera.transform.TransformDirection(movement);
