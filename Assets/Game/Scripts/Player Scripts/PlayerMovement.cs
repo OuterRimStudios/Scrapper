@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed;
 
     public static bool canAct;
+    
+    bool isCharging;
+    Vector3 chargePosition;
+    float chargeSpeed;
 
     float speed;
 
@@ -91,6 +95,19 @@ public class PlayerMovement : MonoBehaviour
             ResetAnimations();
             return;
         }
+
+        if(isCharging)
+        {
+            if (Utility.CheckDistance(transform.position, chargePosition) > 1f)
+                transform.position = Vector3.Lerp(transform.position, chargePosition, chargeSpeed * Time.deltaTime);
+            else
+            {
+                chargePosition = Vector3.zero;
+                isCharging = false;
+            }
+            return;
+        }
+
         Move();
         Look();
         Jumping();
@@ -154,5 +171,12 @@ public class PlayerMovement : MonoBehaviour
             speed = sprintSpeed;
         else
             speed = movementSpeed;
+    }
+
+    public void Charge(Vector3 _chargePosition, float _chargeSpeed)
+    {
+        isCharging = true;
+        chargePosition = _chargePosition;
+        chargeSpeed = _chargeSpeed;
     }
 }

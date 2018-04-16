@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RockJumpAbility : Ability
 {
+    [Space, Header("Required Variables")]
     public PlayerMovement playerMovement;
     public float jumpForce;
 

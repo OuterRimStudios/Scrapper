@@ -2309,6 +2309,65 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &146747479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 146747480}
+  - component: {fileID: 146747481}
+  m_Layer: 0
+  m_Name: Charge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &146747480
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 146747479}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &146747481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 146747479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e03414be17386846a1b2c6ed14edbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Charge
+  abilityIcon: {fileID: 21300000, guid: 77e7f5cdb602ff4498964b234c64c20f, type: 3}
+  abilityDescription: Charge forward 20 ft
+  abilityType: 7
+  abilityCharges: 1
+  chargeTime: 0
+  abilityCooldown: 6
+  requiresTarget: 0
+  afterEffects: []
+  charges: 0
+  isCharging: 0
+  isFiring: 0
+  refManager: {fileID: 1430053481}
+  playerMovement: {fileID: 1430053477}
+  chargeDistance: 20
+  chargeSpeed: 5
+  environmentMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &146880482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,6 +4130,7 @@ Transform:
   - {fileID: 1513604374}
   - {fileID: 558940417}
   - {fileID: 1424249031}
+  - {fileID: 146747480}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9288,7 +9348,7 @@ MonoBehaviour:
   - {fileID: 153909834}
   - {fileID: 199931440}
   - {fileID: 1513604375}
-  - {fileID: 558940418}
+  - {fileID: 146747481}
   - {fileID: 1424249032}
   activeAbilitySlots:
   - {fileID: 146880487}
