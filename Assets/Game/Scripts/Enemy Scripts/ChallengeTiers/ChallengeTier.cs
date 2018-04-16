@@ -7,7 +7,7 @@ public class ChallengeTier : ScriptableObject
 
     [Space, Header("Optional Variables")]
     public int spawnCount;
-    public float followSpeed;
+    public float rotateSpeed;
 
     public virtual void InitializeAbilityStats(Ability ability) { }
 }

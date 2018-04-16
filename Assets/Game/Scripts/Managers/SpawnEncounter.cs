@@ -23,7 +23,7 @@ public class SpawnEncounter : MonoBehaviour
 
         //This is used to figure out how many we need to spawn. This code is NEEDED.
         Vector3 spawnPosition = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5,5));
-        GameObject testSubject =Instantiate(encounterObject, spawnPosition, Quaternion.identity);
+        GameObject testSubject =Instantiate(encounterObject, transform.position + spawnPosition, Quaternion.identity);
         testSubject.GetComponent<AIReferenceManager>().encounter = encounter;
 
         encounter.encounters.Add(testSubject);
@@ -35,7 +35,7 @@ public class SpawnEncounter : MonoBehaviour
             GameObject newTestSubject = null;
 
             if(groupSpawn)
-                newTestSubject = Instantiate(encounterObject, spawnPosition, Quaternion.identity);
+                newTestSubject = Instantiate(encounterObject, transform.position + spawnPosition, Quaternion.identity);
             else
                 newTestSubject = Instantiate(encounterObject, GetSpawnPosition().position, Quaternion.identity);
 
