@@ -310,7 +310,12 @@ public class InputManager : MonoBehaviour
         }
 
         if(!canAct) return;
-        jump = player.GetButtonDown("Jump");
+
+        if(!playerMovement.hovering)
+            jump = player.GetButtonDown("Jump");
+        else
+            jump = player.GetButton("Jump");
+
         interact = player.GetButtonDown("Interact");
 
         abilityActive[0] = player.GetButtonDown("AbilityOne");

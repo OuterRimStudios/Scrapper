@@ -4133,6 +4133,7 @@ Transform:
   - {fileID: 146747480}
   - {fileID: 281087735}
   - {fileID: 554390448}
+  - {fileID: 653852625}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9457,7 +9458,7 @@ MonoBehaviour:
   - {fileID: 614448433}
   - {fileID: 1885263815}
   - {fileID: 1026614935}
-  - {fileID: 184704011}
+  - {fileID: 653852626}
   - {fileID: 1323133299}
   - {fileID: 1807999880}
   - {fileID: 1352706816}
@@ -10595,6 +10596,61 @@ Transform:
   m_Father: {fileID: 1949803125}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &653852624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 653852625}
+  - component: {fileID: 653852626}
+  m_Layer: 0
+  m_Name: Jetpack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653852625
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653852624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653852626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653852624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef5a1f338a73ff45828c7af764bc305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Jetpack
+  abilityIcon: {fileID: 21300000, guid: a75587dea8d91634b96f50a21c8b2fd3, type: 3}
+  abilityDescription: Hover in air for 10 seconds.
+  abilityType: 7
+  abilityCharges: 1
+  chargeTime: 0
+  abilityCooldown: 30
+  requiresTarget: 0
+  afterEffects: []
+  charges: 0
+  isCharging: 0
+  isFiring: 0
+  refManager: {fileID: 1430053481}
+  playerMovement: {fileID: 1430053477}
+  hoverLength: 10
 --- !u!1 &654000386
 GameObject:
   m_ObjectHideFlags: 0
@@ -26584,11 +26640,12 @@ MonoBehaviour:
   animationSmoothing: 10
   jumpForce: 0.4
   gravity: 1
-  distToGround: 1.1
+  distToGround: 1.25
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   sprintSpeed: 50
+  hoverForce: 0.06
 --- !u!114 &1430053478
 MonoBehaviour:
   m_ObjectHideFlags: 0

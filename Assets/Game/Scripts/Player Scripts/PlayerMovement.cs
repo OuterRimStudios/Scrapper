@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Space, Header("Mobility Variables")]
     public float sprintSpeed;
+    public float hoverForce;
 
     public static bool canAct;
 
@@ -40,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool isJumping;
     bool isSprinting;
+    [HideInInspector]
+    public bool hovering;
 
     Camera myCamera;
     Vector3 movement;
@@ -137,7 +140,11 @@ public class PlayerMovement : MonoBehaviour
     void Jumping()
     {
         cc.Move(new Vector3(0, jump, 0));
-        jump -= gravity * Time.deltaTime;
+
+        if(!hovering)
+            jump -= gravity * Time.deltaTime;
+        else
+            jump -= (gravity * .5f) *Time.deltaTime;
 
         if (isJumping && Grounded())
         {
@@ -147,10 +154,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (!Grounded()) return;
+        if (!Grounded() && !hovering) return;
 
         anim.SetBool("IsJumping", true);
-        jump = jumpForce;
+
+        if(!hovering)
+            jump = jumpForce;
+        else
+            jump = hoverForce;
         isJumping = true;
     }
 
@@ -161,6 +172,10 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
     }
 
+    public void Hover(bool hover)
+    {
+        hovering = hover;
+    }
 
     bool Grounded()
     {
