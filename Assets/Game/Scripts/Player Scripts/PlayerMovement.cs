@@ -134,6 +134,14 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
     }
 
+    public void Jump(float force)
+    {
+        anim.SetBool("IsJumping", true);
+        jump = force;
+        isJumping = true;
+    }
+
+
     bool Grounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, distToGround, groundLayer);

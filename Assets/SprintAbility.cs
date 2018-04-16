@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobilityAbility : Ability
+public class SprintAbility : Ability
 {
     public PlayerMovement playerMovement;
+    public float sprintSpeed;
 
     public override void ActivateAbility()
     {
