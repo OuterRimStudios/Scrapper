@@ -204,6 +204,7 @@ public class InputManager : MonoBehaviour
         {
             if(abilities[i] && abilities[i].CanShoot() && abilityActive[i])
             {
+                playerMovement.Sprint(false);
                 abilities[i].ActivateAbility();
                 abilityCharges[i].text = abilities[i].charges.ToString();
 

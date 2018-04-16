@@ -4068,6 +4068,7 @@ Transform:
   - {fileID: 153909833}
   - {fileID: 199931439}
   - {fileID: 1513604374}
+  - {fileID: 558940417}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8681,6 +8682,61 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 558824539}
+--- !u!1 &558940416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 558940417}
+  - component: {fileID: 558940418}
+  m_Layer: 0
+  m_Name: Sprint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &558940417
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558940416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &558940418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558940416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30bb0ffd86fff9499c19761f219a2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Sprint
+  abilityIcon: {fileID: 21300000, guid: 4ed5bef21d80b454b83ca210bbbb0026, type: 3}
+  abilityDescription: Increases your movement speed while held. Attacking cancels
+    the ability.
+  abilityType: 7
+  abilityCharges: 1
+  chargeTime: 0
+  abilityCooldown: 0
+  requiresTarget: 0
+  afterEffects: []
+  charges: 0
+  isCharging: 0
+  isFiring: 0
+  refManager: {fileID: 1430053481}
+  playerMovement: {fileID: 1430053477}
 --- !u!1 &559681020
 GameObject:
   m_ObjectHideFlags: 0
@@ -9229,6 +9285,7 @@ MonoBehaviour:
   - {fileID: 153909834}
   - {fileID: 199931440}
   - {fileID: 1513604375}
+  - {fileID: 558940418}
   activeAbilitySlots:
   - {fileID: 146880487}
   - {fileID: 344970246}
@@ -26292,6 +26349,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  sprintSpeed: 50
 --- !u!114 &1430053478
 MonoBehaviour:
   m_ObjectHideFlags: 0

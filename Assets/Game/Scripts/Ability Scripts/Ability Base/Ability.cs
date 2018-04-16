@@ -20,7 +20,8 @@ public class Ability : MonoBehaviour
         Turret,
         Sustained,
         FriendlyAI,
-        Melee
+        Melee,
+        Mobility
     };
 
     public AbilityType abilityType;

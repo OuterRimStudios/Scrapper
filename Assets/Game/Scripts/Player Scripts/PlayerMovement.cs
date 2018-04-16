@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     public float distToGround = 1.1f;
     public LayerMask groundLayer;
 
+    [Space, Header("Mobility Variables")]
+    public float sprintSpeed;
+
     public static bool canAct;
 
     float speed;
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     float jump;
 
     bool isJumping;
+    bool isSprinting;
 
     Camera myCamera;
     Vector3 movement;
@@ -133,5 +137,14 @@ public class PlayerMovement : MonoBehaviour
     bool Grounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, distToGround, groundLayer);
+    }
+
+    public void Sprint(bool _isSprinting)
+    {
+        isSprinting = _isSprinting;
+        if (isSprinting)
+            speed = sprintSpeed;
+        else
+            speed = movementSpeed;
     }
 }
