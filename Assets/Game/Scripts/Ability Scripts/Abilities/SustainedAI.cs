@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SustainedAI : Ability {
 
-
     public Sustained beamPrefab;
     public float effectLength;
     public int initialDamage;

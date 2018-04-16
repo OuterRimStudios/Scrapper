@@ -177,11 +177,14 @@ public class Sustained : DamageTypes {
             List<GameObject> hitObjectsList = new List<GameObject>();
             foreach (RaycastHit hit in hitObjects)
             {
-                if (!hitObjectsList.Contains(hit.transform.gameObject))
+                if(hit.transform.gameObject != null)
                 {
-                   if(hit.transform.gameObject.activeInHierarchy)
-                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer(enemyTag))
-                        hitObjectsList.Add(hit.transform.gameObject);
+                    if (!hitObjectsList.Contains(hit.transform.gameObject))
+                    {
+                        if(hit.transform.gameObject.activeInHierarchy)
+                            if (hit.transform.gameObject.layer == LayerMask.NameToLayer(enemyTag))
+                                hitObjectsList.Add(hit.transform.gameObject);
+                    }
                 }
             }
 
@@ -201,9 +204,9 @@ public class Sustained : DamageTypes {
 
     void ShootBeamInDir(Vector3 start, Vector3 dir, Vector3 end)
     {
-        beamRenderer.SetPosition(0, spawnPos.localPosition);
-     
         muzzleFlash.transform.position = start;
+        beamRenderer.SetPosition(0, muzzleFlash.transform.localPosition);     
+        
         hitEffect.transform.position = end;
 
         beamRenderer.SetPosition(1, hitEffect.transform.localPosition);
