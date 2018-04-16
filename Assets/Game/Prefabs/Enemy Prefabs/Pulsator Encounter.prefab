@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114026128517465724}
   - component: {fileID: 114088213113545916}
   m_Layer: 0
-  m_Name: Rob Bits Encounter
+  m_Name: Pulsator Encounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,10 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encounters: []
-  maxEncounters: 5
-  encounterImage: {fileID: 21300000, guid: f1b91b07ed161ca46b3f0a9241c926c9, type: 3}
+  maxEncounters: 4
+  encounterImage: {fileID: 21300000, guid: 5ce70622ec781d44bb75c94eb37f002f, type: 3}
   mechanicImages:
-  - {fileID: 21300000, guid: f1b91b07ed161ca46b3f0a9241c926c9, type: 3}
+  - {fileID: 21300000, guid: 1710305c0234b4a4c89176001b7753f4, type: 3}
 --- !u!114 &114088213113545916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,8 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b9dc84fce1ab44cac274afb6bcf692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encounterObject: {fileID: 1595850089893730, guid: 7a3d5ef96a1b58d4896387ea0c0ecda7,
+  encounterObject: {fileID: 1136046561141138, guid: 292cf94dcd6fb014e9d95b2b448fdd0f,
     type: 2}
   spawnAmount: 2
-  groupSpawn: 1
-  spawnPositions: []

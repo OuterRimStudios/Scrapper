@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ReferenceManager : MonoBehaviour {
@@ -32,7 +31,7 @@ public class ReferenceManager : MonoBehaviour {
         animManager = GetComponent<AnimationManager>();
         health = GetComponent<Health>();
         rigidBody = GetComponent<Rigidbody>();
-        targetManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TargetManager>();
+        targetManager = TargetManager.instance;
         targetManager.AddTarget(gameObject, friendlyTag.ToString());
     }
 

@@ -39,10 +39,17 @@ public class SpawnManager : MonoBehaviour
 
 	Coroutine timeToSetUp;
 
+    public static SpawnManager instance;
+
     [Space, Header("Developer Variables")]
     public bool dontSpawn;
 
-	private void Start ()
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void Start ()
 	{
 		ResetSpawnpoints ();
 		PrepareWave ();
@@ -86,7 +93,7 @@ public class SpawnManager : MonoBehaviour
 	void PrepareWave ()
 	{
 		for (int i = 0; i < difficultyRatings [currentDifficulty].currentEncounterMax; i++) {
-			int encounterIndex = Random.Range (0, encounters.Count - 1);
+			int encounterIndex = Random.Range (0, encounters.Count);
 			Encounter randomEncounter = encounters [encounterIndex];
 
 			int numberSpawned = 0;

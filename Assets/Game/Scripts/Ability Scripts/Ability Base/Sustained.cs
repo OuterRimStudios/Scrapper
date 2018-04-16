@@ -155,7 +155,6 @@ public class Sustained : DamageTypes {
 
     protected virtual IEnumerator RepeatEffect()
     {
-        Debug.Log("Repeat === Sustain === Effect");
         if (hitTarget && target)
         {
             hitObjects = Physics.CapsuleCastAll(spawnPos.position, target.position, hitRadius, spawnPos.forward, range, layerMask);
@@ -173,17 +172,14 @@ public class Sustained : DamageTypes {
                 hitObjects = Physics.CapsuleCastAll(spawnPos.position, ray.GetPoint(range), hitRadius, spawnPos.forward, range, layerMask);
             }
         }
-        print("Objects being hit" + hitObjects.Length);
-
         if (hitObjects.Length > 0)
         {
             List<GameObject> hitObjectsList = new List<GameObject>();
             foreach (RaycastHit hit in hitObjects)
             {
-                print("Targets hit");
                 if (!hitObjectsList.Contains(hit.transform.gameObject))
                 {
-                   
+                   if(hit.transform.gameObject.activeInHierarchy)
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer(enemyTag))
                         hitObjectsList.Add(hit.transform.gameObject);
                 }

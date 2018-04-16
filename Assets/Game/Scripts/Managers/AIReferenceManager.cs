@@ -61,6 +61,5 @@ public class AIReferenceManager : ReferenceManager
 			}
 		}
 		currentChallengeTier.InitializeAbilityStats (aiAbility);
-        Debug.Log(currentChallengeTier.name);
 	}
 }

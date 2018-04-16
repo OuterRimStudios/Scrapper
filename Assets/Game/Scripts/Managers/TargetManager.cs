@@ -9,6 +9,12 @@ public class TargetManager : MonoBehaviour
     public List<GameObject> activeFriendlies;
 
     SpawnManager spawnManager;
+    public static TargetManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
