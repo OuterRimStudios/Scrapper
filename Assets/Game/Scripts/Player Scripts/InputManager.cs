@@ -318,11 +318,11 @@ public class InputManager : MonoBehaviour
 
         interact = player.GetButtonDown("Interact");
 
-        abilityActive[0] = player.GetButtonDown("AbilityOne");
-        abilityActive[1] = player.GetButtonDown("AbilityTwo");
-        abilityActive[2] = player.GetButtonDown("AbilityThree");
-        abilityActive[3] = player.GetButtonDown("AbilityFour");
-        abilityActive[4] = player.GetButtonDown("AbilityFive");
+        abilityActive[0] = player.GetButton("AbilityOne");
+        abilityActive[1] = player.GetButton("AbilityTwo");
+        abilityActive[2] = player.GetButton("AbilityThree");
+        abilityActive[3] = player.GetButton("AbilityFour");
+        abilityActive[4] = player.GetButton("AbilityFive");
 
         abilityDeactive[0] = player.GetButtonUp("AbilityOne");
         abilityDeactive[1] = player.GetButtonUp("AbilityTwo");

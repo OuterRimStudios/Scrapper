@@ -22,7 +22,7 @@ public class SustainedBeamAbility : Ability {
             if (refManager.friendlyTag.ToString() == "Friendly")
                 beams[i].SetTarget(mainCam.transform, false);
 
-          //  beams[i].gameObject.SetActive(false);
+            beams[i].gameObject.SetActive(false);
             UpdateTransform();
 
         }
