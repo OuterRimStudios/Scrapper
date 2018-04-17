@@ -8,14 +8,14 @@ public class HealingAI : FriendlyAI
     public float effectCooldown;
 
     bool healing;
-    List<Sustained> beams = new List<Sustained>();
+    List<SustainedBeam> beams = new List<SustainedBeam>();
 
     protected override void Start()
     {
         base.Start();
         for (int i = 0; i < spawnpoints.Length; i++)
         {
-            beams.Add(Instantiate(aiAbility) as Sustained);
+            beams.Add(Instantiate(aiAbility) as SustainedBeam);
             beams[i].Initialize(damage, enemyTag, friendlyTag, afterEffects, spawnpoints[i]);
             UpdateTransform();
         }

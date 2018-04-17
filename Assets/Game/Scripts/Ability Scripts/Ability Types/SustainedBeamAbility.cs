@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SustainedAbility : Ability {
+public class SustainedBeamAbility : Ability {
 
-    public Sustained beamPrefab;
+    public SustainedBeam beamPrefab;
     public int initialDamage;
 
-    [HideInInspector]public List<Sustained> beams = new List<Sustained>();
+    [HideInInspector]public List<SustainedBeam> beams = new List<SustainedBeam>();
     GameObject mainCam;
 
     protected override void Start()

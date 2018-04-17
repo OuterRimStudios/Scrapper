@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SustainedHealing : Sustained
+public class SustainedHealing : SustainedBeam
 {
     public int healAmount;
     ReferenceManager refManager;

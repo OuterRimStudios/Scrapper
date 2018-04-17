@@ -14,7 +14,7 @@ public class LasorTotemChallengeTier : ChallengeTier {
         SustainedTotemAI ability = _ability as SustainedTotemAI;
         for (int i = 0; i < ability.beams.Count; i++)
         {
-            Sustained sustained = ability.beams[i];
+            SustainedBeam sustained = ability.beams[i];
             sustained.damage = damage;
             sustained.effectFrequency = damageFrequency;
             sustained.hitRadius = beamSize;

@@ -8,14 +8,14 @@ public class SustainedTurret : Turret {
     public float effectCooldown;
 
     bool firing;
-    List<Sustained> beams = new List<Sustained>();
+    List<SustainedBeam> beams = new List<SustainedBeam>();
 
     protected override void Start()
     {
         base.Start();
         for (int i = 0; i < spawnpoints.Length; i++)
         {
-            beams.Add(Instantiate(turretAbility) as Sustained);
+            beams.Add(Instantiate(turretAbility) as SustainedBeam);
             beams[i].Initialize(damage, enemyTag, friendlyTag, afterEffects, spawnpoints[i]);
             beams[i].gameObject.SetActive(false);
             UpdateTransform();

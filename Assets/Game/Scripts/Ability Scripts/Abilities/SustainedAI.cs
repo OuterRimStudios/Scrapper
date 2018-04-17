@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SustainedAI : Ability {
 
-    public Sustained beamPrefab;
+    public SustainedBeam beamPrefab;
     public float effectLength;
     public int initialDamage;
 
-    [HideInInspector] public List<Sustained> beams = new List<Sustained>();
+    [HideInInspector] public List<SustainedBeam> beams = new List<SustainedBeam>();
 
     protected override void Start()
     {

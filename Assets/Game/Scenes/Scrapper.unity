@@ -3406,13 +3406,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: High-Frequency Electron Beam
   abilityIcon: {fileID: 21300000, guid: 17ad7d1d940134d4297748215718c474, type: 3}
-  abilityDescription: "<b><i>Name:</i></b> High-Frequency Electron Beam\r\n<b><i>Damage:</i></b>
-    4 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 1 Second\r\n<b><i>Description:</i></b>
-    Fire a beam of energy that frequently deals damage.\r\n"
+  abilityDescription: High-Frequency Electron Beam
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0
-  abilityCooldown: 1
+  abilityCooldown: 0
   requiresTarget: 0
   afterEffects: []
   charges: 0
@@ -3421,7 +3419,7 @@ MonoBehaviour:
   refManager: {fileID: 1430053481}
   beamPrefab: {fileID: 114956161982930666, guid: a0110e851f5bca741b552c4d37384f5f,
     type: 2}
-  initialDamage: 100
+  initialDamage: 10
   beams: []
 --- !u!1 &208787627
 GameObject:
@@ -4134,6 +4132,7 @@ Transform:
   - {fileID: 281087735}
   - {fileID: 554390448}
   - {fileID: 653852625}
+  - {fileID: 2030951217}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9467,7 +9466,7 @@ MonoBehaviour:
   - {fileID: 526834952}
   - {fileID: 554390449}
   - {fileID: 153909834}
-  - {fileID: 199931440}
+  - {fileID: 2030951218}
   - {fileID: 281087736}
   - {fileID: 146747481}
   - {fileID: 1424249032}
@@ -26646,6 +26645,7 @@ MonoBehaviour:
     m_Bits: 256
   sprintSpeed: 50
   hoverForce: 0.06
+  hovering: 0
 --- !u!114 &1430053478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38354,6 +38354,63 @@ Transform:
   m_Father: {fileID: 1547115816}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &2030951216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2030951217}
+  - component: {fileID: 2030951218}
+  m_Layer: 0
+  m_Name: Flamethrower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2030951217
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2030951216}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 239411983}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2030951218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2030951216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffad43f8df3cab4796e057afcd7b144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Flamethrower
+  abilityIcon: {fileID: 21300000, guid: ff4835628f1c589418a23f973fa9246f, type: 3}
+  abilityDescription: A flamethrower that deals AoE damage.
+  abilityType: 0
+  abilityCharges: 1
+  chargeTime: 0
+  abilityCooldown: 0
+  requiresTarget: 0
+  afterEffects: []
+  charges: 0
+  isCharging: 0
+  isFiring: 0
+  refManager: {fileID: 1430053481}
+  sustainEffect: {fileID: 114377332701523678, guid: cd85265c65124084ab285efd9cd4e005,
+    type: 2}
+  initialDamage: 10
+  beams: []
 --- !u!1 &2037311704
 GameObject:
   m_ObjectHideFlags: 0
