@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1109011344590470}
+  m_IsPrefabParent: 1
+--- !u!1 &1109011344590470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4615568605623966}
+  - component: {fileID: 114791635774098228}
+  m_Layer: 0
+  m_Name: Volt Bolt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4615568605623966
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109011344590470}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114791635774098228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109011344590470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Volt Bolt
+  abilityIcon: {fileID: 21300000, guid: 28576731b4583ba4d8fb28fe708b5725, type: 3}
+  abilityDescription: "<b><i>Name:</i></b> Volt Bolt\r\n<b><i>Damage:</i></b> 0\r\n<b><i>Cooldown:</i></b>
+    5 Seconds\r\n<b><i>Stun Duration:</i></b> 2 Seconds\r\n<b><i>Description:</i></b>
+    Launch an energy grenade to stun enemies for 2 seconds.\r\n\n<b><i>Cooldown:</i></b>
+    10 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
+    Place some energized caltrops that stun an enemy for 4 seconds when walked over.\r\n"
+  abilityType: 0
+  abilityCharges: 1
+  chargeTime: 0
+  abilityCooldown: 5
+  requiresTarget: 0
+  afterEffects: []
+  charges: 0
+  isCharging: 0
+  isFiring: 0
+  refManager: {fileID: 0}
+  projectile: {fileID: 114976542332570254, guid: e9dbdc683ac788544a6295f19d59aedb,
+    type: 2}
+  initialDamage: 0

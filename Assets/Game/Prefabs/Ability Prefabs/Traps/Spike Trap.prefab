@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1924950100299798}
+  m_IsPrefabParent: 1
+--- !u!1 &1924950100299798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4699349310439380}
+  - component: {fileID: 114285270577250588}
+  m_Layer: 0
+  m_Name: Spike Trap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4699349310439380
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924950100299798}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114285270577250588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924950100299798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255561fa045996644bd503002f063313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Spike Trap
+  abilityIcon: {fileID: 21300000, guid: 49cdc29b873b4b9408eecef5bd49c2cc, type: 3}
+  abilityDescription: "<b><i>Name:</i></b> Spike Trap\r\n<b><i>Initial Damage:</i></b>
+    8\r\n<b><i>Bleed Damage:</i></b> 1 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 5
+    Seconds\r\n<b><i>Description:</i></b> Place a spike trap that deals damage when
+    an enemy steps on the spikes. Applies bleed damage for 5 seconds.\r\n"
+  abilityType: 1
+  abilityCharges: 1
+  chargeTime: 0
+  abilityCooldown: 5
+  requiresTarget: 0
+  afterEffects: []
+  charges: 0
+  isCharging: 0
+  isFiring: 0
+  refManager: {fileID: 0}
+  trap: {fileID: 114769023018281830, guid: 96603fef9845455408e53ca0ff266285, type: 2}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  initialDamage: 8
+  placeAtRange: 0
