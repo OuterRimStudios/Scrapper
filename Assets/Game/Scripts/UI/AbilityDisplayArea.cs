@@ -36,7 +36,8 @@ public class AbilityDisplayArea : MonoBehaviour
             currentActiveAbilitySlot.AbilityActive(false);
             abilitySlot.AbilityActive(true);
             int abilitySlotIndex = activeAbilitySlots.IndexOf(currentActiveAbilitySlot);
-            inputManager.UpdateAbilities(abilitySlotIndex);
+            if(inputManager)
+                inputManager.UpdateAbilities(abilitySlotIndex);
             lookingForAbility = false;
         }
     }

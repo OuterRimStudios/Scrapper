@@ -31,11 +31,13 @@ public class LoadoutBuilder : MonoBehaviour {
 	public List<Ability> sustainedAbilities;
 	public List<Ability> trapsAbilities;
 	public List<Ability> turretsAbilities;
+	public List<Ability> AllAbilities {get; protected set;}
 
 	List<Ability> selectedAbilities = new List<Ability>();
 
 	void Start()
 	{
+		AllAbilities = new List<Ability>();
 		//InitializeCards(meleeAbilityPanel, meleeAbilities);
 		InitializeCards(mobilityAbilityPanel, mobilityAbilities);
 		InitializeCards(moduleAbilityPanel, moduleAbilities);
@@ -44,12 +46,17 @@ public class LoadoutBuilder : MonoBehaviour {
 		InitializeCards(sustainedAbilityPanel, sustainedAbilities);
 		InitializeCards(trapAbilityPanel, trapsAbilities);
 		InitializeCards(turretAbilityPanel, turretsAbilities);
+
+		LoadoutPresetManager.instance.LoadPresets();
 	}
 
 	void InitializeCards(RectTransform panel, List<Ability> abilities)
 	{
 		foreach(Ability _ability in abilities)
 		{
+			if(!AllAbilities.Contains(_ability))
+				AllAbilities.Add(_ability);
+
 			AbilityCard newCard = Instantiate(abilityCard, panel);
 			newCard.InitializeCard(_ability);
 			newCard.cardButton.onClick.AddListener(delegate{AddToSelectedAbilities(_ability);});
@@ -81,5 +88,10 @@ public class LoadoutBuilder : MonoBehaviour {
 	{
 		selectedAbilities.Remove(_ability);
 		Destroy(button);
+	}
+
+	public List<Ability> GetSelectedAbilities()
+	{
+		return selectedAbilities;
 	}
 }
