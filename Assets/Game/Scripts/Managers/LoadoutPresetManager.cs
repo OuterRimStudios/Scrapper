@@ -37,6 +37,9 @@ public class LoadoutPresetManager : MonoBehaviour {
     }
     #endregion
 
+	public delegate void PresetsLoaded();
+	public static event PresetsLoaded OnPresetsLoaded;
+
 	public GameObject presetTabPrefab;
 	public RectTransform loadoutTabsArea;
 
@@ -52,7 +55,6 @@ public class LoadoutPresetManager : MonoBehaviour {
 	public string LoadoutPresetPath {get; protected set;}
 	public LoadoutPreset CurrentPreset {get; protected set;}
 	public List<LoadoutPreset> AllPresets {get; protected set;}
-	public List<Ability> allAbilities = new List<Ability>();
 
 	public void LoadPresets()
 	{
@@ -64,6 +66,8 @@ public class LoadoutPresetManager : MonoBehaviour {
 	void LoadFromXml(XmlDocument xmlDoc, string path)
 	{
 		xmlDoc.Load(path);
+
+		AllPresets = new List<LoadoutPreset>();
 
 		foreach(XmlNode preset in xmlDoc["Presets"].ChildNodes)
 		{
@@ -85,8 +89,11 @@ public class LoadoutPresetManager : MonoBehaviour {
 			}
 
 			LoadoutPreset newPreset = new LoadoutPreset(presetName, activeAbilities, loadoutAbilities);
+			AllPresets.Add(newPreset);
 			CreateTab(newPreset);
 		}
+
+		OnPresetsLoaded();
 	}
 
 	void CreateTab(LoadoutPreset _preset)
@@ -118,23 +125,6 @@ public class LoadoutPresetManager : MonoBehaviour {
 			foreach(Ability _ability in _preset.LoadoutAbilities)
 			{
 				loadoutBuilder.AddToSelectedAbilities(_ability);
-			}
-		}
-
-		if(abilityDisplayArea)
-		{
-			for(int j = 0; j < _preset.LoadoutAbilities.Count; j++)
-			{
-				abilityDisplayArea.abilitySlots[j].SetAbilitySlot(_preset.LoadoutAbilities[j]);
-				abilityDisplayArea.abilityLoadoutOptions[j] = _preset.LoadoutAbilities[j];
-			}
-
-			for(int i = 0; i < _preset.ActiveAbilities.Count; i++)
-			{
-				abilityDisplayArea.activeAbilitySlots[i].SetAbilitySlot(_preset.ActiveAbilities[i]);
-				int index = abilityDisplayArea.abilityLoadoutOptions.IndexOf(_preset.ActiveAbilities[i]);
-                ActiveAbilitySlot abilitySlot = abilityDisplayArea.abilitySlots[index];
-                abilitySlot.AbilityActive(true);
 			}
 		}
 	}
@@ -261,10 +251,10 @@ public class LoadoutPreset
 	public Ability GetAbilityByName(string abilityName)
 	{
 		Ability result = null;
-		for(int i = 0; i < LoadoutPresetManager.instance.allAbilities.Count; i++)
+		for(int i = 0; i < AbilityManager.instance.allAbilities.Count; i++)
 		{
-			if(LoadoutPresetManager.instance.allAbilities[i].abilityName == abilityName)
-				result = LoadoutPresetManager.instance.allAbilities[i];
+			if(AbilityManager.instance.allAbilities[i].abilityName == abilityName)
+				result = AbilityManager.instance.allAbilities[i];
 		}
 
 		return result;

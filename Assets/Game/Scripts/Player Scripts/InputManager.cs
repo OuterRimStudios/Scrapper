@@ -19,14 +19,16 @@ public class InputManager : MonoBehaviour
     public KeyCode abilityFourKey;
     public KeyCode abilityFiveKey;
 
+    /* 
     [Space, Header("Ability Loadout")]
     public AbilityDisplayArea abilityDisplayArea;
-    public List<Ability> abilities = new List<Ability>();
+    public List<Ability> abilities = new List<Ability>();           //refers to active abilities
     public List<Image> abilitySlots;
     public List<Text> abilityCharges;
     public List<Image> abilityCooldownProgress;
     public List<Queue<float>> cooldownQueues = new List<Queue<float>>();
-    public List<ActiveAbilitySlot> activeAbilitySlots;
+    public List<ActiveAbilitySlot> activeAbilitySlots; 
+    */
 
     [Space, Header("Menus")]
     public GameObject loadoutMenu;
@@ -72,6 +74,7 @@ public class InputManager : MonoBehaviour
         spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
 
 
+        /* 
         for (int i = 0; i < abilities.Count; i++)
         {
             activeAbilitySlots[i].SetAbilitySlot(abilities[i]);
@@ -81,12 +84,14 @@ public class InputManager : MonoBehaviour
                 ActiveAbilitySlot abilitySlot = abilityDisplayArea.abilitySlots[index];
                 abilitySlot.AbilityActive(true);
             }
-        }
+        } 
+        
 
         UpdateAbilities(-1);
 
         for(int i = 0; i < 5; i++)
             cooldownQueues.Add(new Queue<float>());
+        */
 
         if(hideCursor)
         {
@@ -96,6 +101,7 @@ public class InputManager : MonoBehaviour
     }
 
     //pass in -1 if not changing abilities
+    /*
     public void UpdateAbilities(int abilitySlotIndex)
     {
         if(abilitySlotIndex != -1)
@@ -128,6 +134,8 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    */
+
     private void Update()
     {
         RecieveInput();
@@ -149,7 +157,7 @@ public class InputManager : MonoBehaviour
                 spawnManager.PlayerReady();
 
             AbilityInput();
-            CheckCooldowns();
+            //CheckCooldowns();
             playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
             cameraController.RecieveInput(lookY);
 
@@ -200,24 +208,26 @@ public class InputManager : MonoBehaviour
     void AbilityInput()
     {
         if(!canAct) return;
-        for(int i = 0; i < abilities.Count; i++)
+        for(int i = 0; i < AbilityManager.instance.currentLoadout.ActiveAbilities.Count; i++)
         {
-            if(abilities[i] && abilities[i].CanShoot() && abilityActive[i])
+            if(AbilityManager.instance.currentLoadout.ActiveAbilities[i] && AbilityManager.instance.currentLoadout.ActiveAbilities[i].CanShoot() && abilityActive[i])
             {
                 playerMovement.Sprint(false);
-                abilities[i].ActivateAbility();
-                abilityCharges[i].text = abilities[i].charges.ToString();
+                print("should activate ability");
+                AbilityManager.instance.currentLoadout.ActiveAbilities[i].ActivateAbility();
+                AbilityManager.instance.abilityCharges[i].text = AbilityManager.instance.currentLoadout.ActiveAbilities[i].charges.ToString();
 
-                if(abilities[i].charges >= 0)
+                if(AbilityManager.instance.currentLoadout.ActiveAbilities[i].charges >= 0)
                 {
-                    cooldownQueues[i].Enqueue(Time.time);
+                    AbilityManager.instance.cooldownQueues[i].Enqueue(Time.time);
                 }
             }
-            else if(abilities[i] && abilityDeactive[i])
-                abilities[i].DeactivateAbility();
+            else if(AbilityManager.instance.currentLoadout.ActiveAbilities[i] && abilityDeactive[i])
+                AbilityManager.instance.currentLoadout.ActiveAbilities[i].DeactivateAbility();
         }
     }
 
+    /* 
     void UpdateAbiltyCharges(Ability ability)
     {
         if(abilities.Contains(ability))
@@ -225,7 +235,7 @@ public class InputManager : MonoBehaviour
             int abilityIndex = abilities.IndexOf(ability);
             abilityCharges[abilityIndex].text = ability.charges.ToString();
         }
-    }
+    } 
 
     void CheckCooldowns()
     {
@@ -257,6 +267,7 @@ public class InputManager : MonoBehaviour
                 abilityCooldownProgress[abilityIndex].fillAmount = 0f;
         }
     }
+    */
 
     private void RecieveInput()
     {

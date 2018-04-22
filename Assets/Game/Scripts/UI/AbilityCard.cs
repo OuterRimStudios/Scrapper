@@ -46,7 +46,6 @@ public class AbilityCard : Selectable
                 {
                     if (!flipping)
                     {
-                        print("Flip");
                         flipping = true;
                         anim.SetTrigger("Flip");
                         StartCoroutine(WaitForFlip());

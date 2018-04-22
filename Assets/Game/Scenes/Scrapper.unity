@@ -1248,6 +1248,7 @@ Transform:
   m_Children:
   - {fileID: 1547115816}
   - {fileID: 1914344761}
+  - {fileID: 1342757416}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16505,6 +16506,98 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224138745350220960, guid: 90f397f605f004547aa2bacb20590356,
     type: 2}
   m_PrefabInternal: {fileID: 1539651788}
+--- !u!1 &1342757415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1342757416}
+  - component: {fileID: 1342757417}
+  m_Layer: 0
+  m_Name: AbilityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1342757416
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1342757415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 93307252}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1342757417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1342757415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ecc48234256a549ae34c4f09957c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityDisplayArea: {fileID: 592766362}
+  activeAbilitySlots:
+  - {fileID: 146880487}
+  - {fileID: 344970246}
+  - {fileID: 1295434286}
+  - {fileID: 1801530266}
+  - {fileID: 760159363}
+  abilityIcons:
+  - {fileID: 2102463627}
+  - {fileID: 1179911498}
+  - {fileID: 753972199}
+  - {fileID: 913475020}
+  - {fileID: 667127718}
+  abilityCharges:
+  - {fileID: 561323416}
+  - {fileID: 208787629}
+  - {fileID: 511962639}
+  - {fileID: 1150772538}
+  - {fileID: 901979488}
+  abilityCooldownProgress:
+  - {fileID: 1539426954}
+  - {fileID: 941944722}
+  - {fileID: 893201681}
+  - {fileID: 1293341911}
+  - {fileID: 2082731178}
+  allAbilities:
+  - {fileID: 114762789834289376, guid: c86b2ab0bb606664f8a74995526ca7dd, type: 2}
+  - {fileID: 114558014071636916, guid: 6efec510133fa4744946616f86b008e3, type: 2}
+  - {fileID: 114702012802278508, guid: 6609b181ea7f70f44a929de4e2302da0, type: 2}
+  - {fileID: 114901916402156424, guid: 9a4a779927f02a9488144e0e76f68f14, type: 2}
+  - {fileID: 114514905318296710, guid: 64b7f88914ddb0e47b3b92020e446ec3, type: 2}
+  - {fileID: 114712536232050534, guid: d3529d7de74cfec4895e607ba9bea25e, type: 2}
+  - {fileID: 114125288636182392, guid: 545d7d37da2092447a08a12bf02bccc0, type: 2}
+  - {fileID: 114755415040094138, guid: 724c5285a83d4624abf9cf1d11a34f0e, type: 2}
+  - {fileID: 114167532139533654, guid: ba35bac788a2c7645b414d53f9d9f7ad, type: 2}
+  - {fileID: 114029058356867122, guid: 76d4a74f372b30647bc5a2ecfcf64748, type: 2}
+  - {fileID: 114661846047115916, guid: ae0e838bb73c6414282323f383913983, type: 2}
+  - {fileID: 114159741501913964, guid: f9f4a20d2ab81654691a231d34c53b35, type: 2}
+  - {fileID: 114445328550058994, guid: 503463d90512d774590eabafd26848e3, type: 2}
+  - {fileID: 114133533076227278, guid: 03e9e3d689a592845a247d92cc67566c, type: 2}
+  - {fileID: 114033438162484518, guid: 5e8cbddd4b3161f41b9077128e23d7b6, type: 2}
+  - {fileID: 114831759821345490, guid: 174a5f391f311fa48a9dd060dc21148a, type: 2}
+  - {fileID: 114791635774098228, guid: 9328cf836c1d71740a032f7eb3f40a30, type: 2}
+  - {fileID: 114355972902872284, guid: fb0a929e2bdf76e42a3f8d9a0e90b052, type: 2}
+  - {fileID: 114238150290949658, guid: 7d42d5cba957e9d4eae7fad981e95138, type: 2}
+  - {fileID: 114645500669531388, guid: 9e3fb5212efa2e347be25b4ddcbe4570, type: 2}
+  - {fileID: 114772128215528814, guid: 8efa418c896187d49851a0386952516c, type: 2}
+  - {fileID: 114286326666746466, guid: 519ec7c0c65dce34f91038eb73f3f498, type: 2}
+  - {fileID: 114285270577250588, guid: 1483aa85bf9e7ba4d9eebc148758ec64, type: 2}
+  - {fileID: 114089759249283816, guid: ff924c218d4003a4c9a5dffc699d3eeb, type: 2}
+  - {fileID: 114539408705625848, guid: 64a6cc03fdcc2dc45a16697bc98cb71e, type: 2}
+  - {fileID: 114687971000794884, guid: da3bfb59f5fb295418d0caf1c2639a6d, type: 2}
 --- !u!1 &1343428430
 GameObject:
   m_ObjectHideFlags: 0
@@ -17520,37 +17613,6 @@ MonoBehaviour:
   abilityThreeKey: 113
   abilityFourKey: 101
   abilityFiveKey: 304
-  abilityDisplayArea: {fileID: 592766362}
-  abilities:
-  - {fileID: 155696874}
-  - {fileID: 1865927530}
-  - {fileID: 907570755}
-  - {fileID: 614448433}
-  - {fileID: 1885263815}
-  abilitySlots:
-  - {fileID: 2102463627}
-  - {fileID: 1179911498}
-  - {fileID: 753972199}
-  - {fileID: 913475020}
-  - {fileID: 667127718}
-  abilityCharges:
-  - {fileID: 561323416}
-  - {fileID: 208787629}
-  - {fileID: 511962639}
-  - {fileID: 1150772538}
-  - {fileID: 901979488}
-  abilityCooldownProgress:
-  - {fileID: 1539426954}
-  - {fileID: 941944722}
-  - {fileID: 893201681}
-  - {fileID: 1293341911}
-  - {fileID: 2082731178}
-  activeAbilitySlots:
-  - {fileID: 146880487}
-  - {fileID: 344970246}
-  - {fileID: 1295434286}
-  - {fileID: 1801530266}
-  - {fileID: 760159363}
   loadoutMenu: {fileID: 1985547189}
   hud: {fileID: 2116006170}
   pauseMenu: {fileID: 112959727}
@@ -23550,35 +23612,8 @@ MonoBehaviour:
     type: 2}
   loadoutTabsArea: {fileID: 1435291088}
   loadoutBuilder: {fileID: 0}
-  loadoutMenu: {fileID: 0}
-  abilityDisplayArea: {fileID: 0}
-  allAbilities:
-  - {fileID: 114762789834289376, guid: c86b2ab0bb606664f8a74995526ca7dd, type: 2}
-  - {fileID: 114558014071636916, guid: 6efec510133fa4744946616f86b008e3, type: 2}
-  - {fileID: 114702012802278508, guid: 6609b181ea7f70f44a929de4e2302da0, type: 2}
-  - {fileID: 114901916402156424, guid: 9a4a779927f02a9488144e0e76f68f14, type: 2}
-  - {fileID: 114514905318296710, guid: 64b7f88914ddb0e47b3b92020e446ec3, type: 2}
-  - {fileID: 114712536232050534, guid: d3529d7de74cfec4895e607ba9bea25e, type: 2}
-  - {fileID: 114125288636182392, guid: 545d7d37da2092447a08a12bf02bccc0, type: 2}
-  - {fileID: 114755415040094138, guid: 724c5285a83d4624abf9cf1d11a34f0e, type: 2}
-  - {fileID: 114167532139533654, guid: ba35bac788a2c7645b414d53f9d9f7ad, type: 2}
-  - {fileID: 114029058356867122, guid: 76d4a74f372b30647bc5a2ecfcf64748, type: 2}
-  - {fileID: 114661846047115916, guid: ae0e838bb73c6414282323f383913983, type: 2}
-  - {fileID: 114159741501913964, guid: f9f4a20d2ab81654691a231d34c53b35, type: 2}
-  - {fileID: 114445328550058994, guid: 503463d90512d774590eabafd26848e3, type: 2}
-  - {fileID: 114133533076227278, guid: 03e9e3d689a592845a247d92cc67566c, type: 2}
-  - {fileID: 114033438162484518, guid: 5e8cbddd4b3161f41b9077128e23d7b6, type: 2}
-  - {fileID: 114831759821345490, guid: 174a5f391f311fa48a9dd060dc21148a, type: 2}
-  - {fileID: 114791635774098228, guid: 9328cf836c1d71740a032f7eb3f40a30, type: 2}
-  - {fileID: 114355972902872284, guid: fb0a929e2bdf76e42a3f8d9a0e90b052, type: 2}
-  - {fileID: 114238150290949658, guid: 7d42d5cba957e9d4eae7fad981e95138, type: 2}
-  - {fileID: 114645500669531388, guid: 9e3fb5212efa2e347be25b4ddcbe4570, type: 2}
-  - {fileID: 114772128215528814, guid: 8efa418c896187d49851a0386952516c, type: 2}
-  - {fileID: 114286326666746466, guid: 519ec7c0c65dce34f91038eb73f3f498, type: 2}
-  - {fileID: 114285270577250588, guid: 1483aa85bf9e7ba4d9eebc148758ec64, type: 2}
-  - {fileID: 114089759249283816, guid: ff924c218d4003a4c9a5dffc699d3eeb, type: 2}
-  - {fileID: 114539408705625848, guid: 64a6cc03fdcc2dc45a16697bc98cb71e, type: 2}
-  - {fileID: 114687971000794884, guid: da3bfb59f5fb295418d0caf1c2639a6d, type: 2}
+  loadoutMenu: {fileID: 1985547189}
+  abilityDisplayArea: {fileID: 592766362}
 --- !u!1 &1915598466
 GameObject:
   m_ObjectHideFlags: 0

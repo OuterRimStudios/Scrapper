@@ -39,10 +39,10 @@ public class ModuleAbility : Ability
 
     void ActivateModule()
     {
-        for(int i = 0; i < inputManager.abilities.Count; i++)
+        for(int i = 0; i < AbilityManager.instance.currentLoadout.ActiveAbilities.Count; i++)
         {
-            if (inputManager.abilities[i])
-                inputManager.abilities[i].ModuleActivated(this);
+            if (AbilityManager.instance.currentLoadout.ActiveAbilities[i])
+                AbilityManager.instance.currentLoadout.ActiveAbilities[i].ModuleActivated(this);
         }
     }
 }

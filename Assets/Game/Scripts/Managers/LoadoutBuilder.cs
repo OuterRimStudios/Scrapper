@@ -46,8 +46,6 @@ public class LoadoutBuilder : MonoBehaviour {
 		InitializeCards(sustainedAbilityPanel, sustainedAbilities);
 		InitializeCards(trapAbilityPanel, trapsAbilities);
 		InitializeCards(turretAbilityPanel, turretsAbilities);
-
-		LoadoutPresetManager.instance.LoadPresets();
 	}
 
 	void InitializeCards(RectTransform panel, List<Ability> abilities)
