@@ -67,33 +67,25 @@ public class AbilityManager : MonoBehaviour {
 		CheckCooldowns();
 	}
 
-	void Initialize()
+	public void Initialize()
 	{
+        cooldownQueues.Clear();
+
 		for(int i = 0; i < 5; i++)
             cooldownQueues.Add(new Queue<float>());
 		
-		currentLoadout = LoadoutPresetManager.instance.AllPresets[0];
+        if(LoadoutPresetManager.instance.CurrentPreset != null)
+		    currentLoadout = LoadoutPresetManager.instance.CurrentPreset;
+        else
+            currentLoadout = LoadoutPresetManager.instance.AllPresets[0];
+
 		InitializeAbilityDisplay();
 	}
 
 	void InitializeAbilityDisplay()
 	{
 		if(abilityDisplayArea && currentLoadout != null)
-		{
-			for(int j = 0; j < currentLoadout.LoadoutAbilities.Count; j++)
-			{
-				abilityDisplayArea.abilitySlots[j].SetAbilitySlot(currentLoadout.LoadoutAbilities[j]);
-				abilityDisplayArea.abilityLoadoutOptions[j] = currentLoadout.LoadoutAbilities[j];
-			}
-
-			for(int i = 0; i < currentLoadout.ActiveAbilities.Count; i++)
-			{
-				abilityDisplayArea.activeAbilitySlots[i].SetAbilitySlot(currentLoadout.ActiveAbilities[i]);
-				int index = abilityDisplayArea.abilityLoadoutOptions.IndexOf(currentLoadout.ActiveAbilities[i]);
-                ActiveAbilitySlot abilitySlot = abilityDisplayArea.abilitySlots[index];
-                abilitySlot.AbilityActive(true);
-			}
-		}
+			abilityDisplayArea.Initialize(currentLoadout.ActiveAbilities, currentLoadout.LoadoutAbilities);
 
         UpdateAbilities(-1);
 	}
@@ -106,7 +98,7 @@ public class AbilityManager : MonoBehaviour {
             if(abilityDisplayArea.abilityLoadoutOptions.Contains(currentLoadout.LoadoutAbilities[abilitySlotIndex]))
             {
                 int slotIndex = abilityDisplayArea.abilityLoadoutOptions.IndexOf(currentLoadout.ActiveAbilities[abilitySlotIndex]);
-                abilityDisplayArea.abilitySlots[slotIndex].AbilityActive(false);
+                abilityDisplayArea.loadoutAbilitySlots[slotIndex].AbilityActive(false);
             }
             currentLoadout.ActiveAbilities[abilitySlotIndex] = abilityDisplayArea.currentActiveAbilitySlot.abilityInSlot;
 
@@ -167,6 +159,7 @@ public class AbilityManager : MonoBehaviour {
 
     void Cooldown(int abilityIndex)
     {
+        if(cooldownQueues.Count <= 0) return;
         if(cooldownQueues[abilityIndex].Count > 0)
         {
             float _remainingTime = ((cooldownQueues[abilityIndex].Peek() + currentLoadout.ActiveAbilities[abilityIndex].abilityCooldown) - Time.time) / currentLoadout.ActiveAbilities[abilityIndex].abilityCooldown;

@@ -6,6 +6,9 @@ using TMPro;
 
 public class LoadoutBuilder : MonoBehaviour {
 
+	public delegate void LoadoutEdited();
+	public static event LoadoutEdited OnLoadoutEdited;
+
 	public AbilityCard abilityCard;
 	public SelectedAbilityBox selectedAbilityBox;
 
@@ -31,13 +34,16 @@ public class LoadoutBuilder : MonoBehaviour {
 	public List<Ability> sustainedAbilities;
 	public List<Ability> trapsAbilities;
 	public List<Ability> turretsAbilities;
-	public List<Ability> AllAbilities {get; protected set;}
 
-	List<Ability> selectedAbilities = new List<Ability>();
+	public List<Ability> AllAbilities {get; protected set;}
+	public List<Ability> SelectedAbilities {get; protected set;}
+
+	List<SelectedAbilityBox> abilityBoxes = new List<SelectedAbilityBox>();
 
 	void Start()
 	{
 		AllAbilities = new List<Ability>();
+		SelectedAbilities = new List<Ability>();
 		//InitializeCards(meleeAbilityPanel, meleeAbilities);
 		InitializeCards(mobilityAbilityPanel, mobilityAbilities);
 		InitializeCards(moduleAbilityPanel, moduleAbilities);
@@ -68,28 +74,44 @@ public class LoadoutBuilder : MonoBehaviour {
 		activeDisplayArea.SetActive(true);
 	}
 
+	public void ClearSelectedAbilities()
+	{
+		SelectedAbilities.Clear();
+
+		selectedAbilitiesPanel.DetachChildren();
+		foreach(SelectedAbilityBox _box in abilityBoxes)
+			Destroy(_box.gameObject);
+
+		abilityBoxes.Clear();
+	}
+
 	public void AddToSelectedAbilities(Ability _ability)
 	{
 		if(selectedAbilitiesPanel.childCount < 20)
 		{
-			if(!selectedAbilities.Contains(_ability))
+			if(!SelectedAbilities.Contains(_ability))
 			{
-				selectedAbilities.Add(_ability);
+				SelectedAbilities.Add(_ability);
 				SelectedAbilityBox newBox = Instantiate(selectedAbilityBox, selectedAbilitiesPanel);
 				newBox.InitializeSelected(_ability);
-				newBox.boxButton.onClick.AddListener(delegate{RemoveFromSelectedAbilities(newBox.gameObject, _ability);});
+				newBox.boxButton.onClick.AddListener(delegate{RemoveFromSelectedAbilities(newBox, _ability);});
+				abilityBoxes.Add(newBox);
+
+				OnLoadoutEdited();
 			}
 		}
 	}
 
-	public void RemoveFromSelectedAbilities(GameObject button, Ability _ability)
+	public void RemoveFromSelectedAbilities(SelectedAbilityBox abilityBox, Ability _ability)
 	{
-		selectedAbilities.Remove(_ability);
-		Destroy(button);
+		SelectedAbilities.Remove(_ability);
+		abilityBoxes.Remove(abilityBox);
+		Destroy(abilityBox.gameObject);
+		OnLoadoutEdited();
 	}
 
 	public List<Ability> GetSelectedAbilities()
 	{
-		return selectedAbilities;
+		return SelectedAbilities;
 	}
 }

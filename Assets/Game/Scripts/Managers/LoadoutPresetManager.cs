@@ -42,6 +42,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 
 	public GameObject presetTabPrefab;
 	public RectTransform loadoutTabsArea;
+	public Button savePresetsButton;
 
 	[Space, Header("Loadout Builder")]
 	[Tooltip("Only necessary in scenes that have the LoadoutBuilder")]
@@ -55,6 +56,27 @@ public class LoadoutPresetManager : MonoBehaviour {
 	public string LoadoutPresetPath {get; protected set;}
 	public LoadoutPreset CurrentPreset {get; protected set;}
 	public List<LoadoutPreset> AllPresets {get; protected set;}
+
+	List<GameObject> presetTabs = new List<GameObject>();
+	int currentPresetIndex;
+
+	void OnEnable()
+	{
+		if(loadoutBuilder)
+			LoadoutBuilder.OnLoadoutEdited += UpdatePreset;
+	}
+
+	void OnDisable()
+	{
+		if(loadoutBuilder)
+			LoadoutBuilder.OnLoadoutEdited -= UpdatePreset;
+	}
+
+	void Start()
+	{
+		if(savePresetsButton)
+			savePresetsButton.onClick.AddListener(delegate{ApplyChanges();});
+	}
 
 	public void LoadPresets()
 	{
@@ -99,6 +121,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 	void CreateTab(LoadoutPreset _preset)
 	{
 		GameObject newTab = Instantiate(presetTabPrefab, loadoutTabsArea);
+		presetTabs.Add(newTab);
 		newTab.transform.SetAsFirstSibling();
 		TextMeshProUGUI buttonText = newTab.GetComponentInChildren<TextMeshProUGUI>();
 		if(buttonText)
@@ -111,6 +134,17 @@ public class LoadoutPresetManager : MonoBehaviour {
 		}
 	}
 
+	void ResetTabs()
+	{
+		CurrentPreset = null;
+		AllPresets.Clear();
+
+		foreach(GameObject tab in presetTabs)
+			Destroy(tab);
+
+		LoadPresets();
+	}
+
 	public void ToggleLoadoutMenu()
 	{
 		loadoutMenu.SetActive(!loadoutMenu.activeSelf);
@@ -120,24 +154,92 @@ public class LoadoutPresetManager : MonoBehaviour {
 	{
 		CurrentPreset = _preset;
 
+		if(AllPresets.Contains(_preset))
+			currentPresetIndex = AllPresets.IndexOf(_preset);
+
 		if(loadoutBuilder)
 		{
+			loadoutBuilder.ClearSelectedAbilities();
+
 			foreach(Ability _ability in _preset.LoadoutAbilities)
 			{
 				loadoutBuilder.AddToSelectedAbilities(_ability);
 			}
 		}
+
+		AbilityManager.instance.Initialize();
+	}
+
+	void UpdatePreset()
+	{
+		string presetName = CurrentPreset.presetName;
+		List<string> activeAbilityNames = new List<string>();
+		List<string> loadoutAbilityNames = new List<string>();
+
+		if(loadoutBuilder)
+		{
+			foreach(Ability _ability in loadoutBuilder.SelectedAbilities)
+				loadoutAbilityNames.Add(_ability.abilityName);
+
+			foreach(ActiveAbilitySlot activeSlot in abilityDisplayArea.activeAbilitySlots)
+			{
+				if(!loadoutBuilder.SelectedAbilities.Contains(activeSlot.abilityInSlot))
+				{
+					for(int i = 0; i < loadoutBuilder.SelectedAbilities.Count; i++)
+					{
+						if(!activeAbilityNames.Contains(loadoutBuilder.SelectedAbilities[i].abilityName))
+						{
+							List<string> activeNames = new List<string>();
+							for(int j = 0; j < abilityDisplayArea.activeAbilitySlots.Count; j++)
+							{
+								activeNames.Add(abilityDisplayArea.activeAbilitySlots[j].abilityInSlot.abilityName);
+							}
+
+							if(!activeNames.Contains(loadoutBuilder.SelectedAbilities[i].abilityName))
+							{
+								activeAbilityNames.Add(loadoutBuilder.SelectedAbilities[i].abilityName);
+								break;
+							}
+						}
+					}
+				}
+				else
+					activeAbilityNames.Add(activeSlot.abilityInSlot.abilityName);
+			}
+		}
+
+		LoadoutPreset updatedPreset = new LoadoutPreset(presetName, activeAbilityNames, loadoutAbilityNames);
+		CurrentPreset = updatedPreset;
+		AbilityManager.instance.Initialize();
+		savePresetsButton.interactable = true;
 	}
 
 	public void ApplyChanges()
 	{
+		savePresetsButton.interactable = false;
+		string presetName = CurrentPreset.presetName;
+		List<string> activeAbilityNames = new List<string>();
+		List<string> loadoutAbilityNames = new List<string>();
 
+		foreach(ActiveAbilitySlot activeSlot in abilityDisplayArea.activeAbilitySlots)
+			activeAbilityNames.Add(activeSlot.abilityInSlot.name);
+
+		foreach(Ability loadoutAbility in loadoutBuilder.SelectedAbilities)
+			loadoutAbilityNames.Add(loadoutAbility.abilityName);
+
+		LoadoutPreset newPreset = new LoadoutPreset(presetName, activeAbilityNames, loadoutAbilityNames);
+
+		WriteToXML(AllPresets[currentPresetIndex], newPreset);
+
+		//CurrentPreset = newPreset;
+		//AllPresets[currentPresetIndex] = newPreset;
 	}
 
 	void WriteToXML(LoadoutPreset oldLoadout, LoadoutPreset newLoadout)
 	{
 		RemoveFromXML(oldLoadout);
 		AddPresetToXML(newLoadout);
+		ResetTabs();
 	}
 
 	void AddPresetToXML(LoadoutPreset loadout)
@@ -147,10 +249,10 @@ public class LoadoutPresetManager : MonoBehaviour {
 
 		XmlAttribute nameAttr = LoadoutPresetDoc.CreateAttribute("name");
 		nameAttr.Value = loadout.presetName;
-		preset.Attributes.Append(nameAttr);
+		preset.Attributes.Prepend(nameAttr);
 
 		XmlNode activeAbilities = LoadoutPresetDoc.CreateElement("ActiveAbilities");
-		LoadoutPresetDoc.DocumentElement.AppendChild(activeAbilities);
+		preset.AppendChild(activeAbilities);
 
 		for(int i = 0; i < loadout.activeAbilityNames.Count; i++)
 		{
@@ -160,7 +262,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 		}
 
 		XmlNode loadoutAbilities = LoadoutPresetDoc.CreateElement("LoadoutAbilities");
-		LoadoutPresetDoc.DocumentElement.AppendChild(loadoutAbilities);
+		preset.AppendChild(loadoutAbilities);
 
 		for(int i = 0; i < loadout.loadoutAbilityNames.Count; i++)
 		{

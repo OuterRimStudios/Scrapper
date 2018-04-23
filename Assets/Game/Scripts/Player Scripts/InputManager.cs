@@ -213,7 +213,6 @@ public class InputManager : MonoBehaviour
             if(AbilityManager.instance.currentLoadout.ActiveAbilities[i] && AbilityManager.instance.currentLoadout.ActiveAbilities[i].CanShoot() && abilityActive[i])
             {
                 playerMovement.Sprint(false);
-                print("should activate ability");
                 AbilityManager.instance.currentLoadout.ActiveAbilities[i].ActivateAbility();
                 AbilityManager.instance.abilityCharges[i].text = AbilityManager.instance.currentLoadout.ActiveAbilities[i].charges.ToString();
 
