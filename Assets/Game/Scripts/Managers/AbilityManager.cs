@@ -47,21 +47,6 @@ public class AbilityManager : MonoBehaviour {
 
 	float remainingTime;
 
-	void OnEnable()
-	{
-		LoadoutPresetManager.OnPresetsLoaded += Initialize;
-	}
-
-	void OnDisable()
-	{
-		LoadoutPresetManager.OnPresetsLoaded += Initialize;
-	}
-
-    void Start()
-    {
-        LoadoutPresetManager.instance.LoadPresets();
-    }
-
 	void Update()
 	{
 		CheckCooldowns();

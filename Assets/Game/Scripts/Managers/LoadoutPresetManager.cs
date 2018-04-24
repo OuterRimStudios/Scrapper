@@ -76,6 +76,9 @@ public class LoadoutPresetManager : MonoBehaviour {
 	{
 		if(savePresetsButton)
 			savePresetsButton.onClick.AddListener(delegate{ApplyChanges();});
+
+		LoadPresets();
+		LoadPreset(AllPresets[0]);
 	}
 
 	public void LoadPresets()
@@ -115,7 +118,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 			CreateTab(newPreset);
 		}
 
-		OnPresetsLoaded();
+		//OnPresetsLoaded();
 	}
 
 	void CreateTab(LoadoutPreset _preset)
@@ -192,7 +195,8 @@ public class LoadoutPresetManager : MonoBehaviour {
 							List<string> activeNames = new List<string>();
 							for(int j = 0; j < abilityDisplayArea.activeAbilitySlots.Count; j++)
 							{
-								activeNames.Add(abilityDisplayArea.activeAbilitySlots[j].abilityInSlot.abilityName);
+								if(abilityDisplayArea.activeAbilitySlots[j].abilityInSlot != null)
+									activeNames.Add(abilityDisplayArea.activeAbilitySlots[j].abilityInSlot.abilityName);
 							}
 
 							if(!activeNames.Contains(loadoutBuilder.SelectedAbilities[i].abilityName))

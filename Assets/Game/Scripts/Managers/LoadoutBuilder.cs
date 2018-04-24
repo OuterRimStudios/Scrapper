@@ -64,6 +64,7 @@ public class LoadoutBuilder : MonoBehaviour {
 			AbilityCard newCard = Instantiate(abilityCard, panel);
 			newCard.InitializeCard(_ability);
 			newCard.cardButton.onClick.AddListener(delegate{AddToSelectedAbilities(_ability);});
+			newCard.cardButton.onClick.AddListener(delegate{OnLoadoutEdited();});
 		}
 	}
 
@@ -95,9 +96,8 @@ public class LoadoutBuilder : MonoBehaviour {
 				SelectedAbilityBox newBox = Instantiate(selectedAbilityBox, selectedAbilitiesPanel);
 				newBox.InitializeSelected(_ability);
 				newBox.boxButton.onClick.AddListener(delegate{RemoveFromSelectedAbilities(newBox, _ability);});
+				newBox.boxButton.onClick.AddListener(delegate{OnLoadoutEdited();});
 				abilityBoxes.Add(newBox);
-
-				OnLoadoutEdited();
 			}
 		}
 	}
@@ -107,7 +107,6 @@ public class LoadoutBuilder : MonoBehaviour {
 		SelectedAbilities.Remove(_ability);
 		abilityBoxes.Remove(abilityBox);
 		Destroy(abilityBox.gameObject);
-		OnLoadoutEdited();
 	}
 
 	public List<Ability> GetSelectedAbilities()
