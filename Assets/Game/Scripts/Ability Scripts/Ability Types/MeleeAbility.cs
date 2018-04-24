@@ -5,6 +5,11 @@ using UnityEngine;
 public class MeleeAbility : Ability
 {
     public int damage;
+    public int numberOfAttacks = 1;
+    [Tooltip("This should be 0 if the bot only attakcs once per attack phase.")]
+    public float multiAttackFrequency;
+
+    bool attacking;
 
 
     Transform target;
@@ -17,18 +22,34 @@ public class MeleeAbility : Ability
         if (target == null) return;
         if(Utility.CheckDistance(refManager.transform.position, target.position) < refManager.stats.attackRange)
         {
-            Attack attack = new Attack();
-
-            attack.Initialize(damage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects);
-            attack.SetTarget(target);
-            for (int j = 0; j < GetActiveModules().Count; j++)
-                attack.SetModule(GetActiveModules()[j]);
-
-            attack.AttackTarget();
+            for (int i = 0; i < numberOfAttacks; i++)
+            {
+                if (!attacking)
+                {
+                    attacking = true;
+                    StartCoroutine(AttackTarget());
+                }
+            }
         }
 
         RemoveModules();
         TriggerCooldown();
+    }
+
+    IEnumerator AttackTarget()
+    {
+        Attack attack = new Attack();
+
+        attack.Initialize(damage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects);
+        attack.SetTarget(target);
+
+        for (int j = 0; j < GetActiveModules().Count; j++)
+            attack.SetModule(GetActiveModules()[j]);
+
+
+        attack.AttackTarget();
+        yield return new WaitForSeconds(multiAttackFrequency);
+        attacking = false;
     }
 
 }

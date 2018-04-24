@@ -17,6 +17,9 @@ public class StateController : MonoBehaviour
 
     Coroutine updateState;
 
+    [HideInInspector]
+    public bool waitForSeconds_Waiting = false;
+
 	void Start ()
     {
         isIdle = true;
@@ -73,5 +76,10 @@ public class StateController : MonoBehaviour
     public void ToggleIdle()
     {
         isIdle = !isIdle;
+    }
+
+    public void StartACoroutine(IEnumerator coroutine)
+    {
+        StartCoroutine(coroutine);
     }
 }

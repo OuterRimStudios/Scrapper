@@ -20,8 +20,13 @@ public class Projectile : DamageTypes
 
         if (objectHit.tag.Equals("Limb"))
             objectHit.GetComponent<Limb>().TookDamage(damage);
-        else
-            objectHit.GetComponent<Health>().TookDamage(damage);
+        else if(objectHit.tag.Equals("Enemy")) //Might need to add the friendly tag
+        {
+            if(objectHit.GetComponent<Health>())
+            {
+                objectHit.GetComponent<Health>().TookDamage(damage);
+            }
+        }
 
         VisualOnTrigger();
         SpawnAfterEffects();
