@@ -9,4 +9,11 @@ public class StunTrap : Trap {
         base.EffectOnTrigger(objectHit);
         objectHit.transform.root.GetComponent<StatusEffects>().ApplyStun(stunDuration);
     }
+
+    private void OnDrawGizmos()
+    {
+
+        Gizmos.DrawWireSphere(transform.position, hitRadius);
+        Gizmos.color = Color.red;
+    }
 }

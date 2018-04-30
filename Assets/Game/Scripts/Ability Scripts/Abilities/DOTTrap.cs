@@ -10,4 +10,11 @@ public class DOTTrap : Trap {
         base.EffectOnTrigger(objectHit);
         objectHit.transform.root.GetComponent<StatusEffects>().ApplyDOT(dotDamage, dotDuration);
     }
+
+    private void OnDrawGizmos()
+    {
+
+        Gizmos.DrawWireSphere(transform.position, hitRadius);
+        Gizmos.color = Color.red;
+    }
 }
