@@ -12,6 +12,10 @@ public class Ability : MonoBehaviour
     [TextArea]
     public string abilityDescription;
 
+    [Space, Header("Extra Functions (Not Required)")]
+    public ExtraFunctionality extraFunctionalityOnActivate;
+    public ExtraFunctionality extraFunctionalityOnDeactivate;
+
     public enum AbilityType
     {
         Projectile,
@@ -58,6 +62,9 @@ public class Ability : MonoBehaviour
         {
             charge = StartCoroutine(Charge());
             charges--;
+
+            if (extraFunctionalityOnActivate)
+                extraFunctionalityOnActivate.ExtraFunctions();
         }
     }
 
@@ -65,6 +72,9 @@ public class Ability : MonoBehaviour
     {
         if(charge != null)
         {
+            if (extraFunctionalityOnDeactivate)
+                extraFunctionalityOnDeactivate.ExtraFunctions();
+
             StopCoroutine(charge);
             isCharging = false;
         }

@@ -26,4 +26,16 @@ public class AnimationManager : MonoBehaviour
     {
         anim.SetBool("Attack", false);
     }
+
+    public void Idle()
+    {
+        print("Idle");
+        anim.SetBool("IsWalking", false);
+    }
+
+    public void Moving()
+    {
+        print("Walk");
+        anim.SetBool("IsWalking", true);
+    }
 }

@@ -12,12 +12,26 @@ public class RandomWalkAction : Action
 
     void Move(StateController controller)
     {
+   
+
         if (Utility.CheckDistance(controller.enemyRefManager.ai.walkPos, controller.enemyRefManager.ai.previousPos) <= .5f)
         {
             GetNewPos(controller);
         }
 
         controller.enemyRefManager.ai.agent.destination = controller.enemyRefManager.ai.walkPos;
+
+        if(Utility.CheckDistance(controller.transform.position, controller.enemyRefManager.ai.walkPos) < .5f)
+        {
+            if (controller.enemyRefManager.animManager)
+                controller.enemyRefManager.animManager.Idle();
+        }
+        else
+        {
+            if (controller.enemyRefManager.animManager)
+                controller.enemyRefManager.animManager.Moving();
+        }
+
 
         //walk//
         //controller.enemyRefManager.ai.StartAgent();

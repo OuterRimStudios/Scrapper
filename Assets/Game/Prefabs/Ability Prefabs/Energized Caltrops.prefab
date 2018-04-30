@@ -406,6 +406,7 @@ GameObject:
   - component: {fileID: 4948235089375660}
   - component: {fileID: 114475675668172926}
   - component: {fileID: 65764551988382694}
+  - component: {fileID: 114706195875758874}
   m_Layer: 0
   m_Name: Energized Caltrops
   m_TagString: Untagged
@@ -1586,7 +1587,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388083752614498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.57922125, y: 0.11, z: 3.8950863}
+  m_LocalPosition: {x: 0.8256254, y: 0.22454174, z: 2.7704892}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4488139076226946}
@@ -3081,8 +3082,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 0.1, z: 2.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.5, y: 0.44, z: 2.5}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!95 &95018472275826740
 Animator:
   serializedVersion: 3
@@ -3387,7 +3388,19 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  destroyedOnTrigger: 1
+  destroyedOnTrigger: 0
   effectFrequency: 0
   hitRadius: 1.5
   stunDuration: 4
+--- !u!114 &114706195875758874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388083752614498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61dd248025297b40b64ba66e9e79f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfter: 6

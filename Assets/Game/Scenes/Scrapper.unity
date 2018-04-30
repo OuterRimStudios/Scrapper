@@ -489,6 +489,8 @@ MonoBehaviour:
     2 / 0.75 seconds\r\n<b><i>Charges:</i></b> 2\r\n<b><i>Cooldown Per Charge:</i></b>
     10 Seconds\r\n<b><i>Description:</i></b> Place a plasma shredder on the ground
     that damages enemies.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 1
   abilityCharges: 2
   chargeTime: 0
@@ -2427,6 +2429,8 @@ MonoBehaviour:
   abilityName: Charge
   abilityIcon: {fileID: 21300000, guid: 77e7f5cdb602ff4498964b234c64c20f, type: 3}
   abilityDescription: Charge forward 20 ft
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 7
   abilityCharges: 2
   chargeTime: 0
@@ -2816,6 +2820,8 @@ MonoBehaviour:
   abilityDescription: "<b><i>Name:</i></b> Destructo-Disc Turret\r\n<b><i>Damage:</i></b>
     100,000 / Turret\r\n<b><i>Charges:</i></b> 3\r\n<b><i>Cooldown Per Charge:</i></b>
     15 Seconds\r\n<b><i>Description:</i></b> Place turrets that fire Destructo-Discs.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 3
   abilityCharges: 3
   chargeTime: 0
@@ -2875,6 +2881,8 @@ MonoBehaviour:
   abilityName: Minigun
   abilityIcon: {fileID: 21300000, guid: fbde5029f699007449af1ba57d1991d6, type: 3}
   abilityDescription: Rapid fire weapon.
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -3110,6 +3118,8 @@ MonoBehaviour:
     8\r\n<b><i>Bleed Damage:</i></b> 1 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 5
     Seconds\r\n<b><i>Description:</i></b> Place a spike trap that deals damage when
     an enemy steps on the spikes. Applies bleed damage for 5 seconds.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -3237,6 +3247,8 @@ MonoBehaviour:
     12 Seconds\r\n<b><i>Root Duration:</i></b> 6 Seconds\r\n<b><i>Description:</i></b>
     Fires a trap that when triggered, roots all enemies in place for 6 seconds. This
     effect is also applied to turrets and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -3579,6 +3591,8 @@ MonoBehaviour:
   abilityName: High-Frequency Electron Beam
   abilityIcon: {fileID: 21300000, guid: 17ad7d1d940134d4297748215718c474, type: 3}
   abilityDescription: High-Frequency Electron Beam
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0
@@ -5152,6 +5166,8 @@ MonoBehaviour:
   abilityName: Disengage
   abilityIcon: {fileID: 21300000, guid: 91e41d09670478946881c5d91c8ba6a1, type: 3}
   abilityDescription: Dash backwards 40ft
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 7
   abilityCharges: 1
   chargeTime: 0
@@ -8296,6 +8312,8 @@ MonoBehaviour:
   abilityDescription: "Name: Energized Caltrops\r\nDamage: 0\r\nCooldown: 10 Seconds\r\nStun
     Duration: 4 Seconds\r\nDescription: Place some energized caltrops that stun an
     enemy for 4 seconds when walked over.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -9000,6 +9018,8 @@ MonoBehaviour:
   abilityName: Dash
   abilityIcon: {fileID: 21300000, guid: 72db2ba488298a647bb14b9821ae0e28, type: 3}
   abilityDescription: Dash 10ft in any direction
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 7
   abilityCharges: 2
   chargeTime: 0
@@ -9123,6 +9143,8 @@ MonoBehaviour:
   abilityIcon: {fileID: 21300000, guid: 4ed5bef21d80b454b83ca210bbbb0026, type: 3}
   abilityDescription: Increases your movement speed while held. Attacking cancels
     the ability.
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 7
   abilityCharges: 1
   chargeTime: 0
@@ -9992,6 +10014,8 @@ MonoBehaviour:
     15 Seconds\r\n<b><i>Leech Percentage:</i></b> 10%\r\n<b><i>Description:</i></b>
     The next ability heals you for 10% of the damage it did. (Per enemy hit). This
     effect is also applied to turrets and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -10853,6 +10877,8 @@ MonoBehaviour:
   abilityName: Jetpack
   abilityIcon: {fileID: 21300000, guid: a75587dea8d91634b96f50a21c8b2fd3, type: 3}
   abilityDescription: Hover in air for 10 seconds.
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 7
   abilityCharges: 1
   chargeTime: 0
@@ -14105,6 +14131,8 @@ MonoBehaviour:
     1 Second\r\n<b><i>Slow Duration:</i></b> 4 Seconds\r\n<b><i>Stack Max:</i></b>
     5\r\n<b><i>Description:</i></b> The next ability slows the target for 4 seconds
     on impact. This effect is also applied to turrets and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -15961,6 +15989,8 @@ MonoBehaviour:
     3 / 1 second\r\n<b><i>Cooldown:</i></b> 10 Seconds\r\n<b><i>Description:</i></b>
     The next ability lights targets on fire for 5 seconds. This effect is also applied
     to turrets and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -17626,6 +17656,8 @@ MonoBehaviour:
   abilityDescription: "<b><i>Name:</i></b> Energized Plasma Cannon\r\n<b><i>Damage:</i></b>
     10\r\n<b><i>Cooldown:</i></b> 1 Second\r\n<b><i>Description:</i></b> Fires a large
     ball of plasma that deals high damage.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -18315,6 +18347,8 @@ MonoBehaviour:
     15 Seconds\r\n<b><i>Sleep Duration:</i></b> 15 Seconds\r\n<b><i>Description:</i></b>
     Spawns a trap that shuts down the enemy causing them to sleep for 15 seconds.
     Sleeping effect is broken if the target is damaged.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -24629,6 +24663,8 @@ MonoBehaviour:
   abilityDescription: "<b><i>Name:</i></b> Destructo-Disc\r\n<b><i>Damage:</i></b>
     10\r\n<b><i>Charges:</i></b> 3\r\n<b><i>Cooldown Per Charge:</i></b> 3 Seconds\r\n<b><i>Description:</i></b>
     Shoots a plasma blade that penetrates enemies.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 0
   abilityCharges: 3
   chargeTime: 0
@@ -25027,6 +25063,8 @@ MonoBehaviour:
     20\r\n<b><i>Cooldown:</i></b> 20 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
     Launch an orb of energy to deal high damage to the target and stun surrounding
     enemies for 4 seconds.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -26921,6 +26959,8 @@ MonoBehaviour:
   abilityName: Rocket Jump
   abilityIcon: {fileID: 21300000, guid: 73037110ca3d33e49a05c7c5d80cb9ab, type: 3}
   abilityDescription: Launches you in the air.
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 7
   abilityCharges: 2
   chargeTime: 0
@@ -28801,6 +28841,8 @@ MonoBehaviour:
   abilityDescription: "<b><i>Name:</i></b> High-Frequency Electron Beam\r Turret\n<b><i>Damage:</i></b>
     4 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 1 Second\r\n<b><i>Description:</i></b>
     Fire a beam of energy that frequently deals damage.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 3
   abilityCharges: 2
   chargeTime: 0
@@ -34443,6 +34485,8 @@ MonoBehaviour:
     Launch an energy grenade to stun enemies for 2 seconds.\r\n\n<b><i>Cooldown:</i></b>
     10 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
     Place some energized caltrops that stun an enemy for 4 seconds when walked over.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -35954,6 +35998,8 @@ MonoBehaviour:
     10 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
     The next ability you use stuns the target on impact. This effect is also applied
     to turrets and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -36099,6 +36145,8 @@ MonoBehaviour:
     Damage:</i></b> 100,000\r\n<b><i>Area Damage:</i></b> 4\r\n<b><i>Cooldown:</i></b>
     1.5 Seconds\r\n<b><i>Description:</i></b> Fire a ball of plasma that explodes
     on impact dealing damage to surrounding enemies.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -36338,6 +36386,8 @@ MonoBehaviour:
     5\r\n<b><i>Description:</i></b> The next ability causes the target to take stacking
     damage over time on impact for 5 seconds. This effect is also applied to turrets
     and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -39006,6 +39056,8 @@ MonoBehaviour:
   abilityName: Flamethrower
   abilityIcon: {fileID: 21300000, guid: ff4835628f1c589418a23f973fa9246f, type: 3}
   abilityDescription: A flamethrower that deals AoE damage.
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0

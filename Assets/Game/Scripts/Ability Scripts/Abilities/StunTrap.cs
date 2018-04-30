@@ -12,7 +12,6 @@ public class StunTrap : Trap {
 
     private void OnDrawGizmos()
     {
-
         Gizmos.DrawWireSphere(transform.position, hitRadius);
         Gizmos.color = Color.red;
     }

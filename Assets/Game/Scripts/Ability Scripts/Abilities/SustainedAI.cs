@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SustainedAI : Ability {
-
+public class SustainedAI : Ability
+{
     public SustainedBeam beamPrefab;
     public float effectLength;
     public int initialDamage;
@@ -27,6 +27,11 @@ public class SustainedAI : Ability {
         AIHealth health = (AIHealth)refManager.health;
         health.SetLimbsActive(true);
         refManager.animManager.Attack();
+    }
+
+    public virtual void ExtraFunctionality()
+    {
+
     }
 
     public override void VisualOnDeactivate()
@@ -68,6 +73,10 @@ public class SustainedAI : Ability {
     {
         isFiring = true;
         VisualOnActivate();
+
+        if (extraFunctionalityOnActivate)
+            extraFunctionalityOnActivate.ExtraFunctions();
+
         for (int i = 0; i < beams.Count; i++)
         {
             beams[i].SetTarget(refManager.targetManager.GetClosestTarget(transform.position, refManager.enemyTag.ToString()), false);
