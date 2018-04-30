@@ -47,8 +47,11 @@ public class LoadoutPresetManager : MonoBehaviour {
 	[Space, Header("Loadout Builder")]
 	[Tooltip("Only necessary in scenes that have the LoadoutBuilder")]
 	public LoadoutBuilder loadoutBuilder;
+	public TextMeshProUGUI loadoutBuilderPresetText;
 
 	[Space, Header("Loadout Menu")]
+	public TextMeshProUGUI errorText;
+	public TextMeshProUGUI presetNameText;
 	public GameObject loadoutMenu;
 	public AbilityDisplayArea abilityDisplayArea;
 
@@ -64,21 +67,29 @@ public class LoadoutPresetManager : MonoBehaviour {
 	{
 		if(loadoutBuilder)
 			LoadoutBuilder.OnLoadoutEdited += UpdatePreset;
+
+		if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
+			AbilityManager.OnAbilitiesUpdated += UpdatePreset;
+
+		LoadPresets();
+		LoadPreset(AllPresets[0]);
 	}
 
 	void OnDisable()
 	{
 		if(loadoutBuilder)
 			LoadoutBuilder.OnLoadoutEdited -= UpdatePreset;
+
+		if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
+			AbilityManager.OnAbilitiesUpdated -= UpdatePreset;
+
+		ClearTabs();
 	}
 
 	void Start()
 	{
 		if(savePresetsButton)
 			savePresetsButton.onClick.AddListener(delegate{ApplyChanges();});
-
-		LoadPresets();
-		LoadPreset(AllPresets[0]);
 	}
 
 	public void LoadPresets()
@@ -137,25 +148,53 @@ public class LoadoutPresetManager : MonoBehaviour {
 		}
 	}
 
-	void ResetTabs()
+	void ClearTabs()
 	{
 		CurrentPreset = null;
 		AllPresets.Clear();
 
 		foreach(GameObject tab in presetTabs)
 			Destroy(tab);
+	}
 
+	void ResetTabs()
+	{
+		ClearTabs();
 		LoadPresets();
 	}
 
 	public void ToggleLoadoutMenu()
 	{
-		loadoutMenu.SetActive(!loadoutMenu.activeSelf);
+		if(loadoutMenu.activeSelf)
+		{
+			loadoutMenu.SetActive(!loadoutMenu.activeSelf);
+		}
+		else
+		{
+			if(CurrentPreset.LoadoutAbilities.Count < 6)
+			{
+				errorText.enabled = true;
+			}
+			else
+			{
+				errorText.enabled = false;
+				loadoutMenu.SetActive(!loadoutMenu.activeSelf);
+			}
+		}
 	}
 
 	public void LoadPreset(LoadoutPreset _preset)
 	{
 		CurrentPreset = _preset;
+
+		if(loadoutBuilderPresetText)
+		{
+			loadoutBuilderPresetText.text = CurrentPreset.presetName;
+			loadoutBuilderPresetText.enabled = true;
+		}
+
+		if(presetNameText)
+			presetNameText.text = CurrentPreset.presetName;
 
 		if(AllPresets.Contains(_preset))
 			currentPresetIndex = AllPresets.IndexOf(_preset);
@@ -170,7 +209,8 @@ public class LoadoutPresetManager : MonoBehaviour {
 			}
 		}
 
-		AbilityManager.instance.Initialize();
+		if(_preset.LoadoutAbilities.Count > 5)
+			AbilityManager.instance.Initialize();
 	}
 
 	void UpdatePreset()
@@ -214,7 +254,10 @@ public class LoadoutPresetManager : MonoBehaviour {
 
 		LoadoutPreset updatedPreset = new LoadoutPreset(presetName, activeAbilityNames, loadoutAbilityNames);
 		CurrentPreset = updatedPreset;
-		AbilityManager.instance.Initialize();
+
+		if(CurrentPreset.LoadoutAbilities.Count > 5)
+			AbilityManager.instance.Initialize();
+
 		savePresetsButton.interactable = true;
 	}
 

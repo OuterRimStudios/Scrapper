@@ -32,11 +32,13 @@ public class AbilityManager : MonoBehaviour {
     }
     #endregion
 
+    public delegate void AbilitiesUpdated();
+	public static event AbilitiesUpdated OnAbilitiesUpdated;
+
 	public LoadoutPreset currentLoadout;
 
 	[Space, Header("Ability Loadout")]
     public AbilityDisplayArea abilityDisplayArea;
-    public List<ActiveAbilitySlot> activeAbilitySlots;
     [Tooltip("Ability Icons in the Player HUD")]
     public List<Image> abilityIcons;
     public List<Text> abilityCharges;
@@ -46,6 +48,17 @@ public class AbilityManager : MonoBehaviour {
 	public List<Ability> allAbilities = new List<Ability>();
 
 	float remainingTime;
+
+    void Start()
+    {
+        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            for(int i = 0; i < abilityDisplayArea.activeAbilitySlots.Count; i++)
+            {
+                abilityDisplayArea.activeAbilitySlots[i].GetComponent<Button>().onClick.AddListener(delegate{OnAbilitiesUpdated();});
+            }
+        }
+    }
 
 	void Update()
 	{

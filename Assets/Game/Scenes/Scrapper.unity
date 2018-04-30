@@ -1843,12 +1843,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1459038922}
   m_Script: {fileID: 11500000, guid: 5e03414be17386846a1b2c6ed14edbf4, type: 3}
---- !u!114 &146880487 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114831229564501804, guid: 90f397f605f004547aa2bacb20590356,
-    type: 2}
-  m_PrefabInternal: {fileID: 1539651788}
-  m_Script: {fileID: 11500000, guid: da77b009617155646b85d414921764fc, type: 3}
 --- !u!114 &152149710 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114740173467414296, guid: 90f397f605f004547aa2bacb20590356,
@@ -4168,12 +4162,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1548369577350530, guid: 90f397f605f004547aa2bacb20590356,
     type: 2}
   m_PrefabInternal: {fileID: 1539651788}
---- !u!114 &344970246 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114998311377711388, guid: 90f397f605f004547aa2bacb20590356,
-    type: 2}
-  m_PrefabInternal: {fileID: 1539651788}
-  m_Script: {fileID: 11500000, guid: da77b009617155646b85d414921764fc, type: 3}
 --- !u!1 &367907278
 GameObject:
   m_ObjectHideFlags: 0
@@ -8536,12 +8524,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 753972197}
---- !u!114 &760159363 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114687496489805516, guid: 90f397f605f004547aa2bacb20590356,
-    type: 2}
-  m_PrefabInternal: {fileID: 1539651788}
-  m_Script: {fileID: 11500000, guid: da77b009617155646b85d414921764fc, type: 3}
 --- !u!1 &770918075
 GameObject:
   m_ObjectHideFlags: 0
@@ -16128,12 +16110,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1293341909}
---- !u!114 &1295434286 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114217544391621524, guid: 90f397f605f004547aa2bacb20590356,
-    type: 2}
-  m_PrefabInternal: {fileID: 1539651788}
-  m_Script: {fileID: 11500000, guid: da77b009617155646b85d414921764fc, type: 3}
 --- !u!1 &1296402175
 GameObject:
   m_ObjectHideFlags: 0
@@ -16571,12 +16547,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDisplayArea: {fileID: 592766362}
-  activeAbilitySlots:
-  - {fileID: 146880487}
-  - {fileID: 344970246}
-  - {fileID: 1295434286}
-  - {fileID: 1801530266}
-  - {fileID: 760159363}
   abilityIcons:
   - {fileID: 2102463627}
   - {fileID: 1179911498}
@@ -22596,12 +22566,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799098771}
---- !u!114 &1801530266 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114239331025842702, guid: 90f397f605f004547aa2bacb20590356,
-    type: 2}
-  m_PrefabInternal: {fileID: 1539651788}
-  m_Script: {fileID: 11500000, guid: da77b009617155646b85d414921764fc, type: 3}
 --- !u!4 &1807999879 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4615568605623966, guid: 9328cf836c1d71740a032f7eb3f40a30,
@@ -23873,6 +23837,9 @@ MonoBehaviour:
   loadoutTabsArea: {fileID: 1435291088}
   savePresetsButton: {fileID: 0}
   loadoutBuilder: {fileID: 0}
+  loadoutBuilderPresetText: {fileID: 0}
+  errorText: {fileID: 0}
+  presetNameText: {fileID: 0}
   loadoutMenu: {fileID: 1985547189}
   abilityDisplayArea: {fileID: 592766362}
 --- !u!1 &1915598466
