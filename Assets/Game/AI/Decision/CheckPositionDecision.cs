@@ -11,6 +11,8 @@ public class CheckPositionDecision : Decision
         {
             if (!controller.enemyRefManager.ai.agent || !controller.enemyRefManager.ai.agent.isOnNavMesh)
                 return false;
+
+            controller.enemyRefManager.ai.updateTarget = true;
             controller.enemyRefManager.ai.agent.isStopped = true;
             controller.enemyRefManager.ai.previousPos = controller.transform.position;
             return true;

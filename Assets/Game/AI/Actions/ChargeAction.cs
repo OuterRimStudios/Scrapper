@@ -12,6 +12,8 @@ public class ChargeAction : Action
 
     void Charge(StateController controller)
     {
-        Debug.LogError("No Charge Logic");
+        if (controller.enemyRefManager.ai.chaseTarget == null) return;
+        controller.enemyRefManager.ai.agent.destination = controller.enemyRefManager.ai.walkPos;
+        controller.enemyRefManager.ai.updateTarget = false;
     }
 }
