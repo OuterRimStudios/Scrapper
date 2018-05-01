@@ -41,10 +41,12 @@ public class StatusEffects : MonoBehaviour
     int currentSlowStacks;
 
     AI ai;
+    Health playerHealth;
 
     private void Start()
     {
         health = GetComponent<Health>();
+        playerHealth = GameObject.Find("Player").GetComponent<Health>();
         rb = GetComponent<Rigidbody>();
         ai = GetComponent<AI>();
         canAct = true;
@@ -275,7 +277,7 @@ public class StatusEffects : MonoBehaviour
     {
         if (!ai) return;
         siphonEffect.SetActive(true);
-        health.Heal(siphonDamage);
+        playerHealth.Heal(siphonDamage);
     }
     #endregion
     #region DOT
