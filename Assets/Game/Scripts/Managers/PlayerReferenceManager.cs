@@ -10,12 +10,22 @@ public class PlayerReferenceManager : ReferenceManager
     public Transform firstPersonGunPosition;
     public Transform thirdPersonGunPosition;
 
+    List<LookAtCenter> barrelLookAt = new List<LookAtCenter>();
+
     public static bool firstPerson;
 
     protected override void Awake()
     {
         base.Awake();
         SetView(firstPerson);
+    }
+
+    public void InitializeLookAt()
+    {
+        for (int i = 0; i < abilitySpawnPoints.Length; i++)
+        {
+            barrelLookAt.Add(abilitySpawnPoints[i].GetComponent<LookAtCenter>());
+        }
     }
 
     public void SetView(bool _firstPerson)
@@ -49,5 +59,16 @@ public class PlayerReferenceManager : ReferenceManager
         gun.transform.localPosition = Vector3.zero;
         gun.transform.localRotation = Quaternion.identity;
         gun.transform.localScale = Vector3.one;
+    }
+
+    public void CheckLookAt(Ability ability, int abilityIndex)
+    {
+        if (ability.dontLookAtCenter)
+        {
+            barrelLookAt[abilityIndex].enabled = false;
+            abilitySpawnPoints[abilityIndex].rotation = Quaternion.Euler(Vector3.zero);
+        }
+        else
+            barrelLookAt[abilityIndex].enabled = true;
     }
 }

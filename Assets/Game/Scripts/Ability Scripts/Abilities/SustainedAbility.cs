@@ -6,6 +6,7 @@ public class SustainedAbility : Ability
 {
     public Sustained sustainEffect;
     public int initialDamage;
+    public bool singleBarrel;
 
     [HideInInspector] public List<Sustained> beams = new List<Sustained>();
     GameObject mainCam;
@@ -14,17 +15,32 @@ public class SustainedAbility : Ability
     {
         base.Start();
         mainCam = Camera.main.gameObject;
-        for (int i = 0; i < refManager.SpawnPosition().Length; i++)
+
+        if(singleBarrel)
         {
             beams.Add(Instantiate(sustainEffect));
-            beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
+            beams[0].Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects, refManager.SpawnPosition()[0]);
 
             if (refManager.friendlyTag.ToString() == "Friendly")
-                beams[i].SetTarget(mainCam.transform, false);
+                beams[0].SetTarget(mainCam.transform, false);
 
             //  beams[i].gameObject.SetActive(false);
             UpdateTransform();
+        }
+        else
+        {
+            for (int i = 0; i < refManager.SpawnPosition().Length; i++)
+            {
+                beams.Add(Instantiate(sustainEffect));
+                beams[i].Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects, refManager.SpawnPosition()[i]);
 
+                if (refManager.friendlyTag.ToString() == "Friendly")
+                    beams[i].SetTarget(mainCam.transform, false);
+
+                //  beams[i].gameObject.SetActive(false);
+                UpdateTransform();
+
+            }
         }
     }
 

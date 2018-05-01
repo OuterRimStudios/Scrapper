@@ -491,6 +491,8 @@ MonoBehaviour:
     that damages enemies.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 2
   chargeTime: 0
@@ -2431,6 +2433,8 @@ MonoBehaviour:
   abilityDescription: Charge forward 20 ft
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 7
   abilityCharges: 2
   chargeTime: 0
@@ -2822,6 +2826,8 @@ MonoBehaviour:
     15 Seconds\r\n<b><i>Description:</i></b> Place turrets that fire Destructo-Discs.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 3
   abilityCharges: 3
   chargeTime: 0
@@ -2883,6 +2889,8 @@ MonoBehaviour:
   abilityDescription: Rapid fire weapon.
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 1
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -3120,6 +3128,8 @@ MonoBehaviour:
     an enemy steps on the spikes. Applies bleed damage for 5 seconds.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -3249,6 +3259,8 @@ MonoBehaviour:
     effect is also applied to turrets and traps.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -3530,13 +3542,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 199609090}
-  m_LocalRotation: {x: -0.21643952, y: 0, z: 0, w: 0.97629607}
-  m_LocalPosition: {x: 0, y: 0.25, z: 1.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355876353}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -25, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &199609092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3593,6 +3605,8 @@ MonoBehaviour:
   abilityDescription: High-Frequency Electron Beam
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 1
+  abilityInput: 1
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0
@@ -3606,6 +3620,7 @@ MonoBehaviour:
   beamPrefab: {fileID: 114956161982930666, guid: a0110e851f5bca741b552c4d37384f5f,
     type: 2}
   initialDamage: 10
+  singleBarrel: 1
   beams: []
 --- !u!1 &208787627
 GameObject:
@@ -5168,6 +5183,8 @@ MonoBehaviour:
   abilityDescription: Dash backwards 40ft
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 7
   abilityCharges: 1
   chargeTime: 0
@@ -6143,13 +6160,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371083868}
-  m_LocalRotation: {x: 0, y: 0.2164396, z: 0, w: 0.97629607}
-  m_LocalPosition: {x: 0.25, y: 0, z: 1.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355876353}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 25, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &371083870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8314,6 +8331,8 @@ MonoBehaviour:
     enemy for 4 seconds when walked over.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -9020,6 +9039,8 @@ MonoBehaviour:
   abilityDescription: Dash 10ft in any direction
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 7
   abilityCharges: 2
   chargeTime: 0
@@ -9145,6 +9166,8 @@ MonoBehaviour:
     the ability.
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 7
   abilityCharges: 1
   chargeTime: 0
@@ -9705,7 +9728,7 @@ MonoBehaviour:
   - {fileID: 153909834}
   - {fileID: 2030951218}
   - {fileID: 173845501}
-  - {fileID: 146747481}
+  - {fileID: 199931440}
   - {fileID: 1424249032}
   activeAbilitySlots:
   - {fileID: 146880487}
@@ -10016,6 +10039,8 @@ MonoBehaviour:
     effect is also applied to turrets and traps.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -10879,6 +10904,8 @@ MonoBehaviour:
   abilityDescription: Hover in air for 10 seconds.
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 7
   abilityCharges: 1
   chargeTime: 0
@@ -14133,6 +14160,8 @@ MonoBehaviour:
     on impact. This effect is also applied to turrets and traps.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -15991,6 +16020,8 @@ MonoBehaviour:
     to turrets and traps.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -17658,6 +17689,8 @@ MonoBehaviour:
     ball of plasma that deals high damage.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -18349,6 +18382,8 @@ MonoBehaviour:
     Sleeping effect is broken if the target is damaged.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0
@@ -24665,6 +24700,8 @@ MonoBehaviour:
     Shoots a plasma blade that penetrates enemies.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 0
   abilityCharges: 3
   chargeTime: 0
@@ -25065,6 +25102,8 @@ MonoBehaviour:
     enemies for 4 seconds.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -26961,6 +27000,8 @@ MonoBehaviour:
   abilityDescription: Launches you in the air.
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 7
   abilityCharges: 2
   chargeTime: 0
@@ -28843,6 +28884,8 @@ MonoBehaviour:
     Fire a beam of energy that frequently deals damage.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 3
   abilityCharges: 2
   chargeTime: 0
@@ -31659,7 +31702,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1656667373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355876353}
@@ -34487,6 +34530,8 @@ MonoBehaviour:
     Place some energized caltrops that stun an enemy for 4 seconds when walked over.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -36000,6 +36045,8 @@ MonoBehaviour:
     to turrets and traps.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -36147,6 +36194,8 @@ MonoBehaviour:
     on impact dealing damage to surrounding enemies.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -36388,6 +36437,8 @@ MonoBehaviour:
     and traps.\r\n"
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0
@@ -37891,13 +37942,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1953716026}
-  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
-  m_LocalPosition: {x: 0, y: -0.25, z: 1.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.25, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355876353}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1953716028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38558,13 +38609,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1992749248}
-  m_LocalRotation: {x: 0, y: -0.21643952, z: 0, w: 0.97629607}
-  m_LocalPosition: {x: -0.25, y: 0, z: 1.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.25, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1355876353}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -25, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1992749250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39058,7 +39109,9 @@ MonoBehaviour:
   abilityDescription: A flamethrower that deals AoE damage.
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
-  abilityType: 0
+  dontLookAtCenter: 1
+  abilityInput: 1
+  abilityType: 4
   abilityCharges: 1
   chargeTime: 0
   abilityCooldown: 0
@@ -39071,6 +39124,7 @@ MonoBehaviour:
   sustainEffect: {fileID: 114377332701523678, guid: cd85265c65124084ab285efd9cd4e005,
     type: 2}
   initialDamage: 10
+  singleBarrel: 1
   beams: []
 --- !u!1 &2037311704
 GameObject:

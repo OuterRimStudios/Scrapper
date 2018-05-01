@@ -15,6 +15,7 @@ public class Ability : MonoBehaviour
     [Space, Header("Extra Functions (Not Required)")]
     public ExtraFunctionality extraFunctionalityOnActivate;
     public ExtraFunctionality extraFunctionalityOnDeactivate;
+    public bool dontLookAtCenter;
 
     public enum AbilityType
     {
@@ -27,6 +28,14 @@ public class Ability : MonoBehaviour
         Melee,
         Mobility
     };
+
+    public enum AbilityInput
+    {
+        GetButtonDown,
+        GetButton
+    };
+
+    public AbilityInput abilityInput;
 
     public AbilityType abilityType;
 

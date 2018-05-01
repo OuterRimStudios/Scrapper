@@ -83,6 +83,7 @@ public class InputManager : MonoBehaviour
             }
         }
 
+        playerRefManager.InitializeLookAt();
         UpdateAbilities(-1);
 
         for(int i = 0; i < 5; i++)
@@ -117,6 +118,7 @@ public class InputManager : MonoBehaviour
 
         for(int i = 0; i < abilities.Count; i++)
         {
+            playerRefManager.CheckLookAt(abilities[i], i);
             abilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
             abilitySlots[i].sprite = abilities[i].abilityIcon;
 
@@ -318,11 +320,32 @@ public class InputManager : MonoBehaviour
 
         interact = player.GetButtonDown("Interact");
 
-        abilityActive[0] = player.GetButton("AbilityOne");
-        abilityActive[1] = player.GetButton("AbilityTwo");
-        abilityActive[2] = player.GetButton("AbilityThree");
-        abilityActive[3] = player.GetButton("AbilityFour");
-        abilityActive[4] = player.GetButton("AbilityFive");
+        if(abilities[0].abilityInput == Ability.AbilityInput.GetButton)
+            abilityActive[0] = player.GetButton("AbilityOne");
+        else
+            abilityActive[0] = player.GetButtonDown("AbilityOne");
+
+        if (abilities[1].abilityInput == Ability.AbilityInput.GetButton)
+            abilityActive[1] = player.GetButton("AbilityTwo");
+        else
+            abilityActive[1] = player.GetButtonDown("AbilityTwo");
+
+        if (abilities[2].abilityInput == Ability.AbilityInput.GetButton)
+            abilityActive[2] = player.GetButton("AbilityThree");
+        else
+            abilityActive[2] = player.GetButtonDown("AbilityThree");
+
+
+        if (abilities[3].abilityInput == Ability.AbilityInput.GetButton)
+            abilityActive[3] = player.GetButton("AbilityFour");
+        else
+            abilityActive[3] = player.GetButtonDown("AbilityFour");
+
+
+        if (abilities[4].abilityInput == Ability.AbilityInput.GetButton)
+            abilityActive[4] = player.GetButton("AbilityFive");
+        else
+            abilityActive[4] = player.GetButtonDown("AbilityFive");
 
         abilityDeactive[0] = player.GetButtonUp("AbilityOne");
         abilityDeactive[1] = player.GetButtonUp("AbilityTwo");
