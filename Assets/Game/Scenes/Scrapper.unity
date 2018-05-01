@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3605,7 +3605,7 @@ MonoBehaviour:
   abilityDescription: High-Frequency Electron Beam
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
-  dontLookAtCenter: 1
+  dontLookAtCenter: 0
   abilityInput: 1
   abilityType: 4
   abilityCharges: 1
@@ -38648,7 +38648,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400074, guid: 2aa9c5cb3ec30fb4b895fb5d6e1e54fd, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1993544994}
-  m_LocalRotation: {x: -0.34581998, y: -0.6831438, z: 0.569716, w: -0.29857463}
+  m_LocalRotation: {x: -0.34582, y: -0.68314385, z: 0.56971604, w: -0.29857466}
   m_LocalPosition: {x: 0.0006, y: 0.0195, z: -0.0145}
   m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000002}
   m_Children:
@@ -39109,7 +39109,7 @@ MonoBehaviour:
   abilityDescription: A flamethrower that deals AoE damage.
   extraFunctionalityOnActivate: {fileID: 0}
   extraFunctionalityOnDeactivate: {fileID: 0}
-  dontLookAtCenter: 1
+  dontLookAtCenter: 0
   abilityInput: 1
   abilityType: 4
   abilityCharges: 1

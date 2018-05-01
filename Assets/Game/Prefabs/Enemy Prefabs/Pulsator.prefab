@@ -1438,7 +1438,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65881524486091184
 BoxCollider:
@@ -1450,8 +1450,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.5, y: 2.1671734, z: 2.5}
+  m_Center: {x: 0, y: 0.08358669, z: 0}
 --- !u!95 &95264488502198144
 Animator:
   serializedVersion: 3
@@ -1519,6 +1519,10 @@ MonoBehaviour:
   abilityName: Pulsate
   abilityIcon: {fileID: 0}
   abilityDescription: Pulsating Effect
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0.6
@@ -48348,7 +48352,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1366214787
+  randomSeed: -2069048171
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -54926,7 +54930,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1489434336
+  randomSeed: -1239551306
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -121462,7 +121466,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -2064624643
+  randomSeed: 248941232
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -130207,13 +130211,13 @@ RectTransform:
   m_GameObject: {fileID: 1431592867698504}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4351806044415064}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 2}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}

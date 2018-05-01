@@ -1226,7 +1226,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137103505254630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.415327, y: -0.02932787, z: 3.9493232}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224103245091560282}
@@ -1367,8 +1367,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.5, y: 2.1478643, z: 2.5}
+  m_Center: {x: 0, y: 0.07393217, z: 0}
 --- !u!65 &65123328080833948
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1618,6 +1618,10 @@ MonoBehaviour:
   abilityName: 
   abilityIcon: {fileID: 0}
   abilityDescription: 
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0
@@ -5039,7 +5043,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1366214787
+  randomSeed: -1937715698
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -14930,7 +14934,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -2064624643
+  randomSeed: -1784300842
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -64961,7 +64965,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1489434336
+  randomSeed: 1298583218
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -109891,13 +109895,13 @@ RectTransform:
   m_GameObject: {fileID: 1876328479534330}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4870371197315710}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 2}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
