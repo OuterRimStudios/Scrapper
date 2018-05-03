@@ -68,7 +68,7 @@ public class Turret : DamageTypes
     {
         Transform tempTarget = targetManager.GetClosestTarget(transform.position, enemyTag);
 
-        if (tempTarget.gameObject.activeInHierarchy)
+        if (tempTarget && tempTarget.gameObject.activeInHierarchy)
             target = tempTarget;
 
         TargetUpdated();
