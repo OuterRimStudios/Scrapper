@@ -63,6 +63,15 @@ public class LoadoutPresetManager : MonoBehaviour {
 	List<GameObject> presetTabs = new List<GameObject>();
 	int currentPresetIndex;
 
+	void Awake()
+	{
+		if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			LoadPresets();
+			gameObject.SetActive(false);
+		}
+	}
+
 	void OnEnable()
 	{
 		if(loadoutBuilder)
@@ -72,7 +81,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 			AbilityManager.OnAbilitiesUpdated += UpdatePreset;
 
 		LoadPresets();
-		LoadPreset(AllPresets[0]);
+		LoadPreset(GetSelectedPreset());
 	}
 
 	void OnDisable()
@@ -211,6 +220,19 @@ public class LoadoutPresetManager : MonoBehaviour {
 
 		if(_preset.LoadoutAbilities.Count > 5)
 			AbilityManager.instance.Initialize();
+	}
+
+	LoadoutPreset GetSelectedPreset()
+	{
+		for(int i = 0; i < AllPresets.Count; i++)
+		{
+			if(AllPresets[i].presetName == MenuManager.instance.arenaSettings.selectedPreset)
+			{
+				return AllPresets[i];
+			}
+		}
+
+		return null;
 	}
 
 	void UpdatePreset()

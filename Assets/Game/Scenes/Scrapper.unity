@@ -1215,6 +1215,7 @@ GameObject:
   - component: {fileID: 93307252}
   - component: {fileID: 93307251}
   - component: {fileID: 93307253}
+  - component: {fileID: 93307254}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -1379,6 +1380,17 @@ MonoBehaviour:
   pressToStartWave: {fileID: 367907280}
   currentWave: 0
   dontSpawn: 0
+--- !u!114 &93307254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93307250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa78fc302555164a92f631a1caa7486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &93466791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2613,7 @@ GameObject:
   - component: {fileID: 231563615}
   - component: {fileID: 231563614}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2687,9 +2699,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Quit
-        m_Mode: 1
+      - m_Target: {fileID: 93307254}
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17751,7 +17763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1435291088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19703,7 +19715,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Quit
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5c6fa8233ecd204a8ac444b1b1c762b, type: 2}
   m_sharedMaterial: {fileID: 21267196234916016, guid: f5c6fa8233ecd204a8ac444b1b1c762b,
