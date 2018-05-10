@@ -8,7 +8,7 @@ public class ActiveAbilitySlot : MonoBehaviour
     public AbilityDisplayArea abilityDisplayArea;
     public Text abilityDescriptionTextBox;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Ability abilityInSlot;
     Image abilityIcon;
 
@@ -29,9 +29,17 @@ public class ActiveAbilitySlot : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() => abilityDisplayArea.SelectAbility(this));
     }
 
+    public void ClearSlot()
+    {
+        abilityInSlot = null;
+        if(abilityIcon)
+            abilityIcon.sprite = null;
+        abilityActive = false;
+    }
+
     public void SetAbilitySlot(Ability newAbility)
     {
-        if (!abilityIcon)
+        if(!abilityIcon)
             abilityIcon = transform.GetChild(0).GetChild(0).GetComponent<Image>();
 
         abilityInSlot = newAbility;
@@ -48,7 +56,7 @@ public class ActiveAbilitySlot : MonoBehaviour
     public void ViewDescription()
     {
         if(abilityInSlot == null) return;
-        
+
         abilityDescriptionTextBox.text = abilityInSlot.abilityDescription;
     }
 

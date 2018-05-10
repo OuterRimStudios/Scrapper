@@ -19,15 +19,6 @@ public class InputManager : MonoBehaviour
     public KeyCode abilityFourKey;
     public KeyCode abilityFiveKey;
 
-    [Space, Header("Ability Loadout")]
-    public AbilityDisplayArea abilityDisplayArea;
-    public List<Ability> abilities = new List<Ability>();
-    public List<Image> abilitySlots;
-    public List<Text> abilityCharges;
-    public List<Image> abilityCooldownProgress;
-    public List<Queue<float>> cooldownQueues = new List<Queue<float>>();
-    public List<ActiveAbilitySlot> activeAbilitySlots;
-
     [Space, Header("Menus")]
     public GameObject loadoutMenu;
     public GameObject hud;
@@ -71,62 +62,12 @@ public class InputManager : MonoBehaviour
         cameraController = GetComponentInChildren<CameraController>();
         spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
 
-
-        for (int i = 0; i < abilities.Count; i++)
-        {
-            activeAbilitySlots[i].SetAbilitySlot(abilities[i]);
-            if(abilityDisplayArea.abilityLoadoutOptions.Contains(activeAbilitySlots[i].abilityInSlot))
-            {
-                int index = abilityDisplayArea.abilityLoadoutOptions.IndexOf(activeAbilitySlots[i].abilityInSlot);
-                ActiveAbilitySlot abilitySlot = abilityDisplayArea.abilitySlots[index];
-                abilitySlot.AbilityActive(true);
-            }
-        }
-
         playerRefManager.InitializeLookAt();
-        UpdateAbilities(-1);
-
-        for(int i = 0; i < 5; i++)
-            cooldownQueues.Add(new Queue<float>());
 
         if(hideCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-        }
-    }
-
-    //pass in -1 if not changing abilities
-    public void UpdateAbilities(int abilitySlotIndex)
-    {
-        if(abilitySlotIndex != -1)
-        {
-            abilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
-            if(abilityDisplayArea.abilityLoadoutOptions.Contains(abilities[abilitySlotIndex]))
-            {
-                int slotIndex = abilityDisplayArea.abilityLoadoutOptions.IndexOf(abilities[abilitySlotIndex]);
-                abilityDisplayArea.abilitySlots[slotIndex].AbilityActive(false);
-            }
-            abilities[abilitySlotIndex] = abilityDisplayArea.currentActiveAbilitySlot.abilityInSlot;
-            abilityCharges[abilitySlotIndex].text = abilities[abilitySlotIndex].charges.ToString();
-
-            if (abilities[abilitySlotIndex].abilityCharges <= 1)
-                abilityCharges[abilitySlotIndex].enabled = false;
-            else
-                abilityCharges[abilitySlotIndex].enabled = true;
-        }
-
-        for(int i = 0; i < abilities.Count; i++)
-        {
-            playerRefManager.CheckLookAt(abilities[i], i);
-            abilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
-            abilitySlots[i].sprite = abilities[i].abilityIcon;
-
-            if(abilities[i].abilityCharges > 1)
-            {
-                abilityCharges[i].text = abilities[i].abilityCharges.ToString();
-                abilityCharges[i].enabled = true;
-            }
         }
     }
 
@@ -151,7 +92,6 @@ public class InputManager : MonoBehaviour
                 spawnManager.PlayerReady();
 
             AbilityInput();
-            CheckCooldowns();
             playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
             cameraController.RecieveInput(lookY);
 
@@ -202,61 +142,21 @@ public class InputManager : MonoBehaviour
     void AbilityInput()
     {
         if(!canAct) return;
-        for(int i = 0; i < abilities.Count; i++)
+        for(int i = 0; i < AbilityManager.instance.currentLoadout.ActiveAbilities.Count; i++)
         {
-            if(abilities[i] && abilities[i].CanShoot() && abilityActive[i])
+            if(AbilityManager.instance.currentLoadout.ActiveAbilities[i] && AbilityManager.instance.currentLoadout.ActiveAbilities[i].CanShoot() && abilityActive[i])
             {
                 playerMovement.Sprint(false);
-                abilities[i].ActivateAbility();
-                abilityCharges[i].text = abilities[i].charges.ToString();
+                AbilityManager.instance.currentLoadout.ActiveAbilities[i].ActivateAbility();
+                AbilityManager.instance.abilityCharges[i].text = AbilityManager.instance.currentLoadout.ActiveAbilities[i].charges.ToString();
 
-                if(abilities[i].charges >= 0)
+                if(AbilityManager.instance.currentLoadout.ActiveAbilities[i].charges >= 0)
                 {
-                    cooldownQueues[i].Enqueue(Time.time);
+                    AbilityManager.instance.cooldownQueues[i].Enqueue(Time.time);
                 }
             }
-            else if(abilities[i] && abilityDeactive[i])
-                abilities[i].DeactivateAbility();
-        }
-    }
-
-    void UpdateAbiltyCharges(Ability ability)
-    {
-        if(abilities.Contains(ability))
-        {
-            int abilityIndex = abilities.IndexOf(ability);
-            abilityCharges[abilityIndex].text = ability.charges.ToString();
-        }
-    }
-
-    void CheckCooldowns()
-    {
-        if(cooldownQueues.Count <= 0) return;
-
-        for(int j = 0; j < abilities.Count; j++)
-        {
-            Cooldown(j);
-        }
-
-        for(int i = 0; i < cooldownQueues.Count; i++)
-        {
-            if(cooldownQueues[i].Count > 0)
-                remainingTime = ((cooldownQueues[i].Peek() + abilities[i].abilityCooldown) - Time.time) / abilities[i].abilityCooldown;
-
-            if(remainingTime < .01f && cooldownQueues[i].Count > 0)
-                cooldownQueues[i].Dequeue();
-        }
-    }
-
-    void Cooldown(int abilityIndex)
-    {
-        if(cooldownQueues[abilityIndex].Count > 0)
-        {
-            float _remainingTime = ((cooldownQueues[abilityIndex].Peek() + abilities[abilityIndex].abilityCooldown) - Time.time) / abilities[abilityIndex].abilityCooldown;
-            abilityCooldownProgress[abilityIndex].fillAmount = _remainingTime;
-
-            if(_remainingTime < .01f)
-                abilityCooldownProgress[abilityIndex].fillAmount = 0f;
+            else if(AbilityManager.instance.currentLoadout.ActiveAbilities[i] && abilityDeactive[i])
+                AbilityManager.instance.currentLoadout.ActiveAbilities[i].DeactivateAbility();
         }
     }
 
@@ -320,29 +220,29 @@ public class InputManager : MonoBehaviour
 
         interact = player.GetButtonDown("Interact");
 
-        if(abilities[0].abilityInput == Ability.AbilityInput.GetButton)
+        if(AbilityManager.instance.currentLoadout.ActiveAbilities[0].abilityInput == Ability.AbilityInput.GetButton)
             abilityActive[0] = player.GetButton("AbilityOne");
         else
             abilityActive[0] = player.GetButtonDown("AbilityOne");
 
-        if (abilities[1].abilityInput == Ability.AbilityInput.GetButton)
+        if (AbilityManager.instance.currentLoadout.ActiveAbilities[1].abilityInput == Ability.AbilityInput.GetButton)
             abilityActive[1] = player.GetButton("AbilityTwo");
         else
             abilityActive[1] = player.GetButtonDown("AbilityTwo");
 
-        if (abilities[2].abilityInput == Ability.AbilityInput.GetButton)
+        if (AbilityManager.instance.currentLoadout.ActiveAbilities[2].abilityInput == Ability.AbilityInput.GetButton)
             abilityActive[2] = player.GetButton("AbilityThree");
         else
             abilityActive[2] = player.GetButtonDown("AbilityThree");
 
 
-        if (abilities[3].abilityInput == Ability.AbilityInput.GetButton)
+        if (AbilityManager.instance.currentLoadout.ActiveAbilities[3].abilityInput == Ability.AbilityInput.GetButton)
             abilityActive[3] = player.GetButton("AbilityFour");
         else
             abilityActive[3] = player.GetButtonDown("AbilityFour");
 
 
-        if (abilities[4].abilityInput == Ability.AbilityInput.GetButton)
+        if (AbilityManager.instance.currentLoadout.ActiveAbilities[4].abilityInput == Ability.AbilityInput.GetButton)
             abilityActive[4] = player.GetButton("AbilityFive");
         else
             abilityActive[4] = player.GetButtonDown("AbilityFive");

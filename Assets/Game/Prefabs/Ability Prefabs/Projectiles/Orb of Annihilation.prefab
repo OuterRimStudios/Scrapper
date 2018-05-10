@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1750839951518468}
+  m_IsPrefabParent: 1
+--- !u!1 &1750839951518468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4356104571996740}
+  - component: {fileID: 114033438162484518}
+  m_Layer: 0
+  m_Name: Orb of Annihilation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4356104571996740
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750839951518468}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114033438162484518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750839951518468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0bf2be12b1bae448682ac29427039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Orb of Annihilation
+  abilityIcon: {fileID: 21300000, guid: ab84d013438f84c41aef7c0ad9337a37, type: 3}
+  abilityDescription: "<b><i>Name:</i></b> Orb of Annihilation\r\n<b><i>Damage:</i></b>
+    20\r\n<b><i>Cooldown:</i></b> 20 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
+    Launch an orb of energy to deal high damage to the target and stun surrounding
+    enemies for 4 seconds.\r\n"
+  abilityType: 0
+  abilityCharges: 1
+  chargeTime: 0
+  abilityCooldown: 20
+  requiresTarget: 0
+  afterEffects:
+  - effect: {fileID: 114470723577304410, guid: f606e2b661fc09843ab2d04f58fa513a, type: 2}
+    effectAmount: 1
+    effectDamage: 0
+  charges: 0
+  isCharging: 0
+  isFiring: 0
+  refManager: {fileID: 0}
+  projectile: {fileID: 114376153886127368, guid: 7bb8edc99f11b894c91c762b69b4d53f,
+    type: 2}
+  initialDamage: 20
