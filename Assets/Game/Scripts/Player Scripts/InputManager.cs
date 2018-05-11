@@ -6,20 +6,7 @@ using Rewired;
 
 public class InputManager : MonoBehaviour
 {
-    public KeyCode jumpKey;
-    public KeyCode interactKey;
-    public KeyCode toggleViewKey;
-    public KeyCode loadoutMenuKey;
-    public KeyCode pauseKey;
-
-    [Space, Header("Ability Keys")]
-    public KeyCode abilityOneKey;
-    public KeyCode abilityTwoKey;
-    public KeyCode abilityThreeKey;
-    public KeyCode abilityFourKey;
-    public KeyCode abilityFiveKey;
-
-    [Space, Header("Menus")]
+    [Header("Menus")]
     public GameObject loadoutMenu;
     public GameObject hud;
     public GameObject pauseMenu;

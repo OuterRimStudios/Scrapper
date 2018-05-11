@@ -41,6 +41,17 @@ public class MenuManager : MonoBehaviour
     {
         arenaSettings = new ArenaSettings();
         LoadSettings();
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void LoadLevel(int levelNum)

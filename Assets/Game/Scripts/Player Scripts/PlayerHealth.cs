@@ -35,4 +35,10 @@ public class PlayerHealth : Health
     {
         healthBar.fillAmount = (float)(health) / baseHealth;
     }
+
+    protected override void Died()
+    {
+        base.Died();
+        LoadingScreenManager.LoadScene(0);
+    }
 }
