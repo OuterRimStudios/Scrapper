@@ -9,11 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b75ab1d983f9c034691c04fadd1c8695, type: 3}
-  m_Name: Patrol State
+  m_Name: PatrolIdle State
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 4b4d919aa3c6b564ebdaa4389eaf6343, type: 2}
+  actions: []
   transitions:
-  - decision: {fileID: 11400000, guid: 8921937e23d3cf442a8d31cc478a171b, type: 2}
-    trueState: {fileID: 11400000}
-    falseState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
+  - decision: {fileID: 11400000, guid: a8febc8f121c9704da981926079a2350, type: 2}
+    trueState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
+    falseState: {fileID: 11400000, guid: 77503a188081a764fa6075d9beb7199a, type: 2}
