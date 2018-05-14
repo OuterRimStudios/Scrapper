@@ -37,9 +37,6 @@ public class LoadoutPresetManager : MonoBehaviour {
     }
     #endregion
 
-	public delegate void PresetsLoaded();
-	public static event PresetsLoaded OnPresetsLoaded;
-
 	public GameObject presetTabPrefab;
 	public RectTransform loadoutTabsArea;
 	public Button savePresetsButton;
@@ -55,9 +52,12 @@ public class LoadoutPresetManager : MonoBehaviour {
 	public GameObject loadoutMenu;
 	public AbilityDisplayArea abilityDisplayArea;
 
-	public XmlDocument LoadoutPresetDoc {get; protected set;}
-	public string LoadoutPresetPath {get; protected set;}
-	public LoadoutPreset CurrentPreset {get; protected set;}
+	public XmlDocument DefaultLoadoutPresetDoc {get; protected set;}
+	public string DefaultLoadoutPresetPath {get; protected set;}
+    public string MyDocumentsPath { get; protected set; }
+    public XmlDocument LoadoutPresetDoc { get; protected set; }
+    public string LoadoutPresetPath { get; protected set; }
+    public LoadoutPreset CurrentPreset {get; protected set;}
 	public List<LoadoutPreset> AllPresets {get; protected set;}
 
 	List<GameObject> presetTabs = new List<GameObject>();
@@ -65,7 +65,9 @@ public class LoadoutPresetManager : MonoBehaviour {
 
 	void Awake()
 	{
-		if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
+        MyDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        
+        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
 		{
 			LoadPresets();
 			gameObject.SetActive(false);
@@ -103,9 +105,48 @@ public class LoadoutPresetManager : MonoBehaviour {
 
 	public void LoadPresets()
 	{
-		LoadoutPresetPath = Path.Combine(Application.streamingAssetsPath, "LoadoutPresets.xml");
-		LoadoutPresetDoc = new XmlDocument();
-		LoadFromXml(LoadoutPresetDoc, LoadoutPresetPath);
+        if(!Directory.Exists(MyDocumentsPath + "/Scrapper/"))
+        {
+            Debug.LogWarning("Directory does not exist. Creating: " + MyDocumentsPath + "/Scrapper/");
+            Directory.CreateDirectory(MyDocumentsPath + "/Scrapper/");
+            if(!File.Exists(MyDocumentsPath + "/Scrapper/LoadoutPresets.xml"))
+            {
+                Debug.LogWarning("File does not exist. Creating: " + MyDocumentsPath + "/Scrapper/LoadoutPresets.xml");
+                File.Create(MyDocumentsPath + "/Scrapper/LoadoutPresets.xml").Dispose();
+                LoadoutPresetPath = MyDocumentsPath + "/Scrapper/LoadoutPresets.xml";
+                LoadoutPresetDoc = new XmlDocument();
+
+                DefaultLoadoutPresetPath = Path.Combine(Application.streamingAssetsPath, "LoadoutPresets.xml");
+                DefaultLoadoutPresetDoc = new XmlDocument();
+                LoadFromXml(DefaultLoadoutPresetDoc, DefaultLoadoutPresetPath);
+
+                foreach(LoadoutPreset preset in AllPresets)
+                    AddPresetToXML(preset);
+            }
+        }
+		else
+        {
+            if(!File.Exists(MyDocumentsPath + "/Scrapper/LoadoutPresets.xml"))
+            {
+                Debug.LogWarning("File does not exist. Creating: " + MyDocumentsPath + "/Scrapper/LoadoutPresets.xml");
+                File.Create(MyDocumentsPath + "/Scrapper/LoadoutPresets.xml").Dispose();
+                LoadoutPresetPath = MyDocumentsPath + "/Scrapper/LoadoutPresets.xml";
+                LoadoutPresetDoc = new XmlDocument();
+
+                DefaultLoadoutPresetPath = Path.Combine(Application.streamingAssetsPath, "LoadoutPresets.xml");
+                DefaultLoadoutPresetDoc = new XmlDocument();
+                LoadFromXml(DefaultLoadoutPresetDoc, DefaultLoadoutPresetPath);
+
+                foreach(LoadoutPreset preset in AllPresets)
+                    AddPresetToXML(preset);
+            }
+            else
+            {
+                LoadoutPresetPath = MyDocumentsPath + "/Scrapper/LoadoutPresets.xml";
+                LoadoutPresetDoc = new XmlDocument();
+                LoadFromXml(LoadoutPresetDoc, LoadoutPresetPath);
+            }
+        }
 	}
 
 	void LoadFromXml(XmlDocument xmlDoc, string path)
@@ -137,8 +178,6 @@ public class LoadoutPresetManager : MonoBehaviour {
 			AllPresets.Add(newPreset);
 			CreateTab(newPreset);
 		}
-
-		//OnPresetsLoaded();
 	}
 
 	void CreateTab(LoadoutPreset _preset)
@@ -299,22 +338,30 @@ public class LoadoutPresetManager : MonoBehaviour {
 		LoadoutPreset newPreset = new LoadoutPreset(presetName, activeAbilityNames, loadoutAbilityNames);
 
 		WriteToXML(AllPresets[currentPresetIndex], newPreset);
-
-		//CurrentPreset = newPreset;
-		//AllPresets[currentPresetIndex] = newPreset;
 	}
 
 	void WriteToXML(LoadoutPreset oldLoadout, LoadoutPreset newLoadout)
 	{
-		RemoveFromXML(oldLoadout);
+        if(oldLoadout != null)
+		    RemoveFromXML(oldLoadout);
 		AddPresetToXML(newLoadout);
 		ResetTabs();
 	}
 
 	void AddPresetToXML(LoadoutPreset loadout)
 	{
+        if(LoadoutPresetDoc.DocumentElement == null)
+        {
+            LoadoutPresetDoc = new XmlDocument();
+            XmlDeclaration xmlDec = LoadoutPresetDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            XmlElement root = LoadoutPresetDoc.DocumentElement;
+            LoadoutPresetDoc.InsertBefore(xmlDec, root);
+            XmlElement presets = LoadoutPresetDoc.CreateElement("Presets");
+            LoadoutPresetDoc.AppendChild(presets);
+        }
+
 		XmlNode preset = LoadoutPresetDoc.CreateElement("Preset");
-		LoadoutPresetDoc.DocumentElement.AppendChild(preset);
+        LoadoutPresetDoc.DocumentElement.AppendChild(preset);
 
 		XmlAttribute nameAttr = LoadoutPresetDoc.CreateAttribute("name");
 		nameAttr.Value = loadout.presetName;
@@ -340,7 +387,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 			loadoutAbilities.AppendChild(ability);
 		}
 
-		LoadoutPresetDoc.Save(LoadoutPresetPath);
+        LoadoutPresetDoc.Save(LoadoutPresetPath);
 	}
 
 	void RemoveFromXML(LoadoutPreset loadout)
@@ -356,8 +403,8 @@ public class LoadoutPresetManager : MonoBehaviour {
                 prevNode.OwnerDocument.DocumentElement.RemoveChild(prevNode);
 		}
 
-		LoadoutPresetDoc.Save(LoadoutPresetPath);
-	}
+        LoadoutPresetDoc.Save(LoadoutPresetPath);
+    }
 
 	XmlNode GetXmlNode(LoadoutPreset loadout)
 	{
