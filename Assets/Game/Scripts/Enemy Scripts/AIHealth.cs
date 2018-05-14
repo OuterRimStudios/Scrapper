@@ -20,6 +20,8 @@ public class AIHealth : Health
         ai = GetComponent<StatusEffects>();
 
         aiRefManager = refManager as AIReferenceManager;
+
+        if(aiRefManager.currentChallengeTier)
         health = aiRefManager.currentChallengeTier.health;
 
         foreach(Limb limb in transform.GetComponentsInChildren<Limb>())
@@ -34,6 +36,7 @@ public class AIHealth : Health
         ai = GetComponent<StatusEffects>();
 
         aiRefManager = refManager as AIReferenceManager;
+        if(aiRefManager.currentChallengeTier)
         health = aiRefManager.currentChallengeTier.health;
 
         foreach (Limb limb in transform.GetComponentsInChildren<Limb>())

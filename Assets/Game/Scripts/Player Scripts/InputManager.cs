@@ -47,6 +47,7 @@ public class InputManager : MonoBehaviour
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
+        if(GameObject.Find("GameManager").GetComponent<SpawnManager>())
         spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
 
         playerRefManager.InitializeLookAt();
@@ -75,7 +76,7 @@ public class InputManager : MonoBehaviour
                 pauseMenu.SetActive(false);
             }
 
-            if (!SpawnManager.waveActive && interact)
+            if (spawnManager && spawnManager.isActiveAndEnabled && !SpawnManager.waveActive && interact)
                 spawnManager.PlayerReady();
 
             AbilityInput();
@@ -160,7 +161,7 @@ public class InputManager : MonoBehaviour
 
         if(player.GetButtonDown("Loadout"))
         {
-            if(SpawnManager.waveActive)
+            if(spawnManager && SpawnManager.waveActive)
             {
                 loadoutMenuWaveActiveText.enabled = true;
                 if(!turningOffText)
@@ -177,7 +178,7 @@ public class InputManager : MonoBehaviour
             toggleLoadoutMenu = !toggleLoadoutMenu;
         }
 
-        if(SpawnManager.waveActive && toggleLoadoutMenu)
+        if(spawnManager && SpawnManager.waveActive && toggleLoadoutMenu)
         {
             canAct = true;
             PlayerMovement.canAct = true;
@@ -249,13 +250,13 @@ public class InputManager : MonoBehaviour
 
     public void TogglePause(bool _pause)
     {
-        if(!SpawnManager.waveActive)
+        if(spawnManager && !SpawnManager.waveActive)
             pause = _pause;
     }
 
     public void ToggleLoadoutMenu(bool _toggleLoadoutMenu)
     {
-        if (SpawnManager.waveActive)
+        if (spawnManager && SpawnManager.waveActive)
         {
             loadoutMenuWaveActiveText.enabled = true;
             if(!turningOffText)

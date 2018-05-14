@@ -50,6 +50,7 @@ public class AIReferenceManager : ReferenceManager
 
     private void OnEnable()
     {
+        if(spawnManager)
         UpdateChallengeTier(spawnManager.currentWave);
     }
 

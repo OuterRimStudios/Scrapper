@@ -32,6 +32,7 @@ public class ReferenceManager : MonoBehaviour {
         health = GetComponent<Health>();
         rigidBody = GetComponent<Rigidbody>();
         targetManager = TargetManager.instance;
+        if(targetManager)
         targetManager.AddTarget(gameObject, friendlyTag.ToString());
     }
 

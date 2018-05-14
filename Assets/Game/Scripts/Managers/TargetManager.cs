@@ -37,7 +37,7 @@ public class TargetManager : MonoBehaviour
             {
                 activeEnemies.Remove(targetToRemove);
             }
-            if (activeEnemies.Count <= 0)
+            if (spawnManager && activeEnemies.Count <= 0)
                 spawnManager.WaveEnded();
         }
         else if(friendlyTag == "Friendly")

@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
 
     protected virtual void Died()
     {
+        if(refManager.targetManager)
         refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
         Destroy(gameObject);
     }
