@@ -43,9 +43,39 @@ public class AbilityDisplayArea : MonoBehaviour
 
         if(abilitySlot.slotType == ActiveAbilitySlot.SlotType.Active)
         {
-            lookingForAbility = true;
-            currentActiveAbilitySlot = abilitySlot;
+            if(lookingForAbility)
+            {
+                ActiveAbilitySlot oldSlot = currentActiveAbilitySlot;
+                ActiveAbilitySlot newSlot = abilitySlot;
 
+                int oldAbilitySlotIndex = activeAbilitySlots.IndexOf(oldSlot);
+                int newAbilitySlotIndex = activeAbilitySlots.IndexOf(newSlot);
+
+                Ability oldAbility = oldSlot.abilityInSlot;
+                Ability newAbility = newSlot.abilityInSlot;
+                
+                oldSlot.SetAbilitySlot(newAbility);
+                newSlot.SetAbilitySlot(oldAbility);
+
+                //activeAbilitySlots[oldAbilitySlotIndex] = newSlot;
+               // activeAbilitySlots[newAbilitySlotIndex] = oldSlot;
+
+                AbilityManager.instance.ChangeAbility(oldAbilitySlotIndex, newAbility);
+                AbilityManager.instance.ChangeAbility(newAbilitySlotIndex, oldAbility);
+
+
+               // oldAbilitySlotIndex = activeAbilitySlots.IndexOf(oldSlot);
+                //newAbilitySlotIndex = activeAbilitySlots.IndexOf(newSlot);
+
+             //   AbilityManager.instance.UpdateAbilities(oldAbilitySlotIndex);
+             //   AbilityManager.instance.UpdateAbilities(newAbilitySlotIndex);
+                lookingForAbility = false;
+            }
+            else
+            {
+                lookingForAbility = true;
+                currentActiveAbilitySlot = abilitySlot;
+            }
         }
         else if(abilitySlot.slotType == ActiveAbilitySlot.SlotType.Option && !abilitySlot.abilityActive && lookingForAbility)
         {

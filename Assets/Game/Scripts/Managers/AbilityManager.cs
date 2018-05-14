@@ -88,6 +88,45 @@ public class AbilityManager : MonoBehaviour {
         UpdateAbilities(-1);
 	}
 
+    public void ChangeAbility(int abilitySlotIndex, Ability newAbility)
+    {
+        currentLoadout.ActiveAbilities[abilitySlotIndex] = newAbility;
+        if (abilitySlotIndex != -1)
+        {
+            currentLoadout.LoadoutAbilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
+            if (abilityDisplayArea.abilityLoadoutOptions.Contains(currentLoadout.LoadoutAbilities[abilitySlotIndex]))
+            {
+                int slotIndex = abilityDisplayArea.abilityLoadoutOptions.IndexOf(currentLoadout.ActiveAbilities[abilitySlotIndex]);
+                abilityDisplayArea.loadoutAbilitySlots[slotIndex].AbilityActive(false);
+            }
+
+            if (abilityCharges.Count > 0)
+            {
+                abilityCharges[abilitySlotIndex].text = currentLoadout.ActiveAbilities[abilitySlotIndex].charges.ToString();
+
+                if (currentLoadout.ActiveAbilities[abilitySlotIndex].abilityCharges <= 1)
+                    abilityCharges[abilitySlotIndex].enabled = false;
+                else
+                    abilityCharges[abilitySlotIndex].enabled = true;
+            }
+        }
+
+        if (abilityIcons.Count > 0)
+        {
+            for (int i = 0; i < currentLoadout.ActiveAbilities.Count; i++)
+            {
+                currentLoadout.ActiveAbilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
+                abilityIcons[i].sprite = currentLoadout.ActiveAbilities[i].abilityIcon;
+
+                if (currentLoadout.ActiveAbilities[i].abilityCharges > 1)
+                {
+                    abilityCharges[i].text = currentLoadout.ActiveAbilities[i].abilityCharges.ToString();
+                    abilityCharges[i].enabled = true;
+                }
+            }
+        }
+    }
+
 	public void UpdateAbilities(int abilitySlotIndex)
 	{
 		if(abilitySlotIndex != -1)
