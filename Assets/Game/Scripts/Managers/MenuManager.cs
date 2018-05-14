@@ -39,6 +39,7 @@ public class MenuManager : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1;
         arenaSettings = new ArenaSettings();
         LoadSettings();
 
