@@ -86,14 +86,14 @@ public class LoadingScreenManager : MonoBehaviour
 
         ShowCompletionVisuals();
 
-        yield return new WaitForSeconds(waitOnLoadEnd);
+        yield return new WaitForSecondsRealtime(waitOnLoadEnd);
 
         FadeOut();
 
-        yield return new WaitForSeconds(fadeDuration);
+        yield return new WaitForSecondsRealtime(fadeDuration);
 
         if (loadSceneMode == LoadSceneMode.Additive)
-            SceneManager.UnloadScene(currentScene.name);
+            SceneManager.UnloadSceneAsync(currentScene.name);
         else
             operation.allowSceneActivation = true;
     }

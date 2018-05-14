@@ -41,6 +41,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         Application.targetFrameRate = 60;
         player = ReInput.players.GetPlayer(0);
         canAct = true;
