@@ -221,7 +221,8 @@ public class LoadoutPresetManager : MonoBehaviour {
 		{
 			if(CurrentPreset.LoadoutAbilities.Count < 6)
 			{
-				errorText.enabled = true;
+                errorText.text = "You need to select more abilities to open the loadout window.";
+                errorText.enabled = true;
 			}
 			else
 			{
@@ -324,7 +325,16 @@ public class LoadoutPresetManager : MonoBehaviour {
 
 	public void ApplyChanges()
 	{
-		savePresetsButton.interactable = false;
+        if(CurrentPreset.LoadoutAbilities.Count < 6)
+        {
+            errorText.text = "You need to select more abilities to save your preset.";
+            errorText.enabled = true;
+            return;
+        }
+        else
+            errorText.enabled = false;
+
+        savePresetsButton.interactable = false;
 		string presetName = CurrentPreset.presetName;
 		List<string> activeAbilityNames = new List<string>();
 		List<string> loadoutAbilityNames = new List<string>();
