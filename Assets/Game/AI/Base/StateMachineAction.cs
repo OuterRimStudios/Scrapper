@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Action : ScriptableObject
+public abstract class StateMachineAction : ScriptableObject
 {
     public abstract void Act(StateController controller);
 }
