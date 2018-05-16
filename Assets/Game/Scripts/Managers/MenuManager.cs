@@ -36,12 +36,20 @@ public class MenuManager : MonoBehaviour
     #endregion
 
     public ArenaSettings arenaSettings;
+    public string ArenaSettingsPath { get; protected set; }
+    public string MyDocumentsPath { get; protected set; }
 
     void Awake()
     {
         Time.timeScale = 1;
+        MyDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         arenaSettings = new ArenaSettings();
-        LoadSettings();
+
+        ArenaSettingsPath = MyDocumentsPath + "/Scrapper/arenasettings.json";
+        if(File.Exists(ArenaSettingsPath))
+            LoadSettings();
+        else
+            SaveSettings();
 
         if(SceneManager.GetActiveScene().buildIndex == 0)
         {
@@ -74,14 +82,14 @@ public class MenuManager : MonoBehaviour
     public void SaveSettings()
     {
         string jsonData = JsonUtility.ToJson(arenaSettings, true);
-        File.WriteAllText(Application.persistentDataPath + "/arenasettings.json", jsonData);
+        File.WriteAllText(ArenaSettingsPath, jsonData);
     }
 
     public void LoadSettings()
     {
         try
         {
-            arenaSettings = JsonUtility.FromJson<ArenaSettings>(File.ReadAllText(Application.persistentDataPath + "/arenasettings.json"));
+            arenaSettings = JsonUtility.FromJson<ArenaSettings>(File.ReadAllText(ArenaSettingsPath));
         }
         catch(Exception e)
         {

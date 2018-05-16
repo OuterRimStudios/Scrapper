@@ -56,6 +56,8 @@ public class SettingsManager : MonoBehaviour
     public Slider masterVolumeSlider;
     
     public GameSettings gameSettings;
+    public string GameSettingsPath { get; protected set; }
+    public string MyDocumentsPath { get; protected set; }
 
     InputBehavior inputBehavior;
     Player player;
@@ -66,6 +68,7 @@ public class SettingsManager : MonoBehaviour
         inputBehavior = ReInput.mapping.GetInputBehavior(0, 0);
         player = ReInput.players.GetPlayer(0);
         es = EventSystem.current;
+        MyDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
     }
 
     void OnEnable()
@@ -104,7 +107,12 @@ public class SettingsManager : MonoBehaviour
         gameplayApplyButton.interactable = false;
 
         LoadBindings();
-        LoadSettings();
+
+        GameSettingsPath = MyDocumentsPath + "/Scrapper/gamesettings.json";
+        if(File.Exists(GameSettingsPath))
+            LoadSettings();
+        else
+            SaveSettings();
     }
 
     void Update()
@@ -263,14 +271,14 @@ public class SettingsManager : MonoBehaviour
     public void SaveSettings()
     {
         string jsonData = JsonUtility.ToJson(gameSettings, true);
-        File.WriteAllText(Application.persistentDataPath + "/gamesettings.json", jsonData);
+        File.WriteAllText(GameSettingsPath, jsonData);
     }
 
     public void LoadSettings()
     {
         try
         {
-            gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
+            gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(GameSettingsPath));
         }
         catch (Exception e)
         {
