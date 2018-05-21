@@ -42,6 +42,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1671309584151294
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4933170039219666}
+  m_Layer: 0
+  m_Name: Shaft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1756657823613368
 GameObject:
   m_ObjectHideFlags: 1
@@ -54,6 +69,21 @@ GameObject:
   - component: {fileID: 23848188471775898}
   m_Layer: 0
   m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1759739485313964
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4820722294336474}
+  m_Layer: 0
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,14 +141,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982163929819316}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.136664, y: 3.8773935, z: 0.09106333}
-  m_LocalScale: {x: 1.83205, y: 1.83205, z: 1.8300078}
-  m_Children:
-  - {fileID: 4677320970171658}
-  m_Father: {fileID: 4794109982777302}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4933170039219666}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4547724806096014
 Transform:
   m_ObjectHideFlags: 1
@@ -140,10 +169,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077741281124034}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 10.437014, y: -0.01777081, z: 2.4051943}
-  m_LocalScale: {x: 2.0447683, y: 2.0470498, z: 4.089535}
+  m_LocalPosition: {x: 10.44, y: 2.28, z: 0}
+  m_LocalScale: {x: 2.0447688, y: 2.0470507, z: 4.089536}
   m_Children: []
-  m_Father: {fileID: 4294315745919780}
+  m_Father: {fileID: 4820722294336474}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4794109982777302
@@ -157,10 +186,39 @@ Transform:
   m_LocalScale: {x: 0.06674009, y: 0.06674, z: 0.06674009}
   m_Children:
   - {fileID: 4086465141042504}
-  - {fileID: 4294315745919780}
+  - {fileID: 4933170039219666}
   m_Father: {fileID: 4547724806096014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!4 &4820722294336474
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759739485313964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4677320970171658}
+  m_Father: {fileID: 4933170039219666}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4933170039219666
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671309584151294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.1330767, y: 3.8773935, z: 0.1101586}
+  m_LocalScale: {x: 1.8320565, y: 1.8320578, z: 1.8300141}
+  m_Children:
+  - {fileID: 4294315745919780}
+  - {fileID: 4820722294336474}
+  m_Father: {fileID: 4794109982777302}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23172989259222858
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -280,7 +338,7 @@ MonoBehaviour:
     m_Bits: 0
   turretAbility: {fileID: 114956161982930666, guid: 46adedb3fb5a0c1408971759f37c09f3,
     type: 2}
-  shaft: {fileID: 4294315745919780}
+  shaft: {fileID: 4933170039219666}
   spawnpoints:
   - {fileID: 4677320970171658}
   scanForTargetFrequency: 3
