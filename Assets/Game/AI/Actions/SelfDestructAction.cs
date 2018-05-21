@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/SelfDestruct")]
-public class SelfDestructAction : Action
+public class SelfDestructAction : AIAction
 {
     public float effectLength;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/Random Walk")]
-public class RandomWalkAction : Action
+public class RandomWalkAction : AIAction
 {
     public override void Act(StateController controller)
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/Attack")]
-public class AbilityAction : Action
+public class AbilityAction : AIAction
 {
     public override void Act(StateController controller)
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/Look")]
-public class LookAction : Action
+public class LookAction : AIAction
 {
     public override void Act(StateController controller)
     {

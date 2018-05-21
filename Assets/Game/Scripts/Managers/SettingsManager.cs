@@ -318,8 +318,8 @@ public class SettingsManager : MonoBehaviour
 public class GameSettings
 {
     //gameplay settings
-    public float mouseSensitivity;
-    public float controllerSensitivity;
+    public float mouseSensitivity = .05f;
+    public float controllerSensitivity = .75f;
     public bool firstPerson;
 
     //video settings
@@ -330,7 +330,7 @@ public class GameSettings
     public int resolutionIndex;
 
     //audio settings
-    public float masterVolume;
+    public float masterVolume = .5f;
 }
 
 /*

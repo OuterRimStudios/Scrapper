@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/Rotate")]
-public class RotateAction : Action {
+public class RotateAction : AIAction {
 
 	public Vector3 rotation;
 

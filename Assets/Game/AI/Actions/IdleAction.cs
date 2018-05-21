@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/Idle")]
-public class IdleAction : Action
+public class IdleAction : AIAction
 {
     public override void Act(StateController controller)
     {
