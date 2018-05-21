@@ -47,6 +47,7 @@ public class SpawnManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        waveActive = false;
     }
 
     private void Start ()
