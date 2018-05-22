@@ -54,7 +54,8 @@ MonoBehaviour:
   SocketGroup: 0
   DoorPrefabPriority: 0
   DoorPrefabs: []
-  BlockerPrefabs: []
+  BlockerPrefabs:
+  - {fileID: 1685461152270238, guid: 93c71550a949ec3449452553d61c0a64, type: 2}
   AvoidRotatingDoorPrefab: 0
   AvoidRotatingBlockerPrefab: 0
   AddWhenInUse: []
