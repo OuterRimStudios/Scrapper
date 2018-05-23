@@ -16,7 +16,7 @@ public class Encount : MonoBehaviour
             for(int j = 0; j < enemies[i].amountToSpawn; j++)
             {
                 Transform spawnPoint = GetSpawnPoint(spawnPoints);
-                Instantiate(enemies[i].enemy, spawnPoint.position, spawnPoint.rotation);
+                GameObject enemy = Instantiate(enemies[i].enemy, spawnPoint.position, spawnPoint.rotation);
             }
         }
     }

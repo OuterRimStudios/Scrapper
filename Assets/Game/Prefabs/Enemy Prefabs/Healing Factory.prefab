@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 114657936071930802}
   - component: {fileID: 95618581268830430}
   - component: {fileID: 65400633395078184}
-  - component: {fileID: 114155261446889416}
   m_Layer: 9
   m_Name: Healing Factory
   m_TagString: Healing
@@ -2076,24 +2075,6 @@ MonoBehaviour:
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}
   enemyCanvas: {fileID: 1671217527559002}
---- !u!114 &114155261446889416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1152678557323854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5efa898f85d3d42b59af647beb6ca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounters:
-  - {fileID: 1152678557323854}
-  maxEncounters: 2
-  encounterImage: {fileID: 21300000, guid: 0c37db74f0f5ebd429708261ba175d6d, type: 3}
-  mechanicImages:
-  - {fileID: 21300000, guid: 0c37db74f0f5ebd429708261ba175d6d, type: 3}
-  - {fileID: 21300000, guid: f1b91b07ed161ca46b3f0a9241c926c9, type: 3}
 --- !u!114 &114256247864729996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2194,7 +2175,7 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  encounter: {fileID: 114155261446889416}
+  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: 10fa97f964d518f4188ad96328cd500b, type: 2}
   - {fileID: 11400000, guid: 23e007cd7ab22bc41857de62c3c6bfd6, type: 2}

@@ -446,7 +446,6 @@ GameObject:
   - component: {fileID: 114450503333960908}
   - component: {fileID: 95880299193178408}
   - component: {fileID: 195977520617772184}
-  - component: {fileID: 114251815095273062}
   m_Layer: 9
   m_Name: Ironbot
   m_TagString: Enemy
@@ -3851,23 +3850,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingScale: {x: 1, y: 1, z: 1}
   shrinkSpeed: 2
---- !u!114 &114251815095273062
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255796476653088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5efa898f85d3d42b59af647beb6ca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounters:
-  - {fileID: 1255796476653088}
-  maxEncounters: 3
-  encounterImage: {fileID: 21300000, guid: aaa82c9cbf35cd0478fe920203e44043, type: 3}
-  mechanicImages:
-  - {fileID: 21300000, guid: 7b016eb5c9b17b34db4f4ff4803ff208, type: 3}
 --- !u!114 &114340124763962392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3893,7 +3875,7 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  encounter: {fileID: 114251815095273062}
+  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: a55c158e1ebaec346861b8a09e2992d2, type: 2}
   - {fileID: 11400000, guid: 158f65cbbbdbc3b42b289a46a8459230, type: 2}
@@ -4024,6 +4006,8 @@ MonoBehaviour:
   abilityDescription: 
   extraFunctionalityOnActivate: {fileID: 114637234119462788}
   extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 4
   abilityCharges: 1
   chargeTime: 5

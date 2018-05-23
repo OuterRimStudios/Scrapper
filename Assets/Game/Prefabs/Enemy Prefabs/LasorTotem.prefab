@@ -199,7 +199,6 @@ GameObject:
   - component: {fileID: 114896462770185862}
   - component: {fileID: 114495800070295618}
   - component: {fileID: 95679394753957190}
-  - component: {fileID: 114418688834690182}
   m_Layer: 9
   m_Name: LasorTotem
   m_TagString: Enemy
@@ -1560,7 +1559,7 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  encounter: {fileID: 114418688834690182}
+  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: 02696f5f1938dea4e8477251f6d8905d, type: 2}
   - {fileID: 11400000, guid: 28742b6289ae34f4bb6ec2a9bd3208a6, type: 2}
@@ -1575,22 +1574,6 @@ MonoBehaviour:
   hardChallengeTiers: []
   currentChallengeTier: {fileID: 0}
   aiAbility: {fileID: 114883267350382394}
---- !u!114 &114418688834690182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1137103505254630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5efa898f85d3d42b59af647beb6ca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounters: []
-  maxEncounters: 4
-  encounterImage: {fileID: 21300000, guid: b1f7fc70b62d43a4d8f86a19a2e0dd47, type: 3}
-  mechanicImages:
-  - {fileID: 21300000, guid: 7b016eb5c9b17b34db4f4ff4803ff208, type: 3}
 --- !u!114 &114462227261450704
 MonoBehaviour:
   m_ObjectHideFlags: 1

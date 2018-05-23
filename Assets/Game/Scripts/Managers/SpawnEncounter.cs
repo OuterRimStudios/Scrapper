@@ -12,7 +12,7 @@ public class SpawnEncounter : MonoBehaviour
     Encounter encounter;
     SpawnManager spawnManager;
 
-    public void SpawnEncounter(List<Transform> spawnPoints)
+    public void Start ()
     {
         if (!groupSpawn)
         {
