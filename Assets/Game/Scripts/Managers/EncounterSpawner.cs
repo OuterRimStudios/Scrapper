@@ -6,20 +6,54 @@ public class EncounterSpawner : MonoBehaviour
 {
     public List<Encount> possibleEncounters;
     public List<Transform> spawnPoints;
+    public List<GameObject> doors;
+
+    List<GameObject> activeEnemies = new List<GameObject>();
 
     Encount randomEncounter;
 
     bool encounterSpawned;
+    bool doorsLocked;
 
     void Start()
     {
         randomEncounter = possibleEncounters[Random.Range(0, possibleEncounters.Count)];
+
+        foreach (Encount encounter in possibleEncounters)
+            encounter.Initialize(this);
     }
 
     public void SpawnEncounter()
     {
-        randomEncounter.SpawnEcnounters(spawnPoints);
         encounterSpawned = true;
+        randomEncounter.SpawnEcnounters(spawnPoints);
+        doorsLocked = true;
+
+        for (int i = 0; i < doors.Count; i++)                   // remove later
+            doors[i].SetActive(true);
+    }
+
+    public void AddEnemy(GameObject enemy)
+    {
+        activeEnemies.Add(enemy);
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        print("Trying to remove :" + enemy);
+        if(activeEnemies.Contains(enemy))
+        {
+            activeEnemies.Remove(enemy);
+            if (activeEnemies.Count <= 0)
+            {
+                print("Enemies Left : " + activeEnemies.Count);
+                print("Doors " + doors.Count);
+                for(int i = 0; i < doors.Count; i++)                  // remove later
+                    doors[i].SetActive(false);
+                doorsLocked = false;
+            }
+        }
+
     }
 
     public void ResetEncounter()

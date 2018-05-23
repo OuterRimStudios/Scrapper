@@ -7,6 +7,13 @@ public class Encount : MonoBehaviour
     public List<Enemies> enemies;
     List<Transform> availiableSpawnPoints = new List<Transform>();          //A temp list to keep track of the spawnpoints that have not been used
 
+    EncounterSpawner encounterSpawner;
+
+    public void Initialize(EncounterSpawner _encounterSpawner)
+    {
+        encounterSpawner = _encounterSpawner;
+    }
+
     public void SpawnEcnounters(List<Transform> spawnPoints)
     {
         ResetSpawnPoints(spawnPoints);
@@ -17,6 +24,8 @@ public class Encount : MonoBehaviour
             {
                 Transform spawnPoint = GetSpawnPoint(spawnPoints);
                 GameObject enemy = Instantiate(enemies[i].enemy, spawnPoint.position, spawnPoint.rotation);
+                enemy.GetComponent<AIHealth>().SetEncounterSpawner(encounterSpawner);
+                encounterSpawner.AddEnemy(enemy);
             }
         }
     }

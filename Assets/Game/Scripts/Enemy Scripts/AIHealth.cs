@@ -13,6 +13,7 @@ public class AIHealth : Health
 
     List<Limb> limbs = new List<Limb>();
     AIReferenceManager aiRefManager;
+    EncounterSpawner encounterSpawner;
 
     protected override void Start()
     {
@@ -45,6 +46,11 @@ public class AIHealth : Health
         }
     }
 
+    public void SetEncounterSpawner(EncounterSpawner _encounterSpawner)
+    {
+        encounterSpawner = _encounterSpawner;
+    }
+
     public void SetLimbsActive(bool activeState)
     {
         if (limbs.Count <= 0) return;
@@ -55,7 +61,6 @@ public class AIHealth : Health
     public override void TookDamage(int damage)
     {
         base.TookDamage(damage);
-
         ai.RemoveCC();
 
         GameObject cbt = Instantiate(combatText, enemyCanvas.transform.position, enemyCanvas.transform.rotation, enemyCanvas.transform);
@@ -74,8 +79,12 @@ public class AIHealth : Health
 
     protected override void Died()
     {
+        if (encounterSpawner)
+            encounterSpawner.RemoveEnemy(gameObject);
+
         if(aiRefManager.encounter)
             aiRefManager.encounter.RemoveEncounter(gameObject);
+
         base.Died();
         if(refManager.targetManager)
             refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
