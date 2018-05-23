@@ -6,7 +6,7 @@ public class EncounterSpawner : MonoBehaviour
 {
     public List<Encount> possibleEncounters;
     public List<Transform> spawnPoints;
-    public List<GameObject> doors;
+    public List<LockableDoor> doors;
 
     List<GameObject> activeEnemies = new List<GameObject>();
 
@@ -30,7 +30,7 @@ public class EncounterSpawner : MonoBehaviour
         doorsLocked = true;
 
         for (int i = 0; i < doors.Count; i++)                   // remove later
-            doors[i].SetActive(true);
+            doors[i].ChangeLockState(true);
     }
 
     public void AddEnemy(GameObject enemy)
@@ -48,9 +48,12 @@ public class EncounterSpawner : MonoBehaviour
             {
                 print("Enemies Left : " + activeEnemies.Count);
                 print("Doors " + doors.Count);
-                for(int i = 0; i < doors.Count; i++)                  // remove later
-                    doors[i].SetActive(false);
+
+                for (int i = 0; i < doors.Count; i++)                  // remove later
+                    doors[i].ChangeLockState(false);
+
                 doorsLocked = false;
+                print("Doors locked = " + doorsLocked);
             }
         }
 
