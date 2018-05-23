@@ -62,6 +62,9 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        if(playerRefManager.health.isDead)
+            return;
+
         RecieveInput();
 
         if(pause)

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : Health
 {
     public Image healthBar;
+    public int lifeCount;
 
     protected override void Start()
     {
@@ -31,6 +32,13 @@ public class PlayerHealth : Health
         UpdateHealthBar();
     }
 
+    void Respawn()
+    {
+        transform.position = GameManager.instance.playerRespawnPoint.position;
+        ResetHealth();
+        isDead = false;
+    }
+
     void UpdateHealthBar()
     {
         healthBar.fillAmount = (float)(health) / baseHealth;
@@ -39,6 +47,9 @@ public class PlayerHealth : Health
     protected override void Died()
     {
         base.Died();
-        LoadingScreenManager.LoadScene(0);
+        if(lifeCount <= 0)
+            LoadingScreenManager.LoadScene(0);
+        else
+            Respawn();
     }
 }

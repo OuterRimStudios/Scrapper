@@ -4,6 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int baseHealth;
+    [HideInInspector] public bool isDead;
 
     protected int health;
     protected ReferenceManager refManager;
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
     protected virtual void OnEnable()
     {
         refManager = GetComponent<ReferenceManager>();
+        isDead = false;
     }
 
     public virtual void Heal(int healAmount)
@@ -30,7 +32,7 @@ public class Health : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
             Died();
         }
@@ -38,8 +40,8 @@ public class Health : MonoBehaviour
 
     protected virtual void Died()
     {
-        if(refManager.targetManager)
-        refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
-        Destroy(gameObject);
+        isDead = true;
+        //if(refManager.targetManager)
+        //    refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
     }
 }

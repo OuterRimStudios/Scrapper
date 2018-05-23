@@ -19,7 +19,7 @@ public class AIReferenceManager : ReferenceManager
 
 	public Ability aiAbility;
 
-	SpawnManager spawnManager;
+	//SpawnManager spawnManager;
 
 	protected override void Awake ()
 	{
@@ -29,7 +29,7 @@ public class AIReferenceManager : ReferenceManager
 		stateController = GetComponent<StateController> ();
 		statusEffects = GetComponent<StatusEffects> ();
 
-		difficultyLevel = SpawnManager.currentDifficulty;// Until we can create a difficulty selection menu
+		difficultyLevel = GameManager.currentDifficulty;// Until we can create a difficulty selection menu
 
 		switch (difficultyLevel) {
 		case 0:
@@ -45,13 +45,13 @@ public class AIReferenceManager : ReferenceManager
 			break;
 		}
 
-		spawnManager = GameObject.Find ("GameManager").GetComponent<SpawnManager> ();
+		//spawnManager = GameObject.Find ("GameManager").GetComponent<SpawnManager> ();
     }
 
     private void OnEnable()
     {
-        if(spawnManager)
-        UpdateChallengeTier(spawnManager.currentWave);
+        //if(spawnManager)
+        UpdateChallengeTier(0);
     }
 
     public void UpdateChallengeTier (int waveCount)

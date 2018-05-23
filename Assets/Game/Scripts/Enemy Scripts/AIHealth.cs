@@ -77,5 +77,8 @@ public class AIHealth : Health
         if(aiRefManager.encounter)
             aiRefManager.encounter.RemoveEncounter(gameObject);
         base.Died();
+        if(refManager.targetManager)
+            refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
+        Destroy(gameObject);
     }
 }
