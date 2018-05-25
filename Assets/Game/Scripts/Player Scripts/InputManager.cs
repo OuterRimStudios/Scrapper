@@ -7,7 +7,7 @@ using Rewired;
 public class InputManager : MonoBehaviour
 {
     [Header("Menus")]
-    public GameObject radialMenu;
+    public RMF_RadialMenu radialMenu;
     public float radialMenuTimeScale = 0.5f;
     public GameObject hud;
     public GameObject pauseMenu;
@@ -100,14 +100,14 @@ public class InputManager : MonoBehaviour
             {
                 canShoot = false;
                 hud.SetActive(false);
-                radialMenu.SetActive(true);
+                radialMenu.gameObject.SetActive(true);
                 Time.timeScale = radialMenuTimeScale;
             }
             else
             {
                 canShoot = true;
                 hud.SetActive(true);
-                radialMenu.SetActive(false);
+                radialMenu.gameObject.SetActive(false);
                 Time.timeScale = 1;
             }
 
@@ -176,10 +176,15 @@ public class InputManager : MonoBehaviour
 
         if(player.GetButton("AbilityMenu"))
         {
-            if (pause)
+            if(pause)
                 pause = false;
 
-            toggleRadialMenu = !toggleRadialMenu;
+            toggleRadialMenu = true;
+        }
+        else
+        {
+            radialMenu.ExecuteSelectedButton();
+            toggleRadialMenu = false;
         }
 
         if(pause)
