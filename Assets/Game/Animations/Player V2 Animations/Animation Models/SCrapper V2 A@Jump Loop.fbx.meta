@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1e37a2def6ad68446a26ed59d674a638
-timeCreated: 1527271784
+guid: 6a1ee99099e3bc94ea12027b7602c007
+timeCreated: 1527271788
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -276,7 +276,7 @@ ModelImporter:
     4300080: Sphere024
     4300082: Object001
     4300084: Object002
-    7400000: mixamo.com
+    7400000: Jump Loop
     9500000: //RootNode
     13700000: Box001
     13700002: Box002
@@ -347,7 +347,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Jump Loop
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
