@@ -33,7 +33,6 @@ public class MultiProjectileAbility : Ability
         }
         else
         {
-            print("Spawn Count:   " + availableSpawnPositions.Count);
             Projectile _projectile = Instantiate(projectile, GetSpawnPosition().position, GetSpawnPosition().rotation);
             _projectile.Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects);
 

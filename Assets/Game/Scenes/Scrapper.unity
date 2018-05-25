@@ -998,11 +998,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1993,7 +1993,7 @@ RectTransform:
   - {fileID: 644990928}
   - {fileID: 1019665059}
   m_Father: {fileID: 1238653593}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6369,7 +6369,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2116006174}
+    m_TransformParent: {fileID: 1238653593}
     m_Modifications:
     - target: {fileID: 11405222, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
       propertyPath: elements.Array.size
@@ -6389,15 +6389,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
       propertyPath: m_LocalRotation.w
@@ -6405,7 +6405,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -6663,6 +6663,22 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 4.95
       objectReference: {fileID: 0}
+    - target: {fileID: 172674, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22401190, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11485486, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
     - {fileID: 11428280, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
@@ -6809,11 +6825,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -6922,11 +6938,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7035,11 +7051,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7148,11 +7164,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7166,6 +7182,10 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &348242787 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 172674, guid: 69988eeaf22db50428892b9cf8812ad4, type: 2}
+  m_PrefabInternal: {fileID: 348242773}
 --- !u!1 &355654250
 GameObject:
   m_ObjectHideFlags: 0
@@ -23499,6 +23519,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 348242774}
   - {fileID: 1985547190}
   - {fileID: 112959728}
   - {fileID: 1633503346}
@@ -28403,7 +28424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d3a5d995f558d04d803e8ac028f215f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadoutMenu: {fileID: 1985547189}
+  radialMenu: {fileID: 348242787}
+  radialMenuTimeScale: 0.1
   hud: {fileID: 2116006170}
   pauseMenu: {fileID: 112959727}
   loadoutMenuWaveActiveText: {fileID: 1633503347}
@@ -32528,7 +32550,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1238653593}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -38525,7 +38547,7 @@ RectTransform:
   - {fileID: 435532357}
   - {fileID: 852872826}
   m_Father: {fileID: 1238653593}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -40870,7 +40892,6 @@ RectTransform:
   - {fileID: 420574969}
   - {fileID: 117972543}
   - {fileID: 1204127981}
-  - {fileID: 348242774}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

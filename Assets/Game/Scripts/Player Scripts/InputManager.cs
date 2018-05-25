@@ -7,7 +7,8 @@ using Rewired;
 public class InputManager : MonoBehaviour
 {
     [Header("Menus")]
-    public GameObject loadoutMenu;
+    public GameObject radialMenu;
+    public float radialMenuTimeScale = 0.5f;
     public GameObject hud;
     public GameObject pauseMenu;
     public Text loadoutMenuWaveActiveText;
@@ -21,7 +22,7 @@ public class InputManager : MonoBehaviour
     bool jump;
     bool interact;
     bool toggleView;
-    bool toggleLoadoutMenu;
+    bool toggleRadialMenu;
     bool pause;
     bool turningOffText;
     public static bool canAct;
@@ -93,40 +94,49 @@ public class InputManager : MonoBehaviour
                 cameraController.SwitchView();
             }
 
-            if(toggleLoadoutMenu)
+            if(toggleRadialMenu)
             {
                 hud.SetActive(false);
-                loadoutMenu.SetActive(true);
+                radialMenu.SetActive(true);
+                Time.timeScale = radialMenuTimeScale;
             }
             else
             {
                 hud.SetActive(true);
-                loadoutMenu.SetActive(false);
+                radialMenu.SetActive(false);
+                Time.timeScale = 1;
             }
 
             if(jump)
                 playerMovement.Jump();
         }
 
-        if(pause || toggleLoadoutMenu)
-            hideCursor = false;
-        else if(!pause && !toggleLoadoutMenu)
-            hideCursor = true;
-
-        if(hideCursor)
-        {
-            if(Cursor.visible)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
-        else
+        if(pause)
         {
             if(!Cursor.visible)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+            }
+        }
+        else if(toggleRadialMenu)
+        {
+            if(!Cursor.visible)
+            {
+#if UNITY_EDITOR
+                Cursor.lockState = CursorLockMode.None;
+#else
+                Cursor.lockState = CursorLockMode.Confined;
+#endif
+                Cursor.visible = true;
+            }
+        }
+        else if(!pause && !toggleRadialMenu)
+        {
+            if(Cursor.visible)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }
@@ -157,8 +167,8 @@ public class InputManager : MonoBehaviour
         toggleView = player.GetButtonDown("ToggleView");
         if(player.GetButtonDown("Pause"))
         {
-            if(toggleLoadoutMenu)
-                toggleLoadoutMenu = false;
+            if(toggleRadialMenu)
+                toggleRadialMenu = false;
             else
                 pause = !pause;
         }
@@ -179,18 +189,10 @@ public class InputManager : MonoBehaviour
             if (pause)
                 pause = false;
 
-            toggleLoadoutMenu = !toggleLoadoutMenu;
+            toggleRadialMenu = !toggleRadialMenu;
         }
 
-        if(spawnManager && SpawnManager.waveActive && toggleLoadoutMenu)
-        {
-            canAct = true;
-            PlayerMovement.canAct = true;
-            CameraController.canAct = true;
-            toggleLoadoutMenu = false;
-        }
-
-        if(pause || toggleLoadoutMenu)
+        if(pause)
         {
             canAct = false;
             PlayerMovement.canAct = false;
@@ -260,18 +262,9 @@ public class InputManager : MonoBehaviour
 
     public void ToggleLoadoutMenu(bool _toggleLoadoutMenu)
     {
-        if (spawnManager && SpawnManager.waveActive)
-        {
-            loadoutMenuWaveActiveText.enabled = true;
-            if(!turningOffText)
-            {
-                turningOffText = true;
-                StartCoroutine(TurnOffText());
-            }
-            return;
-        }
-        else
-            toggleLoadoutMenu = _toggleLoadoutMenu;
+        toggleRadialMenu = _toggleLoadoutMenu;
+
+        
     }
 
     IEnumerator TurnOffText()
