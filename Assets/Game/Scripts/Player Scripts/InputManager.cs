@@ -16,8 +16,8 @@ public class InputManager : MonoBehaviour
     public bool hideCursor = true;
 
     bool[] abilityOnCooldown = new bool[5];
-    bool[] abilityActive = new bool[5];
-    bool[] abilityDeactive = new bool[5];
+    bool abilityActive;
+    bool abilityDeactive;
 
     bool jump;
     bool interact;
@@ -25,7 +25,8 @@ public class InputManager : MonoBehaviour
     bool toggleRadialMenu;
     bool pause;
     bool turningOffText;
-    public static bool canAct;
+    public static bool acceptInput;
+    bool canShoot;
 
     float moveX;
     float moveY;
@@ -45,7 +46,8 @@ public class InputManager : MonoBehaviour
         Time.timeScale = 1;
         Application.targetFrameRate = 60;
         player = ReInput.players.GetPlayer(0);
-        canAct = true;
+        acceptInput = true;
+        canShoot = true;
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
@@ -96,12 +98,14 @@ public class InputManager : MonoBehaviour
 
             if(toggleRadialMenu)
             {
+                canShoot = false;
                 hud.SetActive(false);
                 radialMenu.SetActive(true);
                 Time.timeScale = radialMenuTimeScale;
             }
             else
             {
+                canShoot = true;
                 hud.SetActive(true);
                 radialMenu.SetActive(false);
                 Time.timeScale = 1;
@@ -143,23 +147,20 @@ public class InputManager : MonoBehaviour
 
     void AbilityInput()
     {
-        if(!canAct) return;
-        for(int i = 0; i < AbilityManager.instance.currentLoadout.ActiveAbilities.Count; i++)
+        if(!acceptInput || !canShoot) return;
+        if(AbilityManager.instance.currentAbility && AbilityManager.instance.currentAbility.CanShoot() && abilityActive)
         {
-            if(AbilityManager.instance.currentLoadout.ActiveAbilities[i] && AbilityManager.instance.currentLoadout.ActiveAbilities[i].CanShoot() && abilityActive[i])
-            {
-                playerMovement.Sprint(false);
-                AbilityManager.instance.currentLoadout.ActiveAbilities[i].ActivateAbility();
-                AbilityManager.instance.abilityCharges[i].text = AbilityManager.instance.currentLoadout.ActiveAbilities[i].charges.ToString();
+            playerMovement.Sprint(false);
+            AbilityManager.instance.currentAbility.ActivateAbility();
+            AbilityManager.instance.abilityCharges[0].text = AbilityManager.instance.currentAbility.charges.ToString();
 
-                if(AbilityManager.instance.currentLoadout.ActiveAbilities[i].charges >= 0)
-                {
-                    AbilityManager.instance.cooldownQueues[i].Enqueue(Time.time);
-                }
+            if(AbilityManager.instance.currentAbility.charges >= 0)
+            {
+                AbilityManager.instance.cooldownQueues[0].Enqueue(Time.time);
             }
-            else if(AbilityManager.instance.currentLoadout.ActiveAbilities[i] && abilityDeactive[i])
-                AbilityManager.instance.currentLoadout.ActiveAbilities[i].DeactivateAbility();
         }
+        else if(AbilityManager.instance.currentAbility && abilityDeactive)
+            AbilityManager.instance.currentAbility.DeactivateAbility();
     }
 
     private void RecieveInput()
@@ -173,19 +174,8 @@ public class InputManager : MonoBehaviour
                 pause = !pause;
         }
 
-        if(player.GetButtonDown("Loadout"))
+        if(player.GetButton("AbilityMenu"))
         {
-            if(spawnManager && SpawnManager.waveActive)
-            {
-                loadoutMenuWaveActiveText.enabled = true;
-                if(!turningOffText)
-                {
-                    turningOffText = true;
-                    StartCoroutine(TurnOffText());
-                }
-                return;
-            }
-
             if (pause)
                 pause = false;
 
@@ -194,18 +184,19 @@ public class InputManager : MonoBehaviour
 
         if(pause)
         {
-            canAct = false;
+            acceptInput = false;
+            canShoot = false;
             PlayerMovement.canAct = false;
             CameraController.canAct = false;
         }
         else
         {
-            canAct = true;
+            acceptInput = true;
             PlayerMovement.canAct = true;
             CameraController.canAct = true;
         }
 
-        if(!canAct) return;
+        if(!acceptInput) return;
 
         if(!playerMovement.hovering)
             jump = player.GetButtonDown("Jump");
@@ -214,38 +205,12 @@ public class InputManager : MonoBehaviour
 
         interact = player.GetButtonDown("Interact");
 
-        if(AbilityManager.instance.currentLoadout.ActiveAbilities[0].abilityInput == Ability.AbilityInput.GetButton)
-            abilityActive[0] = player.GetButton("AbilityOne");
+        if(AbilityManager.instance.currentAbility.abilityInput == Ability.AbilityInput.GetButton)
+            abilityActive = player.GetButton("ActivateAbility");
         else
-            abilityActive[0] = player.GetButtonDown("AbilityOne");
+            abilityActive = player.GetButtonDown("ActivateAbility");
 
-        if (AbilityManager.instance.currentLoadout.ActiveAbilities[1].abilityInput == Ability.AbilityInput.GetButton)
-            abilityActive[1] = player.GetButton("AbilityTwo");
-        else
-            abilityActive[1] = player.GetButtonDown("AbilityTwo");
-
-        if (AbilityManager.instance.currentLoadout.ActiveAbilities[2].abilityInput == Ability.AbilityInput.GetButton)
-            abilityActive[2] = player.GetButton("AbilityThree");
-        else
-            abilityActive[2] = player.GetButtonDown("AbilityThree");
-
-
-        if (AbilityManager.instance.currentLoadout.ActiveAbilities[3].abilityInput == Ability.AbilityInput.GetButton)
-            abilityActive[3] = player.GetButton("AbilityFour");
-        else
-            abilityActive[3] = player.GetButtonDown("AbilityFour");
-
-
-        if (AbilityManager.instance.currentLoadout.ActiveAbilities[4].abilityInput == Ability.AbilityInput.GetButton)
-            abilityActive[4] = player.GetButton("AbilityFive");
-        else
-            abilityActive[4] = player.GetButtonDown("AbilityFive");
-
-        abilityDeactive[0] = player.GetButtonUp("AbilityOne");
-        abilityDeactive[1] = player.GetButtonUp("AbilityTwo");
-        abilityDeactive[2] = player.GetButtonUp("AbilityThree");
-        abilityDeactive[3] = player.GetButtonUp("AbilityFour");
-        abilityDeactive[4] = player.GetButtonUp("AbilityFive");
+        abilityDeactive = player.GetButtonUp("ActivateAbility");
 
         moveX = player.GetAxis("MoveHorizontal");
         moveY = player.GetAxis("MoveVertical");
@@ -263,8 +228,6 @@ public class InputManager : MonoBehaviour
     public void ToggleLoadoutMenu(bool _toggleLoadoutMenu)
     {
         toggleRadialMenu = _toggleLoadoutMenu;
-
-        
     }
 
     IEnumerator TurnOffText()

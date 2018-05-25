@@ -553,7 +553,7 @@ MonoBehaviour:
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
-      _userAssignable: 1
+      _userAssignable: 0
       _categoryId: 1
     - _id: 13
       _name: AbilityTwo
@@ -562,7 +562,7 @@ MonoBehaviour:
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
-      _userAssignable: 1
+      _userAssignable: 0
       _categoryId: 1
     - _id: 14
       _name: AbilityThree
@@ -571,7 +571,7 @@ MonoBehaviour:
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
-      _userAssignable: 1
+      _userAssignable: 0
       _categoryId: 1
     - _id: 15
       _name: AbilityFour
@@ -580,7 +580,7 @@ MonoBehaviour:
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
-      _userAssignable: 1
+      _userAssignable: 0
       _categoryId: 1
     - _id: 16
       _name: AbilityFive
@@ -589,7 +589,7 @@ MonoBehaviour:
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
-      _userAssignable: 1
+      _userAssignable: 0
       _categoryId: 1
     - _id: 17
       _name: UIHorizontal
@@ -627,6 +627,24 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 3
+    - _id: 21
+      _name: ActivateAbility
+      _type: 1
+      _descriptiveName: ActivateAbility
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 22
+      _name: AbilityMenu
+      _type: 1
+      _descriptiveName: AbilityMenu
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -651,9 +669,9 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 08000000090000000a0000000b000000
+        actionIds: 08000000090000000a0000000b00000016000000
       - categoryId: 1
-        actionIds: 0c0000000d0000000e0000000f00000010000000
+        actionIds: 150000000c0000000d0000000e0000000f00000010000000
       - categoryId: 2
         actionIds: 0000000001000000030000000400000002000000
       - categoryId: 3
@@ -799,29 +817,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 16
-        _elementType: 1
-        _elementIdentifierId: 8
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 0
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 0
-        _actionId: 15
-        _elementType: 1
-        _elementIdentifierId: 10
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 0
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 0
-        _actionId: 13
+        _actionId: 22
         _elementType: 1
         _elementIdentifierId: 11
         _axisRange: 0
@@ -832,18 +828,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 14
-        _elementType: 1
-        _elementIdentifierId: 12
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 0
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 0
-        _actionId: 12
+        _actionId: 21
         _elementType: 1
         _elementIdentifierId: 13
         _axisRange: 0
@@ -1203,7 +1188,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 12
+        _actionId: 21
         _elementType: 1
         _elementIdentifierId: 3
         _axisRange: 0
@@ -1214,7 +1199,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 13
+        _actionId: 22
         _elementType: 1
         _elementIdentifierId: 4
         _axisRange: 0
@@ -1234,7 +1219,7 @@ MonoBehaviour:
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 2
-    actionIdCounter: 21
+    actionIdCounter: 23
     actionCategoryIdCounter: 4
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 2
@@ -15841,6 +15826,8 @@ MonoBehaviour:
   - {fileID: 114089759249283816, guid: ff924c218d4003a4c9a5dffc699d3eeb, type: 2}
   - {fileID: 114539408705625848, guid: 64a6cc03fdcc2dc45a16697bc98cb71e, type: 2}
   - {fileID: 114687971000794884, guid: da3bfb59f5fb295418d0caf1c2639a6d, type: 2}
+  currentAbility: {fileID: 0}
+  equippedAbilities: []
 --- !u!1 &1141918328
 GameObject:
   m_ObjectHideFlags: 0

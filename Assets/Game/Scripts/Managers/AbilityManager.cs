@@ -47,6 +47,9 @@ public class AbilityManager : MonoBehaviour {
 
 	public List<Ability> allAbilities = new List<Ability>();
 
+    public Ability currentAbility;
+    public List<Ability> equippedAbilities;
+
 	float remainingTime;
 
     void Start()
@@ -165,6 +168,22 @@ public class AbilityManager : MonoBehaviour {
             }
         }
 	}
+
+    public void SetCurrentAbility(Ability newAbility)
+    {
+        if(equippedAbilities.Contains(newAbility))
+        {
+            currentAbility = newAbility;
+        }
+    }
+
+    public void SetCurrentAbility(int abilityIndex)
+    {
+        if(abilityIndex < equippedAbilities.Count && abilityIndex > -1)
+        {
+            currentAbility = equippedAbilities[abilityIndex];
+        }
+    }
 
 	void UpdateAbiltyCharges(Ability ability)
     {
