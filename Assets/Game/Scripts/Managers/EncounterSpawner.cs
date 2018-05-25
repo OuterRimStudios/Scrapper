@@ -8,7 +8,7 @@ public class EncounterSpawner : MonoBehaviour
     public List<Transform> spawnPoints;
     public List<LockableDoor> doors;
 
-    List<GameObject> activeEnemies = new List<GameObject>();
+    public List<GameObject> activeEnemies = new List<GameObject>();
 
     Encount randomEncounter;
 

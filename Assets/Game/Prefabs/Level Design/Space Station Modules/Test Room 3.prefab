@@ -338,6 +338,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1368270685871722
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4458661009968852}
+  - component: {fileID: 114237277217623174}
+  m_Layer: 0
+  m_Name: RB-3 _ IB-1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1369295853489888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1159,19 @@ Transform:
   m_Father: {fileID: 4840431757394986}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4458661009968852
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368270685871722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4596601818423864}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4469624328500162
 Transform:
   m_ObjectHideFlags: 1
@@ -1243,7 +1272,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4458661009968852}
   m_Father: {fileID: 4840431757394986}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2910,6 +2940,22 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: b3f5fd455dcf23c47a0db43ba8f7674c, type: 2}
+--- !u!114 &114237277217623174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368270685871722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6911a7c7a1760488741f6aa73db2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - enemy: {fileID: 1255796476653088, guid: 1af6e96c05905614983d398881ccae02, type: 2}
+    amountToSpawn: 1
+  - enemy: {fileID: 1595850089893730, guid: 7a3d5ef96a1b58d4896387ea0c0ecda7, type: 2}
+    amountToSpawn: 3
 --- !u!114 &114354831521833848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2996,7 +3042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleEncounters:
-  - {fileID: 114963975060516756, guid: e49a445bacef3ca49866930c2ca4a503, type: 2}
+  - {fileID: 114237277217623174}
   spawnPoints:
   - {fileID: 4728512645623180}
   - {fileID: 4942380327394448}
@@ -3022,6 +3068,7 @@ MonoBehaviour:
   - {fileID: 114897225700068792}
   - {fileID: 114968893650096784}
   - {fileID: 114354831521833848}
+  activeEnemies: []
 --- !u!114 &114897225700068792
 MonoBehaviour:
   m_ObjectHideFlags: 1
