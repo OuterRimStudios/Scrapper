@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c9f6d6884ac5a6847b83a7ba75ead249
-timeCreated: 1527271793
+guid: fe848cfd2f5822b48a69ed7b9cd13620
+timeCreated: 1527271794
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -276,7 +276,7 @@ ModelImporter:
     4300080: Sphere024
     4300082: Object001
     4300084: Object002
-    7400000: mixamo.com
+    7400000: Run Forward Left
     9500000: //RootNode
     13700000: Box001
     13700002: Box002
@@ -347,7 +347,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run Forward Left
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
