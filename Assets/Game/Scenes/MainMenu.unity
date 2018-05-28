@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 44769289}
   - component: {fileID: 44769288}
   - component: {fileID: 44769290}
+  - component: {fileID: 44769291}
   m_Layer: 0
   m_Name: Rewired Input Manager
   m_TagString: Untagged
@@ -381,8 +382,8 @@ MonoBehaviour:
       defaultJoystickAxis2DDeadZoneType: 1
       force4WayHats: 0
       throttleCalibrationMode: 0
-      deferControllerConnectedEventsOnStart: 0
-      logLevel: 7
+      deferControllerConnectedEventsOnStart: 1
+      logLevel: 4
       editorSettings:
         exportConsts_useParentClass: 0
         exportConsts_parentClassName: RewiredConsts
@@ -415,6 +416,9 @@ MonoBehaviour:
       - _enabled: 1
         _categoryId: 1
         _layoutId: 0
+      - _enabled: 1
+        _categoryId: 2
+        _layoutId: 0
       _defaultMouseMaps:
       - _enabled: 1
         _categoryId: 0
@@ -444,6 +448,9 @@ MonoBehaviour:
         _layoutId: 0
       - _enabled: 1
         _categoryId: 1
+        _layoutId: 0
+      - _enabled: 1
+        _categoryId: 2
         _layoutId: 0
       _defaultMouseMaps:
       - _enabled: 1
@@ -645,6 +652,42 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 23
+      _name: LeftStickX
+      _type: 0
+      _descriptiveName: LeftStickX
+      _positiveDescriptiveName: Positive
+      _negativeDescriptiveName: Negative
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 4
+    - _id: 24
+      _name: LeftStickY
+      _type: 0
+      _descriptiveName: LeftStickY
+      _positiveDescriptiveName: Positive
+      _negativeDescriptiveName: Negative
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 4
+    - _id: 25
+      _name: RightStickX
+      _type: 0
+      _descriptiveName: RightStickX
+      _positiveDescriptiveName: Positive
+      _negativeDescriptiveName: Negative
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 4
+    - _id: 26
+      _name: RightStickY
+      _type: 0
+      _descriptiveName: RightStickY
+      _positiveDescriptiveName: Positive
+      _negativeDescriptiveName: Negative
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 4
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -666,6 +709,11 @@ MonoBehaviour:
       _tag: 
       _id: 3
       _userAssignable: 1
+    - _name: ControllerUtility
+      _descriptiveName: ControllerUtility
+      _tag: 
+      _id: 4
+      _userAssignable: 1
     actionCategoryMap:
       list:
       - categoryId: 0
@@ -676,6 +724,8 @@ MonoBehaviour:
         actionIds: 0000000001000000030000000400000002000000
       - categoryId: 3
         actionIds: 11000000120000001300000014000000
+      - categoryId: 4
+        actionIds: 1700000018000000190000001a000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -714,6 +764,13 @@ MonoBehaviour:
       _id: 1
       _userAssignable: 1
       _checkConflictsWithAllCategories: 0
+      _checkConflictsCategoryIds: 
+    - _name: ControllerUtility
+      _descriptiveName: ControllerUtility
+      _tag: 
+      _id: 2
+      _userAssignable: 1
+      _checkConflictsWithAllCategories: 1
       _checkConflictsCategoryIds: 
     joystickLayouts:
     - _name: Default
@@ -948,6 +1005,57 @@ MonoBehaviour:
         _actionId: 20
         _elementType: 1
         _elementIdentifierId: 5
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+    - id: 3
+      categoryId: 2
+      layoutId: 0
+      name: 
+      hardwareGuidString: 83b427e4-086f-47f3-bb06-be266abd1ca5
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 23
+        _elementType: 0
+        _elementIdentifierId: 0
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 24
+        _elementType: 0
+        _elementIdentifierId: 1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 25
+        _elementType: 0
+        _elementIdentifierId: 2
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 26
+        _elementType: 0
+        _elementIdentifierId: 3
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
@@ -1219,15 +1327,15 @@ MonoBehaviour:
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 2
-    actionIdCounter: 23
-    actionCategoryIdCounter: 4
+    actionIdCounter: 27
+    actionCategoryIdCounter: 5
     inputBehaviorIdCounter: 1
-    mapCategoryIdCounter: 2
+    mapCategoryIdCounter: 3
     joystickLayoutIdCounter: 1
     keyboardLayoutIdCounter: 1
     mouseLayoutIdCounter: 1
     customControllerLayoutIdCounter: 1
-    joystickMapIdCounter: 3
+    joystickMapIdCounter: 4
     keyboardMapIdCounter: 2
     mouseMapIdCounter: 2
     customControllerMapIdCounter: 0
@@ -1264,6 +1372,17 @@ MonoBehaviour:
   loadKeyboardAssignments: 1
   loadMouseAssignments: 1
   playerPrefsKeyPrefix: RewiredSaveData
+--- !u!114 &44769291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 44769287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ec8a63297f69a49b1e904653ab3046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &59153637
 GameObject:
   m_ObjectHideFlags: 0

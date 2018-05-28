@@ -117,11 +117,6 @@ public class SettingsManager : MonoBehaviour
 
     void Update()
     {
-        //if(player.controllers.joystickCount > 0)
-        //    es.sendNavigationEvents = true;
-        //else
-        //    es.sendNavigationEvents = false;
-        
         if(currentlySelected == -1) return;
 
         int direction = 0;

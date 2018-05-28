@@ -48,12 +48,15 @@ public class RMF_RadialMenu : MonoBehaviour
 
     private PointerEventData pointer;
 
+    EventSystem es;
+
     Player player;
 
     private void Awake()
     {
         player = ReInput.players.GetPlayer(0);
-        pointer = new PointerEventData(EventSystem.current);
+        es = EventSystem.current;
+        pointer = new PointerEventData(es);
 
         rt = GetComponent<RectTransform>();
 
@@ -85,9 +88,9 @@ public class RMF_RadialMenu : MonoBehaviour
 
     private void Start()
     {
-        if(useGamepad)
+        if(PlatformDetection.useGamepad)
         {
-            EventSystem.current.SetSelectedGameObject(gameObject, null); //We'll make this the active object when we start it. Comment this line to set it manually from another script.
+            es.SetSelectedGameObject(gameObject, null); //We'll make this the active object when we start it. Comment this line to set it manually from another script.
             if(useSelectionFollower && selectionFollowerContainer != null)
                 selectionFollowerContainer.rotation = Quaternion.Euler(0, 0, -globalOffset); //Point the selection follower at the first element.
         }
@@ -103,13 +106,13 @@ public class RMF_RadialMenu : MonoBehaviour
 
         float rawAngle;
 
-        if(!useGamepad)
+        if(!PlatformDetection.useGamepad)
             rawAngle = Mathf.Atan2(Input.mousePosition.y - rt.position.y, Input.mousePosition.x - rt.position.x) * Mathf.Rad2Deg;
         else
             rawAngle = Mathf.Atan2(player.GetAxis("LookVertical"), player.GetAxis("LookHorizontal")) * Mathf.Rad2Deg;
 
         //If no gamepad, update the angle always. Otherwise, only update it if we've moved the joystick.
-        if(!useGamepad)
+        if(!PlatformDetection.useGamepad)
             currentAngle = normalizeAngle(-rawAngle + 90 - globalOffset + (angleOffset / 2f));
         else if(joystickMoved)
             currentAngle = normalizeAngle(-rawAngle + 90 - globalOffset + (angleOffset / 2f));
@@ -136,7 +139,7 @@ public class RMF_RadialMenu : MonoBehaviour
         //Updates the selection follower if we're using one.
         if(useSelectionFollower && selectionFollowerContainer != null)
         {
-            if(!useGamepad || joystickMoved)
+            if(!PlatformDetection.useGamepad || joystickMoved)
                 selectionFollowerContainer.rotation = Quaternion.Euler(0, 0, rawAngle + 270);
         }
     }
