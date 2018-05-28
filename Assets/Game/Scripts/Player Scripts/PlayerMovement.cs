@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed;
     public float hoverForce;
 
-    public static bool canAct;
+    public static bool canMove;
+    public static bool canRotate;
 
     public Vector3 Direction { get; private set; }
     
@@ -52,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        canAct = true;
+        canMove = true;
+        canRotate = true;
         anim = GetComponentInChildren<Animator>();
         speed = movementSpeed;
         myCamera = Camera.main;
@@ -84,39 +86,54 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsJumping", false);
     }
 
-    void ResetAnimations()
+    void ResetMovementAnimations()
     {
-        anim.SetFloat("MoveX",0);
+        anim.SetFloat("MoveX", 0);
         anim.SetFloat("MoveY", 0);
+        anim.SetBool("IsMoving", false);
+    }
+
+    void ResetLookAnimations()
+    {
         anim.SetFloat("LookX", 0);
         anim.SetFloat("LookY", 0);
-        anim.SetBool("IsMoving", false);
     }
 
     private void Update()
     {
-        if (!canAct)
+        if (!canMove && !canRotate)
         {
-            ResetAnimations();
+            ResetMovementAnimations();
+            ResetLookAnimations();
             return;
         }
 
-        if(isCharging)
+        if (canRotate)
+            Look();
+        else
+            ResetLookAnimations();
+
+        if (canMove)
         {
-            if (Utility.CheckDistance(transform.position, chargePosition) > 1f)
-                transform.position = Vector3.Lerp(transform.position, chargePosition, chargeSpeed * Time.deltaTime);
-            else
+            if (isCharging)
             {
-                chargePosition = Vector3.zero;
-                isCharging = false;
+                if (Utility.CheckDistance(transform.position, chargePosition) > 1f)
+                    transform.position = Vector3.Lerp(transform.position, chargePosition, chargeSpeed * Time.deltaTime);
+                else
+                {
+                    chargePosition = Vector3.zero;
+                    isCharging = false;
+                }
+                return;
             }
-            return;
+            Move();
+            Jumping();
+            Animate();
         }
-
-        Move();
-        Look();
-        Jumping();
-        Animate();
+        else
+        {
+            ResetMovementAnimations();
+        }
     }
 
     void Move()

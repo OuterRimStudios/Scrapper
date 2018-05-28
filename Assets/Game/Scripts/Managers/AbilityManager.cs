@@ -190,6 +190,7 @@ public class AbilityManager : MonoBehaviour {
     {
         if(equippedAbilities.Contains(newAbility))
         {
+            currentAbility.DeactivateAbility();
             currentAbility = newAbility;
             CurrentAbilityIndex = equippedAbilities.IndexOf(newAbility);
         }
@@ -199,6 +200,7 @@ public class AbilityManager : MonoBehaviour {
     {
         if(abilityIndex < equippedAbilities.Count && abilityIndex > -1)
         {
+            currentAbility.DeactivateAbility();
             currentAbility = equippedAbilities[abilityIndex];
             CurrentAbilityIndex = abilityIndex;
         }

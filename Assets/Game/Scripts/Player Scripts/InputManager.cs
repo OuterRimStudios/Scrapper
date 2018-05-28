@@ -88,7 +88,9 @@ public class InputManager : MonoBehaviour
 
             AbilityInput();
             playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
-            cameraController.RecieveInput(lookY);
+
+            if(!toggleRadialMenu)
+                cameraController.RecieveInput(lookY);
 
             if(toggleView)
             {
@@ -132,7 +134,7 @@ public class InputManager : MonoBehaviour
 #else
                 Cursor.lockState = CursorLockMode.Confined;
 #endif
-                Cursor.visible = true;
+                Cursor.visible = false;
             }
         }
         else if(!pause && !toggleRadialMenu)
@@ -191,13 +193,20 @@ public class InputManager : MonoBehaviour
         {
             acceptInput = false;
             canShoot = false;
-            PlayerMovement.canAct = false;
+            PlayerMovement.canMove = false;
+            PlayerMovement.canRotate = false;
             CameraController.canAct = false;
+        }
+        else if(toggleRadialMenu)
+        {
+            CameraController.canAct = false;
+            PlayerMovement.canRotate = false;
         }
         else
         {
             acceptInput = true;
-            PlayerMovement.canAct = true;
+            PlayerMovement.canMove = true;
+            PlayerMovement.canRotate = true;
             CameraController.canAct = true;
         }
 
