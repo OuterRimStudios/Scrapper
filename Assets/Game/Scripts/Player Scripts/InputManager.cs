@@ -152,11 +152,11 @@ public class InputManager : MonoBehaviour
         {
             playerMovement.Sprint(false);
             AbilityManager.instance.currentAbility.ActivateAbility();
-            AbilityManager.instance.abilityCharges[0].text = AbilityManager.instance.currentAbility.charges.ToString();
+            AbilityManager.instance.abilityCharges[AbilityManager.instance.CurrentAbilityIndex].text = AbilityManager.instance.currentAbility.charges.ToString();
 
             if(AbilityManager.instance.currentAbility.charges >= 0)
             {
-                AbilityManager.instance.cooldownQueues[0].Enqueue(Time.time);
+                AbilityManager.instance.cooldownQueues[AbilityManager.instance.CurrentAbilityIndex].Enqueue(Time.time);
             }
         }
         else if(AbilityManager.instance.currentAbility && abilityDeactive)

@@ -74,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("MoveY", moveY, 1f, animationSmoothing * Time.deltaTime);
         anim.SetFloat("LookX", lookX, 1f, animationSmoothing * Time.deltaTime);
         anim.SetFloat("LookY", myCamera.transform.rotation.x, 1f, animationSmoothing * Time.deltaTime);
-        print(myCamera.transform.rotation.x);
 
         if (movement == Vector3.zero)
             anim.SetBool("IsMoving", false);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AbilityManager : MonoBehaviour {
 
@@ -41,13 +42,14 @@ public class AbilityManager : MonoBehaviour {
     public AbilityDisplayArea abilityDisplayArea;
     [Tooltip("Ability Icons in the Player HUD")]
     public List<Image> abilityIcons;
-    public List<Text> abilityCharges;
+    public List<TextMeshProUGUI> abilityCharges;
     public List<Image> abilityCooldownProgress;
     public List<Queue<float>> cooldownQueues = new List<Queue<float>>();
 
 	public List<Ability> allAbilities = new List<Ability>();
 
     public Ability currentAbility;
+    public int CurrentAbilityIndex { get; protected set; }
     public List<Ability> equippedAbilities;
 
 	float remainingTime;
@@ -58,9 +60,11 @@ public class AbilityManager : MonoBehaviour {
         {
             for(int i = 0; i < abilityDisplayArea.activeAbilitySlots.Count; i++)
             {
-                abilityDisplayArea.activeAbilitySlots[i].GetComponent<Button>().onClick.AddListener(delegate{OnAbilitiesUpdated();});
+                abilityDisplayArea.activeAbilitySlots[i].GetComponent<Button>().onClick.AddListener(delegate { OnAbilitiesUpdated(); });
             }
         }
+        else
+            Initialize();
     }
 
 	void Update()
@@ -74,13 +78,26 @@ public class AbilityManager : MonoBehaviour {
 
 		for(int i = 0; i < 5; i++)
             cooldownQueues.Add(new Queue<float>());
-		
-        if(LoadoutPresetManager.instance.CurrentPreset != null)
-		    currentLoadout = LoadoutPresetManager.instance.CurrentPreset;
-        else
-            currentLoadout = LoadoutPresetManager.instance.AllPresets[0];
 
-		InitializeAbilityDisplay();
+        for(int i = 0; i < equippedAbilities.Count; i++)
+        {
+            abilityIcons[i].sprite = equippedAbilities[i].abilityIcon;
+            if(equippedAbilities[i].abilityCharges > 1)
+            {
+                abilityCharges[i].enabled = true;
+                abilityCharges[i].text = equippedAbilities[i].abilityCharges.ToString();
+                equippedAbilities[i].OnCooldownFinished += UpdateAbiltyCharges;
+            }
+            else
+                abilityCharges[i].enabled = false;
+        }
+		
+      //  if(LoadoutPresetManager.instance.CurrentPreset != null)
+		    //currentLoadout = LoadoutPresetManager.instance.CurrentPreset;
+      //  else
+      //      currentLoadout = LoadoutPresetManager.instance.AllPresets[0];
+
+		//InitializeAbilityDisplay();
 	}
 
 	void InitializeAbilityDisplay()
@@ -174,6 +191,7 @@ public class AbilityManager : MonoBehaviour {
         if(equippedAbilities.Contains(newAbility))
         {
             currentAbility = newAbility;
+            CurrentAbilityIndex = equippedAbilities.IndexOf(newAbility);
         }
     }
 
@@ -182,14 +200,15 @@ public class AbilityManager : MonoBehaviour {
         if(abilityIndex < equippedAbilities.Count && abilityIndex > -1)
         {
             currentAbility = equippedAbilities[abilityIndex];
+            CurrentAbilityIndex = abilityIndex;
         }
     }
 
 	void UpdateAbiltyCharges(Ability ability)
     {
-        if(currentLoadout.ActiveAbilities.Contains(ability))
+        if(equippedAbilities.Contains(ability))
         {
-            int abilityIndex = currentLoadout.ActiveAbilities.IndexOf(ability);
+            int abilityIndex = equippedAbilities.IndexOf(ability);
             abilityCharges[abilityIndex].text = ability.charges.ToString();
         }
     }
@@ -198,7 +217,7 @@ public class AbilityManager : MonoBehaviour {
     {
         if(cooldownQueues.Count <= 0) return;
 
-        for(int j = 0; j < currentLoadout.ActiveAbilities.Count; j++)
+        for(int j = 0; j < equippedAbilities.Count; j++)
         {
             Cooldown(j);
         }
@@ -206,7 +225,7 @@ public class AbilityManager : MonoBehaviour {
         for(int i = 0; i < cooldownQueues.Count; i++)
         {
             if(cooldownQueues[i].Count > 0)
-                remainingTime = ((cooldownQueues[i].Peek() + currentLoadout.ActiveAbilities[i].abilityCooldown) - Time.time) / currentLoadout.ActiveAbilities[i].abilityCooldown;
+                remainingTime = ((cooldownQueues[i].Peek() + equippedAbilities[i].abilityCooldown) - Time.time) / equippedAbilities[i].abilityCooldown;
 
             if(remainingTime < .01f && cooldownQueues[i].Count > 0)
                 cooldownQueues[i].Dequeue();
@@ -218,7 +237,7 @@ public class AbilityManager : MonoBehaviour {
         if(cooldownQueues.Count <= 0) return;
         if(cooldownQueues[abilityIndex].Count > 0)
         {
-            float _remainingTime = ((cooldownQueues[abilityIndex].Peek() + currentLoadout.ActiveAbilities[abilityIndex].abilityCooldown) - Time.time) / currentLoadout.ActiveAbilities[abilityIndex].abilityCooldown;
+            float _remainingTime = ((cooldownQueues[abilityIndex].Peek() + equippedAbilities[abilityIndex].abilityCooldown) - Time.time) / equippedAbilities[abilityIndex].abilityCooldown;
             abilityCooldownProgress[abilityIndex].fillAmount = _remainingTime;
 
             if(_remainingTime < .01f)
