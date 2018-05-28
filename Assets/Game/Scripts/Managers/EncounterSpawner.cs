@@ -23,6 +23,17 @@ public class EncounterSpawner : MonoBehaviour
             encounter.Initialize(this);
     }
 
+    private void OnEnable()
+    {
+        PlayerHealth.OnPlayerDied += ResetEncounter;
+    }
+
+
+    private void OnDisable()
+    {
+        PlayerHealth.OnPlayerDied -= ResetEncounter;
+    }
+
     public void SpawnEncounter()
     {
         encounterSpawned = true;
@@ -61,7 +72,31 @@ public class EncounterSpawner : MonoBehaviour
 
     public void ResetEncounter()
     {
+        if (!encounterSpawned) return;
+        foreach (GameObject go in activeEnemies)
+            Destroy(go);
+
+        activeEnemies.Clear();
+
+        for (int i = 0; i < doors.Count; i++)                  // remove later
+            doors[i].ChangeLockState(false);
+
+        doorsLocked = false;
         encounterSpawned = false;
+    }
+
+    public void ForceClearEncounter()
+    {
+        if (!encounterSpawned) return;
+        foreach (GameObject go in activeEnemies)
+            Destroy(go);
+
+        activeEnemies.Clear();
+
+        for (int i = 0; i < doors.Count; i++)                  // remove later
+            doors[i].ChangeLockState(false);
+
+        doorsLocked = false;
     }
 
     private void OnTriggerEnter(Collider other)

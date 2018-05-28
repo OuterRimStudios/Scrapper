@@ -8,6 +8,9 @@ public class PlayerHealth : Health
     public Image healthBar;
     public int lifeCount;
 
+    public delegate void PlayerDied();
+    public static event PlayerDied OnPlayerDied;
+
     protected override void Start()
     {
         base.Start();
@@ -46,6 +49,7 @@ public class PlayerHealth : Health
 
     protected override void Died()
     {
+        OnPlayerDied();
         base.Died();
         if(lifeCount <= 0)
             LoadingScreenManager.LoadScene(0);
