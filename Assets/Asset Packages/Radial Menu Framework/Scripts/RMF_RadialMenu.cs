@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Rewired;
 
 [AddComponentMenu("Radial Menu Framework/RMF Core Script")]
 public class RMF_RadialMenu : MonoBehaviour
@@ -47,8 +48,11 @@ public class RMF_RadialMenu : MonoBehaviour
 
     private PointerEventData pointer;
 
+    Player player;
+
     private void Awake()
     {
+        player = ReInput.players.GetPlayer(0);
         pointer = new PointerEventData(EventSystem.current);
 
         rt = GetComponent<RectTransform>();
@@ -94,7 +98,7 @@ public class RMF_RadialMenu : MonoBehaviour
     {
         //If your gamepad uses different horizontal and vertical joystick inputs, change them here!
         //==============================================================================================
-        bool joystickMoved = Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0;
+        bool joystickMoved = player.GetAxis("LookHorizontal") != 0.0 || player.GetAxis("LookVertical") != 0.0;
         //==============================================================================================
 
         float rawAngle;
@@ -102,7 +106,7 @@ public class RMF_RadialMenu : MonoBehaviour
         if(!useGamepad)
             rawAngle = Mathf.Atan2(Input.mousePosition.y - rt.position.y, Input.mousePosition.x - rt.position.x) * Mathf.Rad2Deg;
         else
-            rawAngle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
+            rawAngle = Mathf.Atan2(player.GetAxis("LookVertical"), player.GetAxis("LookHorizontal")) * Mathf.Rad2Deg;
 
         //If no gamepad, update the angle always. Otherwise, only update it if we've moved the joystick.
         if(!useGamepad)
