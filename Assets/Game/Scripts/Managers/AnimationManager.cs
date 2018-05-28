@@ -8,7 +8,7 @@ public class AnimationManager : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void SetAnimatorActive(bool activeState)

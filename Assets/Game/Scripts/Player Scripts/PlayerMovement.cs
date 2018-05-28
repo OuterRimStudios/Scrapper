@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         canAct = true;
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         speed = movementSpeed;
         myCamera = Camera.main;
 
@@ -73,7 +73,8 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("MoveX", moveX, 1f, animationSmoothing * Time.deltaTime);
         anim.SetFloat("MoveY", moveY, 1f, animationSmoothing * Time.deltaTime);
         anim.SetFloat("LookX", lookX, 1f, animationSmoothing * Time.deltaTime);
-        anim.SetFloat("LookY", lookY, 1f, animationSmoothing * Time.deltaTime);
+        anim.SetFloat("LookY", myCamera.transform.rotation.x, 1f, animationSmoothing * Time.deltaTime);
+        print(myCamera.transform.rotation.x);
 
         if (movement == Vector3.zero)
             anim.SetBool("IsMoving", false);
