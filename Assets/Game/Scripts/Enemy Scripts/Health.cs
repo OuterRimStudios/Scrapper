@@ -41,7 +41,5 @@ public class Health : MonoBehaviour
     protected virtual void Died()
     {
         isDead = true;
-        //if(refManager.targetManager)
-        //    refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
     }
 }

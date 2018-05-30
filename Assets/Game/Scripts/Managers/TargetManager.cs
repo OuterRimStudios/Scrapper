@@ -8,17 +8,11 @@ public class TargetManager : MonoBehaviour
     public List<GameObject> activeEnemies;
     public List<GameObject> activeFriendlies;
 
-    SpawnManager spawnManager;
     public static TargetManager instance;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
-        spawnManager = GetComponent<SpawnManager>();
     }
 
     public void AddTarget(GameObject targetToAdd, string friendlyTag)
@@ -37,8 +31,6 @@ public class TargetManager : MonoBehaviour
             {
                 activeEnemies.Remove(targetToRemove);
             }
-            //if (spawnManager && activeEnemies.Count <= 0)
-            //    spawnManager.WaveEnded();
         }
         else if(friendlyTag == "Friendly")
         {

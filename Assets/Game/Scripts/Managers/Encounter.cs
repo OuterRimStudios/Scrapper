@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Encount : MonoBehaviour
+public class Encounter : MonoBehaviour
 {
     public List<Enemies> enemies;
     List<Transform> availiableSpawnPoints = new List<Transform>();          //A temp list to keep track of the spawnpoints that have not been used

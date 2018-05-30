@@ -82,10 +82,12 @@ public class AIHealth : Health
         if (encounterSpawner)
             encounterSpawner.RemoveEnemy(gameObject);
 
-        if(aiRefManager.encounter)
-            aiRefManager.encounter.RemoveEncounter(gameObject);
-
         base.Died();
+        DestroyEnemy();
+    }
+
+    public void DestroyEnemy()
+    {
         if(refManager.targetManager)
             refManager.targetManager.RemoveTarget(gameObject, refManager.friendlyTag.ToString());
         Destroy(gameObject);

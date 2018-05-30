@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class AIReferenceManager : ReferenceManager
 {
 	[HideInInspector] public AI ai;
 	[HideInInspector] public StateController stateController;
 
-	public Encounter encounter;
 	public List<ChallengeTier> easyChallengeTiers;
 	public List<ChallengeTier> mediumChallengeTiers;
 	public List<ChallengeTier> hardChallengeTiers;
@@ -18,8 +16,6 @@ public class AIReferenceManager : ReferenceManager
 	int difficultyLevel;
 
 	public Ability aiAbility;
-
-	//SpawnManager spawnManager;
 
 	protected override void Awake ()
 	{
@@ -44,13 +40,10 @@ public class AIReferenceManager : ReferenceManager
 			challengeTiers = hardChallengeTiers;
 			break;
 		}
-
-		//spawnManager = GameObject.Find ("GameManager").GetComponent<SpawnManager> ();
     }
 
     private void OnEnable()
     {
-        //if(spawnManager)
         UpdateChallengeTier(0);
     }
 

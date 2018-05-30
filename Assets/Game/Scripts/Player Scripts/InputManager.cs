@@ -37,7 +37,6 @@ public class InputManager : MonoBehaviour
     PlayerReferenceManager playerRefManager;
     PlayerMovement playerMovement;
     CameraController cameraController;
-    SpawnManager spawnManager;
 
     Player player;
 
@@ -51,8 +50,6 @@ public class InputManager : MonoBehaviour
         playerRefManager = GetComponent<PlayerReferenceManager>();
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
-        if(GameObject.Find("GameManager").GetComponent<SpawnManager>())
-        spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
 
         playerRefManager.InitializeLookAt();
 
@@ -82,9 +79,6 @@ public class InputManager : MonoBehaviour
                 Time.timeScale = 1;
                 pauseMenu.SetActive(false);
             }
-
-            if (spawnManager && spawnManager.isActiveAndEnabled && !SpawnManager.waveActive && interact)
-                spawnManager.PlayerReady();
 
             AbilityInput();
             playerMovement.RecieveInput(moveX, moveY, lookX, lookY);
@@ -235,8 +229,7 @@ public class InputManager : MonoBehaviour
 
     public void TogglePause(bool _pause)
     {
-        if(spawnManager && !SpawnManager.waveActive)
-            pause = _pause;
+        pause = _pause;
     }
 
     public void ToggleLoadoutMenu(bool _toggleLoadoutMenu)

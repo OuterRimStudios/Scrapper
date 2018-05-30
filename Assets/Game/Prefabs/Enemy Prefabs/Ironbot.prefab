@@ -3869,13 +3869,12 @@ MonoBehaviour:
   targetManager: {fileID: 0}
   boundLayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4096
   exclusionTags: []
   friendlyTag: 0
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: a55c158e1ebaec346861b8a09e2992d2, type: 2}
   - {fileID: 11400000, guid: 158f65cbbbdbc3b42b289a46a8459230, type: 2}
@@ -4093,6 +4092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 200
+  isDead: 0
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}

@@ -8,7 +8,6 @@ public class EFSetAttackTrigger : ExtraFunctionality
 
     public override void ExtraFunctions()
     {
-        print("EXTRA FUNCTIONS ---- >> ATTACK");
         anim.SetTrigger("Attack");
     }
 }

@@ -14,7 +14,7 @@ public class AnimationManager : MonoBehaviour
     public void SetAnimatorActive(bool activeState)
     {
         if(anim)
-        anim.enabled = activeState;
+            anim.enabled = activeState;
     }
 
     public void Attack()
@@ -29,13 +29,11 @@ public class AnimationManager : MonoBehaviour
 
     public void Idle()
     {
-        print("Idle");
         anim.SetBool("IsWalking", false);
     }
 
     public void Moving()
     {
-        print("Walk");
         anim.SetBool("IsWalking", true);
     }
 }

@@ -1,25 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EncounterSpawner : MonoBehaviour
 {
-    public List<Encount> possibleEncounters;
+    public List<Encounter> possibleEncounters;
     public List<Transform> spawnPoints;
     public List<LockableDoor> doors;
 
     public List<GameObject> activeEnemies = new List<GameObject>();
 
-    Encount randomEncounter;
+    private Encounter randomEncounter;
 
-    bool encounterSpawned;
-    bool doorsLocked;
+    private bool encounterSpawned;
+    private bool doorsLocked;
 
-    void Start()
+    private void Start()
     {
-        randomEncounter = possibleEncounters[Random.Range(0, possibleEncounters.Count)];
+        if(randomEncounter == null)
+            randomEncounter = possibleEncounters[Random.Range(0, possibleEncounters.Count)];
 
-        foreach (Encount encounter in possibleEncounters)
+        foreach(Encounter encounter in possibleEncounters)
             encounter.Initialize(this);
     }
 
@@ -27,7 +27,6 @@ public class EncounterSpawner : MonoBehaviour
     {
         PlayerHealth.OnPlayerDied += ResetEncounter;
     }
-
 
     private void OnDisable()
     {
@@ -40,7 +39,7 @@ public class EncounterSpawner : MonoBehaviour
         randomEncounter.SpawnEcnounters(spawnPoints);
         doorsLocked = true;
 
-        for (int i = 0; i < doors.Count; i++)                   // remove later
+        for(int i = 0; i < doors.Count; i++)                   // remove later
             doors[i].ChangeLockState(true);
     }
 
@@ -51,34 +50,35 @@ public class EncounterSpawner : MonoBehaviour
 
     public void RemoveEnemy(GameObject enemy)
     {
-        print("Trying to remove :" + enemy);
         if(activeEnemies.Contains(enemy))
         {
             activeEnemies.Remove(enemy);
-            if (activeEnemies.Count <= 0)
+            if(activeEnemies.Count <= 0)
             {
-                print("Enemies Left : " + activeEnemies.Count);
-                print("Doors " + doors.Count);
-
-                for (int i = 0; i < doors.Count; i++)                  // remove later
+                for(int i = 0; i < doors.Count; i++)                  // remove later
                     doors[i].ChangeLockState(false);
 
                 doorsLocked = false;
-                print("Doors locked = " + doorsLocked);
+                PlayerHealth.OnPlayerDied -= ResetEncounter;
             }
         }
-
     }
 
     public void ResetEncounter()
     {
-        if (!encounterSpawned) return;
-        foreach (GameObject go in activeEnemies)
-            Destroy(go);
+        if(!encounterSpawned) return;
+        foreach(GameObject go in activeEnemies)
+        {
+            AIHealth health = go.GetComponent<AIHealth>();
+            if(health != null)
+                health.DestroyEnemy();
+            else
+                Destroy(go);
+        }
 
         activeEnemies.Clear();
 
-        for (int i = 0; i < doors.Count; i++)                  // remove later
+        for(int i = 0; i < doors.Count; i++)                  // remove later
             doors[i].ChangeLockState(false);
 
         doorsLocked = false;
@@ -87,13 +87,19 @@ public class EncounterSpawner : MonoBehaviour
 
     public void ForceClearEncounter()
     {
-        if (!encounterSpawned) return;
-        foreach (GameObject go in activeEnemies)
-            Destroy(go);
+        if(!encounterSpawned) return;
+        foreach(GameObject go in activeEnemies)
+        {
+            AIHealth health = go.GetComponent<AIHealth>();
+            if(health != null)
+                health.DestroyEnemy();
+            else
+                Destroy(go);
+        }
 
         activeEnemies.Clear();
 
-        for (int i = 0; i < doors.Count; i++)                  // remove later
+        for(int i = 0; i < doors.Count; i++)                  // remove later
             doors[i].ChangeLockState(false);
 
         doorsLocked = false;
@@ -103,7 +109,7 @@ public class EncounterSpawner : MonoBehaviour
     {
         if(other.tag.Equals("Friendly"))
         {
-            if (encounterSpawned) return;
+            if(encounterSpawned) return;
             SpawnEncounter();
         }
     }

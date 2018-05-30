@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class RespawnPoint : MonoBehaviour {
-
-    void OnTriggerExit(Collider other)
+public class RespawnPoint : MonoBehaviour
+{
+    private void OnTriggerExit(Collider other)
     {
-        GameManager.instance.SetPlayerRespawnPoint(transform);
+        if(other.tag == "Friendly")
+            GameManager.instance.SetPlayerRespawnPoint(transform);
     }
 }
