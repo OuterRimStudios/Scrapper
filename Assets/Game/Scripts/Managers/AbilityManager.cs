@@ -67,17 +67,24 @@ public class AbilityManager : MonoBehaviour {
             Initialize();
     }
 
-	void Update()
+    void OnEnable()
+    {
+        PlayerHealth.OnPlayerDied += ResetCooldowns;
+    }
+
+    void OnDisable()
+    {
+        PlayerHealth.OnPlayerDied -= ResetCooldowns;
+    }
+
+    void Update()
 	{
 		CheckCooldowns();
 	}
 
 	public void Initialize()
 	{
-        cooldownQueues.Clear();
-
-		for(int i = 0; i < 5; i++)
-            cooldownQueues.Add(new Queue<float>());
+        ResetCooldowns();
 
         for(int i = 0; i < equippedAbilities.Count; i++)
         {
@@ -244,6 +251,19 @@ public class AbilityManager : MonoBehaviour {
 
             if(_remainingTime < .01f)
                 abilityCooldownProgress[abilityIndex].fillAmount = 0f;
+        }
+    }
+
+    void ResetCooldowns()
+    {
+        cooldownQueues.Clear();
+
+        for(int i = 0; i < 5; i++)
+        {
+            cooldownQueues.Add(new Queue<float>());
+            abilityCooldownProgress[i].fillAmount = 0;
+            equippedAbilities[i].ResetCooldown();
+            abilityCharges[i].text = equippedAbilities[i].abilityCharges.ToString();
         }
     }
 }
