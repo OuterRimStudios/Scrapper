@@ -54,7 +54,11 @@ MonoBehaviour:
   abilityName: Flamethrower
   abilityIcon: {fileID: 21300000, guid: ff4835628f1c589418a23f973fa9246f, type: 3}
   abilityDescription: A flamethrower that deals AoE damage.
-  abilityType: 0
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 1
+  abilityType: 4
   abilityCharges: 1
   chargeTime: 0
   abilityCooldown: 0
@@ -67,4 +71,5 @@ MonoBehaviour:
   sustainEffect: {fileID: 114377332701523678, guid: cd85265c65124084ab285efd9cd4e005,
     type: 2}
   initialDamage: 10
+  singleBarrel: 1
   beams: []

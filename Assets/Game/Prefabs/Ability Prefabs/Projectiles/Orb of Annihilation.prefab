@@ -57,6 +57,10 @@ MonoBehaviour:
     20\r\n<b><i>Cooldown:</i></b> 20 Seconds\r\n<b><i>Stun Duration:</i></b> 4 Seconds\r\n<b><i>Description:</i></b>
     Launch an orb of energy to deal high damage to the target and stun surrounding
     enemies for 4 seconds.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0

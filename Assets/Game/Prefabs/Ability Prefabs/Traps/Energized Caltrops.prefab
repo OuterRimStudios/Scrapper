@@ -56,6 +56,10 @@ MonoBehaviour:
   abilityDescription: "Name: Energized Caltrops\r\nDamage: 0\r\nCooldown: 10 Seconds\r\nStun
     Duration: 4 Seconds\r\nDescription: Place some energized caltrops that stun an
     enemy for 4 seconds when walked over.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0

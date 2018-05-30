@@ -58,6 +58,10 @@ MonoBehaviour:
     5\r\n<b><i>Description:</i></b> The next ability causes the target to take stacking
     damage over time on impact for 5 seconds. This effect is also applied to turrets
     and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0

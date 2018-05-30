@@ -57,6 +57,10 @@ MonoBehaviour:
     15 Seconds\r\n<b><i>Leech Percentage:</i></b> 10%\r\n<b><i>Description:</i></b>
     The next ability heals you for 10% of the damage it did. (Per enemy hit). This
     effect is also applied to turrets and traps.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 2
   abilityCharges: 1
   chargeTime: 0

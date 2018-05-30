@@ -57,6 +57,10 @@ MonoBehaviour:
     Damage:</i></b> 100,000\r\n<b><i>Area Damage:</i></b> 4\r\n<b><i>Cooldown:</i></b>
     1.5 Seconds\r\n<b><i>Description:</i></b> Fire a ball of plasma that explodes
     on impact dealing damage to surrounding enemies.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 0
   abilityCharges: 1
   chargeTime: 0
@@ -72,4 +76,4 @@ MonoBehaviour:
   refManager: {fileID: 0}
   projectile: {fileID: 114598048955452350, guid: f6529f9bc28414649ba843f21ebfc0f0,
     type: 2}
-  initialDamage: 100000
+  initialDamage: 12

@@ -98,40 +98,42 @@ public class AbilityManager : MonoBehaviour {
             else
                 abilityCharges[i].enabled = false;
         }
-		
-      //  if(LoadoutPresetManager.instance.CurrentPreset != null)
-		    //currentLoadout = LoadoutPresetManager.instance.CurrentPreset;
-      //  else
-      //      currentLoadout = LoadoutPresetManager.instance.AllPresets[0];
 
-		//InitializeAbilityDisplay();
-	}
+        InitializeAbilityDisplay();
+    }
 
 	void InitializeAbilityDisplay()
 	{
-		if(abilityDisplayArea && currentLoadout != null)
-			abilityDisplayArea.Initialize(currentLoadout.ActiveAbilities, currentLoadout.LoadoutAbilities);
+		if(abilityDisplayArea)
+			abilityDisplayArea.Initialize(equippedAbilities);
 
         UpdateAbilities(-1);
 	}
 
+    public void EquipAbilityItem(int abilitySlotIndex, AbilityItem abilityItem)
+    {
+        foreach(Ability ability in allAbilities)
+        {
+            if(abilityItem.ItemName == ability.abilityName)
+            {
+                ChangeAbility(abilitySlotIndex, ability);
+            }
+        }
+    }
+
     public void ChangeAbility(int abilitySlotIndex, Ability newAbility)
     {
-        currentLoadout.ActiveAbilities[abilitySlotIndex] = newAbility;
         if (abilitySlotIndex != -1)
         {
-            currentLoadout.LoadoutAbilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
-            if (abilityDisplayArea.abilityLoadoutOptions.Contains(currentLoadout.LoadoutAbilities[abilitySlotIndex]))
-            {
-                int slotIndex = abilityDisplayArea.abilityLoadoutOptions.IndexOf(currentLoadout.ActiveAbilities[abilitySlotIndex]);
-                abilityDisplayArea.loadoutAbilitySlots[slotIndex].AbilityActive(false);
-            }
+            equippedAbilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
 
+            equippedAbilities[abilitySlotIndex] = newAbility;
+       
             if (abilityCharges.Count > 0)
             {
-                abilityCharges[abilitySlotIndex].text = currentLoadout.ActiveAbilities[abilitySlotIndex].charges.ToString();
+                abilityCharges[abilitySlotIndex].text = equippedAbilities[abilitySlotIndex].charges.ToString();
 
-                if (currentLoadout.ActiveAbilities[abilitySlotIndex].abilityCharges <= 1)
+                if (equippedAbilities[abilitySlotIndex].abilityCharges <= 1)
                     abilityCharges[abilitySlotIndex].enabled = false;
                 else
                     abilityCharges[abilitySlotIndex].enabled = true;
@@ -140,14 +142,14 @@ public class AbilityManager : MonoBehaviour {
 
         if (abilityIcons.Count > 0)
         {
-            for (int i = 0; i < currentLoadout.ActiveAbilities.Count; i++)
+            for (int i = 0; i < equippedAbilities.Count; i++)
             {
-                currentLoadout.ActiveAbilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
-                abilityIcons[i].sprite = currentLoadout.ActiveAbilities[i].abilityIcon;
+                equippedAbilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
+                abilityIcons[i].sprite = equippedAbilities[i].abilityIcon;
 
-                if (currentLoadout.ActiveAbilities[i].abilityCharges > 1)
+                if (equippedAbilities[i].abilityCharges > 1)
                 {
-                    abilityCharges[i].text = currentLoadout.ActiveAbilities[i].abilityCharges.ToString();
+                    abilityCharges[i].text = equippedAbilities[i].abilityCharges.ToString();
                     abilityCharges[i].enabled = true;
                 }
             }
@@ -158,19 +160,14 @@ public class AbilityManager : MonoBehaviour {
 	{
 		if(abilitySlotIndex != -1)
         {
-            currentLoadout.LoadoutAbilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
-            if(abilityDisplayArea.abilityLoadoutOptions.Contains(currentLoadout.LoadoutAbilities[abilitySlotIndex]))
-            {
-                int slotIndex = abilityDisplayArea.abilityLoadoutOptions.IndexOf(currentLoadout.ActiveAbilities[abilitySlotIndex]);
-                abilityDisplayArea.loadoutAbilitySlots[slotIndex].AbilityActive(false);
-            }
-            currentLoadout.ActiveAbilities[abilitySlotIndex] = abilityDisplayArea.currentActiveAbilitySlot.abilityInSlot;
+            equippedAbilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
+            equippedAbilities[abilitySlotIndex] = abilityDisplayArea.currentActiveAbilitySlot.abilityInSlot;
 
             if(abilityCharges.Count > 0)
             {
-                abilityCharges[abilitySlotIndex].text = currentLoadout.ActiveAbilities[abilitySlotIndex].charges.ToString();
+                abilityCharges[abilitySlotIndex].text = equippedAbilities[abilitySlotIndex].charges.ToString();
 
-                if (currentLoadout.ActiveAbilities[abilitySlotIndex].abilityCharges <= 1)
+                if (equippedAbilities[abilitySlotIndex].abilityCharges <= 1)
                     abilityCharges[abilitySlotIndex].enabled = false;
                 else
                     abilityCharges[abilitySlotIndex].enabled = true;
@@ -179,14 +176,14 @@ public class AbilityManager : MonoBehaviour {
 
         if(abilityIcons.Count > 0)
         {
-            for(int i = 0; i < currentLoadout.ActiveAbilities.Count; i++)
+            for(int i = 0; i < equippedAbilities.Count; i++)
             {
-                currentLoadout.ActiveAbilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
-                abilityIcons[i].sprite = currentLoadout.ActiveAbilities[i].abilityIcon;
+                equippedAbilities[i].OnCooldownFinished += UpdateAbiltyCharges; //move this to subscribe after changing abilities
+                abilityIcons[i].sprite = equippedAbilities[i].abilityIcon;
 
-                if(currentLoadout.ActiveAbilities[i].abilityCharges > 1)
+                if(equippedAbilities[i].abilityCharges > 1)
                 {
-                    abilityCharges[i].text = currentLoadout.ActiveAbilities[i].abilityCharges.ToString();
+                    abilityCharges[i].text = equippedAbilities[i].abilityCharges.ToString();
                     abilityCharges[i].enabled = true;
                 }
             }

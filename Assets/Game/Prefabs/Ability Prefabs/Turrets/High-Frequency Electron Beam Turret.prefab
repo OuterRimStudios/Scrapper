@@ -56,6 +56,10 @@ MonoBehaviour:
   abilityDescription: "<b><i>Name:</i></b> High-Frequency Electron Beam\r Turret\n<b><i>Damage:</i></b>
     4 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 1 Second\r\n<b><i>Description:</i></b>
     Fire a beam of energy that frequently deals damage.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 3
   abilityCharges: 2
   chargeTime: 0

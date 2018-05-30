@@ -57,6 +57,10 @@ MonoBehaviour:
     8\r\n<b><i>Bleed Damage:</i></b> 1 / 0.5 Seconds\r\n<b><i>Cooldown:</i></b> 5
     Seconds\r\n<b><i>Description:</i></b> Place a spike trap that deals damage when
     an enemy steps on the spikes. Applies bleed damage for 5 seconds.\r\n"
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 1
   abilityCharges: 1
   chargeTime: 0

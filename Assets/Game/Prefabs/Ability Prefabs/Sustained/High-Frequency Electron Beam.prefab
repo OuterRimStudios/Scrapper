@@ -54,6 +54,10 @@ MonoBehaviour:
   abilityName: High-Frequency Electron Beam
   abilityIcon: {fileID: 21300000, guid: 17ad7d1d940134d4297748215718c474, type: 3}
   abilityDescription: High-Frequency Electron Beam
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 1
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0
@@ -67,4 +71,5 @@ MonoBehaviour:
   beamPrefab: {fileID: 114956161982930666, guid: a0110e851f5bca741b552c4d37384f5f,
     type: 2}
   initialDamage: 10
+  singleBarrel: 1
   beams: []
