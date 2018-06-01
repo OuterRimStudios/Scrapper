@@ -286,7 +286,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 			foreach(Ability _ability in loadoutBuilder.SelectedAbilities)
 				loadoutAbilityNames.Add(_ability.abilityName);
 
-			foreach(ActiveAbilitySlot activeSlot in abilityDisplayArea.activeAbilitySlots)
+			foreach(AbilitySlot activeSlot in abilityDisplayArea.abilitySlots)
 			{
 				if(!loadoutBuilder.SelectedAbilities.Contains(activeSlot.abilityInSlot))
 				{
@@ -295,10 +295,10 @@ public class LoadoutPresetManager : MonoBehaviour {
 						if(!activeAbilityNames.Contains(loadoutBuilder.SelectedAbilities[i].abilityName))
 						{
 							List<string> activeNames = new List<string>();
-							for(int j = 0; j < abilityDisplayArea.activeAbilitySlots.Count; j++)
+							for(int j = 0; j < abilityDisplayArea.abilitySlots.Count; j++)
 							{
-								if(abilityDisplayArea.activeAbilitySlots[j].abilityInSlot != null)
-									activeNames.Add(abilityDisplayArea.activeAbilitySlots[j].abilityInSlot.abilityName);
+								if(abilityDisplayArea.abilitySlots[j].abilityInSlot != null)
+									activeNames.Add(abilityDisplayArea.abilitySlots[j].abilityInSlot.abilityName);
 							}
 
 							if(!activeNames.Contains(loadoutBuilder.SelectedAbilities[i].abilityName))
@@ -339,7 +339,7 @@ public class LoadoutPresetManager : MonoBehaviour {
 		List<string> activeAbilityNames = new List<string>();
 		List<string> loadoutAbilityNames = new List<string>();
 
-		foreach(ActiveAbilitySlot activeSlot in abilityDisplayArea.activeAbilitySlots)
+		foreach(AbilitySlot activeSlot in abilityDisplayArea.abilitySlots)
 			activeAbilityNames.Add(activeSlot.abilityInSlot.name);
 
 		foreach(Ability loadoutAbility in loadoutBuilder.SelectedAbilities)

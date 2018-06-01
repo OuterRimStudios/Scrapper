@@ -58,9 +58,9 @@ public class AbilityManager : MonoBehaviour {
     {
         if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0)
         {
-            for(int i = 0; i < abilityDisplayArea.activeAbilitySlots.Count; i++)
+            for(int i = 0; i < abilityDisplayArea.abilitySlots.Count; i++)
             {
-                abilityDisplayArea.activeAbilitySlots[i].GetComponent<Button>().onClick.AddListener(delegate { OnAbilitiesUpdated(); });
+                abilityDisplayArea.abilitySlots[i].GetComponent<Button>().onClick.AddListener(delegate { OnAbilitiesUpdated(); });
             }
         }
         else
@@ -126,7 +126,6 @@ public class AbilityManager : MonoBehaviour {
         if (abilitySlotIndex != -1)
         {
             equippedAbilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
-
             equippedAbilities[abilitySlotIndex] = newAbility;
        
             if (abilityCharges.Count > 0)

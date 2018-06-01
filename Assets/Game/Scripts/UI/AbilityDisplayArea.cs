@@ -1,52 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AbilityDisplayArea : MonoBehaviour
 {
-    public List<ActiveAbilitySlot> activeAbilitySlots;
+    public List<AbilitySlot> abilitySlots;
 
     [HideInInspector]
-    public ActiveAbilitySlot currentActiveAbilitySlot;
+    public AbilitySlot currentActiveAbilitySlot;
 
     bool lookingForAbility;
 
     public void Initialize(List<Ability> actvieAbilities)
     {
         for(int k = 0; k < actvieAbilities.Count; k++)
-            activeAbilitySlots[k].SetAbilitySlot(actvieAbilities[k]);
+            abilitySlots[k].SetAbilitySlot(actvieAbilities[k]);
+
+        EventSystem.current.SetSelectedGameObject(abilitySlots[0].gameObject, null);
     }
 
-    public void SelectAbility(ActiveAbilitySlot abilitySlot)
+    public void SelectAbility(AbilitySlot abilitySlot)
     {
         if(abilitySlot.abilityInSlot == null) return;
 
-        if(abilitySlot.slotType == ActiveAbilitySlot.SlotType.Active)
+        if(lookingForAbility)
         {
-            if(lookingForAbility)
-            {
-                ActiveAbilitySlot oldSlot = currentActiveAbilitySlot;
-                ActiveAbilitySlot newSlot = abilitySlot;
+            AbilitySlot oldSlot = currentActiveAbilitySlot;
+            AbilitySlot newSlot = abilitySlot;
 
-                int oldAbilitySlotIndex = activeAbilitySlots.IndexOf(oldSlot);
-                int newAbilitySlotIndex = activeAbilitySlots.IndexOf(newSlot);
+            int oldAbilitySlotIndex = abilitySlots.IndexOf(oldSlot);
+            int newAbilitySlotIndex = abilitySlots.IndexOf(newSlot);
 
-                Ability oldAbility = oldSlot.abilityInSlot;
-                Ability newAbility = newSlot.abilityInSlot;
+            Ability oldAbility = oldSlot.abilityInSlot;
+            Ability newAbility = newSlot.abilityInSlot;
                 
-                oldSlot.SetAbilitySlot(newAbility);
-                newSlot.SetAbilitySlot(oldAbility);
+            oldSlot.SetAbilitySlot(newAbility);
+            newSlot.SetAbilitySlot(oldAbility);
 
-                AbilityManager.instance.ChangeAbility(oldAbilitySlotIndex, newAbility);
-                AbilityManager.instance.ChangeAbility(newAbilitySlotIndex, oldAbility);
+            AbilityManager.instance.ChangeAbility(oldAbilitySlotIndex, newAbility);
+            AbilityManager.instance.ChangeAbility(newAbilitySlotIndex, oldAbility);
 
-                lookingForAbility = false;
-            }
-            else
-            {
-                lookingForAbility = true;
-                currentActiveAbilitySlot = abilitySlot;
-            }
+            lookingForAbility = false;
+        }
+        else
+        {
+            lookingForAbility = true;
+            currentActiveAbilitySlot = abilitySlot;
         }
     }
 }

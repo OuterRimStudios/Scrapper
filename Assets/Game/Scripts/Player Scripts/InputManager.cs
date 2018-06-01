@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public float radialMenuTimeScale = 0.5f;
     public GameObject hud;
     public GameObject pauseMenu;
+    public AbilityDisplayArea abilityDisplayArea;
     public Text loadoutMenuWaveActiveText;
 
     public bool hideCursor = true;
@@ -23,6 +24,7 @@ public class InputManager : MonoBehaviour
     bool interact;
     bool toggleView;
     bool toggleRadialMenu;
+    bool toggleAbilityDisplayArea;
     bool pause;
     bool turningOffText;
     public static bool acceptInput;
@@ -86,6 +88,15 @@ public class InputManager : MonoBehaviour
             if(!toggleRadialMenu)
                 cameraController.RecieveInput(lookY);
 
+            if (interact)
+            {
+                toggleAbilityDisplayArea = !toggleAbilityDisplayArea;
+                abilityDisplayArea.gameObject.SetActive(toggleAbilityDisplayArea);
+
+                if (abilityDisplayArea.gameObject.activeInHierarchy)
+                    abilityDisplayArea.Initialize(AbilityManager.instance.equippedAbilities);
+            }
+
             if(toggleView)
             {
                 playerRefManager.SwitchView();
@@ -111,7 +122,7 @@ public class InputManager : MonoBehaviour
                 playerMovement.Jump();
         }
 
-        if(pause)
+        if(pause || toggleAbilityDisplayArea)
         {
             if(!Cursor.visible)
             {
@@ -195,6 +206,13 @@ public class InputManager : MonoBehaviour
         {
             CameraController.canAct = false;
             PlayerMovement.canRotate = false;
+        }
+        else if(toggleAbilityDisplayArea)
+        {
+            canShoot = false;
+            PlayerMovement.canMove = false;
+            PlayerMovement.canRotate = false;
+            CameraController.canAct = false;
         }
         else
         {

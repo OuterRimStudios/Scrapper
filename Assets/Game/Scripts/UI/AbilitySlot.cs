@@ -3,29 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActiveAbilitySlot : MonoBehaviour
+public class AbilitySlot : MonoBehaviour
 {
     public AbilityDisplayArea abilityDisplayArea;
     public Text abilityDescriptionTextBox;
 
     //[HideInInspector]
     public Ability abilityInSlot;
-    Image abilityIcon;
+    public Image abilityIcon;
 
     [HideInInspector]
     public bool abilityActive;
 
-    public enum SlotType
-    {
-        Active,
-        Option
-    }
-
-    public SlotType slotType;
-
     private void Awake()
     {
-        abilityIcon = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         GetComponent<Button>().onClick.AddListener(() => abilityDisplayArea.SelectAbility(this));
     }
 
@@ -39,9 +30,6 @@ public class ActiveAbilitySlot : MonoBehaviour
 
     public void SetAbilitySlot(Ability newAbility)
     {
-        if(!abilityIcon)
-            abilityIcon = transform.GetChild(0).GetChild(0).GetComponent<Image>();
-
         abilityInSlot = newAbility;
 
         if(abilityInSlot == null) return;
