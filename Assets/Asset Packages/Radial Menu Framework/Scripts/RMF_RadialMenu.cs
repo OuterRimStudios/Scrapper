@@ -129,10 +129,14 @@ public class RMF_RadialMenu : MonoBehaviour
                 selectButton(index);
 
                 //If we click or press a "submit" button (Button on joystick, enter, or spacebar), then we'll execut the OnClick() function for the button.
-                //if(elements[index].active)     //Input.GetMouseButtonDown(0) || Input.GetButtonDown("Submit")
-                //{
-                //    ExecuteEvents.Execute(elements[index].button.gameObject, pointer, ExecuteEvents.submitHandler);
-                //}
+                if (elements[index].active)     //Input.GetMouseButtonDown(0) || Input.GetButtonDown("Submit")
+                {
+                    //ExecuteEvents.Execute(elements[index].button.gameObject, pointer, ExecuteEvents.submitHandler);
+                }
+                else
+                {
+
+                }
             }
         }
 
