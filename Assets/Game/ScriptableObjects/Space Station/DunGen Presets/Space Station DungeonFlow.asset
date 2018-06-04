@@ -18,7 +18,17 @@ MonoBehaviour:
   GlobalPropRanges: []
   KeyManager: {fileID: 11400000, guid: f57bb7b5f4e4bd54db0f7d7ff5fcdf7f, type: 2}
   DoorwayConnectionChance: 0
-  TileInjectionRules: []
+  TileInjectionRules:
+  - TileSet: {fileID: 11400000, guid: d2cd80dbeb9aa1842b21f03767ac0bbc, type: 2}
+    NormalizedPathDepth:
+      Min: 0
+      Max: 1
+    NormalizedBranchDepth:
+      Min: 0.5
+      Max: 1
+    CanAppearOnMainPath: 0
+    CanAppearOnBranchPath: 1
+    IsRequired: 1
   Nodes:
   - Graph: {fileID: 11400000}
     TileSets:
