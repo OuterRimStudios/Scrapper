@@ -5,6 +5,13 @@ using UnityEngine;
 public class Terminal : MonoBehaviour
 {
     InputManager inputManager;
+    AbilityItem terminalAbility;
+
+    private void Start()
+    {
+        terminalAbility = LootWrangler.instance.GetRandomAbility();
+        AbilityDisplayArea.instance.SetNewItemSlot(terminalAbility.ability);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

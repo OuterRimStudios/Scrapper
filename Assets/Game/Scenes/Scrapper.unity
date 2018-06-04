@@ -1844,6 +1844,7 @@ GameObject:
   - component: {fileID: 93307251}
   - component: {fileID: 93307254}
   - component: {fileID: 93307255}
+  - component: {fileID: 93307256}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -1940,6 +1941,39 @@ MonoBehaviour:
     DungeonFlow: {fileID: 11400000, guid: e6f1c739651dd574c96ecc826d3b7447, type: 2}
   GenerateOnStart: 1
   Root: {fileID: 215713216}
+--- !u!114 &93307256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93307250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8168a8fe8fd0d1b40a33d36de7aa2a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityItems:
+  - {fileID: 11400000, guid: 0a3e0fffd3bc27a4fa39e6174c1ebfa6, type: 2}
+  - {fileID: 11400000, guid: b218d1e3746c2fd458c0f2343d256cc6, type: 2}
+  - {fileID: 11400000, guid: 2ce76d9bc7078554eb6234074c083353, type: 2}
+  - {fileID: 11400000, guid: ea8abcb570ee33d448e6cf953f6672b8, type: 2}
+  - {fileID: 11400000, guid: 0706905a74016144f9d605b684028dfb, type: 2}
+  - {fileID: 11400000, guid: e3642518165a90440a4a3c29e0c942d4, type: 2}
+  - {fileID: 11400000, guid: 26a53618a74ccd741baf864b7eb83fb4, type: 2}
+  - {fileID: 11400000, guid: d23c6a89305178c4a9053565d0761ba1, type: 2}
+  - {fileID: 11400000, guid: d6cf2933d37efe244a5bd3939489db26, type: 2}
+  - {fileID: 11400000, guid: ce80bd9b6fcada040b92f431eaffc775, type: 2}
+  - {fileID: 11400000, guid: 28a43d7f4bbeb024387a9818f1d79dc3, type: 2}
+  - {fileID: 11400000, guid: 555e1cf9076fb754d8674c3fc3677ca1, type: 2}
+  - {fileID: 11400000, guid: 3a5ffb50436236f43afc5566363d3146, type: 2}
+  - {fileID: 11400000, guid: 7680491e0bf648e439bb6e32a3c65993, type: 2}
+  - {fileID: 11400000, guid: 1b373c31825b84243a66f1e079a27232, type: 2}
+  - {fileID: 11400000, guid: 9064c51e031566544ab13d2da6ccff09, type: 2}
+  - {fileID: 11400000, guid: 4a7e8df424bd99640b8e45cfe0374021, type: 2}
+  - {fileID: 11400000, guid: 85eaf305e4828b64b9b105bff1fa984f, type: 2}
+  - {fileID: 11400000, guid: 2b1050ec5d335c847898fc21bf00c774, type: 2}
+  - {fileID: 11400000, guid: a99c1ec7e4222084e8bcaa32748372b4, type: 2}
+  - {fileID: 11400000, guid: 56ed99be03cd56a43b0d028c2b23f0f4, type: 2}
 --- !u!1 &93466791
 GameObject:
   m_ObjectHideFlags: 0
@@ -13656,6 +13690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilitySlots: []
+  newItemSlot: {fileID: 0}
   currentActiveAbilitySlot: {fileID: 0}
 --- !u!1 &598605887
 GameObject:
@@ -30487,6 +30522,7 @@ MonoBehaviour:
   - {fileID: 1313674520}
   - {fileID: 1766703072}
   - {fileID: 1352455019}
+  newItemSlot: {fileID: 522503897}
   currentActiveAbilitySlot: {fileID: 0}
 --- !u!1 &1300195949
 GameObject:

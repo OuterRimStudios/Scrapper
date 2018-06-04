@@ -123,6 +123,9 @@ public class AbilityManager : MonoBehaviour {
 
     public void ChangeAbility(int abilitySlotIndex, Ability newAbility)
     {
+        if(!newAbility.gameObject.activeInHierarchy)                    //If this is false, then newAbility is probably referencing the prefab
+            newAbility = GetAbilityByName(newAbility.abilityName);
+
         if (abilitySlotIndex != -1)
         {
             equippedAbilities[abilitySlotIndex].OnCooldownFinished -= UpdateAbiltyCharges; //Move this to unsubscribe before changing abilities
@@ -288,5 +291,19 @@ public class AbilityManager : MonoBehaviour {
             equippedAbilities[i].ResetCooldown();
             abilityCharges[i].text = equippedAbilities[i].abilityCharges.ToString();
         }
+    }
+
+    public Ability GetAbilityByName(string abilityName)
+    {
+        foreach(Ability ability in allAbilities)
+        {
+            if(abilityName == ability.abilityName)
+            {
+                return ability;
+            }
+        }
+
+        Debug.LogError("No item found with the name: " + abilityName);
+        return null;
     }
 }
