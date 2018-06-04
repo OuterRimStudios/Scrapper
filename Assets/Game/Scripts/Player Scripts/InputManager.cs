@@ -105,7 +105,6 @@ public class InputManager : MonoBehaviour
 
             if(toggleRadialMenu)
             {
-                print("Toggle Radial Menu");
                 canShoot = false;
                 hud.SetActive(false);
                 radialMenu.gameObject.SetActive(true);
@@ -164,7 +163,7 @@ public class InputManager : MonoBehaviour
 
             if(AbilityManager.instance.currentAbility.charges >= 0)
             {
-                AbilityManager.instance.cooldownQueues[AbilityManager.instance.CurrentAbilityIndex].Enqueue(Time.time);
+                AbilityManager.instance.cooldownQueues[AbilityManager.instance.CurrentAbilityIndex].Add(Time.time);
             }
         }
         else if(AbilityManager.instance.currentAbility && abilityDeactive)
@@ -188,7 +187,6 @@ public class InputManager : MonoBehaviour
                 pause = false;
 
             toggleRadialMenu = true;
-            print("Toggle Radial Menu Input");
         }
         else
         {

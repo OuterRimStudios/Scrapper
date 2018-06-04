@@ -44,7 +44,7 @@ public class AbilityManager : MonoBehaviour {
     public List<Image> abilityIcons;
     public List<TextMeshProUGUI> abilityCharges;
     public List<Image> abilityCooldownProgress;
-    public List<Queue<float>> cooldownQueues = new List<Queue<float>>();
+    public List<List<float>> cooldownQueues = new List<List<float>>();
 
 	public List<Ability> allAbilities = new List<Ability>();
 
@@ -191,19 +191,19 @@ public class AbilityManager : MonoBehaviour {
 
     public void SwapCooldownQueueus(int indexOne, int indexTwo)
     {
-        Queue<float> tempQueue = new Queue<float>();
+        List<float> tempQueue = new List<float>();
         foreach (float cooldown in cooldownQueues[indexTwo])
-            tempQueue.Enqueue(cooldown);
-
+            tempQueue.Add(cooldown);
+        
         cooldownQueues[indexTwo].Clear();
 
         foreach (float cooldown in cooldownQueues[indexOne])
-            cooldownQueues[indexTwo].Enqueue(cooldown);
+           cooldownQueues[indexTwo].Add(cooldown);
 
         cooldownQueues[indexOne].Clear();
 
         foreach (float cooldown in tempQueue)
-            cooldownQueues[indexOne].Enqueue(cooldown);
+            cooldownQueues[indexOne].Add(cooldown);
     }
 
     public void SetCurrentAbility(Ability newAbility)
@@ -247,24 +247,28 @@ public class AbilityManager : MonoBehaviour {
         for(int i = 0; i < cooldownQueues.Count; i++)
         {
             if(cooldownQueues[i].Count > 0)
-                remainingTime = ((cooldownQueues[i].Peek() + equippedAbilities[i].abilityCooldown) - Time.time) / equippedAbilities[i].abilityCooldown;
+                remainingTime = ((cooldownQueues[i][0] + equippedAbilities[i].abilityCooldown) - Time.time) / equippedAbilities[i].abilityCooldown;
 
             if(remainingTime < .01f && cooldownQueues[i].Count > 0)
-                cooldownQueues[i].Dequeue();
+                cooldownQueues[i].RemoveAt(0);
         }
     }
 
     void Cooldown(int abilityIndex)
     {
-        if(cooldownQueues.Count <= 0) return;
+        if (cooldownQueues.Count <= 0)
+            return;
+
         if(cooldownQueues[abilityIndex].Count > 0)
         {
-            float _remainingTime = ((cooldownQueues[abilityIndex].Peek() + equippedAbilities[abilityIndex].abilityCooldown) - Time.time) / equippedAbilities[abilityIndex].abilityCooldown;
+            float _remainingTime = ((cooldownQueues[abilityIndex][0] + equippedAbilities[abilityIndex].abilityCooldown) - Time.time) / equippedAbilities[abilityIndex].abilityCooldown;
             abilityCooldownProgress[abilityIndex].fillAmount = _remainingTime;
 
             if(_remainingTime < .01f)
                 abilityCooldownProgress[abilityIndex].fillAmount = 0f;
         }
+        else
+            abilityCooldownProgress[abilityIndex].fillAmount = 0f;
     }
 
     void ResetCooldowns()
@@ -273,7 +277,7 @@ public class AbilityManager : MonoBehaviour {
 
         for(int i = 0; i < 5; i++)
         {
-            cooldownQueues.Add(new Queue<float>());
+            cooldownQueues.Add(new List<float>());
             abilityCooldownProgress[i].fillAmount = 0;
             equippedAbilities[i].ResetCooldown();
             abilityCharges[i].text = equippedAbilities[i].abilityCharges.ToString();
