@@ -105,6 +105,7 @@ public class InputManager : MonoBehaviour
 
             if(toggleRadialMenu)
             {
+                print("Toggle Radial Menu");
                 canShoot = false;
                 hud.SetActive(false);
                 radialMenu.gameObject.SetActive(true);
@@ -187,6 +188,7 @@ public class InputManager : MonoBehaviour
                 pause = false;
 
             toggleRadialMenu = true;
+            print("Toggle Radial Menu Input");
         }
         else
         {

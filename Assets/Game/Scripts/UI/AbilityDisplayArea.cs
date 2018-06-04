@@ -34,7 +34,9 @@ public class AbilityDisplayArea : MonoBehaviour
 
             Ability oldAbility = oldSlot.abilityInSlot;
             Ability newAbility = newSlot.abilityInSlot;
-                
+
+            AbilityManager.instance.SwapCooldownQueueus(oldAbilitySlotIndex, newAbilitySlotIndex);
+
             oldSlot.SetAbilitySlot(newAbility);
             newSlot.SetAbilitySlot(oldAbility);
 

@@ -189,6 +189,23 @@ public class AbilityManager : MonoBehaviour {
         }
 	}
 
+    public void SwapCooldownQueueus(int indexOne, int indexTwo)
+    {
+        Queue<float> tempQueue = new Queue<float>();
+        foreach (float cooldown in cooldownQueues[indexTwo])
+            tempQueue.Enqueue(cooldown);
+
+        cooldownQueues[indexTwo].Clear();
+
+        foreach (float cooldown in cooldownQueues[indexOne])
+            cooldownQueues[indexTwo].Enqueue(cooldown);
+
+        cooldownQueues[indexOne].Clear();
+
+        foreach (float cooldown in tempQueue)
+            cooldownQueues[indexOne].Enqueue(cooldown);
+    }
+
     public void SetCurrentAbility(Ability newAbility)
     {
         if(equippedAbilities.Contains(newAbility))
