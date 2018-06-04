@@ -18,6 +18,9 @@ public class AbilitySlot : MonoBehaviour
     private void Awake()
     {
         GetComponent<Button>().onClick.AddListener(() => abilityDisplayArea.SelectAbility(this));
+
+        if (abilityInSlot)
+            SetAbilitySlot(abilityInSlot);
     }
 
     public void ClearSlot()

@@ -191,19 +191,25 @@ public class AbilityManager : MonoBehaviour {
 
     public void SwapCooldownQueueus(int indexOne, int indexTwo)
     {
-        List<float> tempQueue = new List<float>();
-        foreach (float cooldown in cooldownQueues[indexTwo])
-            tempQueue.Add(cooldown);
-        
-        cooldownQueues[indexTwo].Clear();
+        if (indexOne != -1 && indexTwo != -1)
+        {
+            List<float> tempQueue = new List<float>();
+            foreach (float cooldown in cooldownQueues[indexTwo])
+                tempQueue.Add(cooldown);
 
-        foreach (float cooldown in cooldownQueues[indexOne])
-           cooldownQueues[indexTwo].Add(cooldown);
+            cooldownQueues[indexTwo].Clear();
 
-        cooldownQueues[indexOne].Clear();
+            foreach (float cooldown in cooldownQueues[indexOne])
+                cooldownQueues[indexTwo].Add(cooldown);
 
-        foreach (float cooldown in tempQueue)
-            cooldownQueues[indexOne].Add(cooldown);
+            cooldownQueues[indexOne].Clear();
+
+            foreach (float cooldown in tempQueue)
+                cooldownQueues[indexOne].Add(cooldown);
+        }
+        else
+            ResetCooldowns();
+        //Removed if it becomes exploitable
     }
 
     public void SetCurrentAbility(Ability newAbility)
