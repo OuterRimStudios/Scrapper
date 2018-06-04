@@ -14396,11 +14396,11 @@ MonoBehaviour:
   - {fileID: 155696874}
   currentAbility: {fileID: 1352706816}
   equippedAbilities:
-  - {fileID: 1352706816}
-  - {fileID: 184704011}
-  - {fileID: 526834952}
-  - {fileID: 653852626}
-  - {fileID: 1026614935}
+  - {fileID: 155696874}
+  - {fileID: 2030951218}
+  - {fileID: 1513604375}
+  - {fileID: 153909834}
+  - {fileID: 558940418}
 --- !u!1001 &626050841
 Prefab:
   m_ObjectHideFlags: 0
@@ -34520,6 +34520,7 @@ MonoBehaviour:
   abilityDisplayArea: {fileID: 1298617740}
   loadoutMenuWaveActiveText: {fileID: 1633503347}
   hideCursor: 1
+  canInteract: 0
 --- !u!143 &1430053479
 CharacterController:
   m_ObjectHideFlags: 0

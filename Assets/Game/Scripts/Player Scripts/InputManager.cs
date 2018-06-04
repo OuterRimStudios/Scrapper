@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
     PlayerReferenceManager playerRefManager;
     PlayerMovement playerMovement;
     CameraController cameraController;
-
+    [HideInInspector] public bool canInteract;
     Player player;
 
     private void Awake()
@@ -181,7 +181,7 @@ public class InputManager : MonoBehaviour
                 pause = !pause;
         }
 
-        if(player.GetButton("AbilityMenu"))
+        if(player.GetButton("AbilityMenu") && !toggleAbilityDisplayArea)
         {
             if(pause)
                 pause = false;
@@ -229,7 +229,10 @@ public class InputManager : MonoBehaviour
         else
             jump = player.GetButton("Jump");
 
-        interact = player.GetButtonDown("Interact");
+        if (canInteract)
+            interact = player.GetButtonDown("Interact");
+        else
+            interact = false;
 
         if(AbilityManager.instance.currentAbility.abilityInput == Ability.AbilityInput.GetButton)
             abilityActive = player.GetButton("ActivateAbility");
