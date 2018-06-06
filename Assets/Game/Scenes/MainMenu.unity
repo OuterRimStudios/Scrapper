@@ -15118,6 +15118,48 @@ MonoBehaviour:
   turretsAbilities:
   - {fileID: 114539408705625848, guid: 64a6cc03fdcc2dc45a16697bc98cb71e, type: 2}
   - {fileID: 114687971000794884, guid: da3bfb59f5fb295418d0caf1c2639a6d, type: 2}
+--- !u!1001 &1047885947
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1699650604}
+    m_Modifications:
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3691.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 84374294d519e354cac831295bcdf906, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1048129381
 GameObject:
   m_ObjectHideFlags: 0
@@ -17215,6 +17257,7 @@ GameObject:
   - component: {fileID: 1177296974}
   - component: {fileID: 1177296973}
   - component: {fileID: 1177296972}
+  - component: {fileID: 1177296976}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -17257,11 +17300,11 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -17285,6 +17328,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 51.265003, z: 0}
+--- !u!114 &1177296976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177296971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 38a0093b03400094e81dcbed7bd028bd, type: 2}
 --- !u!1 &1182133074
 GameObject:
   m_ObjectHideFlags: 0
@@ -19164,6 +19219,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 23397427498326624, guid: 37c3b8fa88a66de4ebedc6eebda21fe5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bb405589c983a24c9066a4c22e59675, type: 2}
+    - target: {fileID: 23906979287702664, guid: 37c3b8fa88a66de4ebedc6eebda21fe5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bb405589c983a24c9066a4c22e59675, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37c3b8fa88a66de4ebedc6eebda21fe5, type: 2}
   m_IsPrefabParent: 0
@@ -22481,6 +22546,11 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!4 &1511026695 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4437200089028038, guid: 84374294d519e354cac831295bcdf906,
+    type: 2}
+  m_PrefabInternal: {fileID: 1047885947}
 --- !u!1 &1518979711
 GameObject:
   m_ObjectHideFlags: 0
@@ -25491,6 +25561,7 @@ Transform:
   - {fileID: 1966859303}
   - {fileID: 336485081}
   - {fileID: 1313459754}
+  - {fileID: 1511026695}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
