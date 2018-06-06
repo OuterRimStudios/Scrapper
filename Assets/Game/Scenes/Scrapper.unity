@@ -6312,7 +6312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 286008581}
   m_Layer: 5
-  m_Name: Movement Abilities
+  m_Name: Movement Ability Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14480,12 +14480,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcff38990435e25488e578ced72b1e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radialAbilityDisplay: {fileID: 0}
+  movementAbilityDisplay: {fileID: 0}
   abilitySlots: []
   newItemSlot: {fileID: 0}
   movementAbilitySlot: {fileID: 0}
   newMovementItemSlot: {fileID: 0}
   currentActiveAbilitySlot: {fileID: 0}
   currentActiveMovementAbilitySlot: {fileID: 0}
+  movementAbility: 0
 --- !u!1 &598605887
 GameObject:
   m_ObjectHideFlags: 0
@@ -16586,7 +16589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 667801503}
   m_Layer: 5
-  m_Name: Radial Abilities
+  m_Name: Radial Ability Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31635,6 +31638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcff38990435e25488e578ced72b1e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radialAbilityDisplay: {fileID: 667801502}
+  movementAbilityDisplay: {fileID: 286008580}
   abilitySlots:
   - {fileID: 757264433}
   - {fileID: 454234386}
@@ -31646,6 +31651,7 @@ MonoBehaviour:
   newMovementItemSlot: {fileID: 1312737861}
   currentActiveAbilitySlot: {fileID: 0}
   currentActiveMovementAbilitySlot: {fileID: 0}
+  movementAbility: 0
 --- !u!1 &1300195949
 GameObject:
   m_ObjectHideFlags: 0

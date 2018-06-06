@@ -93,6 +93,7 @@ public class InputManager : MonoBehaviour
             {
                 toggleAbilityDisplayArea = !toggleAbilityDisplayArea;
                 abilityDisplayArea.gameObject.SetActive(toggleAbilityDisplayArea);
+                abilityDisplayArea.EnableAbilityDisplay();
 
                 if (abilityDisplayArea.gameObject.activeInHierarchy)
                     abilityDisplayArea.Initialize(AbilityManager.instance.equippedAbilities, AbilityManager.instance.movementAbility);

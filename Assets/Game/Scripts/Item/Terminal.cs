@@ -6,11 +6,18 @@ public class Terminal : MonoBehaviour
 {
     InputManager inputManager;
     AbilityItem terminalAbility;
+    AbilityDisplayArea abilityDisplayArea;
 
     private void Start()
     {
+        abilityDisplayArea = AbilityDisplayArea.instance;
         terminalAbility = LootWrangler.instance.GetRandomAbility();
-        AbilityDisplayArea.instance.SetNewItemSlot(terminalAbility.ability);
+        abilityDisplayArea.SetNewItemSlot(terminalAbility.ability);
+
+        if (terminalAbility.ability.abilityType == Ability.AbilityType.Mobility)
+            abilityDisplayArea.movementAbility = true;
+        else
+            abilityDisplayArea.movementAbility = false;
     }
 
     private void OnTriggerEnter(Collider other)

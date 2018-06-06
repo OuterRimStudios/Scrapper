@@ -32,6 +32,9 @@ public class AbilityDisplayArea : MonoBehaviour
     }
     #endregion
 
+    public GameObject radialAbilityDisplay;
+    public GameObject movementAbilityDisplay;
+
     public List<AbilitySlot> abilitySlots;
     public AbilitySlot newItemSlot;
 
@@ -45,6 +48,8 @@ public class AbilityDisplayArea : MonoBehaviour
 
     bool lookingForAbility;
     bool lookingForMovementAbility;
+
+    [HideInInspector] public bool movementAbility;
 
     public void Initialize(List<Ability> actvieAbilities, Ability activeMovementAbility)
     {
@@ -118,6 +123,23 @@ public class AbilityDisplayArea : MonoBehaviour
 
     public void SetNewItemSlot(Ability _ability)
     {
-        newItemSlot.SetAbilitySlot(_ability);
+        if (_ability.abilityType == Ability.AbilityType.Mobility)
+            newMovementItemSlot.SetAbilitySlot(_ability);
+        else
+            newItemSlot.SetAbilitySlot(_ability);
+    }
+
+    public void EnableAbilityDisplay()
+    {
+        if (movementAbility)
+        {
+            radialAbilityDisplay.SetActive(false);
+            movementAbilityDisplay.SetActive(true);
+        }
+        else
+        {
+            movementAbilityDisplay.SetActive(false);
+            radialAbilityDisplay.SetActive(true);
+        }
     }
 }
