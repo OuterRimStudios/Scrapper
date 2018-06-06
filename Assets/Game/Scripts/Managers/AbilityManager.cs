@@ -40,13 +40,22 @@ public class AbilityManager : MonoBehaviour {
 
 	[Space, Header("Ability Loadout")]
     public AbilityDisplayArea abilityDisplayArea;
-    [Tooltip("Ability Icons in the Player HUD")]
+    [Space, Header("Radial Menu Abilities")]
     public List<Image> abilityIcons;
     public List<TextMeshProUGUI> abilityCharges;
     public List<Image> abilityCooldownProgress;
     public List<List<float>> cooldownQueues = new List<List<float>>();
 
-	public List<Ability> allAbilities = new List<Ability>();
+    [Space, Header("Movement Ability")]
+    public Ability movementAbility;
+    public Image movementAbilityIcon;
+    public TextMeshProUGUI movementAbilityCharges;
+    public Image movementAbilityCooldownProgress;
+    [HideInInspector]
+    public List<float> movementAbilityCooldownQueue;
+
+    [Space]
+    public List<Ability> allAbilities = new List<Ability>();
 
     public Ability currentAbility;
     public int CurrentAbilityIndex { get; protected set; }
@@ -99,13 +108,24 @@ public class AbilityManager : MonoBehaviour {
                 abilityCharges[i].enabled = false;
         }
 
+        movementAbilityIcon.sprite = movementAbility.abilityIcon;
+
+        if (movementAbility.abilityCharges > 1)
+        {
+            movementAbilityCharges.enabled = true;
+            movementAbilityCharges.text = movementAbility.abilityCharges.ToString();
+            movementAbility.OnCooldownFinished += UpdateMovementAbilityCharges;
+        }
+        else
+            movementAbilityCharges.enabled = false;
+
         InitializeAbilityDisplay();
     }
 
 	void InitializeAbilityDisplay()
 	{
 		if(abilityDisplayArea)
-			abilityDisplayArea.Initialize(equippedAbilities);
+			abilityDisplayArea.Initialize(equippedAbilities, movementAbility);
 
         UpdateAbilities(-1);
 	}
@@ -116,7 +136,10 @@ public class AbilityManager : MonoBehaviour {
         {
             if(abilityItem.ItemName == ability.abilityName)
             {
-                ChangeAbility(abilitySlotIndex, ability);
+                if(abilityItem.ability.abilityType == Ability.AbilityType.Mobility)
+                    ChangeMovementAbility(ability);
+                else
+                    ChangeAbility(abilitySlotIndex, ability);
             }
         }
     }
@@ -158,7 +181,35 @@ public class AbilityManager : MonoBehaviour {
         }
     }
 
-	public void UpdateAbilities(int abilitySlotIndex)
+    public void ChangeMovementAbility(Ability newAbility)
+    {
+        if (!newAbility.gameObject.activeInHierarchy)                    //If this is false, then newAbility is probably referencing the prefab
+            newAbility = GetAbilityByName(newAbility.abilityName);
+
+            movementAbility.OnCooldownFinished -= UpdateMovementAbilityCharges; //Move this to unsubscribe before changing abilities
+            movementAbility = newAbility;
+
+            if (movementAbilityCharges.isActiveAndEnabled)
+            {
+                movementAbilityCharges.text = movementAbility.charges.ToString();
+
+                if (movementAbility.abilityCharges <= 1)
+                    movementAbilityCharges.enabled = false;
+                else
+                    movementAbilityCharges.enabled = true;
+            }
+            
+            movementAbility.OnCooldownFinished += UpdateMovementAbilityCharges; //move this to subscribe after changing abilities
+            movementAbilityIcon.sprite = movementAbility.abilityIcon;
+
+            if (movementAbility.abilityCharges > 1)
+            {
+                movementAbilityCharges.text = movementAbility.abilityCharges.ToString();
+                movementAbilityCharges.enabled = true;
+            }
+    }
+
+    public void UpdateAbilities(int abilitySlotIndex)
 	{
 		if(abilitySlotIndex != -1)
         {
@@ -191,6 +242,31 @@ public class AbilityManager : MonoBehaviour {
             }
         }
 	}
+
+    public void UpdateMovementAbility()
+    {
+        movementAbility.OnCooldownFinished -= UpdateMovementAbilityCharges; //Move this to unsubscribe before changing abilities
+        movementAbility = abilityDisplayArea.currentActiveMovementAbilitySlot.abilityInSlot;
+
+        if (movementAbilityCharges.isActiveAndEnabled)
+        {
+            movementAbilityCharges.text = movementAbility.charges.ToString();
+
+            if (movementAbility.abilityCharges <= 1)
+                movementAbilityCharges.enabled = false;
+            else
+                movementAbilityCharges.enabled = true;
+        }
+
+        movementAbility.OnCooldownFinished += UpdateMovementAbilityCharges; //move this to subscribe after changing abilities
+        movementAbilityIcon.sprite = movementAbility.abilityIcon;
+
+        if (movementAbility.abilityCharges > 1)
+        {
+            movementAbilityCharges.text = movementAbility.abilityCharges.ToString();
+            movementAbilityCharges.enabled = true;
+        }
+    }
 
     public void SwapCooldownQueueus(int indexOne, int indexTwo)
     {
@@ -234,8 +310,8 @@ public class AbilityManager : MonoBehaviour {
             CurrentAbilityIndex = abilityIndex;
         }
     }
-
-	void UpdateAbiltyCharges(Ability ability)
+    
+    void UpdateAbiltyCharges(Ability ability)
     {
         if(equippedAbilities.Contains(ability))
         {
@@ -244,7 +320,15 @@ public class AbilityManager : MonoBehaviour {
         }
     }
 
-	void CheckCooldowns()
+    void UpdateMovementAbilityCharges(Ability ability)
+    {
+        if (movementAbility == ability)
+        {
+            movementAbilityCharges.text = ability.charges.ToString();
+        }
+    }
+
+    void CheckCooldowns()
     {
         if(cooldownQueues.Count <= 0) return;
 
@@ -260,6 +344,22 @@ public class AbilityManager : MonoBehaviour {
 
             if(remainingTime < .01f && cooldownQueues[i].Count > 0)
                 cooldownQueues[i].RemoveAt(0);
+        }
+    }
+
+    void CheckMovementCooldowns()
+    {
+        if (movementAbilityCooldownQueue.Count <= 0) return;
+
+        MovementCooldown();
+
+        for (int i = 0; i < movementAbilityCooldownQueue.Count; i++)
+        {
+            if (movementAbilityCooldownQueue.Count > 0)
+                remainingTime = ((movementAbilityCooldownQueue[0] + movementAbility.abilityCooldown) - Time.time) / movementAbility.abilityCooldown;
+
+            if (remainingTime < .01f && cooldownQueues[i].Count > 0)
+                movementAbilityCooldownQueue.RemoveAt(0);
         }
     }
 
@@ -280,6 +380,25 @@ public class AbilityManager : MonoBehaviour {
             abilityCooldownProgress[abilityIndex].fillAmount = 0f;
     }
 
+
+    void MovementCooldown()
+    {
+        if (movementAbilityCooldownQueue.Count <= 0)
+            return;
+
+        if (movementAbilityCooldownQueue.Count > 0)
+        {
+            float _remainingTime = ((movementAbilityCooldownQueue[0] + movementAbility.abilityCooldown) - Time.time) / movementAbility.abilityCooldown;
+            movementAbilityCooldownProgress.fillAmount = _remainingTime;
+
+            if (_remainingTime < .01f)
+                movementAbilityCooldownProgress.fillAmount = 0f;
+        }
+        else
+            movementAbilityCooldownProgress.fillAmount = 0f;
+    }
+
+
     void ResetCooldowns()
     {
         cooldownQueues.Clear();
@@ -291,6 +410,11 @@ public class AbilityManager : MonoBehaviour {
             equippedAbilities[i].ResetCooldown();
             abilityCharges[i].text = equippedAbilities[i].abilityCharges.ToString();
         }
+
+        movementAbilityCooldownQueue.Add(new float());
+        movementAbilityCooldownProgress.fillAmount = 0;
+        movementAbility.ResetCooldown();
+        movementAbilityCharges.text = movementAbility.abilityCharges.ToString();
     }
 
     public Ability GetAbilityByName(string abilityName)

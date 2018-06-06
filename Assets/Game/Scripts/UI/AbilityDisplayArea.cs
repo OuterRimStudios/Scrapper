@@ -35,16 +35,24 @@ public class AbilityDisplayArea : MonoBehaviour
     public List<AbilitySlot> abilitySlots;
     public AbilitySlot newItemSlot;
 
+    public AbilitySlot movementAbilitySlot;
+    public AbilitySlot newMovementItemSlot;
+
     [HideInInspector]
     public AbilitySlot currentActiveAbilitySlot;
+    [HideInInspector]
+    public AbilitySlot currentActiveMovementAbilitySlot;
 
     bool lookingForAbility;
+    bool lookingForMovementAbility;
 
-    public void Initialize(List<Ability> actvieAbilities)
+    public void Initialize(List<Ability> actvieAbilities, Ability activeMovementAbility)
     {
         s_Instance = this;
         for(int k = 0; k < actvieAbilities.Count; k++)
             abilitySlots[k].SetAbilitySlot(actvieAbilities[k]);
+
+        movementAbilitySlot.SetAbilitySlot(activeMovementAbility);
 
         EventSystem.current.SetSelectedGameObject(abilitySlots[0].gameObject, null);
     }
@@ -78,6 +86,33 @@ public class AbilityDisplayArea : MonoBehaviour
         {
             lookingForAbility = true;
             currentActiveAbilitySlot = abilitySlot;
+        }
+    }
+
+    public void SelectMovementAbility(AbilitySlot abilitySlot)
+    {
+        if (abilitySlot.abilityInSlot == null) return;
+
+        if (lookingForMovementAbility)
+        {
+            AbilitySlot oldSlot = currentActiveMovementAbilitySlot;
+            AbilitySlot newSlot = abilitySlot;
+
+            Ability oldAbility = oldSlot.abilityInSlot;
+            Ability newAbility = newSlot.abilityInSlot;
+
+            oldSlot.SetAbilitySlot(newAbility);
+            newSlot.SetAbilitySlot(oldAbility);
+
+            AbilityManager.instance.ChangeMovementAbility(newAbility);
+            AbilityManager.instance.ChangeMovementAbility(oldAbility);
+
+            lookingForMovementAbility = false;
+        }
+        else
+        {
+            lookingForMovementAbility = true;
+            currentActiveMovementAbilitySlot = abilitySlot;
         }
     }
 

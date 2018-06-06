@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
     bool abilityActive;
     bool abilityDeactive;
 
+    bool movementAbility;
     bool jump;
     bool interact;
     bool toggleView;
@@ -94,7 +95,7 @@ public class InputManager : MonoBehaviour
                 abilityDisplayArea.gameObject.SetActive(toggleAbilityDisplayArea);
 
                 if (abilityDisplayArea.gameObject.activeInHierarchy)
-                    abilityDisplayArea.Initialize(AbilityManager.instance.equippedAbilities);
+                    abilityDisplayArea.Initialize(AbilityManager.instance.equippedAbilities, AbilityManager.instance.movementAbility);
             }
 
             if(toggleView)
@@ -168,6 +169,20 @@ public class InputManager : MonoBehaviour
         }
         else if(AbilityManager.instance.currentAbility && abilityDeactive)
             AbilityManager.instance.currentAbility.DeactivateAbility();
+
+        if (AbilityManager.instance.movementAbility && AbilityManager.instance.movementAbility.CanShoot() && movementAbility)
+        {
+            playerMovement.Sprint(false);
+            AbilityManager.instance.movementAbility.ActivateAbility();
+            AbilityManager.instance.movementAbilityCharges.text = AbilityManager.instance.movementAbility.charges.ToString();
+
+            if (AbilityManager.instance.movementAbility.charges >= 0)
+            {
+                AbilityManager.instance.movementAbilityCooldownQueue.Add(Time.time);
+            }
+        }
+        else if (AbilityManager.instance.movementAbility && abilityDeactive)
+            AbilityManager.instance.movementAbility.DeactivateAbility();
     }
 
     private void RecieveInput()
@@ -238,6 +253,11 @@ public class InputManager : MonoBehaviour
             abilityActive = player.GetButton("ActivateAbility");
         else
             abilityActive = player.GetButtonDown("ActivateAbility");
+
+        if (AbilityManager.instance.movementAbility.abilityInput == Ability.AbilityInput.GetButton)
+            movementAbility = player.GetButton("MovementAbility");
+        else
+            movementAbility = player.GetButtonDown("MovementAbility");
 
         abilityDeactive = player.GetButtonUp("ActivateAbility");
 

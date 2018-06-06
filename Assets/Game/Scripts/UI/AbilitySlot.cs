@@ -15,9 +15,12 @@ public class AbilitySlot : MonoBehaviour
     [HideInInspector]
     public bool abilityActive;
 
-    private void Awake()
+    private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(() => abilityDisplayArea.SelectAbility(this));
+        if(abilityInSlot.abilityType == Ability.AbilityType.Mobility)
+            GetComponent<Button>().onClick.AddListener(() => abilityDisplayArea.SelectMovementAbility(this));
+        else
+            GetComponent<Button>().onClick.AddListener(() => abilityDisplayArea.SelectAbility(this));
 
         if (abilityInSlot)
             SetAbilitySlot(abilityInSlot);
