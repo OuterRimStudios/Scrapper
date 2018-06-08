@@ -9,11 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b75ab1d983f9c034691c04fadd1c8695, type: 3}
-  m_Name: HealingState
+  m_Name: Bastion Follow Attack State
   m_EditorClassIdentifier: 
   actions:
+  - {fileID: 11400000, guid: 183f0ec3fbba26b4a8cf3a99f057b830, type: 2}
+  - {fileID: 11400000, guid: 795a9d479f540944c890715b01d29d94, type: 2}
   - {fileID: 11400000, guid: 0dd133f30d6f89f4e9021f1e62d80955, type: 2}
-  transitions:
-  - decision: {fileID: 11400000, guid: 2281a04c2ab60d840a1f77d6db6a80ca, type: 2}
-    trueState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
-    falseState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
+  transitions: []
