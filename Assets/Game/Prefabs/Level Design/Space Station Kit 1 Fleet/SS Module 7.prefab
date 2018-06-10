@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 4079683400219068}
   - component: {fileID: 33303392800118638}
   - component: {fileID: 23352816254680322}
+  - component: {fileID: 64897064059245176}
   m_Layer: 0
   m_Name: Plane091
   m_TagString: Untagged
@@ -218,7 +219,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605324267914166}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -107.21, y: 5.82, z: 0}
+  m_LocalPosition: {x: -107.21, y: 5.82, z: 0.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4691920995425356}
@@ -257,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1003517305153594}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 106.2, y: 5.82, z: 0}
+  m_LocalPosition: {x: 106.2, y: 5.82, z: 1.12}
   m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4691920995425356}
@@ -529,6 +530,20 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!64 &64897064059245176
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1928371988721734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: e703ccb4916c2ce42b716b9269c61196, type: 3}
 --- !u!65 &65004872342879978
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -629,7 +644,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.7794118, g: 0.64368665, b: 0.20058392, a: 1}
   m_Intensity: 5
-  m_Range: 15
+  m_Range: 50
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
