@@ -82,7 +82,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       TileSet: {fileID: 11400000}
-    - Value: {fileID: 1623673192027490, guid: 1040f3de7dcd8834db09ae2a67686a15, type: 2}
+    - Value: {fileID: 1356922806934976, guid: 1040f3de7dcd8834db09ae2a67686a15, type: 2}
       MainPathWeight: 1
       BranchPathWeight: 1
       UseDepthScale: 1
@@ -451,8 +451,31 @@ MonoBehaviour:
         m_RotationOrder: 4
       TileSet: {fileID: 11400000}
     - Value: {fileID: 1379353474990452, guid: 5d8cb9df03674a545bfd723c28262b9b, type: 2}
-      MainPathWeight: 5
-      BranchPathWeight: 5
+      MainPathWeight: 1
+      BranchPathWeight: 1
+      UseDepthScale: 1
+      DepthWeightScale:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 2
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TileSet: {fileID: 11400000}
+    - Value: {fileID: 1621651103718374, guid: 90cf14f01fc26134e8b7bbc0721924ee, type: 2}
+      MainPathWeight: 6
+      BranchPathWeight: 1
       UseDepthScale: 1
       DepthWeightScale:
         serializedVersion: 2
