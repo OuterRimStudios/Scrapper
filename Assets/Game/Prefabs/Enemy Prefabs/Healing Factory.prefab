@@ -2071,6 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 100
+  isDead: 0
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}
@@ -2175,7 +2176,6 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: 10fa97f964d518f4188ad96328cd500b, type: 2}
   - {fileID: 11400000, guid: 23e007cd7ab22bc41857de62c3c6bfd6, type: 2}
@@ -2185,7 +2185,8 @@ MonoBehaviour:
   mediumChallengeTiers: []
   hardChallengeTiers: []
   currentChallengeTier: {fileID: 0}
-  aiAbility: {fileID: 114892161133081350}
+  aiAbilities:
+  - {fileID: 114892161133081350}
 --- !u!114 &114704768194676504
 MonoBehaviour:
   m_ObjectHideFlags: 1

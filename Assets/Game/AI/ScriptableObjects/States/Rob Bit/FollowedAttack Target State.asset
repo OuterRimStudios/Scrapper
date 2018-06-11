@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: FollowedAttack Target State
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 0dd133f30d6f89f4e9021f1e62d80955, type: 2}
+  - {fileID: 11400000, guid: c653110753f648241abdc445242d1166, type: 2}
   - {fileID: 11400000, guid: 795a9d479f540944c890715b01d29d94, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: 2281a04c2ab60d840a1f77d6db6a80ca, type: 2}
+  - decision: {fileID: 11400000, guid: 0152bbce9ba0ec144ad7aefe41f71ab4, type: 2}
     trueState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
     falseState: {fileID: 11400000, guid: d9683743dfa581c4ca08a5befc24189d, type: 2}

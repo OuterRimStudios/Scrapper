@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/Actions/Attack")]
 public class AbilityAction : AIAction
 {
+    public string abilityName;
+
+    Ability ability;
+
     public override void Act(StateController controller)
     {
         Attack(controller);
@@ -12,9 +16,12 @@ public class AbilityAction : AIAction
 
     private void Attack(StateController controller)
     {
-        if (controller.enemyRefManager.aiAbility.CanShoot())
+        if (!ability)
+            ability = controller.enemyRefManager.GetAbility(abilityName);
+
+        if (ability.CanShoot())
         {
-            controller.enemyRefManager.aiAbility.ActivateAbility();
+            ability.ActivateAbility();
         }
     }
 }

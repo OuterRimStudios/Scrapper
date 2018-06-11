@@ -3889,7 +3889,8 @@ MonoBehaviour:
   mediumChallengeTiers: []
   hardChallengeTiers: []
   currentChallengeTier: {fileID: 0}
-  aiAbility: {fileID: 114664613141169874}
+  aiAbilities:
+  - {fileID: 114664613141169874}
 --- !u!114 &114430030033703908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4000,7 +4001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20b32388c36694468c7235a56804339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: High-Frequency Electron Beam
+  abilityName: Disintegration Ray
   abilityIcon: {fileID: 0}
   abilityDescription: 
   extraFunctionalityOnActivate: {fileID: 114637234119462788}

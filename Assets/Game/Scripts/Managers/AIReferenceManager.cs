@@ -15,7 +15,7 @@ public class AIReferenceManager : ReferenceManager
 	[HideInInspector] public ChallengeTier currentChallengeTier;
 	int difficultyLevel;
 
-	public Ability aiAbility;
+	public Ability[] aiAbilities;
 
 	protected override void Awake ()
 	{
@@ -42,18 +42,31 @@ public class AIReferenceManager : ReferenceManager
 		}
     }
 
+    public Ability GetAbility(string abilityName)
+    {
+        foreach (Ability ability in aiAbilities)
+            if (ability.abilityName == abilityName)
+                return ability;
+
+        return null;
+    }
+
     private void OnEnable()
     {
         UpdateChallengeTier(0);
     }
 
-    public void UpdateChallengeTier (int waveCount)
-	{
-        for (int i = 0; i < challengeTiers.Count; i++) {
-			if (challengeTiers [i].updateAtWave <= waveCount) {
-				currentChallengeTier = challengeTiers [i];
-			}
-		}
-		currentChallengeTier.InitializeAbilityStats (aiAbility);
-	}
+    public void UpdateChallengeTier(int waveCount)
+    {
+        for (int i = 0; i < challengeTiers.Count; i++)
+        {
+            if (challengeTiers[i].updateAtWave <= waveCount)
+            {
+                currentChallengeTier = challengeTiers[i];
+            }
+        }
+
+        foreach(Ability ability in aiAbilities)
+            currentChallengeTier.InitializeAbilityStats(ability);
+    }
 }

@@ -1559,7 +1559,6 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: 02696f5f1938dea4e8477251f6d8905d, type: 2}
   - {fileID: 11400000, guid: 28742b6289ae34f4bb6ec2a9bd3208a6, type: 2}
@@ -1573,7 +1572,8 @@ MonoBehaviour:
   mediumChallengeTiers: []
   hardChallengeTiers: []
   currentChallengeTier: {fileID: 0}
-  aiAbility: {fileID: 114883267350382394}
+  aiAbilities:
+  - {fileID: 114883267350382394}
 --- !u!114 &114462227261450704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1691,6 +1691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 50
+  isDead: 0
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}
@@ -1719,7 +1720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f9e95277d35f04a937e320c2ce021e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: Lasors
   abilityIcon: {fileID: 0}
   abilityDescription: 
   extraFunctionalityOnActivate: {fileID: 0}

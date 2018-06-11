@@ -2153,6 +2153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 50
+  isDead: 0
   combatText: {fileID: 1862252093785054, guid: 1585a77ff73551d4fa3e2177ab87d9a6, type: 2}
   healingText: {fileID: 1862252093785054, guid: 264f934eb8e725f40a9c52529bd52032,
     type: 2}
@@ -2203,7 +2204,6 @@ MonoBehaviour:
   enemyTag: 1
   ai: {fileID: 0}
   stateController: {fileID: 0}
-  encounter: {fileID: 0}
   easyChallengeTiers:
   - {fileID: 11400000, guid: cf7e7a380145ff8408d622360f3b44a6, type: 2}
   - {fileID: 11400000, guid: 4c3b983fa97929f4ca2965670da419a5, type: 2}
@@ -2213,7 +2213,8 @@ MonoBehaviour:
   mediumChallengeTiers: []
   hardChallengeTiers: []
   currentChallengeTier: {fileID: 0}
-  aiAbility: {fileID: 114980887885727370}
+  aiAbilities:
+  - {fileID: 114980887885727370}
 --- !u!114 &114528823144507312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2227,7 +2228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refManager: {fileID: 114506123012902358}
   chaseTarget: {fileID: 0}
-  baseSpeed: 100
   targetFriendlies: 1
   updateTarget: 1
   nextWayPoint: 0
@@ -2313,6 +2313,10 @@ MonoBehaviour:
   abilityName: Healing Beam
   abilityIcon: {fileID: 0}
   abilityDescription: Fires a beam at a friendly target healing them over time.
+  extraFunctionalityOnActivate: {fileID: 0}
+  extraFunctionalityOnDeactivate: {fileID: 0}
+  dontLookAtCenter: 0
+  abilityInput: 0
   abilityType: 4
   abilityCharges: 1
   chargeTime: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: HealingFactory Spawn State
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 0dd133f30d6f89f4e9021f1e62d80955, type: 2}
+  - {fileID: 11400000, guid: d735b8851efa1344b982ef5bb70b1c6b, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: 2281a04c2ab60d840a1f77d6db6a80ca, type: 2}
+  - decision: {fileID: 11400000, guid: e61d4c921e22dfb428a9372e18f03e5a, type: 2}
     trueState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
     falseState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}

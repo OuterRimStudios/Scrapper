@@ -111,7 +111,9 @@ public class AI : MonoBehaviour
         if(agent && agent.isOnNavMesh)
             agent.destination = transform.position;
 
-        refManager.aiAbility.DeactivateAbility();
+        foreach(Ability ability in refManager.aiAbilities)
+            ability.DeactivateAbility();
+
         StopAgent();
     }
 

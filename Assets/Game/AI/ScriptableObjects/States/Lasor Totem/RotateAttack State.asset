@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: RotateAttack State
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 0dd133f30d6f89f4e9021f1e62d80955, type: 2}
+  - {fileID: 11400000, guid: c65a0a08ac8b48f44b67fe82af9100a4, type: 2}
   - {fileID: 11400000, guid: 1080d62805f9e6e409f9263a0ba994ce, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: 2281a04c2ab60d840a1f77d6db6a80ca, type: 2}
+  - decision: {fileID: 11400000, guid: 1a8885dccd3ae854594473e304c90ea8, type: 2}
     trueState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
     falseState: {fileID: 11400000, guid: dd1315bd0ef7b3449a1dd031ff5c42c0, type: 2}
