@@ -1,0 +1,547 @@
+fileFormatVersion: 2
+guid: d8875fa72bbef5348a5e349636d2c1c9
+timeCreated: 1512964566
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Box002
+    100004: Box003
+    100006: Box004
+    100008: Box005
+    100010: Box008
+    100012: Box009
+    100014: Box016
+    100016: Box018
+    100018: Box019
+    100020: Box023
+    100022: Box024
+    100024: Box025
+    100026: Box026
+    100028: Box027
+    100030: Box028
+    100032: Box029
+    100034: Box030
+    100036: Cylinder001
+    100038: Cylinder002
+    100040: Cylinder003
+    100042: Fusaloge
+    100044: Fusaloge Faring
+    100046: Object001
+    100048: Object003
+    100050: Object004
+    100052: Object005
+    100054: Object006
+    100056: Plane001
+    100058: Plane002
+    100060: Plane003
+    100062: //RootNode
+    400000: Box001
+    400002: Box002
+    400004: Box003
+    400006: Box004
+    400008: Box005
+    400010: Box008
+    400012: Box009
+    400014: Box016
+    400016: Box018
+    400018: Box019
+    400020: Box023
+    400022: Box024
+    400024: Box025
+    400026: Box026
+    400028: Box027
+    400030: Box028
+    400032: Box029
+    400034: Box030
+    400036: Cylinder001
+    400038: Cylinder002
+    400040: Cylinder003
+    400042: Fusaloge
+    400044: Fusaloge Faring
+    400046: Object001
+    400048: Object003
+    400050: Object004
+    400052: Object005
+    400054: Object006
+    400056: Plane001
+    400058: Plane002
+    400060: Plane003
+    400062: //RootNode
+    2300000: Box001
+    2300002: Box002
+    2300004: Box004
+    2300006: Box005
+    2300008: Box008
+    2300010: Box009
+    2300012: Box018
+    2300014: Box019
+    2300016: Box023
+    2300018: Box024
+    2300020: Box025
+    2300022: Box026
+    2300024: Box027
+    2300026: Box028
+    2300028: Box029
+    2300030: Box030
+    2300032: Cylinder002
+    2300034: Fusaloge
+    2300036: Fusaloge Faring
+    2300038: Object001
+    2300040: Object003
+    2300042: Object004
+    2300044: Object005
+    2300046: Object006
+    2300048: Plane001
+    2300050: Plane002
+    2300052: Plane003
+    3300000: Box001
+    3300002: Box002
+    3300004: Box004
+    3300006: Box005
+    3300008: Box008
+    3300010: Box009
+    3300012: Box018
+    3300014: Box019
+    3300016: Box023
+    3300018: Box024
+    3300020: Box025
+    3300022: Box026
+    3300024: Box027
+    3300026: Box028
+    3300028: Box029
+    3300030: Box030
+    3300032: Cylinder002
+    3300034: Fusaloge
+    3300036: Fusaloge Faring
+    3300038: Object001
+    3300040: Object003
+    3300042: Object004
+    3300044: Object005
+    3300046: Object006
+    3300048: Plane001
+    3300050: Plane002
+    3300052: Plane003
+    4300000: Fusaloge
+    4300002: Fusaloge Faring
+    4300004: Object003
+    4300006: Cylinder002
+    4300008: Box009
+    4300010: Box001
+    4300012: Box008
+    4300014: Box002
+    4300016: Box024
+    4300018: Box023
+    4300020: Box027
+    4300022: Box026
+    4300024: Box028
+    4300026: Box025
+    4300028: Object001
+    4300030: Object004
+    4300032: Object005
+    4300034: Object006
+    4300036: Box004
+    4300038: Box018
+    4300040: Box019
+    4300042: Box005
+    4300044: Box029
+    4300046: Box030
+    4300048: Plane001
+    4300050: Plane002
+    4300052: Plane003
+    7400000: Acceleation
+    7400002: Idle
+    7400004: Deceleration
+    7400006: Move Left
+    7400008: Move Right
+    7400010: Move Up
+    7400012: Move Down
+    7400014: Fireing
+    7400016: Death
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Canopy
+    second: {fileID: 2100000, guid: 0a1dfb79000161e41abe3adc3aebfe7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Connecting PArts
+    second: {fileID: 2100000, guid: b962c74cf1f44b04792e1c04402e4954, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Engine Emissive
+    second: {fileID: 2100000, guid: c08c7fa336f6c1a4aa505e6c05ddebd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fusalge
+    second: {fileID: 2100000, guid: 88f796210f801364fbc4c99babb2a295, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAin Engines Flange
+    second: {fileID: 2100000, guid: 0c9a95cdf9422b846b3d7816be557a3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main Weapons
+    second: {fileID: 2100000, guid: 2ff39b30a9f7b6d469d1e48d585dd49b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainEngine Front
+    second: {fileID: 2100000, guid: 6ab4103b5277d414da7debf8f366c5ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainEngines
+    second: {fileID: 2100000, guid: fd4805ce5ef0db045b169b6fe9f878dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rear Fins
+    second: {fileID: 2100000, guid: f53d3da398597f1419011d82c55d4a19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Upper Intake
+    second: {fileID: 2100000, guid: 1efce69e2e71f084b8ec9ed66602c161, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wings
+    second: {fileID: 2100000, guid: b9313b8ec893682468c886473f04f73b, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Acceleation
+      takeName: Take 001
+      firstFrame: 20
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Deceleration
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Move Left
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Move Right
+      takeName: Take 001
+      firstFrame: 80
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Move Up
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Move Down
+      takeName: Take 001
+      firstFrame: 120
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fireing
+      takeName: Take 001
+      firstFrame: 140
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 160
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
