@@ -25058,12 +25058,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcff38990435e25488e578ced72b1e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radialAbilityDisplay: {fileID: 0}
+  movementAbilityDisplay: {fileID: 0}
   abilitySlots: []
   newItemSlot: {fileID: 0}
   movementAbilitySlot: {fileID: 0}
   newMovementItemSlot: {fileID: 0}
   currentActiveAbilitySlot: {fileID: 0}
   currentActiveMovementAbilitySlot: {fileID: 0}
+  movementAbility: 0
 --- !u!114 &1752960745
 MonoBehaviour:
   m_ObjectHideFlags: 0

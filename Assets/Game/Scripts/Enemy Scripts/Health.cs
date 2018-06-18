@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     protected virtual void Start()
     {
         refManager = GetComponent<ReferenceManager>();
+        health = baseHealth;
     }
 
     protected virtual void OnEnable()

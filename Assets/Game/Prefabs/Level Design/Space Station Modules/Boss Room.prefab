@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 4193884585431316}
   - component: {fileID: 114932354560854466}
   m_Layer: 0
-  m_Name: RB-3 _ IB-1
+  m_Name: Bastion Encounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,22 +643,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1909460900383218
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4492801450687320}
-  - component: {fileID: 114067456072234196}
-  m_Layer: 0
-  m_Name: HF-2 _ IB-2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1948154451239952
 GameObject:
   m_ObjectHideFlags: 1
@@ -935,7 +919,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4193884585431316}
-  - {fileID: 4492801450687320}
   m_Father: {fileID: 4111849348517074}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1003,19 +986,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4691012371297968}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4492801450687320
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909460900383218}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4260181040652134}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4548349539588468
 Transform:
@@ -2148,22 +2118,6 @@ MonoBehaviour:
   tile: {fileID: 0}
   connectedDoorway: {fileID: 0}
   hideConditionalObjects: 0
---- !u!114 &114067456072234196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909460900383218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6911a7c7a1760488741f6aa73db2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies:
-  - enemy: {fileID: 1255796476653088, guid: 1af6e96c05905614983d398881ccae02, type: 2}
-    amountToSpawn: 2
-  - enemy: {fileID: 1152678557323854, guid: ff8449947d792ac40b0aa0cb89c35811, type: 2}
-    amountToSpawn: 2
 --- !u!114 &114200560963657202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2213,7 +2167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleEncounters:
-  - {fileID: 114067456072234196}
   - {fileID: 114932354560854466}
   spawnPoints:
   - {fileID: 4473141563871068}
@@ -2302,7 +2255,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - enemy: {fileID: 1255796476653088, guid: 1af6e96c05905614983d398881ccae02, type: 2}
+  - enemy: {fileID: 1816701498377682, guid: 3aaaf50c23d115f4eb7b28f5beadc94b, type: 2}
     amountToSpawn: 1
-  - enemy: {fileID: 1595850089893730, guid: 7a3d5ef96a1b58d4896387ea0c0ecda7, type: 2}
-    amountToSpawn: 3

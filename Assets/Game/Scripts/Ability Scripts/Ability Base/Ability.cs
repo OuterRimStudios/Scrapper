@@ -32,7 +32,8 @@ public class Ability : MonoBehaviour
     public enum AbilityInput
     {
         GetButtonDown,
-        GetButton
+        GetButton,
+        AIControlled
     };
 
     public AbilityInput abilityInput;
@@ -118,7 +119,7 @@ public class Ability : MonoBehaviour
         cooldown = StartCoroutine(Cooldown());
     }
 
-    public bool CanShoot()
+    public virtual bool CanShoot()
     {
         if (charges > 0)
             return true;

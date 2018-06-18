@@ -9,10 +9,14 @@
         Projectile _projectile = Instantiate(projectile, refManager.SpawnPosition()[0].position, refManager.SpawnPosition()[0].rotation);
         _projectile.Initialize(initialDamage, refManager.enemyTag.ToString(), refManager.friendlyTag.ToString(), afterEffects);
 
-        for (int j = 0; j < GetActiveModules().Count; j++)
+        if (abilityInput != AbilityInput.AIControlled)
+        {
+            for (int j = 0; j < GetActiveModules().Count; j++)
                 _projectile.SetModule(GetActiveModules()[j]);
 
-        RemoveModules();
+            RemoveModules();
+        }
+
         TriggerCooldown();
     }
 }

@@ -25,7 +25,9 @@ public class AIHealth : Health
         if(aiRefManager.currentChallengeTier)
         health = aiRefManager.currentChallengeTier.health;
 
-        foreach(Limb limb in transform.GetComponentsInChildren<Limb>())
+        health = baseHealth;
+
+        foreach (Limb limb in transform.GetComponentsInChildren<Limb>())
         {
             limbs.Add(limb);
         }
@@ -49,6 +51,12 @@ public class AIHealth : Health
     public void SetEncounterSpawner(EncounterSpawner _encounterSpawner)
     {
         encounterSpawner = _encounterSpawner;
+    }
+
+    public float CheckHealthPercentage()
+    {
+        print("Current Health Percentage: " + (health / baseHealth) * 100 + " << Current Health: " + health + " << Base Health: " + baseHealth);
+        return (health / baseHealth) * 100;
     }
 
     public void SetLimbsActive(bool activeState)

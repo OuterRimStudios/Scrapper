@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class AIReferenceManager : ReferenceManager
 {
-	[HideInInspector] public AI ai;
-	[HideInInspector] public StateController stateController;
-
+    public AI ai;
 	public List<ChallengeTier> easyChallengeTiers;
 	public List<ChallengeTier> mediumChallengeTiers;
 	public List<ChallengeTier> hardChallengeTiers;
@@ -20,9 +18,7 @@ public class AIReferenceManager : ReferenceManager
 	protected override void Awake ()
 	{
 		base.Awake ();
-
-		ai = GetComponent<AI> ();
-		stateController = GetComponent<StateController> ();
+        ai = GetComponent<AI>();
 		statusEffects = GetComponent<StatusEffects> ();
 
 		difficultyLevel = GameManager.currentDifficulty;// Until we can create a difficulty selection menu
@@ -40,6 +36,8 @@ public class AIReferenceManager : ReferenceManager
 			challengeTiers = hardChallengeTiers;
 			break;
 		}
+
+        UpdateChallengeTier(0);
     }
 
     public Ability GetAbility(string abilityName)
