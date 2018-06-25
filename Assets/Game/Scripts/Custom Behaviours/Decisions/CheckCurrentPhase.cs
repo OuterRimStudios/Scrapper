@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-public class CheckHealthPercentage : Conditional
+public class CheckCurrentPhase : Conditional
 {
-    public float desiredHealthPercentage;
-    public AIHealth health;
+    public float desiredPhase;
+    public SharedPhaseManager phaseManager;
 
     public override TaskStatus OnUpdate()
     {
-        if(health.CheckHealthPercentage() <= desiredHealthPercentage)
+        if (phaseManager.Value.GetCurrentPhase() == desiredPhase)
             return TaskStatus.Success;
         else return TaskStatus.Failure;
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviorDesigner.Runtime;
 
 public class AIReferenceManager : ReferenceManager
 {
@@ -67,4 +68,10 @@ public class AIReferenceManager : ReferenceManager
         foreach(Ability ability in aiAbilities)
             currentChallengeTier.InitializeAbilityStats(ability);
     }
+}
+
+[System.Serializable]
+public class SharedAIReferenceManager : SharedVariable<AIReferenceManager>
+{
+    public static implicit operator SharedAIReferenceManager(AIReferenceManager value) { return new SharedAIReferenceManager { Value = value }; }
 }

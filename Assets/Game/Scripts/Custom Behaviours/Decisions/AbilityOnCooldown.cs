@@ -5,11 +5,11 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class AbilityOnCooldown : Conditional
 {
-    public Ability ability;
+    public SharedAbility ability;
 
     public override TaskStatus OnUpdate()
     {
-        if (!ability.CanShoot())
+        if (!ability.Value.CanShoot())
             return TaskStatus.Failure;
         else return TaskStatus.Success;
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviorDesigner.Runtime;
 
 public class Ability : MonoBehaviour
 {
@@ -172,4 +173,10 @@ public class AfterEffect
     [Tooltip("The amount of this type of effect that spawns")]
     public int effectAmount;
     public int effectDamage;
+}
+
+[System.Serializable]
+public class SharedAbility : SharedVariable<Ability>
+{
+    public static implicit operator SharedAbility(Ability value) { return new SharedAbility { Value = value }; }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using BehaviorDesigner.Runtime;
 
 public class Health : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class Health : MonoBehaviour
     {
         refManager = GetComponent<ReferenceManager>();
         isDead = false;
+    }
+
+    public float CheckHealthPercentage()
+    {
+        print("Current Health Percentage: " + (((float)health / baseHealth) * 100) + " << Current Health: " + health + " << Base Health: " + baseHealth);
+        return (((float)health / baseHealth) * 100);
     }
 
     public virtual void Heal(int healAmount)
@@ -43,4 +50,10 @@ public class Health : MonoBehaviour
     {
         isDead = true;
     }
+}
+
+[System.Serializable]
+public class SharedHealth : SharedVariable<Health>
+{
+    public static implicit operator SharedHealth(Health value) { return new SharedHealth { Value = value }; }
 }

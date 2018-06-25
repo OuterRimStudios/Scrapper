@@ -53,12 +53,6 @@ public class AIHealth : Health
         encounterSpawner = _encounterSpawner;
     }
 
-    public float CheckHealthPercentage()
-    {
-        print("Current Health Percentage: " + (health / baseHealth) * 100 + " << Current Health: " + health + " << Base Health: " + baseHealth);
-        return (health / baseHealth) * 100;
-    }
-
     public void SetLimbsActive(bool activeState)
     {
         if (limbs.Count <= 0) return;

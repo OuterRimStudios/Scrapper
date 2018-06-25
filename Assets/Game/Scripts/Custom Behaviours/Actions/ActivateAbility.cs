@@ -5,11 +5,11 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class ActivateAbility : Action
 {
-    public Ability ability;
+    public SharedAbility ability;
 
     public override TaskStatus OnUpdate()
     {
-        ability.ActivateAbility();
+        ability.Value.ActivateAbility();
         return base.OnUpdate();
     }
 }

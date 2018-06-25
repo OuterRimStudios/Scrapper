@@ -5,12 +5,12 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class SetNewPhase : Action
 {
-    public PhaseManager phaseManager;
+    public SharedPhaseManager phaseManager;
     public int newPhase;
 
     public override void OnStart()
     {
-        phaseManager.SetPhase(newPhase);
+        phaseManager.Value.SetPhase(newPhase);
         base.OnStart();
     }
 }
